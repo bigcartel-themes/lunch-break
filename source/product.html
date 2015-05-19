@@ -1,3 +1,4 @@
+<h1>{{ page.name }}</h1>
 <section class="product_pricing">
     <h4>{{ product.default_price | money_with_sign }}{% if product.on_sale %} <em>On Sale{% endif %}</em></h4>
     {% case product.status %}

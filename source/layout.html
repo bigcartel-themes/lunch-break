@@ -49,11 +49,12 @@
             {% endfor %}
           </ul>
         {% endif %}
-
+        
         {% if page.category == 'custom' %}
           <h1>{{ page.name }}</h1>
           {{ page_content | paragraphs }}
         {% else %}
+          <h1>{{ page.name }}</h1>
           {{ page_content }}
         {% endif %}
       </section>
@@ -85,10 +86,10 @@
         {% if artists.active != blank %}
           <section class="side_artists">
 	          <h3>Artists</h3>
-	          <select id="artists-select" name="artist">
-	            <option value="" disabled="disabled">Select an artist...</option>
+	          <select class="artists_select" name="artist">
+	            <option value="" disabled selected>Select an artist...</option>
 	            {% for artist in artists.active %}
-	            <option value="{{ artist.url }}">{{ artist.name }}</option>
+	              <option value="{{ artist.url }}">{{ artist.name }}</option>
 	            {% endfor %}
 	          </select>
           </section>
