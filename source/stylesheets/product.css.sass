@@ -1,0 +1,92 @@
+@import 'config'
+
+.product_images
+  float: left
+  width: 50%
+  
+  @media only screen and (max-width:550px)
+    float: none
+    width: 100%
+  
+  .primary_image
+    display: block
+    transition: all 0.2s ease-in-out
+    width: 100%
+    
+  .product_thumbnails
+    +pie-clearfix
+    list-style: none
+    margin: 15px -5px 0 -5px
+    padding: 0
+    
+    li
+      float: left
+      padding: 5px
+      width: 20%
+      
+      img
+        display: block
+        width: 100%
+        opacity: .8
+
+    li.selected
+      img
+        opacity: 1
+
+
+.product_pricing, .product_details
+  float: right
+  padding-left: 20px
+  width: 50%
+  
+  @media only screen and (max-width:550px)
+    float: none
+    padding: 0
+    width: 100%
+  
+.product_pricing
+  
+  h2
+    margin-bottom: 0
+    
+  h4
+    padding: 0
+    font-weight: normal
+    margin: 0
+    padding-bottom: 6px
+    border-bottom: 0
+    font-size: 20px
+  
+.product_details
+
+  form
+    margin-top: 15px  
+  
+  select
+    width: 100%
+    border: 0px
+    background: transparent
+    height: 100%
+
+  .select
+    position: relative
+    border: 1px solid #{"{{ theme.link_color }}"}
+    border-radius: 2px
+    height: 34px
+    padding: 0 10px
+    margin-bottom: 15px
+    position: relative
+    width: 70%
+
+    svg
+      position: absolute
+      right: 16px
+      top: 50%
+      transform: translateY(-50%)
+
+    path
+      fill: #{"{{ theme.link_color }}"}
+
+    &:hover path
+      fill: #{"{{ theme.link_hover }}"}
+      

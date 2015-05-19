@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ store.name }} &mdash; {{ page.name }}</title>
+
+    <meta charset="utf-8">
+    <meta name="description" content="{{ page.meta_description }}">
+    <meta name="keywords" content="{{ page.meta_keywords }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% if product != blank and page.full_url contains '/product/' %}
+      <meta property="og:title" content="{{ product.name | escape }}">
+      <meta property="og:type" content="product">
+      <meta property="og:url" content="{{ page.full_url }}">
+      <meta property="og:image" content="{{ product.image.url }}">
+      <meta property="og:site_name" content="{{ store.name | escape }}">
+    {% endif %}
+    
+    <link href="{{ theme | theme_css_url }}" media="screen" rel="stylesheet" type="text/css">
+
+    {{ head_content }}
+  </head>
+
+  <body id="{{ page.permalink }}-page" class="{{ page.permalink }} {{ page.category }}">
+    
+    <div class="mobile_nav">
+			<a href="#" class="open_menu"></a>
+			<a href="#" class="close_menu"></a>
+			<div class="mobile_cart">Cart <span class="cart_numbers">{{ cart.item_count | pluralize: 'item', 'items' }} {{ cart.total | money_with_sign }}</span></div>
+  	</div>
+  	
+  	<div class="wrap">
+    	
+      <header>
+    		<a href="/" title="{{ store.name | escape }}" class="{% if theme.header_logo != blank %}logo{% else %}text{% endif %}">
+    			{% if theme.header_logo != blank %}
+    			<img src="{{ theme.header_logo.url }}" alt="{{ store.name }}">
+    		{% else %}
+    			{{ store.name }}
+    		{% endif %}
+    		</a>
+      </header>
+  
+  		
+      <section class="content">
+        {% if errors != blank %}
+          <ul class="errors">
+            {% for error in errors %}
+              <li>{{ error }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+
+        {% if page.category == 'custom' %}
+          <h1>{{ page.name }}</h1>
+          {{ page_content | paragraphs }}
+        {% else %}
+          {{ page_content }}
+        {% endif %}
+      </section>
+      
+      <aside>
+        <section class="side_cart">
+	        <h3 class="clear">Cart <span class="cart_numbers">{{ cart.item_count | pluralize: 'item', 'items' }} {{ cart.total | money_with_sign }}</span></h3>
+        </section>
+
+        {% if theme.show_search %}
+        <section class="side_search">
+          <form action="/products" method="get">
+            <label><input type="text" name="search" placeholder="Search products..."></label>
+          </form>
+        </section>
+        {% endif %}
+
+        <section class="side_categories">
+          <h3>Products</h3>
+          <ul>
+            <li><a href="/products">All</a></li>
+            {% for category in categories.active %}
+            <li>{{ category | link_to }}</li>
+            {% endfor %}
+          </ul>
+        </section>
+        
+
+        {% if artists.active != blank %}
+          <section class="side_artists">
+	          <h3>Artists</h3>
+	          <select id="artists-select" name="artist">
+	            <option value="" disabled="disabled">Select an artist...</option>
+	            {% for artist in artists.active %}
+	            <option value="{{ artist.url }}">{{ artist.name }}</option>
+	            {% endfor %}
+	          </select>
+          </section>
+        {% endif %}
+
+        <section class="side_pages">
+          <h3>Pages</h3>
+          <ul>
+            {% for page in pages.all %}
+            	<li>{{ page | link_to }}</li>
+            {% endfor %}
+            <li><a href="/contact" title="Contact">Contact</a></li>
+            {% if store.website != blank %}
+            	<li><a href="{{ store.website }}">Back to Site</a></li>
+            {% endif %}
+          </ul>
+        </section>
+        
+        {% if theme.twitter_url != blank or theme.facebook_url != blank or theme.instagram_url != blank or theme.tumblr_url != blank or theme.pinterest_url != blank %}
+          <section class="social_links">
+            <ul class="social_icons">
+              {% if theme.twitter_url != blank %}
+                <li><a title="Twitter" href="{{ theme.twitter_url }}"></a></li>
+              {% endif %}
+            
+              {% if theme.facebook_url != blank %}
+                <li><a title="Facebook" href="{{ theme.facebook_url }}"></a></li>
+              {% endif %}
+              
+              {% if theme.instagram_url != blank %}
+                <li><a title="Instagram" href="{{ theme.instagram_url }}"></a></li>
+              {% endif %}
+              
+              {% if theme.tumblr_url != blank %}
+                <li><a title="Tumblr" href="{{ theme.tumblr_url }}"></a></li>
+              {% endif %}
+              
+              {% if theme.pinterest_url != blank %}
+                <li><a title="Pinterest" href="{{ theme.pinterest_url }}"></a></li>
+              {% endif %}
+            </ul>
+          </section>
+        {% endif %}
+      </aside>
+      <footer>
+        <div class="footer_left">
+  	  	  &copy; {{ 'Today' | date: '%Y' }} {{ store.name }}
+  	    </div>
+        <div class="footer_right">
+  	  	  <cite>{{ bigcartel_credit }}</cite>
+  	    </div>
+      </footer>
+    </div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="{{ theme | theme_js_url }}"></script>
+    <script src="{{ api | theme_js_url }}"></script>
+  </body>
+</html>

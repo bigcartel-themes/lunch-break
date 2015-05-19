@@ -1,0 +1,72 @@
+@import 'config'
+
+ul.products
+  @include flexbox
+  @include flex-direction(row)
+  @include flex-wrap(wrap)
+  margin: 0 -6px 20px
+  padding: 0
+  position: relative
+  
+  li
+    border-radius: 2px
+    display: -webkit-flex
+    display: -ms-flexbox
+    display: flex
+    float: left
+    padding: 0 6px 21px 6px
+    width: 25%
+    text-align: center
+    
+    @media only screen and (max-width: $break-medium)
+      width: 50%
+    
+    @media only screen and (max-width: $break-extra-small)
+      width: 100%
+    
+    a
+      display: block
+      
+      h4
+        font-size: 15px
+        font-weight: bold
+        font-family: #{" {{ theme.header_font }} "}
+        margin: 0
+        padding: 6px 0px 0px
+        
+        
+      h5
+        display: inline-block
+        font-size: 14px
+        font-weight: normal
+        margin: 2px 0px 0px
+        padding: 0px 0px 0px
+      
+      em
+        font-size: 13px
+
+      img
+        border-radius: 2px
+        display: block
+        transition: all 0.2s ease-in-out
+        width: 100%
+        
+.pagination
+  font-size: 15px
+  width: 100%
+  
+  span, a
+    padding: 2px 6px
+    
+    i
+      position: relative
+      font-size: 12px
+  
+  .previous i
+    right: 4px
+    
+  .next i
+    left: 4px    
+    
+  .disabled
+    display: none

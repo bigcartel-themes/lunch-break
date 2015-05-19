@@ -1,0 +1,138 @@
+{
+  "name": "Sexy2",
+  "version": "0.0.1",
+  "images": [
+    {
+      "variable": "header_logo",
+      "label": "Logo",
+      "description": "Adds your logo to the header"
+    },
+    {
+      "variable": "background_image",
+      "label": "Background Image",
+      "description": "Adds a repeating background image"
+    }
+  ],
+  "image_sets": [
+    {
+      "variable": "slideshow_images",
+      "label": "Slideshow",
+      "description": "This is a slideshow"
+    }
+  ],
+  "fonts": [
+    {
+      "variable": "header_font",
+      "label": "Header Font",
+      "default": "Tahoma"
+    },
+    {
+      "variable": "body_font",
+      "label": "Body Font",
+      "default": "Tahoma"
+    },
+    {
+      "variable": "sidebar_font",
+      "label": "Side Navigation Font",
+      "default": "Tahoma"
+    }
+  ],
+  "colors": [
+    {
+      "variable": "background_color",
+      "label": "Background",
+      "default": "#F5F5F5"
+    },
+    {
+      "variable": "text_color",
+      "label": "Text",
+      "default": "#222"
+    },
+    {
+      "variable": "link_color",
+      "label": "Links",
+      "default": "#7d6259"
+    },
+    {
+      "variable": "hover_color",
+      "label": "Link hover",
+      "default": "#0e1b79"
+    },
+    {
+      "variable": "border_color",
+      "label": "Borders",
+      "default": "#ABABAB"
+    },
+    {
+      "variable": "header_color",
+      "label": "Headers",
+      "default": "#222"
+    }
+  ],
+  "options": [
+    {
+      "variable": "sidebar_position",
+      "label": "Sidebar position",
+      "type": "select",
+      "options": [
+        ["Left", "left"],
+        ["Right", "right"]
+      ],
+      "default": "right",
+      "description": "Positions the side navigation on the right or left side of the page"
+    },
+    {
+      "variable": "show_search",
+      "label": "Show search",
+      "type": "boolean",
+      "default": true,
+      "description": "Shows a search field in the sidebar"
+    },
+    {
+      "variable": "products_per_page",
+      "label": "Products per page",
+      "type": "select",
+      "options": "1..100",
+      "default": 8,
+      "description": "The number of products shown per page"
+    },
+    {
+      "variable": "featured_products",
+      "label": "Featured products",
+      "type": "select",
+      "options": "0..100",
+      "default": 12,
+      "description": "The number of products shown on the home page"
+    },
+    {
+      "variable": "twitter_username",
+      "label": "Twitter Username",
+      "type": "text",
+      "description": "Ex: bigcartel"
+    },
+    {
+      "variable": "facebook_username",
+      "label": "Facebook Username",
+      "type": "text",
+      "description": "Ex: bigcartel"
+    },
+    {
+      "variable": "tumblr_username",
+      "label": "Tumblr Username",
+      "type": "text",
+      "description": "Ex: bigcartel"
+    },
+    {
+      "variable": "instagram_username",
+      "label": "Instagram Username",
+      "type": "text",
+      "description": "Ex: bigcartel"
+    },
+    {
+      "variable": "pinterest_username",
+      "label": "Pinterest Username",
+      "type": "text",
+      "description": "Ex: bigcartel"
+    }
+  ]
+}
