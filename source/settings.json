@@ -5,7 +5,8 @@
     {
       "variable": "header_logo",
       "label": "Logo",
-      "description": "Adds your logo to the header"
+      "description": "Adds your logo to the header",
+      "default": "header.png"
     },
     {
       "variable": "background_image",
@@ -17,7 +18,12 @@
     {
       "variable": "slideshow_images",
       "label": "Homepage slideshow",
-      "description": "900px by 500px images recommended"
+      "description": "900px by 500px images recommended",
+      "defaults": [
+        "slide1.png", 
+        "slide2.png", 
+        "slide3.png"
+      ]
     }
   ],
   "fonts": [
@@ -92,6 +98,17 @@
       "description": "The number of products shown per page"
     },
     {
+      "variable": "products_per_row",
+      "label": "Products per row",
+      "type": "select",
+      "options": [
+        ["3", "3"],
+        ["4", "4"]
+      ],
+      "default": 4,
+      "description": "The max number of products displayed per row"
+    },
+    {
       "variable": "featured_products",
       "label": "Featured products",
       "type": "select",
@@ -100,34 +117,39 @@
       "description": "The number of products shown on the home page"
     },
     {
-      "variable": "twitter_username",
-      "label": "Twitter Username",
+      "variable": "twitter_url",
+      "label": "Twitter URL",
       "type": "text",
-      "description": "Ex: bigcartel"
+      "description": "Ex: http://twitter.com/bigcartel",
+      "default": "http://blah.com"
     },
     {
-      "variable": "facebook_username",
-      "label": "Facebook Username",
+      "variable": "facebook_url",
+      "label": "Facebook URL",
       "type": "text",
-      "description": "Ex: bigcartel"
+      "description": "Ex: http://facebook.com/bigcartel",
+      "default": "http://blah.com"
     },
     {
-      "variable": "tumblr_username",
-      "label": "Tumblr Username",
+      "variable": "tumblr_url",
+      "label": "Tumblr URL",
       "type": "text",
-      "description": "Ex: bigcartel"
+      "description": "Ex: http://bigcartel.tumblr.com",
+      "default": "http://blah.com"
     },
     {
-      "variable": "instagram_username",
-      "label": "Instagram Username",
+      "variable": "instagram_url",
+      "label": "Instagram URL",
       "type": "text",
-      "description": "Ex: bigcartel"
+      "description": "Ex: http://instagram.com/bigcartel",
+      "default": "http://blah.com"
     },
     {
-      "variable": "pinterest_username",
-      "label": "Pinterest Username",
+      "variable": "pinterest_url",
+      "label": "Pinterest URL",
       "type": "text",
-      "description": "Ex: bigcartel"
+      "description": "Ex: http://pinterest.com/bigcartel",
+      "default": "http://blah.com"
     }
   ]
 }

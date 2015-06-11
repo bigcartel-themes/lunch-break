@@ -1,10 +1,41 @@
 @import 'config'
 
-.slideshow
-  margin-bottom: 30px
-  width: 100%
+.flexslider
+  background: none
+  border: 0
+  border-radius: 2px
+  -webkit-border-radius: 2px
+  -moz-border-radius: 2px
+  height: 100%
+  margin-bottom: 35px
   
-  img
-    border-radius: 2px
-    display: block
-    width: 100%
+  
+  .slides
+    transform-style: preserve-3d
+    -webkit-transform-style: preserve-3d
+    
+    >li
+      transform: translateZ(0px)
+      -moz-transform: translateZ(0px)
+      -webkit-transform: translateZ(0px)
+    
+  .flex-viewport
+    transform-style: preserve-3d
+    -webkit-transform-style: preserve-3d
+    -webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC)
+
+.flex-direction-nav  
+  display: none
+
+.flex-control-nav 
+  position: absolute
+  bottom: 10px
+  z-index: 10
+  right: 15px
+  width: auto
+  
+  @media screen and (max-width: $break-medium)
+    display: none
+
+.flex-control-paging li a, .flex-control-paging li a.flex-active, .flex-control-paging li a:hover
+  display: none

@@ -20,6 +20,24 @@ a, a:visited
 h1, h2, h3, h4, h5, h6
   color: $header-color
   font-family: $header-font
+  font-weight: bold
+
+img
+  display: block
+  max-width: 100%
+  
+p
+  margin: 6px 0
+  
+h1
+  font-size: 22px
+  font-weight: 600
+  line-height: 22px
+  margin-bottom: 15px
+  
+h2
+  font-size: 20px
+  line-height: 20px
   
 .mobile_nav
   background-color: $background-color
@@ -47,23 +65,21 @@ header
   border-bottom: 2px solid $border-color
   font-family: $header-font
   font-size: 28px
-  padding: 25px 0 25px
+  padding: 20px 0
   margin-bottom: 20px
   text-align: center
   
   @media only screen and (max-width: $break-medium)
     padding: 0 15px
     margin-top: 60px
-  
-  h1
-
-    a
-      display: inline-block
-      font-size: 46px
     
-      img
-        display: block
-        max-width: 100%
+  a
+    display: inline-block
+    font-size: 46px
+  
+    img
+      display: block
+      max-width: 100%
   
 .content
   +pie-clearfix
@@ -72,20 +88,13 @@ header
   margin-right: 20px
   position: relative
   padding: 0
+  padding-bottom: 100px
   width: 80%
   
   @media only screen and (max-width: $break-medium)
     float: none
     width: 100%
-  
-  h2
-    font-size: 26px
-    margin-bottom: 10px
-    padding-bottom: 4px
     
-  .pagination
-    text-align: center
-  
 aside
   border-radius: 2px
   float: left
@@ -104,80 +113,94 @@ aside
     font-size: 18px
     line-height: 18px
     margin-bottom: 6px
-    
-    .cart_numbers
-      float: right
-      font-size: 15px
-      margin-top: 1px
-      opacity: .7
-  
+
   .side_cart
-    padding-bottom: 5px
     
-    .cart_numbers
-      
+    h3
+      margin-bottom: 0px
       
     .button
-      display: inline-block
+      display: block
       font-size: 13px
-      color: #FFF
-      width: 49%
-      padding: 5px 0
+      padding: 10px 0
       text-align: center
-      font-weight: normal
+      width: 100%
   
   ul
+    
+    border-bottom: 1px solid $border-color
     list-style: none
     margin: 0
     padding: 0
-    font-size: 15px
     
     li
       display: block
         
       a
+        border-top: 1px solid $border-color
         display: block
-        padding: 3px 0
-      
-      &:last-child a
-        padding-bottom: 0
-        
+        font-size: 14px
+        padding: 6px 0
+        line-height: 21px
+    
   .side_search
     margin-top: 0 !important
     
     input
       background: none
-      width: 100%
-      font-size: 13px
-      padding: 6px 8px
       border: 1px solid $border-color
       border-radius: 2px
-      
+      -webkit-border-radius: 2px
+      -moz-border-radius: 2px
+      font-size: 13px
+      padding: 6px 20px 6px 8px
+      width: 100%
+
       &:focus
-        border: 1px solid #{"{{ theme.link_hover }}"}     
-    
+        border: 1px solid $hover-color
+        
+    label
+      cursor: pointer
+      position: relative
+      
+      svg
+        fill: $border-color
+        position: absolute
+        right: 10px
+        top: 50%
+        transform: translateY(-50%)
+        -webkit-transform: translateY(-50%)
+        -moz-transform: translateY(-50%)
+        
   >section
     margin-bottom: 20px
-    border-bottom: 2px solid $border-color
-    padding-bottom: 20px
     
     &:first-child
       margin-top: 0
     
-  .social_links
+  .social_icons
+    +pie-clearfix
     border-bottom: 0
     font-size: 22px
     margin-top: -10px
     
     li
-      display: inline-block
+      float: left
+      width: 20%
       
       a
+        border: 0px
         display: block
-        padding-right: 12px
-      
-      &:last-child a
-        padding-right: 0  
+        text-align: center
+    
+        svg
+          fill: $link-color
+          height: 20px
+          width: 20px
+          
+      &:hover svg
+        fill: $hover-color
+        
 
 aside
   background-color: $background-color
@@ -217,18 +240,22 @@ form, input, textarea, submit, input[type='submit'], input[type='text'], button,
   -webkit-appearance: none
   -moz-appearance:    none
   appearance:         none
+  
+  &:focus
+    outline: none
 
 .button, a.button
   background-color: $link-color
   border: 0px
   border-radius: 2px
+  cursor: pointer
   font-size: 15px
   font-weight: bold
   color: #FFF
   padding: 11px 20px
 
   &:hover
-    background-color: #{"{{ theme.link_hover }}"}
+    background-color: $hover-color
 
 .fa
   cursor: pointer

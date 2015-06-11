@@ -15,7 +15,7 @@ ul.products
     display: flex
     float: left
     padding: 0 6px 21px 6px
-    width: 25%
+    width: #{"{% if theme.products_per_row == 3 %} 33.33% {% else %} 25% {% endif %}"}
     text-align: center
     
     @media only screen and (max-width: $break-medium)
@@ -28,19 +28,16 @@ ul.products
       display: block
       
       h4
-        font-size: 15px
-        font-weight: bold
-        font-family: #{" {{ theme.header_font }} "}
-        margin: 0
-        padding: 6px 0px 0px
-        
-        
+        font-size: 16px
+        font-weight: 600
+        line-height: 21px
+        margin-top: 8px
+
       h5
         display: inline-block
         font-size: 14px
         font-weight: normal
-        margin: 2px 0px 0px
-        padding: 0px 0px 0px
+        margin-top: 6px
       
       em
         font-size: 13px

@@ -1,7 +1,7 @@
-{% if theme.image_sets.slideshow.size > 0 %}
+{% if theme.image_sets.slideshow_images.size > 0 %}
   <div class="flexslider">
     <ul class="slides">
-      {% for image in theme.image_sets.slideshow %}
+      {% for image in theme.image_sets.slideshow_images %}
         <li><img src="{{ image.url | constrain: '1300' }}"></li>
       {% endfor %}
     </ul>
