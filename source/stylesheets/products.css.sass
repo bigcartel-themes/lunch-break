@@ -15,7 +15,7 @@ ul.products
     display: flex
     float: left
     padding: 0 6px 21px 6px
-    width: #{"{% if theme.products_per_row == 3 %} 33.33% {% else %} 25% {% endif %}"}
+    width: #{"{% if theme.products_per_row == '3' %} 33.33% {% else %} 25% {% endif %}"}
     text-align: center
     
     @media only screen and (max-width: $break-medium)
@@ -35,6 +35,7 @@ ul.products
 
       h5
         display: inline-block
+        font-family: $body-font
         font-size: 14px
         font-weight: normal
         margin-top: 6px
@@ -43,13 +44,17 @@ ul.products
         font-size: 13px
 
       img
+        +border-radius(2px)
+        +transition(all 0.2s ease-in-out)
         border-radius: 2px
         display: block
-        transition: all 0.2s ease-in-out
+        
         width: 100%
         
 .pagination
-  font-size: 15px
+  font-size: 17px
+  margin-top: 20px
+  text-align: center
   width: 100%
   
   span, a
@@ -59,11 +64,20 @@ ul.products
       position: relative
       font-size: 12px
   
-  .previous i
-    right: 4px
+  .previous
+    float: left
     
-  .next i
-    left: 4px    
+    i
+      right: 4px
+    
+  .next
+    float: right
+    
+    i
+      left: 4px    
     
   .disabled
     display: none
+
+.home .pagination
+  display: none

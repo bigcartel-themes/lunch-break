@@ -1,13 +1,14 @@
 @import 'compass/css3'
 @import 'compass'
 
-$header-font: '#{'{{ theme.header_font }}'}'
-$body-font: '#{'{{ theme.body_font }}'}'
-$background-color: #f5f6f6
-$header-color: #324625
-$hover-color: #000
-$link-color: #324625
-$border-color: #d1d3d0
+$header-font: #{'{{ theme.header_font }}'}
+$body-font: #{'{{ theme.body_font }}'}
+$background-color: #{'{{ theme.background_color }}'}
+$header-color: #{'{{ theme.header_color }}'}
+$text-color: #{'{{ theme.text_color }}'}
+$hover-color: #{'{{ theme.link_hover_color }}'}
+$link-color: #{'{{ theme.link_color }}'}
+$border-color: #{'{{ theme.border_color }}'}
 
 @mixin all-transitions
   -webkit-transition: all 0.3s ease-in-out

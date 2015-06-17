@@ -8,6 +8,7 @@ html
     
 body
   background-color: $background-color
+  color: $text-color
   font-family: $body-font
 
 a, a:visited
@@ -30,9 +31,9 @@ p
   margin: 6px 0
   
 h1
-  font-size: 22px
+  font-size: 26px
   font-weight: 600
-  line-height: 22px
+  line-height: 26px
   margin-bottom: 15px
   
 h2
@@ -54,11 +55,17 @@ h2
   
   @media only screen and (max-width: $break-medium)
     display: block
+    
+  .mobile_cart
+    +vertical-align
+    float: right
+    font-size: 13px
 
 .wrap
   +pie-clearfix
   margin: 0 auto
   max-width: 1100px
+  padding: 0 10px
   width: 100%
 
 header
@@ -67,7 +74,7 @@ header
   font-size: 28px
   padding: 20px 0
   margin-bottom: 20px
-  text-align: center
+  text-align: #{"{{ theme.header_position }}"}
   
   @media only screen and (max-width: $break-medium)
     padding: 0 15px
@@ -80,12 +87,15 @@ header
     img
       display: block
       max-width: 100%
+      
+.hidden
+  display: none
   
 .content
   +pie-clearfix
-  border-radius: 2px
-  float: left
-  margin-right: 20px
+  +border-radius(2px)
+  float: #{"{% if theme.sidebar_position == 'right' %} left {% else %} right {% endif %}"}
+  margin: #{"{% if theme.sidebar_position == 'right' %} 0 20px 0 0 {% else %} 0 0 0 20px {% endif %}"}
   position: relative
   padding: 0
   padding-bottom: 100px
@@ -96,18 +106,30 @@ header
     width: 100%
     
 aside
-  border-radius: 2px
-  float: left
+  background-color: $background-color
+  +border-radius(2px)
+  float: #{"{% if theme.sidebar_position == 'right' %} right {% else %} left {% endif %}"}
   width: 18%
-  padding-left: 10px
   
   @media only screen and (max-width: $break-medium)
+    +border-radius(0)
     position: absolute
     top: 48px
-    border-radius: 0px
-    left: 0
-    width: 100%
     height: 100%
+    left: 0
+    opacity: 0
+    padding: 0 10px
+    visibility: hidden
+    width: 100%
+    
+    
+  &.open
+    height: auto
+    opacity: 1
+    visibility: visible
+    
+    .side_cart
+      display: none
   
   h3
     font-size: 18px
@@ -120,11 +142,22 @@ aside
       margin-bottom: 0px
       
     .button
+      +pie-clearfix
       display: block
-      font-size: 13px
-      padding: 10px 0
-      text-align: center
+      font-size: 14px
+      padding: 8px 15px
       width: 100%
+      
+      svg
+        fill: $background-color
+        float: left
+        
+      >span
+        float: right
+                
+    &:hover
+      svg
+        fill: $link-color
   
   ul
     
@@ -147,19 +180,19 @@ aside
     margin-top: 0 !important
     
     input
+      +border-radius(2px)
       background: none
       border: 1px solid $border-color
-      border-radius: 2px
       -webkit-border-radius: 2px
       -moz-border-radius: 2px
-      font-size: 13px
-      padding: 6px 20px 6px 8px
+      font-size: 12px
+      padding: 6px 34px 6px 8px
       width: 100%
 
       &:focus
         border: 1px solid $hover-color
         
-    label
+    .search_form
       cursor: pointer
       position: relative
       
@@ -200,15 +233,10 @@ aside
           
       &:hover svg
         fill: $hover-color
-        
-
-aside
-  background-color: $background-color
-  padding: 0 15px
-      
+            
 
 footer
-  border-top: 1px solid $border-color
+  border-top: 2px solid $border-color
   clear: both
   height: 50px
   margin-top: 25px
@@ -233,29 +261,34 @@ footer
     width: 79px
     height: 24px
   
-form, input, textarea, submit, input[type='submit'], input[type='text'], button, select
-  font-family: #{"{{ theme.body_font | font_family }}"}
-  font-style: normal
-  -webkit-font-smoothing: antialiased
+input, textarea
+  +all-transitions
+  appearance: none
   -webkit-appearance: none
-  -moz-appearance:    none
-  appearance:         none
+  -moz-appearance: none
+  background: $background-color
+  border: 1px solid $border-color
+  border-radius: 0
+  color: $text-color
+  font: 1.125em $body-font
   
   &:focus
+    border-color: $hover-color
+    color: $hover-color
     outline: none
 
-.button, a.button
+button, a.button
+  +all-transitions
+  +border-radius(2px)
   background-color: $link-color
-  border: 0px
-  border-radius: 2px
+  border: 2px solid $link-color
+  color: $background-color
   cursor: pointer
+  display: inline-block
   font-size: 15px
-  font-weight: bold
-  color: #FFF
+  line-height: 15px
   padding: 11px 20px
 
   &:hover
-    background-color: $hover-color
-
-.fa
-  cursor: pointer
+    background-color: $background-color
+    color: $link-color

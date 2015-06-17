@@ -1,6 +1,6 @@
 {
-  "name": "Sexy2",
-  "version": "0.0.1",
+  "name": "Lunch Break",
+  "version": "0.0.6",
   "images": [
     {
       "variable": "header_logo",
@@ -42,12 +42,12 @@
     {
       "variable": "background_color",
       "label": "Background",
-      "default": "#F5F5F5"
+      "default": "#FCFCFC"
     },
     {
       "variable": "header_color",
       "label": "Headers",
-      "default": "#222"
+      "default": "#3E5EA8"
     },
     {
       "variable": "text_color",
@@ -60,17 +60,24 @@
       "default": "#7d6259"
     },
     {
-      "variable": "hover_color",
+      "variable": "link_hover_color",
       "label": "Link hover",
       "default": "#0e1b79"
     },
     {
       "variable": "border_color",
       "label": "Borders",
-      "default": "#ABABAB"
+      "default": "#BABABA"
     }
   ],
   "options": [
+    {
+      "variable": "show_search",
+      "label": "Show search",
+      "type": "boolean",
+      "default": true,
+      "description": "Shows a search field in the sidebar"
+    },
     {
       "variable": "sidebar_position",
       "label": "Sidebar position",
@@ -83,11 +90,16 @@
       "description": "Positions the side navigation on the right or left side of the page"
     },
     {
-      "variable": "show_search",
-      "label": "Show search",
-      "type": "boolean",
-      "default": true,
-      "description": "Shows a search field in the sidebar"
+      "variable": "header_position",
+      "label": "Header position",
+      "type": "select",
+      "options": [
+        ["Left", "left"],
+        ["Center", "center"],
+        ["Right", "right"]
+      ],
+      "default": "center",
+      "description": "Positions your store name or logo at the top of the page"
     },
     {
       "variable": "products_per_page",
@@ -99,7 +111,7 @@
     },
     {
       "variable": "products_per_row",
-      "label": "Products per row",
+      "label": "Max Products per row",
       "type": "select",
       "options": [
         ["3", "3"],

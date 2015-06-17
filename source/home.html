@@ -18,7 +18,15 @@
           <a href="{{ product.url }}">
             <img alt="Image of {{ product.name | escape }}" src="{{ product.image | product_image_url | constrain: '600' }}">
             <h4 class="product_name">{{ product.name }}</h4>
-            <h5>{{ product.default_price | money_with_sign }}</h5> {% if product.status != 'active' %}<em>{{ product.status }}</em>{% endif %}
+            <h5>{{ product.default_price | money_with_sign }}</h5>
+  					{% case product.status %}
+  						{% when 'active' %}
+  							{% if product.on_sale %}<em>On Sale</em>{% endif %}
+  						{% when 'sold-out' %}
+  							<em>Sold Out</em>
+  						{% when 'coming-soon' %}
+  							<em>Coming Soon</em>
+  					{% endcase %}
           </a>
         </li>
         {% endfor %}

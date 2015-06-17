@@ -1,20 +1,146 @@
 @import 'config'
 
-.cart_items
-  border-top: 2px solid $border-color
-  list-style: none
-  margin: 15px 0
-  padding: 0
+.cart_form
+
+  .cart_items 
+    padding: 0
+    border-top: 2px solid $border-color
   
-  li
-    +pie-clearfix
-    display: block
-    border-bottom: 2px solid $border-color
-    padding: 8px 0
-    
-    >div
-      float: left
+    li
+      @include pie-clearfix
+      display: block
+      font-size: 16px
+      font-weight: 900
+      line-height: 18px
+      height: 80px
+      overflow: hidden
+      border-bottom: 2px solid $border-color
       
-.cart_footer
-  margin-bottom: 10px
-  text-align: right
+      @media screen and (max-width: $break-extra-small)
+        font-size: 15px
+      
+      a.product_image  
+        display: inline
+        float: left
+        margin-right: 15px
+        text-align: center
+        max-width: 120px
+        text-align: center
+        width: 100%
+        @include vertical-align
+        
+        @media screen and (max-width: $break-medium)
+          max-width: 60px
+        
+        @media screen and (max-width: $break-extra-small)
+          display: none
+          
+        img 
+          display: block
+          margin: 0 auto
+          max-height: 100%
+          width: auto
+          
+          @media screen and (max-width: $break-medium)
+            max-width: 60px
+        
+      .product_details  
+        display: inline
+        float: left
+        font-style: normal
+        height: 80px
+        letter-spacing: 0
+        margin: 0
+        max-width: 250px
+        padding: 0
+        width: auto
+        
+        @media screen and (max-width: $break-medium)
+          max-width: 42%
+        
+        a  
+          @include vertical-align
+          display: block
+        
+          em 
+            display: block
+            font-style: normal
+            font-size: 16px
+            font-weight: normal
+            line-height: 25px
+            
+            @media screen and (max-width: $break-extra-small)
+              font-size: 15px
+              line-height: 18px
+  
+      .product_actions  
+        display: block
+        float: right
+        max-width: 400px
+        text-align: right
+        @include vertical-align
+        
+        @media screen and (max-width: $break-medium)
+          max-width: 58%
+          
+        div 
+          display: inline-block
+  
+          &.quantity 
+            width: 55px
+            
+            input[type='text']
+              +border-radius(2px)
+              height: 46px
+              text-align: center
+              text-indent: 0
+              width: 46px
+              
+              @media screen and (max-width: $break-extra-small)
+                font-size: 16px
+                height: 44px
+                width: 44px
+  
+          &.price 
+            width: 180px
+            
+            @media screen and (max-width: $break-medium)
+              width: 75px
+  
+          &.remove 
+            width: 66px
+            text-align: right
+            
+            @media screen and (max-width: $break-medium)
+              width: 30px
+            
+            a  
+              svg 
+                cursor: pointer
+                fill: $link-color
+                height: 16px
+                width: 16px
+                position: relative
+                
+                @media screen and (max-width: $break-extra-small)
+                  height: 14px
+                  width: 14px
+              
+              &:hover svg  
+                fill: $hover-color
+  
+  .cart_footer
+    +pie-clearfix
+    margin-top: 20px
+    text-align: right
+
+    h3
+      font-size: 22px
+      line-height: 22px
+      margin-bottom: 15px
+      
+    .continue_shopping
+      float: left
+    
+    button
+      margin-left: 10px
