@@ -12,6 +12,7 @@ body
   font-family: $body-font
 
 a, a:visited
+  +all-transitions
   color: $link-color
   text-decoration: none
 
@@ -148,7 +149,6 @@ header
   +pie-clearfix
   +border-radius(2px)
   float: #{"{% if theme.sidebar_position == 'right' %} left {% else %} right {% endif %}"}
-  margin: #{"{% if theme.sidebar_position == 'right' %} 0 20px 0 0 {% else %} 0 0 0 20px {% endif %}"}
   position: relative
   padding: 0
   padding-bottom: 100px
@@ -234,30 +234,24 @@ aside
     margin-top: 0 !important
 
     input
-      +border-radius(2px)
-      background: none
-      border: 1px solid $border-color
-      -webkit-border-radius: 2px
-      -moz-border-radius: 2px
       font-size: 12px
       padding: 6px 34px 6px 8px
       width: 100%
-
-      &:focus
-        border: 1px solid $hover-color
 
     .search_form
       cursor: pointer
       position: relative
 
       svg
+        +all-transitions
+        +transform(translateY(-50%))
         fill: $border-color
         position: absolute
         right: 10px
         top: 50%
-        transform: translateY(-50%)
-        -webkit-transform: translateY(-50%)
-        -moz-transform: translateY(-50%)
+        
+        &:hover
+          fill: $hover-color
 
   >section
     margin-bottom: 20px
@@ -326,18 +320,17 @@ footer
 
 input, textarea
   +all-transitions
-  appearance: none
-  -webkit-appearance: none
-  -moz-appearance: none
+  +appearance(none)
+  +border-radius(2px)
   background: $background-color
-  border: 1px solid $border-color
+  border: 2px solid $border-color
   color: $text-color
   font-family: $body-font
   font-size: 17px
   padding: 8px 10px
 
   &:focus
-    border: 1px solid $hover-color
+    border: 2px solid $hover-color
     color: $hover-color
     outline: none
 
@@ -351,8 +344,66 @@ button, a.button
   display: inline-block
   font-size: 15px
   line-height: 15px
+  outline: none
   padding: 13px 22px
 
-  &:hover
+  &:hover, &:focus
     background-color: $background-color
     color: $link-color
+    
+  &:active
+    background-color: $link-color
+    border: 2px solid $link-color
+    color: $background-color
+    
+.select
+  +all-transitions
+  +border-radius(2px)
+  position: relative
+  border: 2px solid $link-color
+  height: 38px
+  margin-bottom: 15px
+  padding: 0
+  position: relative
+  max-width: 80%
+  width: 100%
+
+  select
+    +all-transitions
+    +appearance(none)
+    background: none
+    border: 0
+    font-size: 14px
+    height: 100%
+    padding: 0 32px 0 8px
+    position: relative
+    width: 100%
+    z-index: 2
+
+    option
+      background-color: #FFF
+      color: #000
+
+    &:focus
+      box-shadow: none
+      outline: none
+
+    &::-ms-expand
+      display: none
+
+  svg
+    +all-transitions
+    fill: $link-color
+    height: 8px
+    margin-top: -4px
+    position: absolute
+    right: 12px
+    top: 50%
+    width: 13px
+    z-index: 1
+
+  &:hover
+    border-color: $hover-color
+
+    svg
+      fill: $hover-color

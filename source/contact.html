@@ -6,28 +6,28 @@
     <ul>
       <li class="contact_name">
         <label for="name">Name</label>
-        {{ contact | contact_input: 'name' }}
+        {{ contact | contact_input: 'name', tabindex: '1' }}
       </li>
       <li class="contact_email">
         <label for="email">Email</label>
-        {{ contact | contact_input: 'email' }}
+        {{ contact | contact_input: 'email', tabindex: '2' }}
       </li>
       <li class="contact_subject">
         <label for="subject">Subject</label>
-        {{ contact | contact_input: 'subject' }}
+        {{ contact | contact_input: 'subject', tabindex: '3' }}
       </li>
       <li class="contact_message">
         <label for="message">Message</label>
-        {{ contact | contact_input: 'message' }}
+        {{ contact | contact_input: 'message', tabindex: '4' }}
       </li>
       <li class="contact_captcha">
         <label for="captcha">Spam check</label>
         <p>Please enter the characters from the image.</p>
         <div>{{ contact.captcha }}</div>
-        {{ contact | contact_input: 'captcha' }}
+        {{ contact | contact_input: 'captcha', tabindex: '5' }}
       </li>
       <li class="contact_send">
-        <button type="submit" name="submit" title="Send us an email">Send</button>
+        <button type="submit" name="submit" title="Send us an email" tabindex="6">Send</button>
       </li>
     </ul>
   </form>

@@ -80,59 +80,6 @@
   form
     margin-top: 15px
 
-    .select
-      +border-radius(2px)
-      position: relative
-      border: 2px solid $link-color
-      height: 38px
-      padding: 0
-      margin-bottom: 15px
-      position: relative
-      max-width: 80%
-      width: 100%
-
-      select
-        appearance: none
-        -moz-appearance: none
-        -webkit-appearance: none
-        background: none
-        border: 0
-        font-size: 14px
-        height: 100%
-        padding: 0 32px 0 8px
-        position: relative
-        width: 100%
-        z-index: 2
-
-        option
-          background-color: #FFF
-          color: #000
-
-        &:focus
-          box-shadow: none
-          outline: none
-
-        &::-ms-expand
-          display: none
-
-      svg
-        @include all-transitions
-        content: ''
-        fill: $link-color
-        height: 8px
-        margin-top: -4px
-        position: absolute
-        right: 12px
-        top: 50%
-        width: 13px
-        z-index: 1
-
-      &:hover
-        border-color: $hover-color
-
-        svg
-          fill: $hover-color
-
   .share_block
     display: inline-block
     margin-top: 25px
