@@ -6,9 +6,9 @@
 *= require stylesheets/product
 *= require stylesheets/home
 *= require stylesheets/cart
+*= require stylesheets/contact
 */
- 
+
 /*============================================================
   Custom Styles - add and override styles below.
 ============================================================*/
-

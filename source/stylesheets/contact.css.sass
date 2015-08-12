@@ -1,0 +1,34 @@
+@import 'config'
+
+.contact_form
+  width: 100%
+
+  ul
+
+    li
+      +pie-clearfix
+      border-bottom: 1px solid $border-color
+      display: block
+      height: 95px
+      padding: 20px 0
+
+      label
+        +vertical-align
+        float: left
+        font-size: 17px
+        font-weight: 600
+        text-align: right
+        max-width: 225px
+        padding-right: 15px
+        width: 100%
+
+      input, textarea
+        +vertical-align
+        float: left
+        max-width: 450px
+        width: 100%
+
+    &.contact_message
+    
+      label, input, textarea
+        -vertical-align

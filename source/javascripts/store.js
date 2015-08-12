@@ -1,6 +1,7 @@
-$(function() { 
+$(function() {
   $('.open_menu').click(function(e) {
     e.preventDefault();
+    $(this).toggleClass('open');
     $('aside').toggleClass('open');
     $('.content').toggleClass('hidden');
   });
@@ -14,5 +15,4 @@ $(function() {
       enabled: true
     }
   });
-
-})
+});

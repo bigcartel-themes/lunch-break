@@ -22,7 +22,7 @@
     </ul>
 
   	{% if paginate.pages > 1 %}
-      {{ paginate | default_pagination, 'pagination', 'pagination', 'Previous', 'Next'  }}
+      {{ paginate | default_pagination, 'pagination', 'pagination', '<svg xmlns="http://www.w3.org/2000/svg" width="10.001" height="6" viewBox="0 0 10.001 6"><path d="M9.852 1.537c.199-.189.199-.496 0-.684l-.717-.683c-.197-.19-.518-.19-.735 0l-3.384 3.33-3.434-3.357c-.199-.189-.52-.189-.717 0l-.717.683c-.197.188-.197.5 0 .684l4.508 4.3c.199.2.5.2.7 0l4.496-4.273z"/></svg> Previous', 'Next <svg xmlns="http://www.w3.org/2000/svg" width="10.001" height="6" viewBox="0 0 10.001 6"><path d="M9.852 1.537c.199-.189.199-.496 0-.684l-.717-.683c-.197-.19-.518-.19-.735 0l-3.384 3.33-3.434-3.357c-.199-.189-.52-.189-.717 0l-.717.683c-.197.188-.197.5 0 .684l4.508 4.3c.199.2.5.2.7 0l4.496-4.273z"/></svg>'  }}
   	{% endif %}
 
   {% else %}

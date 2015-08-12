@@ -8,32 +8,55 @@
   -moz-border-radius: 2px
   height: 100%
   margin-bottom: 35px
-  
-  
+
   .slides
     transform-style: preserve-3d
     -webkit-transform-style: preserve-3d
-    
+
     >li
       transform: translateZ(0px)
       -moz-transform: translateZ(0px)
       -webkit-transform: translateZ(0px)
-    
+
   .flex-viewport
     transform-style: preserve-3d
     -webkit-transform-style: preserve-3d
     -webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC)
 
-.flex-direction-nav  
-  display: none
+  .flex-direction-nav li a
+    +transition(all .1s ease-in)
+    background-image: url(#{"{{ 'slideshow_arrows.png' | theme_image_url }}"})
+    background-repeat: no-repeat
+    background-color: rgba(0,0,0,.7)
+    background-size: 65px auto
+    border: none
+    height: 66px
+    margin: -33px 0 0
+    position: absolute
+    text-indent: 35px
+    width: 33px
 
-.flex-control-nav 
+    &:hover
+      background-color: rgba(0,0,0,1)
+
+  .flex-prev
+    background-position: 6px 15px
+    border-radius: 3px
+    left: 18px
+
+  .flex-next
+    background-position: -38px 15px
+    border-radius: 3px
+    right: 18px
+    text-indent: 9999px
+
+.flex-control-nav
   position: absolute
   bottom: 10px
   z-index: 10
   right: 15px
   width: auto
-  
+
   @media screen and (max-width: $break-medium)
     display: none
 

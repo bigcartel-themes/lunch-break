@@ -3,27 +3,27 @@
 .product_images
   float: left
   width: 50%
-  
+
   @media only screen and (max-width:550px)
     float: none
     width: 100%
-  
+
   .primary_image
     display: block
     transition: all 0.2s ease-in-out
     width: 100%
-    
+
   .product_thumbnails
     +pie-clearfix
     list-style: none
     margin: 15px -5px 0 -5px
     padding: 0
-    
+
     li
       float: left
       padding: 5px
       width: 25%
-      
+
       img
         display: block
         width: 100%
@@ -38,17 +38,23 @@
   float: right
   padding-left: 20px
   width: 50%
-  
+
   @media only screen and (max-width:550px)
     float: none
     padding: 0
     width: 100%
-  
+
 .product_pricing
-  
+
+  h1
+    margin-bottom: 10px
+
   h2
     margin-bottom: 0
-    
+
+    em
+      color: $hover-color
+
   h4
     padding: 0
     font-weight: normal
@@ -56,34 +62,35 @@
     padding-bottom: 6px
     border-bottom: 0
     font-size: 20px
-  
+
 .product_details
   margin-top: 15px
 
   .product_description
     font-size: 14px
     line-height: 18px
-    
+    margin: 10px 0
+
     p
       margin-bottom: 10px
-    
+
     a
       font-weight: 600
 
   form
-    margin-top: 15px  
+    margin-top: 15px
 
     .select
       +border-radius(2px)
       position: relative
       border: 2px solid $link-color
-      height: 34px
+      height: 38px
       padding: 0
       margin-bottom: 15px
       position: relative
       max-width: 80%
       width: 100%
-  
+
       select
         appearance: none
         -moz-appearance: none
@@ -96,18 +103,18 @@
         position: relative
         width: 100%
         z-index: 2
-        
+
         option
           background-color: #FFF
           color: #000
-          
+
         &:focus
           box-shadow: none
           outline: none
-          
+
         &::-ms-expand
           display: none
-    
+
       svg
         @include all-transitions
         content: ''
@@ -119,10 +126,14 @@
         top: 50%
         width: 13px
         z-index: 1
-      
+
       &:hover
         border-color: $hover-color
-        
+
         svg
           fill: $hover-color
-        
+
+  .share_block
+    display: inline-block
+    margin-top: 25px
+    width: 100px

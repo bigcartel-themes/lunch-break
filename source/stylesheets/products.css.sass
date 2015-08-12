@@ -52,8 +52,10 @@ ul.products
         width: 100%
         
 .pagination
+  border-top: 1px solid $border-color
   font-size: 17px
   margin-top: 20px
+  padding-top: 15px
   text-align: center
   width: 100%
   
@@ -66,15 +68,29 @@ ul.products
   
   .previous
     float: left
+    padding-left: 0
     
-    i
-      right: 4px
+    svg
+      +rotate(90deg)
+      fill: $link-color
+      height: 14px
+      right: 2px
+      top: 1px
+      position: relative
+      width: 17px
     
   .next
     float: right
+    padding-right: 0
     
-    i
-      left: 4px    
+    svg
+      +rotate(-90deg)
+      fill: $link-color
+      height: 14px
+      left: 2px
+      top: 1px
+      position: relative
+      width: 17px
     
   .disabled
     display: none

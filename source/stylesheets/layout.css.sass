@@ -5,7 +5,7 @@
 
 html
   overflow-y: scroll
-    
+
 body
   background-color: $background-color
   color: $text-color
@@ -14,10 +14,10 @@ body
 a, a:visited
   color: $link-color
   text-decoration: none
-  
+
   &:hover
     color: $hover-color
-    
+
 h1, h2, h3, h4, h5, h6
   color: $header-color
   font-family: $header-font
@@ -26,20 +26,20 @@ h1, h2, h3, h4, h5, h6
 img
   display: block
   max-width: 100%
-  
+
 p
   margin: 6px 0
-  
+
 h1
   font-size: 26px
   font-weight: 600
   line-height: 26px
   margin-bottom: 15px
-  
+
 h2
   font-size: 20px
   line-height: 20px
-  
+
 .mobile_nav
   background-color: $background-color
   position: absolute
@@ -49,17 +49,70 @@ h2
   width: 100%
   padding: 10px
   font-size: 21px
-  
-  .fa-remove
-    display: none
-  
+
   @media only screen and (max-width: $break-medium)
     display: block
-    
+
+  .open_menu
+    +transform(rotate(0deg))
+    +transition(.5s ease-in-out)
+    display: block
+    float: left
+    height: 18px
+    position: relative
+    width: 26px
+
+    span
+      +border-radius(2px)
+      +transform(rotate(0deg))
+      +transition(.25s ease-in-out)
+      display: block
+      background: $header-color
+      width: 100%
+      height: 3px
+      position: absolute
+      left: 0
+      opacity: 1
+
+      &:nth-child(1)
+        top: 0px
+
+      &:nth-child(2), &:nth-child(3)
+        top: 50%
+
+      &:nth-child(4)
+        top: 99%
+
+    &.open
+      span
+        &:nth-child(1)
+          top: 18px
+          width: 0%
+          left: 50%
+
+        &:nth-child(2)
+          +transform(rotate(45deg))
+
+        &:nth-child(3)
+          +transform(rotate(-45deg))
+
+        &:nth-child(4)
+          top: 18px
+          width: 0%
+          left: 50%
+
+
+  &:hover, &:focus
+    .line-1
+      +transform(translateY(-2px))
+
+    .line3
+      +transform(translateY(2px))
+
   .mobile_cart
     +vertical-align
     float: right
-    font-size: 13px
+    font-size: 16px
 
 .wrap
   +pie-clearfix
@@ -75,22 +128,22 @@ header
   padding: 20px 0
   margin-bottom: 20px
   text-align: #{"{{ theme.header_position }}"}
-  
+
   @media only screen and (max-width: $break-medium)
     padding: 0 15px
     margin-top: 60px
-    
+
   a
     display: inline-block
     font-size: 46px
-  
+
     img
       display: block
       max-width: 100%
-      
+
 .hidden
   display: none
-  
+
 .content
   +pie-clearfix
   +border-radius(2px)
@@ -100,17 +153,18 @@ header
   padding: 0
   padding-bottom: 100px
   width: 80%
-  
+
   @media only screen and (max-width: $break-medium)
     float: none
     width: 100%
-    
+
 aside
+  +transition(.25s ease-in-out)
   background-color: $background-color
   +border-radius(2px)
   float: #{"{% if theme.sidebar_position == 'right' %} right {% else %} left {% endif %}"}
   width: 18%
-  
+
   @media only screen and (max-width: $break-medium)
     +border-radius(0)
     position: absolute
@@ -121,64 +175,64 @@ aside
     padding: 0 10px
     visibility: hidden
     width: 100%
-    
-    
+
+
   &.open
     height: auto
     opacity: 1
     visibility: visible
-    
+
     .side_cart
       display: none
-  
+
   h3
     font-size: 18px
     line-height: 18px
     margin-bottom: 6px
 
   .side_cart
-    
+
     h3
       margin-bottom: 0px
-      
+
     .button
       +pie-clearfix
       display: block
       font-size: 14px
       padding: 8px 15px
       width: 100%
-      
+
       svg
         fill: $background-color
         float: left
-        
+
       >span
         float: right
-                
+
     &:hover
       svg
         fill: $link-color
-  
+
   ul
-    
+
     border-bottom: 1px solid $border-color
     list-style: none
     margin: 0
     padding: 0
-    
+
     li
       display: block
-        
+
       a
         border-top: 1px solid $border-color
         display: block
         font-size: 14px
         padding: 6px 0
         line-height: 21px
-    
+
   .side_search
     margin-top: 0 !important
-    
+
     input
       +border-radius(2px)
       background: none
@@ -191,11 +245,11 @@ aside
 
       &:focus
         border: 1px solid $hover-color
-        
+
     .search_form
       cursor: pointer
       position: relative
-      
+
       svg
         fill: $border-color
         position: absolute
@@ -204,36 +258,36 @@ aside
         transform: translateY(-50%)
         -webkit-transform: translateY(-50%)
         -moz-transform: translateY(-50%)
-        
+
   >section
     margin-bottom: 20px
-    
+
     &:first-child
       margin-top: 0
-    
+
   .social_icons
     +pie-clearfix
     border-bottom: 0
     font-size: 22px
     margin-top: -10px
-    
+
     li
       float: left
       width: 20%
-      
+
       a
         border: 0px
         display: block
         text-align: center
-    
+
         svg
           fill: $link-color
           height: 20px
           width: 20px
-          
+
       &:hover svg
         fill: $hover-color
-            
+
 
 footer
   border-top: 2px solid $border-color
@@ -242,15 +296,15 @@ footer
   margin-top: 25px
   font-size: 15px
   padding-top: 15px
-  
-  
+
+
   .footer_left
     float: left
     text-align: left
-    
+
   .footer_right
     float: right
-    
+
   cite a
     background: url(#{"{{ 'badge.png' | theme_image_url }}"}) no-repeat
     display: block
@@ -260,7 +314,16 @@ footer
     white-space: nowrap
     width: 79px
     height: 24px
-  
+
+.errors
+  +border-radius(2px)
+  background: #ea4859
+  color: #FAFAFA
+  font-size: 15px
+  line-height: 20px
+  margin-bottom: 15px
+  padding: 14px 16px
+
 input, textarea
   +all-transitions
   appearance: none
@@ -268,12 +331,13 @@ input, textarea
   -moz-appearance: none
   background: $background-color
   border: 1px solid $border-color
-  border-radius: 0
   color: $text-color
-  font: 1.125em $body-font
-  
+  font-family: $body-font
+  font-size: 17px
+  padding: 8px 10px
+
   &:focus
-    border-color: $hover-color
+    border: 1px solid $hover-color
     color: $hover-color
     outline: none
 
@@ -287,7 +351,7 @@ button, a.button
   display: inline-block
   font-size: 15px
   line-height: 15px
-  padding: 11px 20px
+  padding: 13px 22px
 
   &:hover
     background-color: $background-color

@@ -7,7 +7,7 @@
     <meta name="description" content="{{ page.meta_description }}">
     <meta name="keywords" content="{{ page.meta_keywords }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+
     {% if product != blank and page.full_url contains '/product/' %}
       <meta property="og:title" content="{{ product.name | escape }}">
       <meta property="og:type" content="product">
@@ -15,22 +15,26 @@
       <meta property="og:image" content="{{ product.image.url }}">
       <meta property="og:site_name" content="{{ store.name | escape }}">
     {% endif %}
-    
+
     <link href="{{ theme | theme_css_url }}" media="screen" rel="stylesheet" type="text/css">
 
     {{ head_content }}
   </head>
 
   <body id="{{ page.permalink }}-page" class="{{ page.permalink }} {{ page.category }}">
-    
+
     <div class="mobile_nav">
-			<a href="#" class="open_menu"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="10" viewBox="0 0 16 10"><path d="M15.5 0h-15c-.276 0-.5.2-.5.5v1c0 .3.2.5.5.5h15c.276 0 .5-.2.5-.5v-1c0-.3-.2-.5-.5-.5zM15.5 4h-15c-.276 0-.5.2-.5.5v1c0 .3.2.5.5.5h15c.276 0 .5-.2.5-.5v-1c0-.3-.2-.5-.5-.5zM15.5 8h-15c-.276 0-.5.2-.5.5v1c0 .3.2.5.5.5h15c.276 0 .5-.224.5-.5v-1c0-.3-.2-.5-.5-.5z"/></svg></a>
-			<a href="#" class="close_menu"></a>
+      <a class="open_menu" href="#" title="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </a>
 			<a href="/cart" class="mobile_cart">Cart <span class="cart_numbers">{{ cart.item_count | pluralize: 'item', 'items' }} {{ cart.total | money_with_sign }}</span></a>
   	</div>
-  	
+
   	<div class="wrap">
-    	
+
       <header>
     		<a href="/" title="{{ store.name | escape }}" class="{% if theme.header_logo != blank %}logo{% else %}text{% endif %}">
     			{% if theme.header_logo != blank %}
@@ -40,8 +44,8 @@
     		{% endif %}
     		</a>
       </header>
-  
-  		
+
+
       <section class="content">
         {% if errors != blank %}
           <ul class="errors">
@@ -50,7 +54,7 @@
             {% endfor %}
           </ul>
         {% endif %}
-        
+
         {% if page.category == 'custom' %}
           <h1>{{ page.name }}</h1>
           {{ page_content | paragraphs }}
@@ -58,7 +62,7 @@
           {{ page_content }}
         {% endif %}
       </section>
-      
+
       <aside>
         <section class="side_cart">
 	        <a href="/cart" class="button"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path d="M15.202 0h-14.188c-.561 0-1.014.4-1.014 1s.453 1 1 1h1v9c0 .6.5 1 1 1h10c.56 0 1-.447 1-1s-.44-1-1-1h-9v-2h9.175c.56 0 1.124-.435 1.259-.97l1.536-6.06c.136-.57-.17-.97-.77-.97zm-2.596 6h-8.606v-4h9.397l-.791 4z"/><circle cx="4.5" cy="14.5" r="1.5"/><circle cx="11.5" cy="14.5" r="1.5"/></svg><span>{{ cart.item_count | pluralize: 'item', 'items' }} {{ cart.total | money_with_sign }}</span></a>
@@ -81,7 +85,7 @@
             {% endfor %}
           </ul>
         </section>
-        
+
 
         {% if artists.active != blank %}
           <section class="side_artists">
@@ -107,26 +111,26 @@
             {% endif %}
           </ul>
         </section>
-        
+
         {% if theme.twitter_url != blank or theme.facebook_url != blank or theme.instagram_url != blank or theme.tumblr_url != blank or theme.pinterest_url != blank %}
           <section class="social_links">
             <ul class="social_icons">
               {% if theme.twitter_url != blank %}
                 <li><a title="Twitter" href="{{ theme.twitter_url }}"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 150.857 612 490.298" enable-background="new 0 150.857 612 490.298"><path d="M605.886 208.899c-22.068 9.841-45.777 16.493-70.667 19.486 25.397-15.318 44.908-39.572 54.106-68.477-23.776 14.186-50.104 24.48-78.14 30.037-22.442-24.058-54.426-39.088-89.817-39.088-67.956 0-123.055 55.41-123.055 123.765 0 9.7 1.083 19.144 3.182 28.207-102.265-5.171-192.933-54.438-253.625-129.322-10.587 18.287-16.659 39.547-16.659 62.228 0 42.944 21.726 80.833 54.744 103.024-20.172-.637-39.15-6.206-55.729-15.478-.012.52-.012 1.041-.012 1.561 0 59.97 42.418 109.988 98.709 121.366-10.331 2.833-21.193 4.345-32.417 4.345-7.932 0-15.637-.777-23.152-2.222 15.662 49.169 61.103 84.959 114.946 85.956-42.112 33.195-95.172 52.981-152.823 52.981-9.933 0-19.725-.588-29.352-1.726 54.456 35.116 119.138 55.612 188.619 55.612 226.33 0 350.101-188.601 350.101-352.164 0-5.367-.123-10.698-.361-16.016 24.039-17.458 44.903-39.264 61.402-64.075z"/></svg></a></li>
               {% endif %}
-            
+
               {% if theme.facebook_url != blank %}
                 <li><a title="Facebook" href="{{ theme.facebook_url }}"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="157.162 90 297.799 612" enable-background="new 157.162 90 297.799 612"><path d="M369.036 193.795h85.68v-103.795h-121.054c-97.553 19.707-98.776 108.936-98.776 108.936v105.753h-77.724v102.938h77.724v294.373h108.324v-294.617h102.081l9.67-102.938h-111.017v-75.521c-.123-33.171 25.092-35.129 25.092-35.129z"/></svg></a></li>
               {% endif %}
-              
+
               {% if theme.instagram_url != blank %}
                 <li><a title="Instagram" href="{{ theme.instagram_url }}"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 90 612 612" enable-background="new 0 90 612 612"><path d="M540.273 90h-468.546c-39.536 0-71.727 32.191-71.727 71.727v468.67c0 39.412 32.191 71.603 71.727 71.603h468.67c39.535 0 71.726-32.191 71.726-71.727v-468.546c-.123-39.414-32.436-71.727-71.85-71.727zm-234.273 190.332c63.893 0 115.668 51.775 115.668 115.668s-51.775 115.668-115.668 115.668-115.668-51.775-115.668-115.668 51.775-115.668 115.668-115.668zm236.232 327.787c0 13.097-10.771 23.868-23.868 23.868h-425.952c-13.097 0-23.868-10.771-23.868-23.868v-259.61h56.304c-3.917 15.178-6.12 31.212-6.12 47.491 0 103.551 83.966 187.272 187.272 187.272s187.272-83.721 187.272-187.272c0-16.524-2.204-32.313-6.12-47.491h55.08v259.61zm0-353.001c0 13.097-10.771 23.868-23.868 23.868h-69.769c-13.097 0-23.868-10.771-23.868-23.868v-69.768c0-13.097 10.771-23.868 23.868-23.868h69.769c13.097 0 23.868 10.771 23.868 23.868v69.768z"/></svg></a></li>
               {% endif %}
-              
+
               {% if theme.tumblr_url != blank %}
                 <li><a title="Tumblr" href="{{ theme.tumblr_url }}"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="117.504 90 377.114 611.937" enable-background="new 117.504 90 377.114 611.937"><path d="M493.272 571.276c-14.566 13.832-55.692 26.194-55.692 26.194-115.179 27.907-107.957-66.464-107.957-66.464v-189.72h144.31v-96.818h-144.31v-154.468h-87.883c-11.383 139.658-124.236 164.628-124.236 164.628v87.394h67.81v224.604c-.979 62.424 36.475 92.656 36.475 92.656 115.056 89.964 272.83 9.67 272.83 9.67v-99.021l-1.347 1.345z"/></svg></a></li>
               {% endif %}
-              
+
               {% if theme.pinterest_url != blank %}
                 <li><a title="Pinterest" href="{{ theme.pinterest_url }}"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 12 16"><path d="M4.933 10.582c-.406 2.203-.9 4.314-2.366 5.418-.452-3.329.665-5.829 1.183-8.484-.884-1.516.15-4.616 1.95-3.885 2.315.969-2 5.769.9 6.339 3.001.6 4.225-5.401 2.365-7.36-2.68-2.83-7.865-.11-7.165 3.986.154 1 1.1 1.3.4 2.658-1.72-.396-2.234-1.804-2.168-3.68.106-3.071 2.661-5.222 5.223-5.52 3.24-.376 6.3 1.2 6.7 4.396.473 3.568-1.462 7.433-4.927 7.2-.965-.15-1.328-.65-2.128-1.068z"/></svg></a></li>
               {% endif %}
@@ -147,8 +151,8 @@
     <script src="{{ theme | theme_js_url }}"></script>
     <script src="{{ 'api' | theme_js_url }}"></script>
     <script>
-      $(function() { 
-        if ($('.flexslider').length) { 
+      $(function() {
+        if ($('.flexslider').length) {
           $('.flexslider').flexslider({
             "animation": "slide"
           });
