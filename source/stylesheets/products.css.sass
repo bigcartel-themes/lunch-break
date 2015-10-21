@@ -21,9 +21,6 @@ ul.products
     @media only screen and (max-width: $break-medium)
       width: 50%
     
-    @media only screen and (max-width: $break-extra-small)
-      width: 100%
-    
     a
       display: block
       
@@ -32,6 +29,10 @@ ul.products
         font-weight: 600
         line-height: 21px
         margin-top: 8px
+        
+        @media only screen and (max-width: $break-medium)
+          font-size: 14px
+          line-height: 19px
 
       h5
         display: inline-block
@@ -39,6 +40,9 @@ ul.products
         font-size: 14px
         font-weight: normal
         margin-top: 6px
+        
+        @media only screen and (max-width: $break-medium)
+          font-size: 12px
       
       em
         font-size: 13px
@@ -58,6 +62,9 @@ ul.products
   padding-top: 15px
   text-align: center
   width: 100%
+  
+  @media only screen and (max-width: $break-small)
+    font-size: 14px
   
   span, a
     padding: 2px 6px

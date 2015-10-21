@@ -3,14 +3,19 @@
 .product_images
   float: left
   width: 50%
+  
+  a
+    display: block
+    outline: none
 
-  @media only screen and (max-width:550px)
+  @media only screen and (max-width: $break-medium)
     float: none
+    margin-top: 15px
     width: 100%
 
   .primary_image
+    +transition(all 0.2s ease-in-out)
     display: block
-    transition: all 0.2s ease-in-out
     width: 100%
 
   .product_thumbnails
@@ -39,7 +44,7 @@
   padding-left: 20px
   width: 50%
 
-  @media only screen and (max-width:550px)
+  @media only screen and (max-width: $break-medium)
     float: none
     padding: 0
     width: 100%
@@ -52,8 +57,16 @@
   h2
     margin-bottom: 0
 
-    em
-      color: $hover-color
+    > span
+      vertical-align: middle
+      
+      &.small_status
+        +border-radius(2px)
+        background-color: $link-color
+        color: $background-color
+        font-size: 12px
+        font-weight: normal
+        padding: 3px 6px
 
   h4
     padding: 0

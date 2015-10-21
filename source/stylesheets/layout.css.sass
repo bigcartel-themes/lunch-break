@@ -159,31 +159,26 @@ header
     width: 100%
 
 aside
-  +transition(.25s ease-in-out)
+  
   background-color: $background-color
   +border-radius(2px)
   float: #{"{% if theme.sidebar_position == 'right' %} right {% else %} left {% endif %}"}
-  width: 18%
+  width: 17%
 
   @media only screen and (max-width: $break-medium)
     +border-radius(0)
     position: absolute
     top: 48px
-    height: 100%
+    height: auto
     left: 0
     opacity: 0
     padding: 0 10px
     visibility: hidden
     width: 100%
 
-
   &.open
-    height: auto
     opacity: 1
     visibility: visible
-
-    .side_cart
-      display: none
 
   h3
     font-size: 18px
@@ -191,6 +186,9 @@ aside
     margin-bottom: 6px
 
   .side_cart
+  
+    @media only screen and (max-width: $break-medium)
+      display: none
 
     h3
       margin-bottom: 0px
@@ -226,9 +224,13 @@ aside
       a
         border-top: 1px solid $border-color
         display: block
-        font-size: 14px
+        font-size: 13px
         padding: 6px 0
         line-height: 21px
+        
+        @media only screen and (max-width: $break-medium)
+          font-size: 15px
+          padding: 8px 0
 
   .side_search
     margin-top: 0 !important

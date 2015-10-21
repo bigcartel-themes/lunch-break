@@ -1,13 +1,13 @@
 <section class="product_pricing">
   <h1>{{ page.name }}</h1>
-  <h2>{{ product.default_price | money_with_sign }}
+  <h2><span class="product_price">{{ product.default_price | money_with_sign }}</span>
 		{% case product.status %}
 			{% when 'active' %}
-				{% if product.on_sale %}<em>On Sale</em>{% endif %}
+				{% if product.on_sale %}<span class="small_status {{ product.css_class }}">On sale</span>{% endif %}
 			{% when 'sold-out' %}
-				<em>Sold Out</em>
+				<span class="small_status {{ product.css_class }}">Sold out</span>
 			{% when 'coming-soon' %}
-				<em>Coming Soon</em>
+				<span class="small_status {{ product.css_class }}">Coming soon</span>
 		{% endcase %}
 	</h2>
 </section>
