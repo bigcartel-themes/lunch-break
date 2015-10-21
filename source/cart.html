@@ -11,7 +11,7 @@
             <a href="{{ item.product.url }}">
               {{ item.product.name }}
               {% unless item.product.has_default_option %}
-                <em>{{ item.option.name }}</em>
+                <span>{{ item.option.name }}</span>
               {% endunless %}
             </a>
           </div>

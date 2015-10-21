@@ -34,7 +34,7 @@
 	{% if product.status == 'active' %}
     <form method="post" action="/cart">
       {% if product.has_default_option %}
-      {{ product.option | hidden_option_input }}
+        {{ product.option | hidden_option_input }}
       {% else %}
       <div class="select">
         {{ product.options_in_stock | options_select }}

@@ -62,16 +62,16 @@
           @include vertical-align
           display: block
         
-          em 
+          span 
             display: block
             font-style: normal
-            font-size: 16px
+            font-size: 14px
             font-weight: normal
-            line-height: 25px
+            line-height: 22px
             
             @media screen and (max-width: $break-extra-small)
-              font-size: 15px
-              line-height: 18px
+              font-size: 13px
+              line-height: 14px
   
       .product_actions  
         display: block
@@ -92,14 +92,15 @@
             input[type='text']
               +border-radius(2px)
               height: 46px
+              font-size: 15px
               text-align: center
               text-indent: 0
               width: 46px
               
               @media screen and (max-width: $break-extra-small)
                 font-size: 16px
-                height: 44px
-                width: 44px
+                height: 40px
+                width: 40px
   
           &.price 
             width: 180px
@@ -108,19 +109,21 @@
               width: 75px
   
           &.remove 
-            width: 66px
-            text-align: right
+            text-align: center
+            width: 46px
             
             @media screen and (max-width: $break-medium)
               width: 30px
             
             a  
-              svg 
+              svg
                 cursor: pointer
                 fill: $link-color
                 height: 16px
-                width: 16px
                 position: relative
+                top: 2px
+                width: 16px
+                
                 
                 @media screen and (max-width: $break-extra-small)
                   height: 14px
@@ -141,6 +144,18 @@
       
     .continue_shopping
       float: left
+      text-align: center
+      
+      @media screen and (max-width: $break-extra-small)
+        float: none
+        margin: 5px 0
+        width: 100%
     
     button
       margin-left: 10px
+      text-align: center
+      
+      @media screen and (max-width: $break-extra-small)
+        float: none
+        margin: 5px 0
+        width: 100%
