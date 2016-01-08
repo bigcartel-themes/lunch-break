@@ -1,11 +1,9 @@
 @import 'config'
 
 .flexslider
+  +border-radius(2px)
   background: none
   border: 0
-  border-radius: 2px
-  -webkit-border-radius: 2px
-  -moz-border-radius: 2px
   height: 100%
   margin-bottom: 35px
 
@@ -14,9 +12,7 @@
     -webkit-transform-style: preserve-3d
 
     >li
-      transform: translateZ(0px)
-      -moz-transform: translateZ(0px)
-      -webkit-transform: translateZ(0px)
+      +transform(translateZ(0px))
 
   .flex-viewport
     transform-style: preserve-3d
@@ -40,22 +36,28 @@
       background-color: rgba(0,0,0,1)
 
   .flex-prev
+    +border-radius(2px)
     background-position: 6px 15px
-    border-radius: 3px
     left: 18px
+    
+    @media screen and (max-width: $break-medium)
+      display: none
 
   .flex-next
+    +border-radius(2px)
     background-position: -38px 15px
-    border-radius: 3px
     right: 18px
     text-indent: 9999px
+    
+    @media screen and (max-width: $break-medium)
+      display: none
 
 .flex-control-nav
-  position: absolute
   bottom: 10px
-  z-index: 10
+  position: absolute
   right: 15px
   width: auto
+  z-index: 10
 
   @media screen and (max-width: $break-medium)
     display: none

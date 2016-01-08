@@ -1,34 +1,76 @@
 @import 'config'
 
-.contact_form
-  width: 100%
+.contact_fields
 
-  ul
+  li
+    +pie-clearfix
+    border-bottom: 1px solid $border-color
+    display: block
+    padding: 10px 0
+    position: relative
 
-    li
+    > div
+      float: left
+      position: relative
+      width: 55%
+
+      @media only screen and (max-width: $break-small)
+        width: 100%
+
+      input[type='text']
+        padding-right: 143px
+        width: 100%
+
+    @media only screen and (max-width: $break-small)
+      margin: 0
+
+    label
+      float: left
+      font-family: $primary-font
+      font-size: 16px
+      line-height: 40px
+      padding-right: 15px
+      text-align: right
+      width: 25%
+
+      @media only screen and (max-width: $break-small)
+        clear: both
+        margin: 0
+        text-align: left
+        width: 100%
+
+    input[type='text'], textarea
+      float: left
+      height: 40px
+      width: 55%
+
+      @media only screen and (max-width: $break-small)
+        width: 100%
+
+    span
       +pie-clearfix
-      border-bottom: 1px solid $border-color
+      font-size: 12px
+      display: inline-block
+      margin-top: 16px
+      white-space: nowrap
+
+    .captcha_image
+      +pie-clearfix
+      border: 2px solid $link-color
       display: block
-      height: 95px
-      padding: 20px 0
+      height: 40px
+      max-width: 128px
+      position: absolute
+      right: 0
+      text-align: center
 
-      label
-        +vertical-align
-        float: left
-        font-size: 17px
-        font-weight: 600
-        text-align: right
-        max-width: 225px
-        padding-right: 15px
-        width: 100%
+      img
+        height: 100%
 
-      input, textarea
-        +vertical-align
-        float: left
-        max-width: 450px
-        width: 100%
+    textarea
+      height: 200px
 
-    &.contact_message
-    
-      label, input, textarea
-        -vertical-align
+  button
+    display: block
+    margin: 32px auto
+    max-width: 320px

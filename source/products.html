@@ -1,11 +1,11 @@
-<h1>{% if page.full_url contains "search=" %}Product Search{% else %}{{ page.name }}{% endif %}</h1>
+<h1>{{ page.name }}</h1>
 {% paginate products from products.current by theme.products_per_page %}
   {% if products != blank %}
     <ul class="products">
       {% for product in products %}
       <li class="{{ product.css_class }}">
         <a href="{{ product.url }}">
-          <img alt="Image of {{ product.name | escape }}" src="{{ product.image | product_image_url | constrain: '600' }}">
+          <img alt="Image of {{ product.name | escape }}" src="{{ product.image | product_image_url }}?auto=format&w=600&h=600&fit=min">
           <h4 class="product_name">{{ product.name }}</h4>
           <h5>{{ product.default_price | money_with_sign }}</h5>
 					{% case product.status %}
@@ -20,13 +20,10 @@
       </li>
       {% endfor %}
     </ul>
-
-  	{% if paginate.pages > 1 %}
-      {{ paginate | default_pagination, 'pagination', 'pagination', '<svg xmlns="http://www.w3.org/2000/svg" width="10.001" height="6" viewBox="0 0 10.001 6"><path d="M9.852 1.537c.199-.189.199-.496 0-.684l-.717-.683c-.197-.19-.518-.19-.735 0l-3.384 3.33-3.434-3.357c-.199-.189-.52-.189-.717 0l-.717.683c-.197.188-.197.5 0 .684l4.508 4.3c.199.2.5.2.7 0l4.496-4.273z"/></svg> Previous', 'Next <svg xmlns="http://www.w3.org/2000/svg" width="10.001" height="6" viewBox="0 0 10.001 6"><path d="M9.852 1.537c.199-.189.199-.496 0-.684l-.717-.683c-.197-.19-.518-.19-.735 0l-3.384 3.33-3.434-3.357c-.199-.189-.52-.189-.717 0l-.717.683c-.197.188-.197.5 0 .684l4.508 4.3c.199.2.5.2.7 0l4.496-4.273z"/></svg>'  }}
-  	{% endif %}
-
+    {% if paginate.pages > 1 %}
+      {{ paginate | default_pagination, 'pagination', 'pagination', '<svg xmlns="http://www.w3.org/2000/svg" width="10.001" height="6" viewBox="0 0 10.001 6"><path class="down_arrow" d="M9.852 1.537c.199-.189.199-.496 0-.684l-.717-.683c-.197-.19-.518-.19-.735 0l-3.384 3.33-3.434-3.357c-.199-.189-.52-.189-.717 0l-.717.683c-.197.188-.197.5 0 .684l4.508 4.3c.199.2.5.2.7 0l4.496-4.273z"/></svg> Prev' , 'Next <svg xmlns="http://www.w3.org/2000/svg" width="10.001" height="6" viewBox="0 0 10.001 6"><path class="down_arrow" d="M9.852 1.537c.199-.189.199-.496 0-.684l-.717-.683c-.197-.19-.518-.19-.735 0l-3.384 3.33-3.434-3.357c-.199-.189-.52-.189-.717 0l-.717.683c-.197.188-.197.5 0 .684l4.508 4.3c.199.2.5.2.7 0l4.496-4.273z"/></svg>' }}
+    {% endif %}
   {% else %}
     <p>No products found.</p>
   {% endif %}
-
 {% endpaginate %}

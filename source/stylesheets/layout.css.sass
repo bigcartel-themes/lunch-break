@@ -4,12 +4,33 @@
   box-sizing: border-box
 
 html
+  background-color: $secondary-background
   overflow-y: scroll
 
 body
   background-color: $background-color
   color: $text-color
-  font-family: $body-font
+  font-family: $secondary-font
+  
+  &.standalone
+    background-color: $secondary-background
+    padding: 100px 15px
+    
+    .message_holder
+      +border-radius(2px)
+      background-color: $background-color
+      border: 1px solid $border-color
+      margin: 0 auto
+      max-width: 600px
+      padding: 40px 30px
+      text-align: center
+      width: 100%
+      
+      h1
+        margin: 0
+        
+      p:last-child
+        margin: 15px 0 0
 
 a, a:visited
   +all-transitions
@@ -21,32 +42,38 @@ a, a:visited
 
 h1, h2, h3, h4, h5, h6
   color: $header-color
-  font-family: $header-font
-  font-weight: bold
+  font-family: $primary-font
+  font-weight: 600
 
 img
   display: block
   max-width: 100%
 
 p
-  line-height: 22px
+  font-size: 14px
+  line-height: 1.5em
   margin: 6px 0
 
 h1
   font-size: 26px
   font-weight: 600
-  line-height: 26px
+  line-height: 1.3em
   margin-bottom: 15px
+  
+  @media only screen and (max-width: $break-medium)
+    text-align: center
 
 h2
-  font-size: 20px
-  line-height: 20px
+  font-size: 18px
+  line-height: 18px
 
 .mobile_nav
+  +box-shadow(0px 1px 3px $border-color)
   background-color: $background-color
+  border-bottom: 1px solid $border-color
   position: absolute
   top: 0px
-  height: 48px
+  height: 43px
   display: none
   width: 100%
   padding: 10px
@@ -54,6 +81,7 @@ h2
 
   @media only screen and (max-width: $break-medium)
     display: block
+    z-index: 3
 
   .open_menu
     +transform(rotate(0deg))
@@ -115,6 +143,14 @@ h2
     +vertical-align
     float: right
     font-size: 16px
+    position: relative
+    
+    .cart_icon
+      height: 21px
+      width: 21px
+      position: absolute
+      left: -28px
+      top: -3px
 
 .wrap
   +pie-clearfix
@@ -122,24 +158,38 @@ h2
   max-width: 1100px
   padding: 0 10px
   width: 100%
+  
+  @media only screen and (max-width: $break-medium)
+    padding: 0 40px
+    
+  @media only screen and (max-width: $break-small)
+    padding: 0 10px
 
 header
-  font-family: $header-font
+  background: $secondary-background
+  border-bottom: 1px solid $border-color
+  font-family: $primary-font
   font-size: 28px
-  padding: 20px 0
-  margin-bottom: 20px
+  padding: 30px 0
+  margin-bottom: 40px
   text-align: #{"{{ theme.header_position }}"}
 
   @media only screen and (max-width: $break-medium)
-    padding: 0 15px
-    margin-top: 60px
-
-  a
+    padding: 0 15px 30px
+    margin: 75px 0 40px
+    
+  a.store_header
+    color: $header-color
     display: inline-block
-    font-size: 46px
-
+    font-size: 44px
+    
+    @media only screen and (max-width: $break-medium)
+      font-size: 36px
+      
+    @media only screen and (max-width: $break-small)
+      font-size: 30px
+  
     img
-      display: block
       max-width: 100%
 
 .hidden
@@ -147,19 +197,17 @@ header
 
 .content
   +pie-clearfix
-  +border-radius(2px)
   float: #{"{% if theme.sidebar_position == 'right' %} left {% else %} right {% endif %}"}
   position: relative
-  padding: 0
   padding-bottom: 100px
   width: 80%
 
   @media only screen and (max-width: $break-medium)
     float: none
+    padding-bottom: 30px
     width: 100%
 
 aside
-  
   background-color: $background-color
   +border-radius(2px)
   float: #{"{% if theme.sidebar_position == 'right' %} right {% else %} left {% endif %}"}
@@ -167,6 +215,7 @@ aside
 
   @media only screen and (max-width: $break-medium)
     +border-radius(0)
+    display: none
     position: absolute
     top: 48px
     height: auto
@@ -177,43 +226,52 @@ aside
     width: 100%
 
   &.open
+    display: block
     opacity: 1
+    padding-top: 10px
     visibility: visible
-
+  
   h3
-    font-size: 18px
-    line-height: 18px
-    margin-bottom: 6px
+    border-bottom: 1px solid $border-color
+    font-size: 17px
+    line-height: 1.3em
+    padding: 0 0 4px
 
   .side_cart
-  
+    +border-radius(2px)
+    background: $secondary-background
+    border: 1px solid $border-color
+    font-size: 14px
+    padding: 10px 8px
+    
     @media only screen and (max-width: $break-medium)
       display: none
-
-    h3
-      margin-bottom: 0px
-
-    .button
+    
+    a
       +pie-clearfix
       display: block
-      font-size: 14px
-      padding: 8px 15px
-      width: 100%
-
-      svg
-        fill: $background-color
+      position: relative
+      
+      .cart_title
         float: left
-
-      >span
+        margin-left: 24px
+        
+      .cart_numbers
         float: right
+        
+      .cart_icon
+        fill: $link-color
+        height: 19px
+        margin-top: -3px
+        margin-right: 8px
+        position: absolute
+        width: 19px
 
     &:hover
-      svg
-        fill: $link-color
-
+      .cart_icon
+        fill: $hover-color
+      
   ul
-
-    border-bottom: 1px solid $border-color
     list-style: none
     margin: 0
     padding: 0
@@ -222,54 +280,73 @@ aside
       display: block
 
       a
-        border-top: 1px solid $border-color
+        border-bottom: 1px solid $border-color
         display: block
         font-size: 13px
-        padding: 6px 0
+        padding: 4px 0
         line-height: 21px
         
         @media only screen and (max-width: $break-medium)
           font-size: 15px
           padding: 8px 0
 
-  .side_search
-    margin-top: 0 !important
-
-    input
-      font-size: 12px
-      padding: 6px 34px 6px 8px
-      width: 100%
-
-    .search_form
-      cursor: pointer
-      position: relative
-
-      svg
-        +all-transitions
-        +transform(translateY(-50%))
-        fill: $border-color
-        position: absolute
-        right: 10px
-        top: 50%
-        
-        &:hover
-          fill: $hover-color
-
-  >section
+  >div
     margin-bottom: 20px
 
     &:first-child
       margin-top: 0
+      
+
+footer
+  background: $secondary-background
+  border-top: 1px solid $border-color
+  clear: both
+  height: 150px
+  margin-top: 70px
+  font-size: 16px
+  padding-top: 25px
+  
+  @media only screen and (max-width: $break-medium)
+    margin-top: 20px
+
+  .footer_left
+    float: left
+    text-align: left
+    
+    @media only screen and (max-width: $break-medium)
+      float: none
+      text-align: center
+      width: 100%
+      
+      > a
+        display: block
+        margin-top: 15px
+
+  .footer_right
+    float: right
+    
+    @media only screen and (max-width: $break-medium)
+      float: none
+      text-align: center
+      width: 100%
 
   .social_icons
     +pie-clearfix
     border-bottom: 0
     font-size: 22px
-    margin-top: -10px
+    
+    @media only screen and (max-width: $break-medium)
+      margin: 25px 0
 
     li
       float: left
-      width: 20%
+      margin-left: 15px
+      
+      @media only screen and (max-width: $break-medium)
+        display: inline-block
+        float: none
+        margin: 0 10px
+        text-align: center
 
       a
         border: 0px
@@ -277,57 +354,34 @@ aside
         text-align: center
 
         svg
+          +all-transitions
           fill: $link-color
-          height: 20px
-          width: 20px
+          height: 22px
+          width: 22px
 
       &:hover svg
         fill: $hover-color
 
-
-footer
-  border-top: 2px solid $border-color
-  clear: both
-  height: 50px
-  margin-top: 25px
-  font-size: 15px
-  padding-top: 15px
-
-
-  .footer_left
-    float: left
-    text-align: left
-
-  .footer_right
-    float: right
-
-  cite a
-    background: url(#{"{{ 'badge.png' | theme_image_url }}"}) no-repeat
-    display: block
-    float: left
-    text-indent: 100%
-    overflow: hidden
-    white-space: nowrap
-    width: 79px
-    height: 24px
-
 .errors
   +border-radius(2px)
-  background: #ea4859
+  background: #EA4859
   color: #FAFAFA
   font-size: 15px
   line-height: 20px
   margin-bottom: 15px
   padding: 14px 16px
+  
+  @media only screen and (max-width: $break-medium)
+    text-align: center
 
 input, textarea
   +all-transitions
   +appearance(none)
   +border-radius(2px)
   background: $background-color
-  border: 2px solid $border-color
-  color: $text-color
-  font-family: $body-font
+  border: 2px solid $link-color
+  color: $link-color
+  font-family: $secondary-font
   font-size: 17px
   padding: 8px 10px
 
@@ -339,30 +393,35 @@ input, textarea
 button, a.button
   +all-transitions
   +border-radius(2px)
-  background-color: $link-color
-  border: 2px solid $link-color
-  color: $background-color
+  background-color: $background-color
+  border: 2px solid $button-color
+  color: $button-color
   cursor: pointer
   display: inline-block
-  font-size: 15px
+  font-family: $primary-font
+  font-size: 12px
+  letter-spacing: .05em
   line-height: 15px
   outline: none
   padding: 13px 22px
+  text-transform: uppercase
 
   &:hover, &:focus
-    background-color: $background-color
-    color: $link-color
+    background-color: $button-color
+    border: 2px solid $button-color
+    color: $background-color
+
     
   &:active
-    background-color: $link-color
-    border: 2px solid $link-color
+    background-color: $button-color
+    border: 2px solid $button-color
     color: $background-color
     
 .select
   +all-transitions
   +border-radius(2px)
   position: relative
-  border: 2px solid $link-color
+  border: 2px solid $button-color
   height: 38px
   margin-bottom: 15px
   padding: 0
@@ -395,7 +454,7 @@ button, a.button
 
   svg
     +all-transitions
-    fill: $link-color
+    fill: $button-color
     height: 8px
     margin-top: -4px
     position: absolute

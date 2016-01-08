@@ -1,60 +1,79 @@
 @import 'config'
 
 ul.products
-  @include flexbox
-  @include flex-direction(row)
-  @include flex-wrap(wrap)
-  margin: 0 -6px 20px
+  margin: 0 -7px 20px
   padding: 0
   position: relative
   
   li
-    border-radius: 2px
-    display: -webkit-flex
-    display: -ms-flexbox
-    display: flex
+    +border-radius(2px)
     float: left
-    padding: 0 6px 21px 6px
-    width: #{"{% if theme.products_per_row == '3' %} 33.33% {% else %} 25% {% endif %}"}
-    text-align: center
+    padding: 0 7px 25px 7px
+    width: #{"{% if theme.products_per_row == 3 %} 33.33% {% else %} 25% {% endif %}"}
     
     @media only screen and (max-width: $break-medium)
+      padding-bottom: 20px
       width: 50%
     
     a
       display: block
+      position: relative
       
       h4
-        font-size: 16px
+        font-size: 14px
         font-weight: 600
-        line-height: 21px
+        line-height: 1.3em
         margin-top: 8px
         
         @media only screen and (max-width: $break-medium)
           font-size: 14px
-          line-height: 19px
+          line-height: 1.3em
 
       h5
         display: inline-block
-        font-family: $body-font
+        font-family: $secondary-font
         font-size: 14px
-        font-weight: normal
+        font-weight: 400
+        line-height: 1.3em
         margin-top: 6px
         
-        @media only screen and (max-width: $break-medium)
+        @media only screen and (max-width: $break-small)
           font-size: 12px
       
       em
-        font-size: 13px
+        +border-radius(2px)
+        background: $background-color
+        color: $text-color
+        font-size: 11px
+        font-weight: 600
+        padding: 6px 9px
+        position: absolute
+        right: 10px
+        text-transform: uppercase
+        top: 10px
 
       img
         +border-radius(2px)
         +transition(all 0.2s ease-in-out)
-        border-radius: 2px
         display: block
-        
         width: 100%
         
+        &:hover
+          opacity: .85
+          
+    &:hover
+      h4
+        color: $hover-color
+
+.flexbox ul.products
+  @include flexbox
+  @include flex-direction(row)
+  @include flex-wrap(wrap)
+  
+  li
+    @include flexbox
+    float: none
+            
 .pagination
   border-top: 1px solid $border-color
   font-size: 17px
@@ -72,6 +91,15 @@ ul.products
     i
       position: relative
       font-size: 12px
+      
+  .previous, .next
+    svg
+      fill: $link-color
+      height: 15px
+      position: relative
+      right: 2px
+      top: 1px
+      width: 13px
   
   .previous
     float: left
@@ -79,12 +107,6 @@ ul.products
     
     svg
       +rotate(90deg)
-      fill: $link-color
-      height: 14px
-      right: 2px
-      top: 1px
-      position: relative
-      width: 17px
     
   .next
     float: right
@@ -92,12 +114,7 @@ ul.products
     
     svg
       +rotate(-90deg)
-      fill: $link-color
-      height: 14px
-      left: 2px
-      top: 1px
-      position: relative
-      width: 17px
+      right: 0
     
   .disabled
     display: none

@@ -1,46 +1,21 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>{{ store.name }} &mdash; {{ page.name }}</title>
-
+  <head> 
+    <title>{{ store.name }} &mdash; {{ page.name }}</title>  
+    
     <meta charset="utf-8">
     <meta name="description" content="{{ page.meta_description }}">
     <meta name="keywords" content="{{ page.meta_keywords }}">
-
+    
     <link href="{{ theme | theme_css_url }}" media="screen" rel="stylesheet" type="text/css">
-
+    
     {{ head_content }}
   </head>
-
-  <body id="{{ page.permalink }}" class="{{ page.category }}">
-    <div>
-      <h1>We're working our site at the moment.</h1>
-      <p>Please check back soon!</p>
-      {% if theme.twitter_url != blank or theme.facebook_url != blank or theme.instagram_url != blank or theme.tumblr_url != blank or theme.pinterest_url != blank %}
-        <section class="social_links">
-          <ul class="social_icons">
-            {% if theme.twitter_url != blank %}
-              <li><a title="Twitter" href="{{ theme.twitter_url }}"></a></li>
-            {% endif %}
-          
-            {% if theme.facebook_url != blank %}
-              <li><a title="Facebook" href="{{ theme.facebook_url }}"></a></li>
-            {% endif %}
-            
-            {% if theme.instagram_url != blank %}
-              <li><a title="Instagram" href="{{ theme.instagram_url }}"></a></li>
-            {% endif %}
-            
-            {% if theme.tumblr_url != blank %}
-              <li><a title="Tumblr" href="{{ theme.tumblr_url }}"></a></li>
-            {% endif %}
-            
-            {% if theme.pinterest_url != blank %}
-              <li><a title="Pinterest" href="{{ theme.pinterest_url }}"></a></li>
-            {% endif %}
-          </ul>
-        </section>
-      {% endif %}
+  
+  <body id="{{ page.permalink }}" class="standalone {{ page.category }}">
+    <div class="message_holder">
+      <h1>We're working on our site at the moment.</h1>
+      <p>Please check back soon.</p>
     </div>
   </body>
 </html>

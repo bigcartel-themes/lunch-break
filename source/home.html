@@ -2,7 +2,7 @@
   <div class="flexslider">
     <ul class="slides">
       {% for image in theme.image_sets.slideshow_images %}
-        <li><img src="{{ image.url | constrain: '1300' }}"></li>
+        <li><img src="{{ image.url | constrain: '1300' }}" alt="Slideshow image {{ forloop.index }}"></li>
       {% endfor %}
     </ul>
   </div>
@@ -16,7 +16,7 @@
         {% for product in products %}
         <li class="{{ product.css_class }}">
           <a href="{{ product.url }}">
-            <img alt="Image of {{ product.name | escape }}" src="{{ product.image | product_image_url | constrain: '600' }}">
+            <img alt="Image of {{ product.name | escape }}" src="{{ product.image | product_image_url }}?auto=format&w=600&h=600&fit=min">
             <h4 class="product_name">{{ product.name }}</h4>
             <h5>{{ product.default_price | money_with_sign }}</h5>
   					{% case product.status %}
@@ -31,14 +31,11 @@
         </li>
         {% endfor %}
       </ul>
-  
     	{% if paginate.pages > 1 %}
         {{ paginate | default_pagination, 'pagination' , 'pagination' , 'Previous' , 'Next'  }}
     	{% endif %}
-  
     {% else %}
       <p>No products found.</p>
     {% endif %}
-  
   {% endpaginate %}
 {% endif %}

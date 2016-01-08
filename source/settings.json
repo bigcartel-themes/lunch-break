@@ -1,17 +1,11 @@
 {
   "name": "Lunch Break",
-  "version": "0.0.7",
+  "version": "0.2.0",
   "images": [
     {
       "variable": "header_logo",
       "label": "Logo",
-      "description": "Adds your logo to the header",
-      "default": "header.png"
-    },
-    {
-      "variable": "background_image",
-      "label": "Background Image",
-      "description": "Adds a repeating background image"
+      "description": "Adds your logo to the header"
     }
   ],
   "image_sets": [
@@ -28,13 +22,13 @@
   ],
   "fonts": [
     {
-      "variable": "header_font",
-      "label": "Header Font",
-      "default": "Roboto"
+      "variable": "primary_font",
+      "label": "Primary Font",
+      "default": "Arvo"
     },
     {
-      "variable": "body_font",
-      "label": "Body Font",
+      "variable": "secondary_font",
+      "label": "Secondary Font",
       "default": "Open Sans"
     }
   ],
@@ -45,29 +39,39 @@
       "default": "#FCFCFC"
     },
     {
+      "variable": "secondary_background",
+      "label": "Header and Footer Background",
+      "default": "#F7F7F7"
+    },
+    {
       "variable": "header_color",
       "label": "Headers",
-      "default": "#3E5EA8"
+      "default": "#353A21"
     },
     {
       "variable": "text_color",
       "label": "Text",
-      "default": "#222"
+      "default": "#222222"
     },
     {
       "variable": "link_color",
       "label": "Links",
-      "default": "#7d6259"
+      "default": "#999999"
     },
     {
       "variable": "link_hover_color",
       "label": "Link hover",
-      "default": "#0e1b79"
+      "default": "#000000"
+    },
+    {
+      "variable": "button_color",
+      "label": "Buttons",
+      "default": "#353A21"
     },
     {
       "variable": "border_color",
       "label": "Borders",
-      "default": "#BABABA"
+      "default": "#E5E5E5"
     }
   ],
   "options": [
@@ -87,7 +91,7 @@
         ["Right", "right"]
       ],
       "default": "right",
-      "description": "Positions the side navigation on the right or left side of the page"
+      "description": "Positions the side navigation on the left or right of the page"
     },
     {
       "variable": "header_position",
@@ -99,7 +103,7 @@
         ["Right", "right"]
       ],
       "default": "center",
-      "description": "Positions your store name or logo at the top of the page"
+      "description": "Positions your store name or header image at the top of the page"
     },
     {
       "variable": "products_per_page",
@@ -117,7 +121,7 @@
         ["3", "3"],
         ["4", "4"]
       ],
-      "default": 4,
+      "default": 3,
       "description": "The max number of products displayed per row"
     },
     {
@@ -127,6 +131,20 @@
       "options": "0..100",
       "default": 12,
       "description": "The number of products shown on the home page"
+    },
+    {
+      "variable": "show_newest",
+      "label": "Show newest products",
+      "type": "boolean",
+      "default": false,
+      "description": "Shows a list of your newest products"
+    },
+    {
+      "variable": "show_top_selling",
+      "label": "Show top selling products",
+      "type": "boolean",
+      "default": false,
+      "description": "Shows a list of your top selling products"
     },
     {
       "variable": "twitter_url",

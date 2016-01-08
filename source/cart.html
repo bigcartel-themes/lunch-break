@@ -5,7 +5,7 @@
       {% for item in cart.items %}
         <li>
           <a href="{{ item.product.url }}" class="product_image">
-            <img src="{{ item.product.image | product_image_url | constrain: 200 }}">
+            <img src="{{ item.product.image | product_image_url | constrain: 200 }}" alt="{{ item.product.name }}">
           </a>
           <div class="product_details">
             <a href="{{ item.product.url }}">
@@ -30,9 +30,9 @@
         {% if cart.shipping.enabled %}
           <div class="cart_shipping">
             <label class="cart_shipping_label" for="country">Shipping</label>
-            <div class="wrapper-dropdown">
+            <div class="select">
               {{ store.country | country_select }}
-              <svg version="1.1" class="downarrow" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 11 7.6" enable-background="new 0 0 11 7.6" xml:space="preserve"><g><polygon points="11,1.8 9.3,0 5.5,4.1 1.7,0 0,1.8 5.5,7.6"/></g></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" width="10.001px" height="6px" viewBox="0 0 10.001 6" xml:space="preserve"><path class="down_arrow" d="M9.852 1.537c0.199-0.189 0.199-0.496 0-0.684L9.135 0.17C8.938-0.02 8.617-0.02 8.4 0.17L5.016 3.5 L1.582 0.143c-0.199-0.189-0.52-0.189-0.717 0L0.148 0.826c-0.197 0.188-0.197 0.5 0 0.684l4.508 4.3 c0.199 0.2 0.5 0.2 0.7 0L9.852 1.537z"/></svg>
             </div>
           </div>
         {% endif %}
@@ -55,8 +55,8 @@
       {% if cart.shipping.enabled or cart.discount.enabled %}
   
         {% if cart.shipping.enabled %}
-          <h3>
-            Shipping
+          <h4>
+            Shipping:
             {% if cart.shipping.pending %}
               {% if cart.country %}
                 <span class="small_message">Select another country</span>
@@ -66,15 +66,15 @@
             {% else %}
               <span>{{ cart.shipping.amount | money_with_sign }}</span>
             {% endif %}
-          </h3>
+          </h4>
         {% endif %}
         
         {% if cart.discount.enabled %}
           {% if cart.discount.pending %}
           {% elsif cart.discount.free_shipping %}
-            <h3>Discount <span class="small_message">Free shipping!</span></h3>
+            <h4>Discount: <span class="small_message">Free shipping!</span></h4>
           {% else %}
-            <h3>Discount <span>- {{ cart.discount.amount | money_with_sign }}</span></h3>
+            <h4>Discount: <span>- {{ cart.discount.amount | money_with_sign }}</span></h4>
           {% endif %}
         {% endif %}
         

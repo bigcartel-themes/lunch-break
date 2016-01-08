@@ -14,30 +14,27 @@
     width: 100%
 
   .primary_image
+    +border-radius(2px)
     +transition(all 0.2s ease-in-out)
     display: block
     width: 100%
 
   .product_thumbnails
     +pie-clearfix
-    list-style: none
-    margin: 15px -5px 0 -5px
+    font-size: 0
+    margin: 10px -5px 0 -5px
     padding: 0
+    text-align: center
 
     li
-      float: left
+      display: inline-block
       padding: 5px
       width: 25%
 
       img
+        +border-radius(2px)
         display: block
         width: 100%
-        opacity: .8
-
-    li.selected
-      img
-        opacity: 1
-
 
 .product_pricing, .product_details
   float: right
@@ -52,9 +49,11 @@
 .product_pricing
 
   h1
-    margin-bottom: 10px
+    margin: -.2em 0 7px
 
   h2
+    font-family: $secondary-font
+    font-weight: 400
     margin-bottom: 0
 
     > span
@@ -66,7 +65,8 @@
         color: $background-color
         font-size: 12px
         font-weight: normal
-        padding: 3px 6px
+        padding: 2px 6px
+        text-transform: uppercase
 
   h4
     padding: 0
@@ -75,14 +75,16 @@
     padding-bottom: 6px
     border-bottom: 0
     font-size: 20px
+    
+  @media only screen and (max-width: $break-medium)
+    margin-bottom: 40px
+    text-align: center
 
 .product_details
-  margin-top: 15px
+  
 
   .product_description
-    font-size: 14px
-    line-height: 18px
-    margin: 10px 0
+    margin: 30px 0
 
     p
       margin-bottom: 10px
@@ -91,9 +93,34 @@
       font-weight: 600
 
   form
-    margin-top: 15px
+    margin-bottom: 30px
+    
+    .select
+      max-width: 320px
+      
+      @media only screen and (max-width: $break-medium)
+        font-size: 16px
+        max-width: 100%
+      
+    button
+      padding: 13px 40px
+      
+      @media only screen and (max-width: $break-medium)
+        padding: 20px 0
+        width: 100%
 
-  .share_block
-    display: inline-block
-    margin-top: 25px
-    width: 100px
+  .share_buttons
+
+    @media only screen and (max-width: $break-medium)
+      text-align: center
+  
+    li
+      display: inline-block
+      margin-right: 20px
+      position: relative
+      
+      &.social_facebook
+        top: -2px
+        
+      &:last-child
+        margin-right: 0
