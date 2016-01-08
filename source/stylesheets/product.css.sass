@@ -15,7 +15,6 @@
 
   .primary_image
     +border-radius(2px)
-    +transition(all 0.2s ease-in-out)
     display: block
     width: 100%
 
@@ -29,6 +28,7 @@
     li
       display: inline-block
       padding: 5px
+      vertical-align: top
       width: 25%
 
       img
@@ -69,19 +69,17 @@
         text-transform: uppercase
 
   h4
-    padding: 0
+    border-bottom: none
+    font-size: 20px
     font-weight: normal
     margin: 0
-    padding-bottom: 6px
-    border-bottom: 0
-    font-size: 20px
-    
+    padding: 0 0 6px
+
   @media only screen and (max-width: $break-medium)
     margin-bottom: 40px
     text-align: center
 
 .product_details
-  
 
   .product_description
     margin: 30px 0
