@@ -21,7 +21,6 @@
       
       a.product_image
         +vertical-align
-        display: inline
         float: left
         margin-right: 15px
         max-width: 120px
@@ -44,7 +43,6 @@
             max-width: 60px
         
       .product_details  
-        display: inline
         float: left
         height: 80px
         max-width: 280px
@@ -59,9 +57,10 @@
         
           span 
             display: block
-            font-size: 14px
+            font-size: 13px
             font-weight: normal
-            line-height: 22px
+            line-height: 18px
+            margin-top: 3px
             
             @media screen and (max-width: $break-extra-small)
               font-size: 13px
@@ -69,7 +68,6 @@
   
       .product_actions
         +vertical-align
-        display: block
         float: right
         max-width: 400px
         text-align: right

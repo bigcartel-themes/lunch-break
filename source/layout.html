@@ -2,7 +2,6 @@
 <html>
   <head>
     <title>{{ store.name }} &mdash; {{ page.name }}</title>
-
     <meta charset="utf-8">
     <meta name="description" content="{{ page.meta_description }}">
     <meta name="keywords" content="{{ page.meta_keywords }}">
@@ -17,9 +16,7 @@
       <meta property="og:price:amount" content="{{ product.default_price }}" />
       <meta property="og:price:currency" content="{{ store.currency.code }}" />
     {% endif %}
-
     <link href="{{ theme | theme_css_url }}" media="screen" rel="stylesheet" type="text/css">
-
     {{ head_content }}
   </head>
 
@@ -41,7 +38,6 @@
       </a>
 			<a href="/cart" class="mobile_cart"><svg class="cart_icon" height="32" viewBox="0 0 32 32" width="32" xmlns="http://www.w3.org/2000/svg"><path d="M27.72 20.296l3.606-10.718c.18-.52.044-.792-.103-.998-.374-.527-1.142-.512-1.292-.512l-20.384.006-.544-2.733C8.855 4.733 8.422 4 7.546 4h-5.73C1.225 4 1 4.59 1 5.146v1.49c0 .536.222.364.838.364h4.837l3.702 15.873c-.588.623-.908 1.61-.908 2.457 0 1.864 1.483 3.465 3.378 3.465 1.79 0 3.132-1.795 3.35-2.795h7.21c.218 1 1.305 2.873 3.35 2.873 1.86 0 3.377-1.535 3.377-3.396 0-1.852-1.125-3.61-3.36-3.61-.927 0-2.03.134-2.542 1.134h-8.86c-.642-1-1.52-1.31-2.408-1.344L12.843 21h13.48c1.015 0 1.215-.214 1.396-.704zm-16.183 5.218c0-.71.577-1.286 1.286-1.286.707 0 1.283.577 1.283 1.286S13.53 26.8 12.823 26.8c-.71 0-1.286-.577-1.286-1.286zm15.246 1.27c-.7 0-1.27-.57-1.27-1.27 0-.7.57-1.27 1.27-1.27.7 0 1.27.568 1.27 1.27 0 .7-.57 1.27-1.27 1.27z" fill="#515151"/></svg> <span class="cart_numbers">{{ cart.item_count | pluralize: 'item', 'items' }} {{ cart.total | money_with_sign }}</span></a>
   	</div>
-
     <header>
   		<div class="wrap">
         <a href="/" title="{{ store.name | escape }}" class="store_header {% if theme.header_logo != blank %}logo{% else %}text{% endif %}">
@@ -53,7 +49,6 @@
     		</a>
   		</div>
     </header>
-
     <div class="wrap">
       <section class="content">
         {% if errors != blank %}
@@ -63,7 +58,6 @@
             {% endfor %}
           </ul>
         {% endif %}
-  
         {% if page.category == 'custom' %}
           <h1>{{ page.name }}</h1>
           {{ page_content | paragraphs }}
@@ -71,7 +65,6 @@
           {{ page_content }}
         {% endif %}
       </section>
-
       <aside>
         <div class="side_cart">
           <a href="/cart">
@@ -80,7 +73,6 @@
             <span class="cart_numbers">{{ cart.total | money_with_sign }}</span>
           </a>
         </div>
-        
         <div class="side_categories">
           <h3>Shop</h3>
           <ul>
@@ -90,8 +82,6 @@
             {% endfor %}
           </ul>
         </div>
-  
-  
         {% if artists.active != blank %}
           <div class="side_artists">
             <h3>Artists</h3>
@@ -102,7 +92,6 @@
             </ul>
           </div>
         {% endif %}
-        
         {% if theme.show_newest %}
           <div class="side_pages">
             <h3>Newest Products</h3>
@@ -115,7 +104,6 @@
             </ul>
           </div>
         {% endif %}
-        
         {% if theme.show_top_selling %}
           <div class="side_pages">
             <h3>Top Selling</h3>
@@ -128,7 +116,6 @@
             </ul>
           </div>
         {% endif %}
-  
         <div class="side_pages">
           <h3>Pages</h3>
           <ul>
