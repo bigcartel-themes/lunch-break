@@ -1,13 +1,22 @@
 @import 'config'
 
 .contact_fields
-
+  max-width: 80%
+  margin: 0 auto
+  width: 100%
+  
+  @media only screen and (max-width: $break-medium)
+    max-width: 100%
+  
   li
     +pie-clearfix
     border-bottom: 1px solid $border-color
     display: block
-    padding: 10px 0
+    padding: 12px 0
     position: relative
+    
+    &:last-child
+      border-bottom: none
 
     > div
       float: left
@@ -28,7 +37,7 @@
       float: left
       font-family: $primary-font
       font-size: 16px
-      line-height: 40px
+      line-height: 35px
       padding-right: 15px
       text-align: right
       width: 25%
@@ -41,7 +50,7 @@
 
     input[type='text'], textarea
       float: left
-      height: 40px
+      height: 35px
       width: 55%
 
       @media only screen and (max-width: $break-small)
@@ -58,7 +67,7 @@
       +pie-clearfix
       border: 2px solid $link-color
       display: block
-      height: 40px
+      height: 35px
       max-width: 128px
       position: absolute
       right: 0
@@ -70,7 +79,7 @@
     textarea
       height: 200px
 
-  button
-    display: block
-    margin: 32px auto
-    max-width: 320px
+button.send_message
+  display: block
+  margin: 32px auto
+  max-width: 320px

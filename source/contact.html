@@ -2,7 +2,7 @@
 {% if contact.sent %}
   <p>Your message has been sent and we'll get back to you soon.</p>
 {% else %}
-  <form method="post" action="/contact">
+  <form method="post" action="/contact" class="contact_form">
     <ul class="contact_fields">
       <li>
         <label for="name">Name</label>
@@ -29,6 +29,6 @@
         </div>
       </li>
     </ul>
-    <button type="submit" name="submit" tabindex="6" title="Send Message">Send Message</button>
+    <button class="send_message" type="submit" name="submit" tabindex="6" title="Send Message">Send Message</button>
   </form>
 {% endif %}
