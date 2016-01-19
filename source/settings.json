@@ -1,6 +1,6 @@
 {
   "name": "Lunch Break",
-  "version": "0.2.0",
+  "version": "0.2.2",
   "images": [
     {
       "variable": "header_logo",
@@ -117,10 +117,7 @@
       "variable": "products_per_row",
       "label": "Max Products per row",
       "type": "select",
-      "options": [
-        ["3", "3"],
-        ["4", "4"]
-      ],
+      "options": "2..4",
       "default": 3,
       "description": "The max number of products displayed per row"
     },

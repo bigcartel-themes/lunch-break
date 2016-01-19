@@ -155,7 +155,7 @@ h2
 .wrap
   +pie-clearfix
   margin: 0 auto
-  max-width: 1100px
+  max-width: 1300px
   padding: 0 10px
   width: 100%
   
@@ -170,7 +170,7 @@ header
   border-bottom: 1px solid $border-color
   font-family: $primary-font
   font-size: 28px
-  padding: 30px 0
+  padding: 50px 0
   margin-bottom: 40px
   text-align: #{"{{ theme.header_position }}"}
 
@@ -200,7 +200,7 @@ header
   float: #{"{% if theme.sidebar_position == 'right' %} left {% else %} right {% endif %}"}
   position: relative
   padding-bottom: 100px
-  width: 80%
+  width: 79%
 
   @media only screen and (max-width: $break-medium)
     float: none
@@ -211,7 +211,7 @@ aside
   background-color: $background-color
   +border-radius(2px)
   float: #{"{% if theme.sidebar_position == 'right' %} right {% else %} left {% endif %}"}
-  width: 17%
+  width: 16%
 
   @media only screen and (max-width: $break-medium)
     +border-radius(0)
@@ -239,9 +239,8 @@ aside
 
   .side_cart
     +border-radius(2px)
-    background: $secondary-background
     border: 1px solid $border-color
-    font-size: 14px
+    font-size: 13px
     padding: 10px 8px
     
     @media only screen and (max-width: $break-medium)
@@ -261,11 +260,11 @@ aside
         
       .cart_icon
         fill: $link-color
-        height: 19px
+        height: 18px
         margin-top: -3px
         margin-right: 8px
         position: absolute
-        width: 19px
+        width: 18px
 
     &:hover
       .cart_icon
@@ -280,11 +279,10 @@ aside
       display: block
 
       a
-        border-bottom: 1px solid $border-color
         display: block
-        font-size: 13px
-        padding: 4px 0
-        line-height: 21px
+        font-size: 14px
+        padding: 6px 0
+        line-height: 18px
         
         @media only screen and (max-width: $break-medium)
           font-size: 15px
@@ -403,7 +401,7 @@ button, a.button
   letter-spacing: .05em
   line-height: 15px
   outline: none
-  padding: 13px 22px
+  padding: 17px 22px
   text-transform: uppercase
 
   &:hover, &:focus
@@ -421,7 +419,7 @@ button, a.button
   +border-radius(2px)
   position: relative
   border: 2px solid $button-color
-  height: 38px
+  height: 40px
   margin-bottom: 15px
   padding: 0
   position: relative
@@ -435,7 +433,7 @@ button, a.button
     border: 0
     font-size: 14px
     height: 100%
-    padding: 0 32px 0 8px
+    padding: 0 32px 0 10px
     position: relative
     width: 100%
     z-index: 2
