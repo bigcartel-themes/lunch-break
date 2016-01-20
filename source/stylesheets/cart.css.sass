@@ -140,28 +140,28 @@
       
       > span
         margin-left: 5px
-          
+        
+    .small_message
+      font-size: 13px
+    
+    button, .button
+      margin-left: 12px
+      padding: 0 35px
+      
+      @media screen and (max-width: $break-extra-small)
+        float: none
+        margin: 5px 0
+        width: 100%
+
     .continue_shopping
       float: left
-      text-align: center
+      margin-left: 0
       
       @media screen and (max-width: $break-extra-small)
         float: none
         margin: 5px 0
         width: 100%
         
-    .small_message
-      font-size: 13px
-    
-    button
-      margin-left: 10px
-      text-align: center
-      
-      @media screen and (max-width: $break-extra-small)
-        float: none
-        margin: 5px 0
-        width: 100%
-  
   .cart_shipping_discounts  
     +pie-clearfix
     margin: 20px 0

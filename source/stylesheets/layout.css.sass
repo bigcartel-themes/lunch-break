@@ -31,7 +31,7 @@ body
         
       p:last-child
         margin: 15px 0 0
-
+      
 a, a:visited
   +all-transitions
   color: $link-color
@@ -50,8 +50,8 @@ img
   max-width: 100%
 
 p
-  font-size: 13px
-  line-height: 1.5em
+  font-size: 14px
+  line-height: 1.6em
   margin: 6px 0
 
 h1
@@ -206,10 +206,16 @@ header
     float: none
     padding-bottom: 30px
     width: 100%
-
+    
+body.custom .content
+  padding-right: 35px
+  
+  @media screen and (max-width: $break-medium)
+    padding-right: 0
+      
 aside
-  background-color: $background-color
   +border-radius(2px)
+  background-color: $background-color
   float: #{"{% if theme.sidebar_position == 'right' %} right {% else %} left {% endif %}"}
   width: 16%
 
@@ -241,7 +247,7 @@ aside
     +border-radius(2px)
     border: 1px solid $border-color
     font-size: 13px
-    padding: 10px 8px
+    padding: 12px 8px
     
     @media only screen and (max-width: $break-medium)
       display: none
@@ -396,13 +402,13 @@ button, a.button
   color: $button-color
   cursor: pointer
   display: inline-block
-  font-family: $primary-font
-  font-size: 12px
-  letter-spacing: .05em
-  line-height: 15px
+  font-family: $secondary-font
+  font-size: 14px
+  height: 47px
+  line-height: 43px
   outline: none
-  padding: 17px 22px
-  text-transform: uppercase
+  padding: 0
+  text-align: center
 
   &:hover, &:focus
     background-color: $button-color
@@ -419,7 +425,7 @@ button, a.button
   +border-radius(2px)
   position: relative
   border: 2px solid $button-color
-  height: 40px
+  height: 47px
   margin-bottom: 15px
   padding: 0
   position: relative
@@ -433,7 +439,7 @@ button, a.button
     border: 0
     font-size: 14px
     height: 100%
-    padding: 0 32px 0 10px
+    padding: 0 38px 0 12px
     position: relative
     width: 100%
     z-index: 2
@@ -453,9 +459,9 @@ button, a.button
     +all-transitions
     fill: $button-color
     height: 8px
-    margin-top: -4px
+    margin-top: -2px
     position: absolute
-    right: 12px
+    right: 14px
     top: 50%
     width: 13px
     z-index: 1
