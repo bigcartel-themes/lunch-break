@@ -1,5 +1,5 @@
 /*
- * jQuery FlexSlider v2.4.0
+ * jQuery FlexSlider v2.6.0
  * http://www.woothemes.com/flexslider/
  *
  * Copyright 2012 WooThemes
@@ -12,14 +12,18 @@
 /* ====================================================================================================================
  * FONT-FACE
  * ====================================================================================================================*/
-
+@font-face {
+  font-family: 'flexslider-icon';
+  src: url('fonts/flexslider-icon.eot');
+  src: url('fonts/flexslider-icon.eot?#iefix') format('embedded-opentype'), url('fonts/flexslider-icon.woff') format('woff'), url('fonts/flexslider-icon.ttf') format('truetype'), url('fonts/flexslider-icon.svg#flexslider-icon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
 /* ====================================================================================================================
  * RESETS
  * ====================================================================================================================*/
 .flex-container a:hover,
-.flex-slider a:hover,
-.flex-container a:focus,
-.flex-slider a:focus {
+.flex-slider a:hover {
   outline: none;
 }
 .slides,
@@ -87,6 +91,7 @@ html[xmlns] .flexslider .slides {
 }
 .flexslider .slides img {
   height: auto;
+  -moz-user-select: none;
 }
 .flex-viewport {
   max-height: 2000px;
@@ -126,14 +131,15 @@ html[xmlns] .flexslider .slides {
   transition: all 0.3s ease-in-out;
 }
 .flex-direction-nav a:before {
+  font-family: "flexslider-icon";
   font-size: 40px;
   display: inline-block;
-
+  content: '\f001';
   color: rgba(0, 0, 0, 0.8);
   text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.3);
 }
 .flex-direction-nav a.flex-next:before {
-
+  content: '\f002';
 }
 .flex-direction-nav .flex-prev {
   left: -50px;
@@ -160,6 +166,7 @@ html[xmlns] .flexslider .slides {
   opacity: 0!important;
   filter: alpha(opacity=0);
   cursor: default;
+  z-index: -1;
 }
 .flex-pauseplay a {
   display: block;
@@ -183,7 +190,7 @@ html[xmlns] .flexslider .slides {
 .flex-pauseplay a:hover {
   opacity: 1;
 }
-.flex-pauseplay a .flex-play:before {
+.flex-pauseplay a.flex-play:before {
   content: '\f003';
 }
 .flex-control-nav {
@@ -239,6 +246,7 @@ html[xmlns] .flexslider .slides {
   display: block;
   opacity: .7;
   cursor: pointer;
+  -moz-user-select: none;
   -webkit-transition: all 1s ease;
   -moz-transition: all 1s ease;
   -ms-transition: all 1s ease;

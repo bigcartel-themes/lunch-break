@@ -6,61 +6,35 @@
   border: 0
   height: 100%
   margin-bottom: 35px
-
-  .slides
-    transform-style: preserve-3d
-    -webkit-transform-style: preserve-3d
-
-    >li
-      +transform(translateZ(0px))
-
-  .flex-viewport
-    transform-style: preserve-3d
-    -webkit-transform-style: preserve-3d
-    -webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC)
-
-  .flex-direction-nav li a
-    +transition(all .1s ease-in)
-    background-image: url(#{"{{ 'slideshow_arrows.png' | theme_image_url }}"})
-    background-repeat: no-repeat
-    background-color: rgba(0,0,0,.7)
-    background-size: 65px auto
-    border: 0
-    height: 66px
-    margin: -33px 0 0
+  
+  .flex-prev, .flex-next
+    +border-radius(2px)
+    background: rgba(255, 255, 255, .8)
+    display: block
+    height: 40px
+    opacity: .6
     position: absolute
-    text-indent: 35px
-    width: 33px
-
+    text-align: center
+    top: 50%
+    width: 20px
+    z-index: 10
+    
     &:hover
-      background-color: rgba(0,0,0,1)
-
+      opacity: 1
+    
+    svg
+      +vertical-align
+      height: 20px
+      width: 20px
+  
   .flex-prev
-    +border-radius(2px)
-    background-position: 6px 15px
-    left: 18px
+    left: 20px
     
-    @media screen and (max-width: $break-medium)
-      display: none
-
+    svg
+      +rotate(90deg)
+  
   .flex-next
-    +border-radius(2px)
-    background-position: -38px 15px
-    right: 18px
-    text-indent: 9999px
+    right: 20px
     
-    @media screen and (max-width: $break-medium)
-      display: none
-
-.flex-control-nav
-  bottom: 10px
-  position: absolute
-  right: 15px
-  width: auto
-  z-index: 10
-
-  @media screen and (max-width: $break-medium)
-    display: none
-
-.flex-control-paging li a, .flex-control-paging li a.flex-active, .flex-control-paging li a:hover
-  display: none
+    svg
+      +rotate(-90deg)

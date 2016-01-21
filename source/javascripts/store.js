@@ -15,4 +15,5 @@ $(function() {
       enabled: true
     }
   });
+  $('body').css('margin-bottom', $('footer').height());
 });

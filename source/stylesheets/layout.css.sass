@@ -4,8 +4,9 @@
   box-sizing: border-box
 
 html
-  background-color: $secondary-background
+  min-height: 100%
   overflow-y: scroll
+  position: relative
 
 body
   background-color: $background-color
@@ -175,8 +176,8 @@ header
   text-align: #{"{{ theme.header_position }}"}
 
   @media only screen and (max-width: $break-medium)
-    padding: 0 15px 30px
-    margin: 75px 0 40px
+    margin: 0 0 40px
+    padding: 80px 15px 35px
     
   a.store_header
     color: $header-color
@@ -201,6 +202,12 @@ header
   position: relative
   padding-bottom: 100px
   width: 79%
+  
+  @media only screen and (max-width: $break-extra-large)
+    width: 77%
+    
+  @media only screen and (max-width: $break-large)
+    width: 75%
 
   @media only screen and (max-width: $break-medium)
     float: none
@@ -214,14 +221,20 @@ body.custom .content
     padding-right: 0
       
 aside
+  +all-transitions
   +border-radius(2px)
   background-color: $background-color
   float: #{"{% if theme.sidebar_position == 'right' %} right {% else %} left {% endif %}"}
   width: 16%
+  
+  @media only screen and (max-width: $break-extra-large)
+    width: 18%
+  
+  @media only screen and (max-width: $break-large)
+    width: 20%
 
   @media only screen and (max-width: $break-medium)
     +border-radius(0)
-    display: none
     position: absolute
     top: 48px
     height: auto
@@ -236,6 +249,7 @@ aside
     opacity: 1
     padding-top: 10px
     visibility: visible
+    z-index: 10
   
   h3
     border-bottom: 1px solid $border-color
@@ -244,38 +258,41 @@ aside
     padding: 0 0 4px
 
   .side_cart
+    +pie-clearfix
     +border-radius(2px)
     border: 1px solid $border-color
+    display: block
     font-size: 13px
+    margin-bottom: 20px
     padding: 12px 8px
+    position: relative
     
     @media only screen and (max-width: $break-medium)
       display: none
-    
-    a
-      +pie-clearfix
-      display: block
-      position: relative
-      
-      .cart_title
-        float: left
-        margin-left: 24px
-        
-      .cart_numbers
-        float: right
-        
-      .cart_icon
-        fill: $link-color
-        height: 18px
-        margin-top: -3px
-        margin-right: 8px
-        position: absolute
-        width: 18px
 
-    &:hover
+    .cart_title
+      float: left
+      margin-left: 24px
+      
+    .cart_numbers
+      float: right
+      
+    .cart_icon
+      +all-transitions
+      fill: $link-color
+      height: 18px
+      margin-top: -3px
+      margin-right: 8px
+      position: absolute
+      width: 18px
+  
+    &:hover 
+      +all-transitions
+      border: 1px solid $hover-color
+          
       .cart_icon
         fill: $hover-color
-      
+
   ul
     list-style: none
     margin: 0
@@ -304,13 +321,17 @@ aside
 footer
   background: $secondary-background
   border-top: 1px solid $border-color
-  clear: both
-  font-size: 16px
-  height: 150px
-  margin-top: 70px
-  padding-top: 25px
+  bottom: 0
+  font-size: 15px
+  height: 120px
+  position: absolute
+  width: 100%
   
+  .wrap
+    +vertical-align
+    
   @media only screen and (max-width: $break-medium)
+    height: 160px
     margin-top: 20px
 
   .footer_left
@@ -340,11 +361,11 @@ footer
     font-size: 22px
     
     @media only screen and (max-width: $break-medium)
-      margin: 25px 0
+      margin: 25px 0 0
 
     li
       float: left
-      margin-left: 15px
+      margin-left: 20px
       
       @media only screen and (max-width: $break-medium)
         display: inline-block
@@ -360,8 +381,8 @@ footer
         svg
           +all-transitions
           fill: $link-color
-          height: 22px
-          width: 22px
+          height: 20px
+          width: 20px
 
       &:hover svg
         fill: $hover-color
