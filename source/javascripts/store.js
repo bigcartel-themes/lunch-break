@@ -15,5 +15,7 @@ $(function() {
       enabled: true
     }
   });
-  $('body').css('margin-bottom', $('footer').height());
+  $(window).resize(function() { 
+    $('body').css('margin-bottom', $('footer').height());
+  });
 });

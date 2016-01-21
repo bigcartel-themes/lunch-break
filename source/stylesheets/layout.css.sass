@@ -12,6 +12,7 @@ body
   background-color: $background-color
   color: $text-color
   font-family: $secondary-font
+  margin-bottom: 120px
   
   &.standalone
     background-color: $secondary-background
@@ -219,7 +220,17 @@ body.custom .content
   
   @media screen and (max-width: $break-medium)
     padding-right: 0
-      
+
+.success_message
+  margin-top: 20px
+  
+  .button
+    margin: 32px 0
+    width: 320px
+    
+  @media screen and (max-width: $break-medium)
+    text-align: center
+        
 aside
   +all-transitions
   +border-radius(2px)
