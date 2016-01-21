@@ -7,23 +7,19 @@
   height: 100%
     
   .flex-nav
-    +all-transitions
-    opacity: 0
     
     li
       +all-transitions
       +border-radius(2px)
-      background: rgba(255, 255, 255, .8)
+      background: #FFF
       height: 60px
+      opacity: 0
       position: absolute
       text-align: center
       top: 41%
       width: 30px
       z-index: 10
-      
-      &:hover
-        background: rgba(255, 255, 255, 1)
-      
+    
       &.flex-nav-prev
         left: 20px
 
@@ -42,11 +38,24 @@
           width: 20px
   
   &:hover
-    .flex-nav
-      opacity: 1
+    .flex-nav li
+      opacity: .5
+      
+      &:hover
+        opacity: 1
       
   .flex-control-paging li a
     background: $link-color
   
   .flex-control-paging li a.flex-active
     background: $hover-color
+    
+.flex-control-nav
+  bottom: -35px
+  
+  li
+    margin: 0 5px
+    
+    a
+      height: 9px
+      width: 9px
