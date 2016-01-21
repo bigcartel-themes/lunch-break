@@ -90,6 +90,7 @@ ul.products
     font-size: 14px
   
   span, a
+    display: inline-block
     padding: 2px 6px
     
     i
@@ -104,6 +105,9 @@ ul.products
       right: 2px
       top: 1px
       width: 13px
+      
+      @media only screen and (max-width: $break-small)
+        height: 12px
   
   .previous
     float: left
