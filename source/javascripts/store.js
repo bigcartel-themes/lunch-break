@@ -18,4 +18,5 @@ $(function() {
   $(window).resize(function() { 
     $('body').css('margin-bottom', $('footer').height());
   });
+  $('body').css('margin-bottom', $('footer').height());
 });

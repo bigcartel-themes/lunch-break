@@ -266,6 +266,7 @@ aside
     border-bottom: 1px solid $border-color
     font-size: 17px
     line-height: 1.3em
+    margin-bottom: 1px
     padding: 0 0 4px
 
   .side_cart
@@ -305,25 +306,30 @@ aside
         fill: $hover-color
         
   .search_form
+    +all-transitions
     +border-radius(2px)
     border: 1px solid $border-color
     display: block
-    font-size: 13px
-    height: 35px
-    margin: 8px 0 20px
+    height: 30px
+    margin: 8px 0
     padding: 0
     position: relative
     
+    &:hover, &:active
+      border: 1px solid $hover-color
+      
+      svg
+        fill: $hover-color
+    
     input
-      +all-transitions
       +appearance(none)
       +border-radius(0)
       background: none
       border: none
-      font-size: 13px
+      font-size: 12px
       height: 100%
-      width: 100%
-    
+      width: 90%
+
     button
       background: none
       border: none
@@ -337,12 +343,8 @@ aside
       svg
         +all-transitions
         fill: $border-color
-    
-    &:hover, &:active
-      background: none
-      
-      svg
-        fill: $hover-color
+        height: 13px
+        width: 13px
 
   ul
     list-style: none
@@ -351,6 +353,10 @@ aside
 
     li
       display: block
+      
+      &.side_search
+        border-bottom: 1px solid $border-color
+        margin-bottom: 4px
 
       a
         display: block
@@ -416,7 +422,7 @@ footer
 
     li
       float: left
-      margin-left: 20px
+      margin-left: 22px
       
       @media only screen and (max-width: $break-medium)
         display: inline-block
@@ -497,6 +503,7 @@ button, a.button
   +border-radius(2px)
   position: relative
   border: 2px solid $button-color
+  color: $button-color
   height: 47px
   margin-bottom: 15px
   padding: 0

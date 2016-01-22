@@ -1,4 +1,4 @@
-<h1>{{ page.name }}</h1>
+<h1>{% if page.full_url contains "search=" %}Product Search{% else %}{{ page.name }}{% endif %}</h1>
 {% paginate products from products.current by theme.products_per_page %}
   {% if products != blank %}
     <ul class="products">

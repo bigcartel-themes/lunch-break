@@ -30,7 +30,7 @@
         {% if cart.discount.enabled %}
           <div class="cart_discounts">
             <label class="cart_discount_label" for="cart_discount_code">Discount code</label>
-            {{ cart.discount | discount_code_input }}
+            <input autocomplete="off" id="cart_discount_code" name="cart[discount_code]" type="text" placeholder=""{% if cart.discount.code %} value="{{ cart.discount.code }}"{% endif %}>
           </div>
         {% endif %}
         {% if cart.shipping.enabled %}
@@ -80,7 +80,7 @@
     </div>
   </form>
 {% else %}
-	<div>
+	<div class="empty_cart">
 		<p><strong>Your cart is empty!</strong> Sounds like a good time to <a href="/">start shopping.</a></p>
 	</div>
 {% endif %}

@@ -191,17 +191,33 @@
     height: 88px
     padding: 20px 0
     
+    @media screen and (max-width: $break-medium)
+      height: 110px
+      
+    @media screen and (max-width: $break-small)
+      height: auto
+    
     .cart_shipping, .cart_discounts
       +vertical-align
       float: right
       text-align: center
       width: 50%
+      
+      @media screen and (max-width: $break-small)
+        +transform(none)
+        float: none
+        top: auto
+        width: 100%
         
       label
         display: inline-block
         font-family: $primary-font
         font-weight: 600
         margin: 0 15px
+        
+        @media screen and (max-width: $break-medium)
+          display: block
+          margin-bottom: 10px
       
     .cart_shipping
     
@@ -209,8 +225,14 @@
         border: 2px solid $link-color
         display: inline-block
         margin: 0 auto
-        max-width: 280px
+        max-width: 50%
         width: 100%
+        
+        @media screen and (max-width: $break-medium)
+          max-width: 75%
+        
+        @media screen and (max-width: $break-small)
+          max-width: 100%
         
         svg
           fill: $link-color
@@ -220,30 +242,31 @@
           
           svg
             fill: $hover-color
-      
+            
       @media screen and (max-width: $break-small)
-        float: none
-        width: 100%
-
+        margin-top: 20px
+      
     .cart_discounts  
   
       input
         font-size: 14px
         height: 47px
         margin: 0 auto
-        max-width: 280px
+        max-width: 50%
         width: 100%
         
         @media screen and (max-width: $break-medium)
-          font-size: 16px
+          max-width: 75%
+          
+        @media screen and (max-width: $break-small)
+          max-width: 100%
         
       p
         font-size: 18px
         font-weight: 900px
         line-height: 48px
         margin: 0
-        
-      @media screen and (max-width: $break-small)
-        float: none
-        margin-top: 20px
-        width: 100%
+
+.empty_cart
+  @media only screen and (max-width: $break-medium)
+    text-align: center
