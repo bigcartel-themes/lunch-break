@@ -303,6 +303,46 @@ aside
           
       .cart_icon
         fill: $hover-color
+        
+  .search_form
+    +border-radius(2px)
+    border: 1px solid $border-color
+    display: block
+    font-size: 13px
+    height: 35px
+    margin: 8px 0 20px
+    padding: 0
+    position: relative
+    
+    input
+      +all-transitions
+      +appearance(none)
+      +border-radius(0)
+      background: none
+      border: none
+      font-size: 13px
+      height: 100%
+      width: 100%
+    
+    button
+      background: none
+      border: none
+      height: 100%
+      line-height: normal
+      padding: 0
+      position: absolute
+      right: 10px
+      top: 0
+      
+      svg
+        +all-transitions
+        fill: $border-color
+    
+    &:hover, &:active
+      background: none
+      
+      svg
+        fill: $hover-color
 
   ul
     list-style: none

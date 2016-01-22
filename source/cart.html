@@ -27,6 +27,12 @@
     </ul>
     {% if cart.shipping.enabled or cart.discount.enabled %}
       <div class="cart_shipping_discounts">
+        {% if cart.discount.enabled %}
+          <div class="cart_discounts">
+            <label class="cart_discount_label" for="cart_discount_code">Discount code</label>
+            {{ cart.discount | discount_code_input }}
+          </div>
+        {% endif %}
         {% if cart.shipping.enabled %}
           <div class="cart_shipping">
             <label class="cart_shipping_label" for="country">Shipping</label>
@@ -34,18 +40,6 @@
               {{ store.country | country_select }}
               <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" width="10.001px" height="6px" viewBox="0 0 10.001 6" xml:space="preserve"><path class="down_arrow" d="M9.852 1.537c0.199-0.189 0.199-0.496 0-0.684L9.135 0.17C8.938-0.02 8.617-0.02 8.4 0.17L5.016 3.5 L1.582 0.143c-0.199-0.189-0.52-0.189-0.717 0L0.148 0.826c-0.197 0.188-0.197 0.5 0 0.684l4.508 4.3 c0.199 0.2 0.5 0.2 0.7 0L9.852 1.537z"/></svg>
             </div>
-          </div>
-        {% endif %}
-        {% if cart.discount.enabled %}
-          <div class="cart_discounts">
-            <label class="cart_discount_label" for="cart_discount_code">Discount code</label>
-            {% if cart.discount.pending %}
-              {{ cart.discount | discount_code_input }}
-            {% elsif cart.discount.free_shipping %}
-              <p>{{ cart.discount.name }} applied!</p>
-            {% else %}
-              <p>{{ cart.discount.name }} applied!</p>
-            {% endif %}
           </div>
         {% endif %}
       </div>

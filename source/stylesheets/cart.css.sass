@@ -12,9 +12,10 @@
       display: block
       font-size: 16px
       font-weight: 900
-      height: 80px
+      height: 100px
       line-height: 18px
       overflow: hidden
+      padding: 15px 0
 
       @media screen and (max-width: $break-extra-small)
         font-size: 15px
@@ -22,8 +23,9 @@
       a.product_image
         +vertical-align
         float: left
-        margin-right: 15px
-        max-width: 120px
+        height: 100%
+        margin-right: 10px
+        max-width: 100px
         text-align: center
         width: 100%
         
@@ -33,7 +35,8 @@
         @media screen and (max-width: $break-extra-small)
           display: none
           
-        img 
+        img
+          +vertical-align
           display: block
           margin: 0 auto
           max-height: 100%
@@ -42,17 +45,22 @@
           @media screen and (max-width: $break-medium)
             max-width: 60px
         
-      .product_details  
+      .product_details
+        +vertical-align  
         float: left
         height: 80px
         max-width: 280px
         width: auto
+        
+        @media screen and (max-width: $break-large)
+          max-width: 30%
         
         @media screen and (max-width: $break-medium)
           max-width: 42%
         
         a  
           +vertical-align
+          color: $header-color
           display: block
         
           span 
@@ -95,10 +103,10 @@
                 width: 46px
   
           &.price 
-            width: 180px
+            width: 160px
             
-            @media screen and (max-width: $break-medium)
-              width: 100px
+            @media screen and (max-width: $break-large)
+              width: 95px
   
           &.remove 
             text-align: center
@@ -123,23 +131,38 @@
               
               &:hover svg  
                 fill: $hover-color
+                
+      @media screen and (max-width: $break-small)
+        height: 100px
   
   .cart_footer
     +pie-clearfix
-    margin-top: 20px
+    margin-top: 30px
     text-align: right
 
     h3
       font-size: 22px
       line-height: 22px
       margin-bottom: 30px
+      text-align: right
+      
+      > span
+        display: inline-block
+        margin-left: 10px
+        width: 120px
     
     h4
       font-size: 19px
       margin-bottom: 10px
+      text-align: right
       
       > span
-        margin-left: 5px
+        display: inline-block
+        margin-left: 10px
+        width: 120px
+        
+    h4 + h3
+      margin-top: 20px
         
     .small_message
       font-size: 13px
@@ -164,32 +187,55 @@
         
   .cart_shipping_discounts  
     +pie-clearfix
-    margin: 20px 0
+    border-bottom: 1px solid $border-color
+    height: 88px
+    padding: 20px 0
     
-    .cart_shipping  
-      float: left
-      width: 47%
+    .cart_shipping, .cart_discounts
+      +vertical-align
+      float: right
+      text-align: center
+      width: 50%
+        
+      label
+        display: inline-block
+        font-family: $primary-font
+        font-weight: 600
+        margin: 0 15px
       
-      @media screen and (max-width: $break-small)
-        float: none
+    .cart_shipping
+    
+      .select
+        border: 2px solid $link-color
+        display: inline-block
+        margin: 0 auto
+        max-width: 280px
         width: 100%
         
-        .select
-          width: 100%
-    
-    .cart_discounts  
-      float: right
-      text-align: left
-      width: 47%
+        svg
+          fill: $link-color
+        
+        &:hover
+          border-color: $hover-color
+          
+          svg
+            fill: $hover-color
       
       @media screen and (max-width: $break-small)
         float: none
-        margin-top: 20px
         width: 100%
+
+    .cart_discounts  
   
       input
-        height: 38px
+        font-size: 14px
+        height: 47px
+        margin: 0 auto
+        max-width: 280px
         width: 100%
+        
+        @media screen and (max-width: $break-medium)
+          font-size: 16px
         
       p
         font-size: 18px
@@ -197,8 +243,7 @@
         line-height: 48px
         margin: 0
         
-    label
-      display: block
-      font-family: $primary-font
-      font-weight: 600
-      margin-bottom: 10px
+      @media screen and (max-width: $break-small)
+        float: none
+        margin-top: 20px
+        width: 100%
