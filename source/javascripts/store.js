@@ -3,7 +3,7 @@ $(function() {
     e.preventDefault();
     $(this).toggleClass('open');
     $('aside').toggleClass('open');
-    $('.content').toggleClass('hidden');
+    //$('.content').toggleClass('hidden');
   });
   $('.remove a').click(function(e) {
     e.preventDefault();

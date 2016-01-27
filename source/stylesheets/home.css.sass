@@ -12,13 +12,13 @@
       +all-transitions
       +border-radius(2px)
       background: #FFF
-      height: 60px
+      height: 45px
       opacity: 0
       position: absolute
       text-align: center
-      top: 41%
-      width: 30px
-      z-index: 10
+      top: 45%
+      width: 45px
+      z-index: 8
     
       &.flex-nav-prev
         left: 20px
@@ -29,8 +29,8 @@
       a
         +border-radius(2px)
         display: block
-        height: 60px
-        width: 30px
+        height: 45px
+        width: 45px
         
         svg
           +vertical-align
@@ -45,10 +45,13 @@
         opacity: 1
       
   .flex-control-paging li a
-    background: $link-color
+    +box-shadow(none)
+    background: none
+    border: 1px solid $link-color
   
   .flex-control-paging li a.flex-active
     background: $hover-color
+    border: 1px solid $hover-color
     
 .flex-control-nav
   bottom: -35px

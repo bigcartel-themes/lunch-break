@@ -52,15 +52,14 @@ img
   max-width: 100%
 
 p
-  font-size: 14px
-  line-height: 1.6em
-  margin: 6px 0
+  margin: 0 0 10px
 
 h1
   font-size: 26px
   font-weight: 600
   line-height: 1.3em
   margin-bottom: 15px
+  min-height: 52px
   
   @media only screen and (max-width: $break-medium)
     text-align: center
@@ -83,7 +82,7 @@ h2
 
   @media only screen and (max-width: $break-medium)
     display: block
-    z-index: 3
+    z-index: 10
 
   .open_menu
     +transform(rotate(0deg))
@@ -172,7 +171,7 @@ header
   border-bottom: 1px solid $border-color
   font-family: $primary-font
   font-size: 28px
-  padding: 50px 0
+  padding: 80px 0
   margin-bottom: 40px
   text-align: #{"{{ theme.header_position }}"}
 
@@ -215,11 +214,12 @@ header
     padding-bottom: 30px
     width: 100%
     
-body.custom .content
-  padding-right: 35px
-  
-  @media screen and (max-width: $break-medium)
-    padding-right: 0
+.custom_content
+  font-size: 14px
+  line-height: 1.4em
+  margin: 0 auto
+  max-width: 700px
+  width: 100%
 
 .success_message
   margin-top: 20px
@@ -232,7 +232,6 @@ body.custom .content
     text-align: center
         
 aside
-  +all-transitions
   +border-radius(2px)
   background-color: $background-color
   float: #{"{% if theme.sidebar_position == 'right' %} right {% else %} left {% endif %}"}
@@ -246,21 +245,22 @@ aside
 
   @media only screen and (max-width: $break-medium)
     +border-radius(0)
-    position: absolute
-    top: 48px
-    height: auto
+    height: 100%
     left: 0
     opacity: 0
     padding: 0 10px
+    position: absolute
+    top: 0
     visibility: hidden
     width: 100%
 
   &.open
+    +all-transitions
     display: block
     opacity: 1
-    padding-top: 10px
+    padding-top: 58px
     visibility: visible
-    z-index: 10
+    z-index: 9
   
   h3
     border-bottom: 1px solid $border-color
@@ -272,38 +272,47 @@ aside
   .side_cart
     +pie-clearfix
     +border-radius(2px)
-    border: 1px solid $border-color
+    background-color: $background-color
+    border: 1px solid $button-color
+    color: $button-color
     display: block
+    font-family: $secondary-font
     font-size: 13px
+    height: 47px
     margin-bottom: 20px
-    padding: 12px 8px
+    padding: 12px 10px
     position: relative
     
     @media only screen and (max-width: $break-medium)
       display: none
 
     .cart_title
+      +vertical-align
       float: left
       margin-left: 24px
       
     .cart_numbers
+      +vertical-align
       float: right
       
     .cart_icon
+      +vertical-align
       +all-transitions
-      fill: $link-color
+      fill: $button-color
       height: 18px
-      margin-top: -3px
+      margin-top: -1px
       margin-right: 8px
       position: absolute
       width: 18px
-  
-    &:hover 
+      
+    &:hover, &:focus, &:active
       +all-transitions
-      border: 1px solid $hover-color
-          
+      background-color: $button-color
+      border: 1px solid $button-color
+      color: $background-color
+      
       .cart_icon
-        fill: $hover-color
+        fill: $background-color
         
   .search_form
     +all-transitions
@@ -362,7 +371,7 @@ aside
       a
         display: block
         font-size: 14px
-        padding: 6px 0
+        padding: 7px 0
         line-height: 18px
         
         @media only screen and (max-width: $break-medium)
@@ -380,7 +389,7 @@ footer
   background: $secondary-background
   border-top: 1px solid $border-color
   bottom: 0
-  font-size: 15px
+  font-size: 14px
   height: 120px
   position: absolute
   width: 100%
@@ -462,14 +471,14 @@ input, textarea
   +appearance(none)
   +border-radius(2px)
   background: $background-color
-  border: 2px solid $link-color
+  border: 1px solid $link-color
   color: $link-color
   font-family: $secondary-font
   font-size: 17px
   padding: 8px 10px
 
   &:focus
-    border: 2px solid $hover-color
+    border: 1px solid $hover-color
     color: $hover-color
     outline: none
 
@@ -477,7 +486,7 @@ button, a.button
   +all-transitions
   +border-radius(2px)
   background-color: $background-color
-  border: 2px solid $button-color
+  border: 1px solid $button-color
   color: $button-color
   cursor: pointer
   display: inline-block
@@ -491,19 +500,19 @@ button, a.button
 
   &:hover, &:focus
     background-color: $button-color
-    border: 2px solid $button-color
+    border: 1px solid $button-color
     color: $background-color
 
   &:active
     background-color: $button-color
-    border: 2px solid $button-color
+    border: 1px solid $button-color
     color: $background-color
     
 .select
   +all-transitions
   +border-radius(2px)
   position: relative
-  border: 2px solid $button-color
+  border: 1px solid $button-color
   color: $button-color
   height: 47px
   margin-bottom: 15px
@@ -517,6 +526,7 @@ button, a.button
     +appearance(none)
     background: none
     border: 0
+    font-family: $secondary-font
     font-size: 14px
     height: 100%
     padding: 0 38px 0 12px

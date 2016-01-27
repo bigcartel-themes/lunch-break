@@ -59,8 +59,10 @@
           </ul>
         {% endif %}
         {% if page.category == 'custom' %}
-          <h1>{{ page.name }}</h1>
-          {{ page_content | paragraphs }}
+          <div class="custom_content">
+            <h1>{{ page.name }}</h1>
+            {{ page_content | paragraphs }}
+          </div>
         {% else %}
           {{ page_content }}
         {% endif %}
@@ -71,7 +73,6 @@
           <span class="cart_title">{{ cart.item_count | pluralize: 'item', 'items' }}</span>
           <span class="cart_numbers">{{ cart.total | money_with_sign }}</span>
         </a>
-
         <div class="side_categories">
           <h3>Shop</h3>
           <ul>
@@ -89,7 +90,6 @@
             {% endfor %}
           </ul>
         </div>
-
         {% if artists.active != blank %}
           <div class="side_artists">
             <h3>Artists</h3>
@@ -101,28 +101,32 @@
           </div>
         {% endif %}
         {% if theme.show_newest %}
-          <div class="side_pages">
-            <h3>Newest Products</h3>
-            <ul>
-              {% get 5 products from products.all order: 'newest' %}
-              	{% for product in products %}
-              	  <li>{{ product | link_to }}</li>
-                {% endfor %}
-              {% endget %}
-            </ul>
-          </div>
+          {% get 5 products from products.all order: 'newest' %}
+            {% if products != blank %}
+              <div class="side_pages">
+                <h3>Newest Products</h3>
+                <ul>
+                	{% for product in products %}
+                	  <li>{{ product | link_to }}</li>
+                  {% endfor %}
+                </ul>
+              </div>
+            {% endif %}
+          {% endget %}
         {% endif %}
         {% if theme.show_top_selling %}
-          <div class="side_pages">
-            <h3>Top Selling</h3>
-            <ul>
-              {% get 5 products from products.all order: 'sales' %}
-              	{% for product in products %}
-              	  <li>{{ product | link_to }}</li>
-                {% endfor %}
-              {% endget %}
-            </ul>
-          </div>
+          {% get 5 products from products.all order: 'sales' %}
+            {% if products != blank %}
+              <div class="side_pages">
+                <h3>Top Selling</h3>
+                <ul>
+                	{% for product in products %}
+                	  <li>{{ product | link_to }}</li>
+                  {% endfor %}
+                </ul>
+              </div>
+            {% endif %}
+          {% endget %}
         {% endif %}
         <div class="side_pages">
           <h3>Pages</h3>
@@ -174,7 +178,7 @@
   	    </div>
       </div>
     </footer>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="{{ theme | theme_js_url }}"></script>
     <script src="{{ 'api' | theme_js_url }}"></script>
     <script>

@@ -1,6 +1,6 @@
 {
   "name": "Lunch Break",
-  "version": "0.2.9",
+  "version": "0.3.2",
   "images": [
     {
       "variable": "header_logo",
@@ -12,7 +12,7 @@
     {
       "variable": "slideshow_images",
       "label": "Homepage slideshow",
-      "description": "1000px by 500px images recommended",
+      "description": "1000px by 400px images recommended",
       "defaults": [
         "slide1.jpg",
         "slide2.jpg",
@@ -76,13 +76,6 @@
   ],
   "options": [
     {
-      "variable": "show_search",
-      "label": "Show search",
-      "type": "boolean",
-      "default": false,
-      "description": "Displays a search field in the sidebar"
-    },
-    {
       "variable": "sidebar_position",
       "label": "Sidebar position",
       "type": "select",
@@ -106,6 +99,14 @@
       "description": "Sets the position of your store name or header image at the top of the page"
     },
     {
+      "variable": "featured_products",
+      "label": "Featured products",
+      "type": "select",
+      "options": "0..100",
+      "default": 12,
+      "description": "The number of products displayed on the home page"
+    },
+    {
       "variable": "products_per_page",
       "label": "Products per page",
       "type": "select",
@@ -122,12 +123,11 @@
       "description": "The maximum number of products displayed per row"
     },
     {
-      "variable": "featured_products",
-      "label": "Featured products",
-      "type": "select",
-      "options": "0..100",
-      "default": 12,
-      "description": "The number of products displayed on the home page"
+      "variable": "show_search",
+      "label": "Show search",
+      "type": "boolean",
+      "default": false,
+      "description": "Displays a search field in the sidebar"
     },
     {
       "variable": "show_newest",
