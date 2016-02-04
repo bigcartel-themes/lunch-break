@@ -45,18 +45,17 @@ a, a:visited
 h1, h2, h3, h4, h5, h6
   color: $header-color
   font-family: $primary-font
-  font-weight: 600
+  font-weight: 500
 
 img
   display: block
   max-width: 100%
 
 p
-  margin: 0 0 10px
+  margin: 0 0 20px
 
 h1
   font-size: 26px
-  font-weight: 600
   line-height: 1.3em
   margin-bottom: 15px
   min-height: 52px
@@ -171,7 +170,7 @@ header
   border-bottom: 1px solid $border-color
   font-family: $primary-font
   font-size: 28px
-  padding: 80px 0
+  padding: 70px 0
   margin-bottom: 40px
   text-align: #{"{{ theme.header_position }}"}
 
@@ -182,10 +181,10 @@ header
   a.store_header
     color: $header-color
     display: inline-block
-    font-size: 44px
+    font-size: 42px
     
     @media only screen and (max-width: $break-medium)
-      font-size: 36px
+      font-size: 34px
       
     @media only screen and (max-width: $break-small)
       font-size: 30px
@@ -201,22 +200,23 @@ header
   float: #{"{% if theme.sidebar_position == 'right' %} left {% else %} right {% endif %}"}
   position: relative
   padding-bottom: 100px
-  width: 79%
+  max-width: 76%
+  width: 100%
   
   @media only screen and (max-width: $break-extra-large)
-    width: 77%
+    max-width: 77%
     
   @media only screen and (max-width: $break-large)
-    width: 75%
+    max-width: 75%
 
   @media only screen and (max-width: $break-medium)
     float: none
     padding-bottom: 30px
-    width: 100%
+    max-width: 100%
     
 .custom_content
-  font-size: 14px
-  line-height: 1.4em
+  font-size: 13px
+  line-height: 1.8em
   margin: 0 auto
   max-width: 700px
   width: 100%
@@ -266,7 +266,7 @@ aside
     border-bottom: 1px solid $border-color
     font-size: 17px
     line-height: 1.3em
-    margin-bottom: 1px
+    margin-bottom: 2px
     padding: 0 0 4px
 
   .side_cart
@@ -278,9 +278,9 @@ aside
     display: block
     font-family: $secondary-font
     font-size: 13px
-    height: 47px
-    margin-bottom: 20px
-    padding: 12px 10px
+    height: 50px
+    margin-bottom: 40px
+    padding: 12px 15px
     position: relative
     
     @media only screen and (max-width: $break-medium)
@@ -301,7 +301,7 @@ aside
       fill: $button-color
       height: 18px
       margin-top: -1px
-      margin-right: 8px
+      margin-right: 10px
       position: absolute
       width: 18px
       
@@ -316,46 +316,37 @@ aside
         
   .search_form
     +all-transitions
-    +border-radius(2px)
-    border: 1px solid $border-color
     display: block
-    height: 30px
-    margin: 8px 0
+    margin: 0
     padding: 0
     position: relative
     
-    &:hover, &:active
-      border: 1px solid $hover-color
+    label
+      +all-transitions
+      bottom: 6px
+      color: $link-color
+      cursor: pointer
+      font-size: 14px
+      position: absolute
       
-      svg
-        fill: $hover-color
-    
+      &:hover
+        color: $hover-color
+      
     input
       +appearance(none)
       +border-radius(0)
       background: none
       border: none
-      font-size: 12px
+      color: $link-color
+      cursor: pointer
+      font-size: 14px
       height: 100%
-      padding: 6px 7px
-      width: 90%
-
-    button
-      background: none
-      border: none
-      height: 100%
-      line-height: normal
-      padding: 0
-      position: absolute
-      right: 10px
-      top: 0
+      padding: 4px 0
+      width: 100%
       
-      svg
-        +all-transitions
-        fill: $border-color
-        height: 13px
-        width: 13px
-
+    &.focus label
+      opacity: 0
+    
   ul
     list-style: none
     margin: 0
@@ -363,15 +354,11 @@ aside
 
     li
       display: block
-      
-      &.side_search
-        border-bottom: 1px solid $border-color
-        margin-bottom: 4px
 
       a
         display: block
         font-size: 14px
-        padding: 7px 0
+        padding: 5px 0
         line-height: 18px
         
         @media only screen and (max-width: $break-medium)
@@ -460,8 +447,8 @@ footer
   color: #FAFAFA
   font-size: 15px
   line-height: 20px
-  margin-bottom: 15px
-  padding: 14px 16px
+  margin-bottom: 20px
+  padding: 10px 20px
   
   @media only screen and (max-width: $break-medium)
     text-align: center
@@ -482,6 +469,9 @@ input, textarea
     color: $hover-color
     outline: none
 
+input
+  height: 50px
+  
 button, a.button
   +all-transitions
   +border-radius(2px)
@@ -492,8 +482,8 @@ button, a.button
   display: inline-block
   font-family: $secondary-font
   font-size: 14px
-  height: 47px
-  line-height: 43px
+  height: 50px
+  line-height: 46px
   outline: none
   padding: 0
   text-align: center
@@ -514,7 +504,7 @@ button, a.button
   position: relative
   border: 1px solid $button-color
   color: $button-color
-  height: 47px
+  height: 50px
   margin-bottom: 15px
   padding: 0
   position: relative
@@ -526,6 +516,7 @@ button, a.button
     +appearance(none)
     background: none
     border: 0
+    color: $button-color
     font-family: $secondary-font
     font-size: 14px
     height: 100%

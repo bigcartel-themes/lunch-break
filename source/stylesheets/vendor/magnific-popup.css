@@ -163,9 +163,7 @@ a.mfp-arrow {
 .mfp-image-holder .mfp-close,
 .mfp-iframe-holder .mfp-close {
   color: #FFF;
-  right: -6px;
   text-align: right;
-  padding-right: 6px;
   width: 100%;
 }
 .mfp-counter {
@@ -390,26 +388,6 @@ img.mfp-img {
   transform: translateY(-50%);
 }
 @media all and (max-width: 900px) {
-  .mfp-arrow {
-    -webkit-transform: scale(0.50);
-    transform: scale(0.50);
-    background: rgba(0, 0, 0, 0.5);
-    opacity: .8
-  }
-  .mfp-arrow svg {
-    height: 40px;
-    width: 40px;
-  }
-  .mfp-arrow-left {
-    -webkit-transform-origin: 0;
-    transform-origin: 0;
-    left: 6px
-  }
-  .mfp-arrow-right {
-    -webkit-transform-origin: 100%;
-    transform-origin: 100%;
-    right: 6px;
-  }
   .mfp-container {
     padding-left: 6px;
     padding-right: 6px;

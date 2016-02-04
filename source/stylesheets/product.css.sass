@@ -2,7 +2,8 @@
 
 .product_images
   float: left
-  width: 50%
+  max-width: 50%
+  width: 100%
   
   a
     display: block
@@ -10,8 +11,8 @@
 
   @media only screen and (max-width: $break-medium)
     float: none
-    margin-top: 15px
-    width: 100%
+    margin: 20px 0 40px
+    max-width: 100%
 
   .primary_image
     +border-radius(2px)
@@ -38,25 +39,29 @@
 
 .product_pricing, .product_details
   float: right
-  padding-left: 20px
-  width: 50%
+  padding-left: 40px
+  max-width: 50%
+  width: 100%
+  
+  @media only screen and (max-width: $break-large)
+    padding-left: 20px
 
   @media only screen and (max-width: $break-medium)
     float: none
+    max-width: 100%
     padding: 0
-    width: 100%
-
+  
 .product_pricing
 
   h1
-    margin: -.2em 0 7px
+    margin: -.2em 0 10px
+    min-height: 0
 
   h2
     font-family: $secondary-font
     font-size: 17px
-    font-weight: 400
-    line-height: 17px
-    margin-bottom: 0
+    line-height: 18px
+    margin-bottom: 40px
 
     > span
       vertical-align: middle
@@ -66,14 +71,13 @@
         background-color: $link-color
         color: $background-color
         font-size: 12px
-        font-weight: normal
+        margin-left: 5px
         padding: 2px 6px
         text-transform: uppercase
 
   h4
     border-bottom: none
     font-size: 20px
-    font-weight: normal
     margin: 0
     padding: 0 0 6px
 
@@ -85,16 +89,17 @@
 
   .product_description
     font-size: 13px
-    line-height: 1.4em
-    margin: 30px 0
+    line-height: 1.8em
+    margin: 0 0 40px
 
     a
       font-weight: 600
 
   form
-    margin-bottom: 30px
+    margin-bottom: 40px
     
     .select
+      margin-bottom: 20px
       max-width: 380px
       
       @media only screen and (max-width: $break-medium)
@@ -102,9 +107,7 @@
         max-width: 100%
       
     button
-      padding-left: 40px
-      padding-right: 40px
-      max-width: 380px
+      max-width: 50%
       width: 100%
       
       @media only screen and (max-width: $break-medium)
@@ -120,8 +123,31 @@
       margin-right: 20px
       position: relative
       
-      &.social_facebook
-        top: -2px
+      a
+        display: block
         
-      &:last-child
-        margin-right: 0
+        svg
+          +all-transitions
+          fill: $link-color
+          height: 20px
+          width: 20px
+          
+          &:hover
+            fill: $hover-color
+
+.mfp-arrow
+  background: #FFF !important
+  height: 45px
+  opacity: .4
+  width: 45px
+  
+  svg
+    fill: #000
+    height: 20px
+    width: 20px
+  
+  &:hover
+    opacity: 1
+    
+  @media (max-width: 900px)
+    +transform(scale(.8))

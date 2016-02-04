@@ -1,87 +1,83 @@
 @import 'config'
 
-.contact_fields
-  margin: 0 auto
-  max-width: 100%
-  width: 100%
-  
-  @media only screen and (max-width: $break-medium)
-    max-width: 100%
-  
-  li
-    +pie-clearfix
-    border-bottom: 1px solid $border-color
-    display: block
-    padding: 12px 0
-    position: relative
+.contact_form  
+  &>div  
+    margin-bottom: 20px
+    text-align: left
     
-    &:last-child
-      border-bottom: 0
-
-    > div
-      float: left
-      position: relative
-      width: 55%
-
-      @media only screen and (max-width: $break-small)
-        width: 100%
-
-      input[type='text']
-        padding-right: 143px
-        width: 100%
-
-    @media only screen and (max-width: $break-small)
-      margin: 0
-
-    label
-      float: left
-      font-family: $primary-font
-      font-size: 16px
-      line-height: 39px
-      padding-right: 15px
-      text-align: right
-      width: 25%
-
-      @media only screen and (max-width: $break-small)
-        clear: both
-        margin: 0
-        text-align: left
-        width: 100%
-
-    input[type='text'], textarea
-      float: left
-      height: 39px
-      width: 55%
-
-      @media only screen and (max-width: $break-small)
-        width: 100%
-
-    span
-      +pie-clearfix
-      font-size: 12px
-      display: inline-block
-      margin-top: 16px
-      white-space: nowrap
-
-    .captcha_image
-      +pie-clearfix
-      border: 2px solid $link-color
-      display: block
-      height: 39px
-      max-width: 128px
-      position: absolute
-      right: 0
+    @media screen and (max-width: $break-small)
+      margin-bottom: 15px
+    
+  .contact_send
+    @media screen and (max-width: $break-small)
       text-align: center
-
-      img
-        height: 100%
-        width: auto
-
-    textarea
-      height: 200px
-
-button.send_message
-  display: block
-  margin: 40px auto 70px
-  max-width: 200px
-  width: 100%
+      
+      button
+        margin-left: 0
+  
+  input, textarea
+    font-size: 14px
+    width: 100%
+  
+  textarea  
+    height: 300px
+  
+  label  
+    display: block
+    font-size: 15px
+    margin-bottom: 10px
+    
+  .contact_name, .contact_spam, .contact_send, .contact_email 
+    display: inline-block
+    position: relative
+    width: 48%
+    
+    @media screen and (max-width: $break-small)
+      display: block
+      width: 100%
+  
+  .contact_name
+    float: left
+    
+    @media screen and (max-width: $break-small)
+      float: none
+      
+  .contact_email
+    float: right
+    
+    @media screen and (max-width: $break-small)
+      float: none
+      
+  .contact_spam
+    width: 100%
+    
+    span
+      display: block
+      margin-top: 5px
+      
+    .captcha_holder
+      position: relative
+  
+  #captcha
+    &:active, &:focus
+      #captcha_image
+        border-left: 1px solid $hover-color
+  
+  #captcha_image
+    position: absolute
+    right: 2px
+    border-left: 1px solid $button-color
+    height: 48px
+    top: 1px
+    
+  .contact_send
+    text-align: center
+    width: 100%
+    
+    @media screen and (max-width: $break-small)
+      text-align: center
+    
+    button
+      margin: 40px auto
+      width: 320px
+      

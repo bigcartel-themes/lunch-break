@@ -1,11 +1,18 @@
 <h1>{{ page.name }}</h1>
+{% if errors != blank %}
+  <ul class="errors">
+    {% for error in errors %}
+      <li>{{ error }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
 {% if cart.items != blank %}
   <form method="post" action="/cart" id="cart_form" class="cart_form">
     <ul class="cart_items">
       {% for item in cart.items %}
         <li>
           <a href="{{ item.product.url }}" class="product_image">
-            <img src="{{ item.product.image | product_image_url | constrain: 200 }}" alt="{{ item.product.name }}">
+            <img src="{{ item.product.image | product_image_url }}?auto=format&w=200&h=200&fit=min" alt="{{ item.product.name }}">
           </a>
           <div class="product_details">
             <a href="{{ item.product.url }}">
@@ -29,13 +36,12 @@
       <div class="cart_shipping_discounts">
         {% if cart.discount.enabled %}
           <div class="cart_discounts">
-            <label class="cart_discount_label" for="cart_discount_code">Discount code</label>
-            <input autocomplete="off" id="cart_discount_code" name="cart[discount_code]" type="text" placeholder=""{% if cart.discount.code %} value="{{ cart.discount.code }}"{% endif %}>
+              <input autocomplete="off" id="cart_discount_code" name="cart[discount_code]" type="text" placeholder="Enter discount"{% if cart.discount.code %} value="{{ cart.discount.code }}"{% endif %}>
           </div>
         {% endif %}
+        
         {% if cart.shipping.enabled %}
           <div class="cart_shipping">
-            <label class="cart_shipping_label" for="country">Shipping</label>
             <div class="select">
               {{ store.country | country_select }}
               <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" width="10.001px" height="6px" viewBox="0 0 10.001 6" xml:space="preserve"><path class="down_arrow" d="M9.852 1.537c0.199-0.189 0.199-0.496 0-0.684L9.135 0.17C8.938-0.02 8.617-0.02 8.4 0.17L5.016 3.5 L1.582 0.143c-0.199-0.189-0.52-0.189-0.717 0L0.148 0.826c-0.197 0.188-0.197 0.5 0 0.684l4.508 4.3 c0.199 0.2 0.5 0.2 0.7 0L9.852 1.537z"/></svg>
@@ -75,7 +81,6 @@
       {% endif %}
       <h3>Total:  <span>{{ cart.total | money_with_sign }}</span></h3>
       <a class="button continue_shopping" href="/products">Continue Shopping</a>
-      <button type="submit" name="update" title="Checkout" class="update_btn">Update cart</button>
       <button type="submit" name="checkout" title="Checkout" class="checkout_btn">Checkout</button>
     </div>
   </form>

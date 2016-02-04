@@ -1,36 +1,50 @@
 <div class="custom_content">
+  {% if errors != blank %}
+    <ul class="errors">
+      {% for error in errors %}
+        <li>{{ error }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
   <h1>{{ page.name }}</h1>
   {% if contact.sent %}
     <p>Your message has been sent and we'll get back to you soon.</p>
   {% else %}
     <form method="post" action="/contact" class="contact_form">
-      <ul class="contact_fields">
-        <li>
-          <label for="name">Name</label>
-          {{ contact | contact_input: 'name' }}
-        </li>
-        <li>
-          <label for="email">Email</label>
-          {{ contact | contact_input: 'email' }}
-        </li>
-        <li>
-          <label for="subject">Subject</label>
-          {{ contact | contact_input: 'subject' }}
-        </li>
-        <li>
-          <label for="message">Message</label>
-          {{ contact | contact_input: 'message' }}
-        </li>
-        <li>
-          <label for="captcha">Spam check</label>
-          <div>
-            {{ contact | contact_input: 'captcha' }}
-            <div class="captcha_image">{{ contact.captcha }}</div>
-            <span>Please enter the characters from the image.</span>
-          </div>
-        </li>
-      </ul>
-      <button class="send_message" type="submit" name="submit" tabindex="6" title="Send Message">Send Message</button>
+      
+      <div class="contact_name">
+        <label for="name">Name</label>
+        {{ contact | contact_input: 'name', tabindex: 1 }}
+      </div>
+    
+      <div class="contact_email">
+        <label for="email">Email</label>
+        {{ contact | contact_input: 'email', tabindex: 2 }}
+      </div>
+    
+      <div class="contact_subject">
+        <label for="subject">Subject</label>
+        {{ contact | contact_input: 'subject', tabindex: 3 }}
+      </div>
+    
+      <div class="contact_message">
+        <label for="message">Message</label>
+        {{ contact | contact_input: 'message', tabindex: 4 }}
+      </div>
+    
+      <div class="contact_spam">
+        <label for="captcha">Spam check</label>
+        <div class="captcha_holder">
+          {{ contact | contact_input: 'captcha', tabindex: 5 }}
+          {{ contact.captcha }}
+        </div>
+        <span>Please enter the characters from the image.</span>
+      </div>
+      
+      <div class="contact_send">
+        <button type="submit" name="submit" title="Send message" tabindex="6">Send message</button>
+      </div>
     </form>
+
   {% endif %}
 </div>

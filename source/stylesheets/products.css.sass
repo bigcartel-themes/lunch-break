@@ -1,19 +1,25 @@
 @import 'config'
 
 ul.products
-  margin: 0 -10px 20px
+  margin: 0 -20px 20px
   padding: 0
   position: relative
+  
+  @media only screen and (max-width: $break-small)
+    margin: 0 -10px 10px
   
   li
     +border-radius(2px)
     float: left
-    padding: 0 10px 20px 10px
+    padding: 0 20px 40px 20px
     width: #{"{% if theme.products_per_row == 2 %} 50% {% elsif theme.products_per_row == 3 %} 33.33% {% else %} 25% {% endif %}"}
     
     @media only screen and (max-width: $break-medium)
       padding-bottom: 20px
       width: 50%
+      
+    @media only screen and (max-width: $break-small)
+      padding: 0 10px 20px 10px
     
     a
       display: block
@@ -21,7 +27,6 @@ ul.products
       
       h4
         font-size: 14px
-        font-weight: 600
         line-height: 1.3em
         margin-top: 10px
         
@@ -35,7 +40,6 @@ ul.products
         display: inline-block
         font-family: $secondary-font
         font-size: 14px
-        font-weight: 400
         line-height: 1.3em
         margin-top: 5px
         
@@ -47,7 +51,6 @@ ul.products
         background: $background-color
         color: $text-color
         font-size: 10px
-        font-weight: 600
         letter-spacing: .8px
         padding: 5px 10px
         position: absolute
@@ -81,8 +84,7 @@ ul.products
   +pie-clearfix
   border-top: 1px solid $border-color
   font-size: 17px
-  margin-top: 20px
-  padding-top: 20px
+  padding-top: 40px
   text-align: center
   width: 100%
   
@@ -99,6 +101,7 @@ ul.products
       
   .previous, .next
     svg
+      +all-transitions
       fill: $link-color
       height: 15px
       position: relative
@@ -108,16 +111,24 @@ ul.products
       
       @media only screen and (max-width: $break-small)
         height: 12px
+        
+    &:hover
+      svg
+        fill: $hover-color
   
   .previous
     float: left
     padding-left: 0
+    
+    svg
+      margin-right: 10px
 
   .next
     float: right
     padding-right: 0
     
     svg
+      margin-left: 10px
       right: 0
     
   .disabled
@@ -125,3 +136,7 @@ ul.products
 
 .home .pagination
   display: none
+
+p.no_products
+  @media only screen and (max-width: $break-medium)
+    text-align: center

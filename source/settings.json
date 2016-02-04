@@ -1,6 +1,6 @@
 {
   "name": "Lunch Break",
-  "version": "0.3.2",
+  "version": "0.3.12",
   "images": [
     {
       "variable": "header_logo",
@@ -24,7 +24,7 @@
     {
       "variable": "primary_font",
       "label": "Primary Font",
-      "default": "Arvo"
+      "default": "Open Sans"
     },
     {
       "variable": "secondary_font",
@@ -46,12 +46,12 @@
     {
       "variable": "header_color",
       "label": "Headers",
-      "default": "#355366"
+      "default": "#507B96"
     },
     {
       "variable": "text_color",
       "label": "Text",
-      "default": "#222222"
+      "default": "#646464"
     },
     {
       "variable": "link_color",
@@ -126,7 +126,7 @@
       "variable": "show_search",
       "label": "Show search",
       "type": "boolean",
-      "default": false,
+      "default": true,
       "description": "Displays a search field in the sidebar"
     },
     {
