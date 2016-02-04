@@ -24,12 +24,13 @@ body
       border: 1px solid $border-color
       margin: 0 auto
       max-width: 600px
-      padding: 40px 30px
+      padding: 40px
       text-align: center
       width: 100%
       
       h1
         margin: 0
+        min-height: 0
         
       p:last-child
         margin: 15px 0 0
@@ -156,7 +157,7 @@ h2
   +pie-clearfix
   margin: 0 auto
   max-width: 1300px
-  padding: 0 10px
+  padding: 0 20px
   width: 100%
   
   @media only screen and (max-width: $break-medium)
@@ -199,7 +200,7 @@ header
   +pie-clearfix
   float: #{"{% if theme.sidebar_position == 'right' %} left {% else %} right {% endif %}"}
   position: relative
-  padding-bottom: 100px
+  padding-bottom: 80px
   max-width: 76%
   width: 100%
   
@@ -211,13 +212,13 @@ header
 
   @media only screen and (max-width: $break-medium)
     float: none
-    padding-bottom: 30px
+    padding-bottom: 40px
     max-width: 100%
     
 .custom_content
   font-size: 13px
   line-height: 1.8em
-  margin: 0 auto
+  margin: 0 #{"{% if theme.sidebar_position == 'right' %} auto {% endif %}"}
   max-width: 700px
   width: 100%
 
@@ -235,6 +236,7 @@ aside
   +border-radius(2px)
   background-color: $background-color
   float: #{"{% if theme.sidebar_position == 'right' %} right {% else %} left {% endif %}"}
+  padding-bottom: 80px
   width: 16%
   
   @media only screen and (max-width: $break-extra-large)
