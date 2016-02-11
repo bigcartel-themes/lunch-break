@@ -19,11 +19,11 @@
       @media screen and (max-width: $break-extra-small)
         font-size: 15px
       
-      a.product_image
+      a.item_image
         +vertical-align
         float: left
         height: 100%
-        margin-right: 10px
+        margin-right: 20px
         max-width: 80px
         text-align: center
         width: 100%
@@ -38,7 +38,7 @@
           margin: 0
           width: 100%
         
-      .product_details
+      .item_details
         +vertical-align  
         float: left
         height: 80px
@@ -67,7 +67,7 @@
               font-size: 13px
               line-height: 14px
   
-      .product_actions
+      .item_actions
         +vertical-align
         float: right
         max-width: 400px
@@ -96,11 +96,8 @@
                 width: 46px
   
           &.price 
-            width: 160px
-            
-            @media screen and (max-width: $break-large)
-              width: 95px
-  
+            width: 95px
+
           &.remove 
             text-align: right
             width: 46px
@@ -113,10 +110,10 @@
                 +all-transitions
                 cursor: pointer
                 fill: $link-color
-                height: 16px
+                height: 15px
                 position: relative
                 top: 2px
-                width: 16px
+                width: 15px
 
                 @media screen and (max-width: $break-extra-small)
                   height: 14px
@@ -173,11 +170,11 @@
         background-color: $button-color
         border: 1px solid $button-color
         color: $background-color
-        max-width: 250px
-        width: 50%
+        max-width: 300px
+        width: 48%
         
         @media screen and (max-width: $break-medium)
-          margin: 10px 0 0
+          margin: 0 0 10px
           max-width: 100%
           width: 100%
         
@@ -189,20 +186,24 @@
     .continue_shopping
       float: left
       margin-left: 0
-      max-width: 250px
-      width: 50%
-      
+      max-width: 300px
+      width: 48%
+
       @media screen and (max-width: $break-medium)
+        border: 1px solid transparent
         float: none
-        margin: 0 0 10px
+        margin: 0
         max-width: 100%
         width: 100%
+        
+      @media screen and (max-width: $break-small)
+        font-size: 13px
         
   .cart_shipping_discounts  
     +pie-clearfix
     float: right
     margin: 40px 0
-    max-width: 40%
+    max-width: 300px
     width: 100%
     
     @media screen and (max-width: $break-medium)

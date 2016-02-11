@@ -58,7 +58,8 @@ p
 h1
   font-size: 26px
   line-height: 1.3em
-  margin-bottom: 15px
+  margin-bottom: 30px
+  margin-top: 10px
   min-height: 52px
   
   @media only screen and (max-width: $break-medium)
@@ -147,11 +148,24 @@ h2
     position: relative
     
     .cart_icon
+      +all-transitions
+      fill: $link-color
       height: 21px
-      width: 21px
-      position: absolute
       left: -28px
+      position: absolute
       top: -3px
+      width: 21px
+      
+    &:hover, &:focus, &:active
+      +all-transitions
+      
+      .cart_icon
+        fill: $hover-color
+      
+      
+      
+      
+      
 
 .wrap
   +pie-clearfix
@@ -216,8 +230,8 @@ header
     max-width: 100%
     
 .custom_content
-  font-size: 13px
-  line-height: 1.8em
+  font-size: 14px
+  line-height: 1.7em
   margin: 0 #{"{% if theme.sidebar_position == 'right' %} auto {% endif %}"}
   max-width: 700px
   width: 100%
@@ -282,7 +296,7 @@ aside
     font-size: 13px
     height: 50px
     margin-bottom: 40px
-    padding: 12px 15px
+    padding: 12px
     position: relative
     
     @media only screen and (max-width: $break-medium)
@@ -291,7 +305,7 @@ aside
     .cart_title
       +vertical-align
       float: left
-      margin-left: 24px
+      margin-left: 27px
       
     .cart_numbers
       +vertical-align
@@ -301,11 +315,9 @@ aside
       +vertical-align
       +all-transitions
       fill: $button-color
-      height: 18px
-      margin-top: -1px
-      margin-right: 10px
+      height: 20px
       position: absolute
-      width: 18px
+      width: 20px
       
     &:hover, &:focus, &:active
       +all-transitions
@@ -550,7 +562,11 @@ button, a.button
     z-index: 1
 
   &:hover
+    color: $hover-color
     border-color: $hover-color
 
+    select
+      color: $hover-color
+      
     svg
       fill: $hover-color

@@ -905,7 +905,7 @@ $.magnificPopup = {
 
 		overflowY: 'auto',
 
-		closeMarkup: '<button title="%title%" type="button" class="mfp-close"><svg version="1.1" class="remove_icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 75.6 612 651.2" enable-background="new 0 75.6 612 651.2" xml:space="preserve"><polygon points="612,175.7 517.4,75.6 306,303.7 94.6,75.6 0,175.7 213.8,401.2 0,626.6 94.6,726.8 306,498.6 517.4,726.8 612,626.6 398.2,401.2 "/></svg></button>',
+		closeMarkup: '<button title="%title%" type="button" class="mfp-close"><svg class="remove_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14.1 14.1" enable-background="new 0 0 14.1 14.1"><path d="M14.1 1.1l-1.1-1.1-6 6-5.9-6-1.1 1.1 6 5.9-6 6 1.1 1.1 5.9-6 6 6 1.1-1.1-6-6z"/></svg></button>',
 
 		tClose: 'Close (Esc)',
 
@@ -1766,8 +1766,8 @@ $.magnificPopup.registerModule('gallery', {
 			_mfpOn('BuildControls' + ns, function() {
 				if(mfp.items.length > 1 && gSt.arrows && !mfp.arrowLeft) {
 					var markup = gSt.arrowMarkup,
-						arrowLeft = mfp.arrowLeft = $( markup.replace(/%title%/gi, gSt.tPrev).replace(/%dir%/gi, 'left') ).addClass(PREVENT_CLOSE_CLASS).html('<svg xmlns="http://www.w3.org/2000/svg" class="mfp-prevent-close" width="5.959" height="10.001" viewBox="2.022 -2.021 5.959 10.001" enable-background="new 2.022 -2.021 5.959 10.001"><path d="M2.171 2.625c-.199.2-.199.501 0 .7l4.3 4.508c.184.196.496.196.684 0l.684-.718c.189-.196.189-.518 0-.717l-3.357-3.433 3.329-3.384c.19-.218.19-.538 0-.735l-.683-.717c-.188-.199-.495-.199-.685 0l-4.272 4.496z"/></svg>'),			
-						arrowRight = mfp.arrowRight = $( markup.replace(/%title%/gi, gSt.tNext).replace(/%dir%/gi, 'right') ).addClass(PREVENT_CLOSE_CLASS).html('<svg xmlns="http://www.w3.org/2000/svg" class="mfp-prevent-close" width="5.958" height="10.001" viewBox="2.022 -2.021 5.958 10.001" enable-background="new 2.022 -2.021 5.958 10.001"><path d="M3.558-1.871c-.189-.199-.496-.199-.684 0l-.684.717c-.19.197-.19.517 0 .735l3.33 3.384-3.356 3.433c-.189.199-.189.521 0 .717l.683.718c.188.196.5.196.684 0l4.3-4.508c.199-.199.199-.5 0-.7l-4.273-4.496z"/></svg>');
+						arrowLeft = mfp.arrowLeft = $( markup.replace(/%title%/gi, gSt.tPrev).replace(/%dir%/gi, 'left') ).addClass(PREVENT_CLOSE_CLASS).html('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7.6 15" enable-background="new 0 0 7.6 15"><path d="M6.4 15l-6.4-7.5 6.3-7.5 1.1 1-5.4 6.5 5.6 6.5z"/></svg>'),			
+						arrowRight = mfp.arrowRight = $( markup.replace(/%title%/gi, gSt.tNext).replace(/%dir%/gi, 'right') ).addClass(PREVENT_CLOSE_CLASS).html('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7.6 15" enable-background="new 0 0 7.6 15"><path d="M1.1 0l6.5 7.5-6.3 7.5-1.2-1 5.5-6.5-5.6-6.5z"/></svg>');
 
 					var eName = supportsFastClick ? 'mfpFastClick' : 'click';
 					arrowLeft[eName](function() {

@@ -2,12 +2,15 @@
 
 .product_images
   float: left
-  max-width: 50%
+  max-width: 55%
   width: 100%
   
   a
     display: block
     outline: none
+    
+  @media only screen and (max-width: $break-extra-large)
+    max-width: 50%
 
   @media only screen and (max-width: $break-medium)
     float: none
@@ -40,11 +43,16 @@
 .product_pricing, .product_details
   float: right
   padding-left: 40px
-  max-width: 50%
+  padding-right: 20px
+  max-width: 45%
   width: 100%
+  
+  @media only screen and (max-width: $break-extra-large)
+    max-width: 50%
   
   @media only screen and (max-width: $break-large)
     padding-left: 20px
+    padding-right: 0
 
   @media only screen and (max-width: $break-medium)
     float: none
@@ -54,10 +62,11 @@
 .product_pricing
 
   h1
-    margin: -.2em 0 10px
+    margin: -.2em 0 5px
     min-height: 0
 
   h2
+    color: $text-color
     font-family: $secondary-font
     font-size: 17px
     line-height: 18px
@@ -88,8 +97,8 @@
 .product_details
 
   .product_description
-    font-size: 13px
-    line-height: 1.8em
+    font-size: 14px
+    line-height: 1.7em
     margin: 0 0 40px
 
     a
@@ -100,18 +109,10 @@
     
     .select
       margin-bottom: 20px
-      max-width: 380px
-      
-      @media only screen and (max-width: $break-medium)
-        font-size: 16px
-        max-width: 100%
+      max-width: 100%
       
     button
-      max-width: 50%
       width: 100%
-      
-      @media only screen and (max-width: $break-medium)
-        max-width: 100%
 
   .share_buttons
 
@@ -124,6 +125,7 @@
       position: relative
       
       a
+        cursor: pointer
         display: block
         
         svg
@@ -131,10 +133,25 @@
           fill: $link-color
           height: 20px
           width: 20px
-          
-          &:hover
-            fill: $hover-color
 
+        &:hover
+          svg
+            fill: $hover-color
+            
+      &.social_pinterest
+      
+        a
+          display: inline-block
+          position: relative
+          
+          &:after
+            content: ""
+            position: absolute
+            top: 0
+            right: 0
+            bottom: 0
+            left: 0
+        
 .mfp-arrow
   background: #FFF !important
   height: 45px
@@ -151,3 +168,32 @@
     
   @media (max-width: 900px)
     +transform(scale(.8))
+    
+.facebook_popup_holder
+  +transform(translateX(-50%))
+  bottom: 200%
+  display: none
+  left: 50%
+  position: absolute
+  z-index: 1
+  
+.facebook_popup
+  +border-radius(2px)
+  +box-shadow(0px 0px 1px 1px $link-color)
+  background-color: $background-color
+  padding: 10px
+  position: relative
+
+.facebook_popup:after
+  +box-shadow(-1px 1px 1px 0 $link-color)
+  +transform(rotate(-45deg))
+  +transform-origin(0 0)
+  border: 10px solid black
+  border-color: transparent transparent $background-color $background-color
+  bottom: -10px
+  content: ""
+  height: 0
+  left: 44%
+  margin-left: -3px
+  position: absolute
+  width: 0

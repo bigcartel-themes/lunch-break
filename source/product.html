@@ -12,7 +12,6 @@
 		{% endcase %}
 	</h2>
 </section>
-
 <section class="product_images">
 	<a href="{{ product.image | product_image_url }}"><img src="{{ product.image | product_image_url }}" alt="Image of {{ product.name | escape }}" class="primary_image"></a>
 	{% if product.images.size > 1 %}
@@ -23,14 +22,12 @@
   	</ul>
 	{% endif %}
 </section>
-
 <section class="product_details">
 	<div class="product_description">
 		{% if product.description != blank %}
 			{{ product.description | paragraphs }}
 		{% endif %}
 	</div>
-
 	{% if product.status == 'active' %}
     <form method="post" action="/cart">
       {% if product.has_default_option %}
@@ -38,29 +35,28 @@
       {% else %}
         <div class="select">
           {{ product.options_in_stock | options_select }}
-          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" width="10.001px" height="6px" viewBox="0 0 10.001 6" xml:space="preserve"><path class="down_arrow" d="M9.852 1.537c0.199-0.189 0.199-0.496 0-0.684L9.135 0.17C8.938-0.02 8.617-0.02 8.4 0.17L5.016 3.5 L1.582 0.143c-0.199-0.189-0.52-0.189-0.717 0L0.148 0.826c-0.197 0.188-0.197 0.5 0 0.684l4.508 4.3 c0.199 0.2 0.5 0.2 0.7 0L9.852 1.537z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 7.6" enable-background="new 0 0 15 7.6"><path d="M15 1.1l-7.5 6.5-7.5-6.3 1-1.2 6.5 5.5 6.5-5.6z"/></svg>
         </div>
       {% endif %}
       <button class="button" name="submit" type="submit" title="Add to Cart">Add to Cart</button>
     </form>
 	{% endif %}
-
   <ul class="share_buttons">
-    <li class="social_facebook">
-      <a title="Facebook" href="{{ theme.facebook_url }}"><svg id="facebook-square" class="custom-icon" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100"><rect class="outer-shape" x="0" y="0" width="100" height="100" rx="20" ry="20" style="opacity: 0.01; fill: rgb(211, 24, 0);"></rect>
-	<path class="inner-shape" transform="translate(0,0) scale(1)" d="M82.667,1H17.335C8.351,1,1,8.351,1,17.336v65.329c0,8.99,7.351,16.335,16.334,16.335h65.332 C91.652,99.001,99,91.655,99,82.665V17.337C99,8.353,91.652,1.001,82.667,1L82.667,1z M84.318,50H68.375v42.875H50V50h-8.855V35.973 H50v-9.11c0-12.378,5.339-19.739,19.894-19.739h16.772V22.3H72.967c-4.066-0.007-4.57,2.12-4.57,6.078l-0.023,7.594H86.75 l-2.431,14.027V50z"></path>
-</svg></a>
-    </li>
     <li class="social_twitter">
-      <a title="Twitter" href="{{ theme.twitter_url }}"><svg id="twitter" class="custom-icon" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100"><rect class="outer-shape" x="0" y="0" width="100" height="100" rx="20" ry="20" style="opacity: 0.01; fill: rgb(211, 24, 0);"></rect>
-	<path class="inner-shape" transform="translate(0,0) scale(1)" d="M99.001,19.428c-3.606,1.608-7.48,2.695-11.547,3.184c4.15-2.503,7.338-6.466,8.841-11.189 c-3.885,2.318-8.187,4-12.768,4.908c-3.667-3.931-8.893-6.387-14.676-6.387c-11.104,0-20.107,9.054-20.107,20.223 c0,1.585,0.177,3.128,0.52,4.609c-16.71-0.845-31.525-8.895-41.442-21.131C6.092,16.633,5.1,20.107,5.1,23.813 c0,7.017,3.55,13.208,8.945,16.834c-3.296-0.104-6.397-1.014-9.106-2.529c-0.002,0.085-0.002,0.17-0.002,0.255 c0,9.799,6.931,17.972,16.129,19.831c-1.688,0.463-3.463,0.71-5.297,0.71c-1.296,0-2.555-0.127-3.783-0.363 c2.559,8.034,9.984,13.882,18.782,14.045c-6.881,5.424-15.551,8.657-24.971,8.657c-1.623,0-3.223-0.096-4.796-0.282 c8.898,5.738,19.467,9.087,30.82,9.087c36.982,0,57.206-30.817,57.206-57.543c0-0.877-0.02-1.748-0.059-2.617 C92.896,27.045,96.305,23.482,99.001,19.428z"></path>
-</svg></a>      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+      <a title="Tweet" href="http://twitter.com/home?status={{product.name}}%20-%20{{store.name}}%20{{store.url}}{{product.url}}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=no,scrollbars=no,height=400,width=600');return false;"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 150.857 612 490.298"><path d="M606 209c-22.2 9.7-46 16.4-70.8 19.4 25.4-15.3 45-39.6 54-68.5-23.7 14-50 24-78 30-22.5-24-54.4-39-89.8-39-68 0-123 55-123 123 0 9.3 1 19 3 28-102.2-5-192.8-54-253.4-129-11 18.3-17 39.5-17 62.2 0 43 21.5 81 54.6 103-20.2-.6-39.2-6-55.8-15.4v2c0 60 42.3 110 98.6 121.2-10.4 3-21.3 4.6-32.5 4.6-8 0-16-1-23-2.5 15 49.3 61 85 115 86-42 33.3-96 53-153 53-10 0-20-.5-30-1.7 55 35 119.5 55.5 189 55.5 226.3 0 350-188.5 350-352 0-5.5 0-10.8-.3-16 24-17.6 45-39.4 61.4-64z"/></svg>
+      </a>
+    </li>
+    <li class="social_facebook">
+      <a title="Like or Share" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="157.162 90 297.799 612"><path d="M369.036 193.795h85.68V90H333.662c-97.553 19.707-98.776 108.936-98.776 108.936V304.69h-77.724v102.937h77.724V702H343.21V407.383h102.08l9.67-102.938H343.945v-75.52c-.123-33.172 25.092-35.13 25.092-35.13z"/></svg></a>
+      <div class="facebook_popup_holder">
+        <div class="facebook_popup">
+          <div class="fb-like" data-href="{{ page.full_url }}" data-layout="button" data-action="like" data-show-faces="false" data-share="true"></div>
+        </div>
+      </div>
     </li>
     <li class="social_pinterest">
-      <a title="Pinterest" href="{{ theme.pinterest_url }}"><svg id="pinterest" class="custom-icon" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100"><rect class="outer-shape" x="0" y="0" width="100" height="100" rx="20" ry="20" style="opacity: 0.01; fill: rgb(211, 24, 0);"></rect>
-	<path class="inner-shape" transform="translate(0,0) scale(1)" d="M50.001,1.489C22.94,1.489,0.999,23.208,0.999,50c0,19.864,12.066,36.929,29.331,44.432 c-0.138-3.388-0.024-7.454,0.853-11.14c0.942-3.939,6.305-26.433,6.305-26.433s-1.566-3.098-1.566-7.676 c0-7.188,4.209-12.558,9.451-12.558c4.457,0,6.61,3.314,6.61,7.283c0,4.435-2.858,11.071-4.327,17.215 c-1.228,5.146,2.606,9.343,7.734,9.343c9.285,0,15.537-11.805,15.537-25.791c0-10.633-7.233-18.59-20.39-18.59 c-14.864,0-24.124,10.974-24.124,23.232c0,4.226,1.258,7.207,3.23,9.515c0.906,1.06,1.032,1.488,0.704,2.704 c-0.235,0.893-0.775,3.042-0.999,3.894c-0.326,1.229-1.332,1.668-2.453,1.214C20.05,63.877,16.861,56.455,16.861,48.11 c0-13.781,11.739-30.304,35.022-30.304c18.708,0,31.021,13.403,31.021,27.79c0,19.029-10.687,33.247-26.44,33.247 c-5.289,0-10.266-2.831-11.971-6.047c0,0-2.845,11.177-3.448,13.335c-1.039,3.74-3.072,7.478-4.932,10.392 C40.52,97.81,45.175,98.511,50,98.511c27.059,0,49-21.719,49-48.511S77.06,1.489,50.001,1.489z"></path>
-</svg></a>
-      <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
+      <a title="Pin" data-pin-custom="true" data-pin-do="buttonPin" href="https://www.pinterest.com/pin/create/button/?url={{ page.full_url }}&media={{ product.images.first.url }}&description={{ product.description | escape | truncate: 200 }}"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 12 16"><path d="M4.933 10.582c-.406 2.203-.9 4.314-2.366 5.418-.452-3.33.665-5.83 1.183-8.484C2.866 6 3.9 2.9 5.7 3.63c2.315.97-2 5.77.9 6.34 3 .6 4.225-5.4 2.365-7.36C6.285-.22 1.1 2.5 1.8 6.596c.154 1 1.1 1.3.4 2.658C.48 8.858-.034 7.45.032 5.574.138 2.504 2.692.352 5.255.054c3.24-.376 6.3 1.2 6.7 4.396.473 3.568-1.462 7.433-4.927 7.2C6.063 11.5 5.7 11 4.9 10.582z"/></svg>
+      </a>
     </li>
   </ul>
 </section>

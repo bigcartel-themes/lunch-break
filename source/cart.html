@@ -11,10 +11,10 @@
     <ul class="cart_items">
       {% for item in cart.items %}
         <li>
-          <a href="{{ item.product.url }}" class="product_image">
+          <a href="{{ item.product.url }}" class="item_image">
             <img src="{{ item.product.image | product_image_url }}?auto=format&w=200&h=200&fit=min" alt="{{ item.product.name }}">
           </a>
-          <div class="product_details">
+          <div class="item_details">
             <a href="{{ item.product.url }}">
               {{ item.product.name }}
               {% unless item.product.has_default_option %}
@@ -22,11 +22,11 @@
               {% endunless %}
             </a>
           </div>
-          <div class="product_actions">
+          <div class="item_actions">
             <div class="quantity">{{ item | item_quantity_input }}</div>
             <div class="price">{{ item.price | money_with_sign }}</div>
             <div class="remove">
-              <a href="#" data-item-id="{{ item.id }}"><svg version="1.1" class="remove_icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 75.6 612 651.2" enable-background="new 0 75.6 612 651.2" xml:space="preserve"><polygon points="612,175.7 517.4,75.6 306,303.7 94.6,75.6 0,175.7 213.8,401.2 0,626.6 94.6,726.8 306,498.6 517.4,726.8 612,626.6 398.2,401.2 "/></svg></a>
+              <a href="#" data-item-id="{{ item.id }}"><svg class="remove_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14.1 14.1" enable-background="new 0 0 14.1 14.1"><path d="M14.1 1.1l-1.1-1.1-6 6-5.9-6-1.1 1.1 6 5.9-6 6 1.1 1.1 5.9-6 6 6 1.1-1.1-6-6z"/></svg></a>
             </div>
           </div>
         </li>
@@ -44,16 +44,14 @@
           <div class="cart_shipping">
             <div class="select">
               {{ store.country | country_select }}
-              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" width="10.001px" height="6px" viewBox="0 0 10.001 6" xml:space="preserve"><path class="down_arrow" d="M9.852 1.537c0.199-0.189 0.199-0.496 0-0.684L9.135 0.17C8.938-0.02 8.617-0.02 8.4 0.17L5.016 3.5 L1.582 0.143c-0.199-0.189-0.52-0.189-0.717 0L0.148 0.826c-0.197 0.188-0.197 0.5 0 0.684l4.508 4.3 c0.199 0.2 0.5 0.2 0.7 0L9.852 1.537z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 7.6" enable-background="new 0 0 15 7.6"><path d="M15 1.1l-7.5 6.5-7.5-6.3 1-1.2 6.5 5.5 6.5-5.6z"/></svg>
             </div>
           </div>
         {% endif %}
       </div>
     {% endif %}
-    
     <div class="cart_footer">
       {% if cart.shipping.enabled or cart.discount.enabled %}
-  
         {% if cart.shipping.enabled %}
           <h4>
             Shipping:
@@ -68,7 +66,6 @@
             {% endif %}
           </h4>
         {% endif %}
-        
         {% if cart.discount.enabled %}
           {% if cart.discount.pending %}
           {% elsif cart.discount.free_shipping %}
@@ -77,11 +74,10 @@
             <h4>Discount: <span>- {{ cart.discount.amount | money_with_sign }}</span></h4>
           {% endif %}
         {% endif %}
-        
       {% endif %}
       <h3>Total:  <span>{{ cart.total | money_with_sign }}</span></h3>
-      <a class="button continue_shopping" href="/products">Continue Shopping</a>
       <button type="submit" name="checkout" title="Checkout" class="checkout_btn">Checkout</button>
+      <a class="button continue_shopping" href="/products">Continue Shopping</a>
     </div>
   </form>
 {% else %}
