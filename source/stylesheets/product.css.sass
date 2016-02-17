@@ -9,9 +9,6 @@
     display: block
     outline: none
     
-  @media only screen and (max-width: $break-extra-large)
-    max-width: 50%
-
   @media only screen and (max-width: $break-medium)
     float: none
     margin: 20px 0 40px
@@ -46,10 +43,7 @@
   padding-right: 20px
   max-width: 45%
   width: 100%
-  
-  @media only screen and (max-width: $break-extra-large)
-    max-width: 50%
-  
+
   @media only screen and (max-width: $break-large)
     padding-left: 20px
     padding-right: 0
@@ -168,6 +162,21 @@
     
   @media (max-width: 900px)
     +transform(scale(.8))
+
+.mfp-preloader
+  +animation(loading-animation 1.0s infinite ease-in-out)
+  +border-radius(100%)
+  background: #FFF
+  height: 40px
+  margin: 0 auto
+  width: 40px
+
++keyframes(loading-animation)
+  0%
+    +transform(scale(0))
+  100%
+    +transform(scale(1.0))
+    opacity: 0
     
 .facebook_popup_holder
   +transform(translateX(-50%))
