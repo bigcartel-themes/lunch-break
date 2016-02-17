@@ -1,26 +1,24 @@
 @import 'config'
 
 ul.products
-  margin: 0 -20px 20px
+  margin: 0 -10px 10px
   padding: 0
   position: relative
-  
-  @media only screen and (max-width: $break-small)
-    margin: 0 -10px 10px
-  
+
   li
     +border-radius(2px)
     float: left
-    padding: 0 20px 40px 20px
+    list-style: none
+    padding: 0 10px 40px 10px
     width: #{"{% if theme.products_per_row == 2 %} 50% {% elsif theme.products_per_row == 3 %} 33.33% {% else %} 25% {% endif %}"}
     
+    @media only screen and (max-width: $break-large)
+      width: #{"{% if theme.products_per_row == 2 %} 50% {% elsif theme.products_per_row == 3 %} 33.33% {% else %} 33.33% {% endif %}"}
+    
     @media only screen and (max-width: $break-medium)
-      padding-bottom: 20px
+      padding-bottom: 30px
       width: 50%
       
-    @media only screen and (max-width: $break-small)
-      padding: 0 10px 20px 10px
-    
     a
       display: block
       position: relative
@@ -30,23 +28,19 @@ ul.products
         line-height: 1.3em
         margin-top: 10px
         
-        @media only screen and (max-width: $break-medium)
-          font-size: 14px
-          line-height: 1.3em
-
       h5
         +all-transitions
         color: $text-color
         display: inline-block
         font-family: $secondary-font
-        font-size: 14px
+        font-size: 13px
         line-height: 1.3em
         margin-top: 5px
         
         @media only screen and (max-width: $break-small)
           font-size: 12px
       
-      em
+      .status
         +border-radius(2px)
         background: $background-color
         color: $text-color
@@ -93,7 +87,7 @@ ul.products
   
   span, a
     display: inline-block
-    padding: 2px 6px
+    padding: 2px 7px
     
     i
       font-size: 12px
@@ -103,10 +97,10 @@ ul.products
     svg
       +all-transitions
       fill: $link-color
-      height: 15px
+      height: 14px
       position: relative
       right: 2px
-      top: 1px
+      top: 0
       width: 13px
       
       @media only screen and (max-width: $break-small)
@@ -121,7 +115,7 @@ ul.products
     padding-left: 0
     
     svg
-      margin-right: 10px
+      margin-right: 5px
       
       @media only screen and (max-width: $break-small)
         margin-right: 0
@@ -131,7 +125,7 @@ ul.products
     padding-right: 0
     
     svg
-      margin-left: 10px
+      margin-left: 5px
       right: 0
       
       @media only screen and (max-width: $break-small)
