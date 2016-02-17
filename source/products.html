@@ -10,11 +10,11 @@
           <h5>{{ product.default_price | money_with_sign }}</h5>
 					{% case product.status %}
 						{% when 'active' %}
-							{% if product.on_sale %}<em>On Sale</em>{% endif %}
+							{% if product.on_sale %}<span class="status">On Sale</span>{% endif %}
 						{% when 'sold-out' %}
-							<em>Sold Out</em>
+							<span class="status">Sold Out</span>
 						{% when 'coming-soon' %}
-							<em>Coming Soon</em>
+							<span class="status">Coming Soon</span>
 					{% endcase %}
         </a>
       </li>

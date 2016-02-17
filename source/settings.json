@@ -1,6 +1,6 @@
 {
   "name": "Lunch Break",
-  "version": "0.3.26",
+  "version": "0.5.1",
   "images": [
     {
       "variable": "header_logo",
@@ -40,7 +40,7 @@
     },
     {
       "variable": "secondary_background",
-      "label": "Header and Footer Background",
+      "label": "Header & Footer Background",
       "default": "#F7F7F7"
     },
     {
@@ -88,7 +88,7 @@
     },
     {
       "variable": "header_position",
-      "label": "Header position",
+      "label": "Header alignment",
       "type": "select",
       "options": [
         ["Left", "left"],
@@ -96,7 +96,7 @@
         ["Right", "right"]
       ],
       "default": "center",
-      "description": "Sets the position of your store name or header image at the top of the page"
+      "description": "Sets the position of your store name or header logo"
     },
     {
       "variable": "featured_products",

@@ -10,14 +10,11 @@
       +pie-clearfix
       border-bottom: 1px solid $border-color
       display: block
-      font-size: 15px
+      font-size: 14px
       height: 120px
       line-height: 15px
       overflow: hidden
       padding: 20px 0
-
-      @media screen and (max-width: $break-extra-small)
-        font-size: 15px
       
       a.item_image
         +vertical-align
@@ -56,16 +53,15 @@
           color: $header-color
           display: block
         
-          span 
+          span
+            color: $text-color
             display: block
             font-size: 13px
-            font-weight: normal
-            line-height: 18px
-            margin-top: 3px
+            line-height: 1.3em
+            margin-top: 5px
             
-            @media screen and (max-width: $break-extra-small)
-              font-size: 13px
-              line-height: 14px
+            @media screen and (max-width: $break-small)
+              font-size: 12px
   
       .item_actions
         +vertical-align
@@ -74,7 +70,7 @@
         text-align: right
         
         @media screen and (max-width: $break-medium)
-          max-width: 58%
+          max-width: 55%
           
         div 
           display: inline-block
@@ -85,18 +81,16 @@
             input[type='text']
               +border-radius(2px)
               height: 46px
-              font-size: 15px
+              font-size: 14px
               text-align: center
               text-indent: 0
               width: 56px
               
               @media screen and (max-width: $break-extra-small)
-                font-size: 16px
-                height: 46px
-                width: 46px
+                width: 56px
   
           &.price 
-            width: 95px
+            width: 85px
 
           &.remove 
             text-align: right
@@ -123,6 +117,7 @@
                 fill: $hover-color
                 
       @media screen and (max-width: $break-small)
+        font-size: 13px
         height: 100px
   
   .cart_footer
@@ -143,7 +138,7 @@
     
     h4
       color: $text-color
-      font-size: 15px
+      font-size: 14px
       margin-bottom: 10px
       text-align: right
       
@@ -249,5 +244,7 @@
       margin-top: 20px
 
 .empty_cart
+  line-height: 1.3em
+  
   @media only screen and (max-width: $break-medium)
     text-align: center

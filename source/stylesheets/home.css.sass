@@ -7,6 +7,10 @@
   height: 100%
     
   .flex-nav
+    list-style: none
+  
+    @media screen and (max-width: $break-medium)
+      display: none
     
     li
       +all-transitions
@@ -50,11 +54,11 @@
     border: 1px solid $link-color
   
   .flex-control-paging li a.flex-active
-    background: $hover-color
-    border: 1px solid $hover-color
+    background: $link-color
+    border: 1px solid $link-color
     
 .flex-control-nav
-  bottom: -30px
+  bottom: -40px
   
   li
     margin: 0 5px

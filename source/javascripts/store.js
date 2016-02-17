@@ -1,6 +1,7 @@
 $(function() {
   $('.product_images a').magnificPopup({
     type:'image',
+    tLoading: '',
     gallery: {
       enabled: true
     }
@@ -15,11 +16,11 @@ $(function() {
     $(this).closest('li').find('input[id$=_qty]').val(0).closest('form').submit();
   });
   $('[name*="cart[update]"], [name="cart[shipping_country_id]"]').on('change',function() {
-    
     $(this).closest('form').submit();
   });
   $('[name="cart[discount_code]"]').on('change',function() { 
-    $(this).closest('form').append('<input type="hidden" name="update" value="1">');
+    $(this).closest('.checkout_btn').attr('name','update');
+    $(this).closest('form').submit();
   });
   $('.search_form input')
     .on('focus', function() { 
