@@ -1,6 +1,6 @@
 {
   "name": "Lunch Break",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "images": [
     {
       "variable": "header_logo",
@@ -212,9 +212,10 @@
     "input_background_color": "#ffffff",
     "input_error_background_color": "#ffffff",
     "input_border_radius": "2px",
+    "input_border_width": "1px",
     "input_font": "{{ secondary_font }}",
     "button_color": "{{ button_color }}",
-    "button_border_width": "2px",
+    "button_border_width": "1px",
     "button_border_radius": "2px",
     "button_font": "{{ secondary_font }}",
     "button_hover_color": "{{ secondary_background }}",
@@ -222,6 +223,7 @@
     "button_hover_background_color": "{{ link_hover_color }}",
     "button_border_color": "{{ button_color }}",
     "button_hover_border_color": "{{ link_hover_color }}",
+    "button_text_transform": "none",
     "link_color": "{{ link_color }}",
     "link_hover_color": "{{ link_hover_color }}",
     "step_header_font_size": "18px",
