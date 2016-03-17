@@ -1,6 +1,6 @@
 {
   "name": "Lunch Break",
-  "version": "0.5.5",
+  "version": "0.6.0",
   "images": [
     {
       "variable": "header_logo",
@@ -14,9 +14,9 @@
       "label": "Homepage slideshow",
       "description": "1000px by 400px images recommended",
       "defaults": [
-        "slide1.jpg",
-        "slide2.jpg",
-        "slide3.jpg"
+        "slideshow01.jpg",
+        "slideshow02.jpg",
+        "slideshow03.jpg"
       ]
     }
   ],

@@ -2,13 +2,10 @@
 <html>
   <head>
     <title>{{ store.name }} &mdash; {{ page.name }}</title>
-    
     <meta charset="utf-8">
+    <meta name="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" content="viewport">
     <meta name="description" content="{{ page.meta_description }}">
-    <meta name="keywords" content="{{ page.meta_keywords }}">
-    
     <link href="{{ theme | theme_css_url }}" media="screen" rel="stylesheet" type="text/css">
-    
     <script type="text/javascript" charset="utf-8">
       function checkout() {
         if(top != self) {
@@ -18,10 +15,8 @@
         }
       }
     </script>  
-    
     {{ head_content }}
   </head>
-  
   <body id="{{ page.permalink }}" class="standalone {{ page.category }}" onload="checkout();">
     <div class="message_holder">
 	    <h1>One moment&hellip;</h1>

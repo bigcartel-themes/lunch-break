@@ -30,11 +30,9 @@ $(function() {
       $(this).parent().removeClass('focus');
       $(this).val('');
   });
-  $(window).resize(function() { 
+  $(window).on("load resize", function() {
     $('body').css('margin-bottom', $('footer').height());
   });
-  $('body').css('margin-bottom', $('footer').height());
-  
   $('.social_facebook').click(function() { 
     $('.facebook_popup_holder').fadeToggle('fast');
     return false;

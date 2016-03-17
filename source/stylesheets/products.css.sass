@@ -10,6 +10,7 @@ ul.products
     float: left
     list-style: none
     padding: 0 10px 40px 10px
+    position: relative
     width: #{"{% if theme.products_per_row == 2 %} 50% {% elsif theme.products_per_row == 3 %} 33.33% {% else %} 25% {% endif %}"}
     
     @media only screen and (max-width: $break-large)
@@ -22,7 +23,18 @@ ul.products
     a
       display: block
       position: relative
-      
+      text-align: center
+
+      img
+        +all-transitions
+        +border-radius(2px)
+        display: block
+        height: auto
+        width: auto
+        
+        &:hover
+          opacity: .85
+          
       h4
         font-size: 14px
         line-height: 1.3em
@@ -52,15 +64,6 @@ ul.products
         text-transform: uppercase
         top: 10px
 
-      img
-        +border-radius(2px)
-        +all-transitions
-        display: block
-        width: 100%
-        
-        &:hover
-          opacity: .85
-          
     &:hover
       h4
         color: $hover-color
