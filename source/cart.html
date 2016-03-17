@@ -12,7 +12,7 @@
       {% for item in cart.items %}
         <li>
           <a href="{{ item.product.url }}" class="item_image">
-            <img src="{{ item.product.image | product_image_url }}?auto=format&w=200&h=200&fit=min" alt="{{ item.product.name }}">
+            <img src="{{ item.product.image | product_image_url | constrain: 200, 200 }}" alt="{{ item.product.name }}">
           </a>
           <div class="item_details">
             <a href="{{ item.product.url }}">
