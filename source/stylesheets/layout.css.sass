@@ -21,6 +21,9 @@ body
     background-color: $secondary-background
     padding: 100px 15px
     
+    @media screen and (max-width: $break-medium)
+      padding: 60px 15px
+    
     .message_holder
       +border-radius(2px)
       background-color: $background-color
@@ -30,6 +33,9 @@ body
       padding: 40px
       text-align: center
       width: 100%
+      
+      @media screen and (max-width: $break-medium)
+        padding: 20px
       
       h1
         margin: 0

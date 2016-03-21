@@ -1,6 +1,6 @@
 {
   "name": "Lunch Break",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "images": [
     {
       "variable": "header_logo",
@@ -105,6 +105,14 @@
       "options": "0..100",
       "default": 12,
       "description": "The number of products displayed on the home page"
+    },
+    {
+      "variable": "featured_order",
+      "label": "Featured products order",
+      "type": "select",
+      "options": "product_orders",
+      "default": "position",
+      "description": "The order of products on the Home page"
     },
     {
       "variable": "products_per_page",

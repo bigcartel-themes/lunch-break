@@ -19,11 +19,15 @@
       a.item_image
         +vertical-align
         float: left
-        height: 100%
+        height: 80px
         margin-right: 20px
         max-width: 80px
+        overflow: hidden
         text-align: center
         width: 100%
+        
+        @media screen and (max-width: $break-medium)
+          max-width: 60px
 
         @media screen and (max-width: $break-extra-small)
           display: none
@@ -31,8 +35,8 @@
         img
           +vertical-align
           display: block
-          height: 100%
-          margin: 0
+          height: auto
+          margin: 0 auto
           width: 100%
         
       .item_details
