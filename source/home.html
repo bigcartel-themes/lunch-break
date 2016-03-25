@@ -17,7 +17,7 @@
     </div>
   {% else %}
     <div class="home_image">
-      {% for image in theme.image_sets.slideshow_images limit: 1 %}<img src="{{ image.url | constrain: 1300 }}">{% endfor %}
+      {% for image in theme.image_sets.slideshow_images limit: 1 %}<img src="{{ image.url | constrain: 1300 }}" alt="Welcome image">{% endfor %}
     </div>
   {% endif %}
 {% endif %}
