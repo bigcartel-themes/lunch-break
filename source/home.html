@@ -1,19 +1,25 @@
 {% if theme.image_sets.slideshow_images.size > 0 %}
-  <div class="flexslider">
-    <ul class="slides">
-      {% for image in theme.image_sets.slideshow_images %}
-        <li><img src="{{ image.url | constrain: 1300 }}" alt="Slideshow image {{ forloop.index }}"></li>
-      {% endfor %}
-    </ul>
-    <ul class="flex-nav">
-      <li class="flex-nav-prev">
-        <a class="flex-prev" href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7.6 15" enable-background="new 0 0 7.6 15"><path d="M6.4 15l-6.4-7.5 6.3-7.5 1.1 1-5.4 6.5 5.6 6.5z"/></svg></a>
-      </li>
-      <li class="flex-nav-next">
-        <a class="flex-next" href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7.6 15" enable-background="new 0 0 7.6 15"><path d="M1.1 0l6.5 7.5-6.3 7.5-1.2-1 5.5-6.5-5.6-6.5z"/></svg></a>
-      </li>
-    </ul>
-  </div>
+  {% if theme.image_sets.slideshow_images.size > 1 %}
+    <div class="flexslider">
+      <ul class="slides">
+        {% for image in theme.image_sets.slideshow_images %}
+          <li><img src="{{ image.url | constrain: 1300 }}" alt="Slideshow image {{ forloop.index }}"></li>
+        {% endfor %}
+      </ul>
+      <ul class="flex-nav">
+        <li class="flex-nav-prev">
+          <a class="flex-prev" href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7.6 15" enable-background="new 0 0 7.6 15"><path d="M6.4 15l-6.4-7.5 6.3-7.5 1.1 1-5.4 6.5 5.6 6.5z"/></svg></a>
+        </li>
+        <li class="flex-nav-next">
+          <a class="flex-next" href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7.6 15" enable-background="new 0 0 7.6 15"><path d="M1.1 0l6.5 7.5-6.3 7.5-1.2-1 5.5-6.5-5.6-6.5z"/></svg></a>
+        </li>
+      </ul>
+    </div>
+  {% else %}
+    <div class="home_image">
+      {% for image in theme.image_sets.slideshow_images limit: 1 %}<img src="{{ image.url | constrain: 1300 }}">{% endfor %}
+    </div>
+  {% endif %}
 {% endif %}
 {% if theme.featured_products > 0 %}
   {% paginate products from products.current by theme.featured_products order:theme.featured_order %}
