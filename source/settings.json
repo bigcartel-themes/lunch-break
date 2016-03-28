@@ -1,23 +1,18 @@
 {
   "name": "Lunch Break",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "images": [
     {
       "variable": "header_logo",
-      "label": "Logo",
-      "description": "Adds your logo to the header"
+      "label": "Header image",
+      "description": "Good for an image up to 1300 by 250 pixels"
     }
   ],
   "image_sets": [
     {
       "variable": "slideshow_images",
       "label": "Homepage slideshow",
-      "description": "1000px by 400px images recommended",
-      "defaults": [
-        "slideshow01.jpg",
-        "slideshow02.jpg",
-        "slideshow03.jpg"
-      ]
+      "description": "1000px by 400px images recommended"
     }
   ],
   "fonts": [

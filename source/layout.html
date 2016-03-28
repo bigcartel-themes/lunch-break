@@ -41,7 +41,7 @@
   		<div class="wrap">
         <a href="/" title="{{ store.name | escape }}" class="store_header {% if theme.header_logo != blank %}logo{% else %}text{% endif %}">
       		{% if theme.header_logo != blank %}
-      			<img src="{{ theme.images.header_logo.url | constrain: 1200 }}" alt="{{ store.name }}">
+      			<img src="{{ theme.images.header_logo.url | constrain: 1300, 250 }}" alt="{{ store.name }}">
       		{% else %}
       			{{ store.name }}
       		{% endif %}
