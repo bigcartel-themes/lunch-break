@@ -3,18 +3,7 @@
   <head>
     <title>{{ store.name }} &mdash; {% if page.full_url contains "search=" %}Product Search{% else %}{{ page.name }}{% endif %}</title>
     <meta charset="utf-8">
-    <meta name="description" content="{{ page.meta_description }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-    <meta property="og:title" content="{{ page.name }}">
-    <meta property="og:site_name" content="{{ store.name | escape }}">
-    {% if product != blank and page.full_url contains '/product/' %}
-      <meta property="og:type" content="product">
-      <meta property="og:url" content="{{ page.full_url }}">
-      <meta property="og:image" content="{{ product.image.url | constrain: 1000 }}">
-      <meta property="og:description" content="{{ product.description | escape }}" />
-      <meta property="og:price:amount" content="{{ product.default_price }}" />
-      <meta property="og:price:currency" content="{{ store.currency.code }}" />
-    {% endif %}
     <link href="{{ theme | theme_css_url }}" media="screen" rel="stylesheet" type="text/css">
     {{ head_content }}
   </head>
