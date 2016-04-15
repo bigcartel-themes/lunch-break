@@ -2,8 +2,10 @@ $(function() {
   $('.product_images a').magnificPopup({
     type:'image',
     tLoading: '',
+    closeMarkup: '<button title="%title%" type="button" class="mfp-close"><svg class="mfp-close remove_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14.1 14.1" enable-background="new 0 0 14.1 14.1"><path class="mfp-close" d="M14.1 1.1l-1.1-1.1-6 6-5.9-6-1.1 1.1 6 5.9-6 6 1.1 1.1 5.9-6 6 6 1.1-1.1-6-6z"/></svg></button>',
     gallery: {
-      enabled: true
+      enabled: true,
+      arrowMarkup: '<button title="%title%" type="button" class="mfp-arrow mfp-prevent-close mfp-arrow-%dir%"><svg class="mfp-prevent-close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7.6 15" enable-background="new 0 0 7.6 15"><path class="mfp-prevent-close" d="M6.4 15l-6.4-7.5 6.3-7.5 1.1 1-5.4 6.5 5.6 6.5z"/></svg></button>'
     }
   });
   $('.open_menu').click(function(e) {

@@ -145,39 +145,7 @@
             right: 0
             bottom: 0
             left: 0
-        
-.mfp-arrow
-  background: #FFF !important
-  height: 45px
-  opacity: .4
-  width: 45px
-  
-  svg
-    fill: #000
-    height: 20px
-    width: 20px
-  
-  &:hover
-    opacity: 1
-    
-  @media (max-width: 900px)
-    +transform(scale(.8))
-
-.mfp-preloader
-  +animation(loading-animation 1.0s infinite ease-in-out)
-  +border-radius(100%)
-  background: #FFF
-  height: 40px
-  margin: 0 auto
-  width: 40px
-
-+keyframes(loading-animation)
-  0%
-    +transform(scale(0))
-  100%
-    +transform(scale(1.0))
-    opacity: 0
-    
+            
 .facebook_popup_holder
   +transform(translateX(-50%))
   bottom: 200%
@@ -206,3 +174,86 @@
   margin-left: -3px
   position: absolute
   width: 0
+  
+.mfp-bottom-bar, .mfp-close
+  top: 0
+
+img.mfp-img
+  padding: 0
+  
+.mfp-arrow-right svg
+  +rotate(180deg)
+  
+.mfp-arrow:before, .mfp-arrow:after
+  border: none
+  margin: 0
+
+.mfp-image-holder button.mfp-close
+  height: 20px
+  padding: 0
+  right: 0
+  top: -30px
+  width: 20px
+  
+  &:hover, &:focus, &:active
+    background: none
+    border: none
+    opacity: 1
+    
+  svg
+    display: block
+    fill: #FFF
+    height: 100%
+    padding-right: 0
+    right: 0
+    width: 100%
+  
+button.mfp-arrow
+  +border-radius(2px)
+  background: #FFF
+  height: 60px
+  margin-top: -30px
+  width: 60px
+  
+  &:hover
+    border: none
+    
+  &:active
+    margin-top: -30px
+  
+  svg
+    height: 100%
+    padding: 20px
+    width: 100%
+  
+.mfp-arrow-left
+  left: 20px
+  
+  @media screen and (max-width: $break-small)
+    left: 10px
+  
+.mfp-arrow-right
+  right: 20px
+  
+  @media screen and (max-width: $break-small)
+    right: 10px
+    
+.mfp-counter
+  font-size: 16px
+  left: 0
+  top: 9px
+  
+.mfp-preloader
+  +animation(loading-animation 1.0s infinite ease-in-out)
+  +border-radius(100%)
+  background: #FFF
+  height: 40px
+  margin: 0 auto
+  width: 40px
+
++keyframes(loading-animation)
+  0%
+    +transform(scale(0))
+  100%
+    +transform(scale(1.0))
+    opacity: 0
