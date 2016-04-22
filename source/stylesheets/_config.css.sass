@@ -1,8 +1,8 @@
 @import 'compass/css3'
 @import 'compass'
 
-$primary-font: #{'{{ theme.primary_font }}'}
-$secondary-font: #{'{{ theme.secondary_font }}'}
+$primary-font: #{"{{ theme.primary_font | font_family }}"}
+$secondary-font: #{"{{ theme.secondary_font | font_family }}"}
 $background-color: #{'{{ theme.background_color }}'}
 $secondary-background: #{'{{ theme.secondary_background }}'}
 $header-color: #{'{{ theme.header_color }}'}
