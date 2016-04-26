@@ -29,17 +29,22 @@ ul.products
       img
         +all-transitions
         +border-radius(2px)
+        +filter(blur(0))
         display: block
         height: auto
         width: auto
         
-        &:hover
-          opacity: .85
+      &:hover img
+        opacity: .85
           
       h4
+        +all-transitions
         font-size: 14px
         line-height: 1.3em
         margin-top: 10px
+        
+      &:hover h4
+        color: $hover-color
         
       h5
         +all-transitions
@@ -64,10 +69,6 @@ ul.products
         right: 10px
         text-transform: uppercase
         top: 10px
-
-    &:hover
-      h4
-        color: $hover-color
 
 .flexbox ul.products
   @include flexbox
