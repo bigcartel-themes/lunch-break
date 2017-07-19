@@ -33,13 +33,4 @@ $(function() {
   $(window).on("load resize", function() {
     $('body').css('margin-bottom', $('footer').height());
   });
-  $('.social_facebook').click(function() { 
-    $('.facebook_popup_holder').fadeToggle('fast');
-    return false;
-  });
-  $('body').click(function() { 
-    if (!$(event.target).closest('.social_facebook').length) {
-      $('.facebook_popup_holder').fadeOut('fast');
-    }
-  });
 });
