@@ -31,7 +31,7 @@
           <a href="{{ product.url }}">
             <img alt="Image of {{ product.name | escape }}" src="{{ product.image | product_image_url | constrain: 600, 600 }}">
             <h4 class="product_name">{{ product.name }}</h4>
-            <h5>{{ product.default_price | money_with_sign }}</h5>
+            <h5>{{ product.default_price | money: theme.money_format }}</h5>
   					{% case product.status %}
   						{% when 'active' %}
   							{% if product.on_sale %}<span class="status">On Sale</span>{% endif %}

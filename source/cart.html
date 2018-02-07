@@ -24,7 +24,7 @@
           </div>
           <div class="item_actions">
             <div class="quantity">{{ item | item_quantity_input }}</div>
-            <div class="price">{{ item.price | money_with_sign }}</div>
+            <div class="price">{{ item.price | money: theme.money_format }}</div>
             <div class="remove">
               <a href="#" data-item-id="{{ item.id }}"><svg class="remove_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14.1 14.1" enable-background="new 0 0 14.1 14.1"><path d="M14.1 1.1l-1.1-1.1-6 6-5.9-6-1.1 1.1 6 5.9-6 6 1.1 1.1 5.9-6 6 6 1.1-1.1-6-6z"/></svg></a>
             </div>
@@ -61,7 +61,7 @@
                 <span class="small_message">Select country</span>
               {% endif %}
             {% else %}
-              <span>{{ cart.shipping.amount | money_with_sign }}</span>
+              <span>{{ cart.shipping.amount | money: theme.money_format }}</span>
             {% endif %}
           </h4>
         {% endif %}
@@ -70,11 +70,11 @@
           {% elsif cart.discount.free_shipping %}
             <h4>Discount: <span class="small_message">Free shipping!</span></h4>
           {% else %}
-            <h4>Discount: <span>- {{ cart.discount.amount | money_with_sign }}</span></h4>
+            <h4>Discount: <span>- {{ cart.discount.amount | money: theme.money_format }}</span></h4>
           {% endif %}
         {% endif %}
       {% endif %}
-      <h3>Total:  <span>{{ cart.total | money_with_sign }}</span></h3>
+      <h3>Total:  <span>{{ cart.total | money: theme.money_format }}</span></h3>
       <button type="submit" name="checkout" title="Checkout" class="checkout_btn">Checkout</button>
       <a class="button continue_shopping" href="/products">Continue Shopping</a>
     </div>
