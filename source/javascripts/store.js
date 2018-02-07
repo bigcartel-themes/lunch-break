@@ -15,11 +15,7 @@ $(function() {
     e.preventDefault();
     $(this).closest('li').find('input[id$=_qty]').val(0).closest('form').submit();
   });
-  $('[name*="cart[update]"], [name="cart[shipping_country_id]"]').on('change',function() {
-    $(this).closest('form').submit();
-  });
-  $('[name="cart[discount_code]"]').on('change',function() { 
-    $(this).closest('.checkout_btn').attr('name','update');
+  $('[name*="cart[update]"]').on('change',function() {
     $(this).closest('form').submit();
   });
   $('.search_form input')
