@@ -1,7 +1,7 @@
 <section class="product_pricing">
   <h1>{{ page.name }}</h1>
   <h2>
-    <span class="product_price">{{ product.default_price | money_with_sign }}</span>
+    <span class="product_price">{{ product.default_price | money: theme.money_format }}</span>
 		{% case product.status %}
 			{% when 'active' %}
 				{% if product.on_sale %}<span class="small_status {{ product.css_class }}">On sale</span>{% endif %}
