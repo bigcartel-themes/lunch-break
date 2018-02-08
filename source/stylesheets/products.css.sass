@@ -1,14 +1,16 @@
 @import 'config'
 
 ul.products
+  +flexbox
+  +flex-direction(row)
+  +flex-wrap(wrap)
+  list-style: none
   margin: 0 -10px 10px
   padding: 0
   position: relative
 
   li
     +border-radius(2px)
-    float: left
-    list-style: none
     padding: 0 10px 40px 10px
     position: relative
     width: #{"{% if theme.products_per_row == 2 %} 50% {% elsif theme.products_per_row == 3 %} 33.33% {% else %} 25% {% endif %}"}
@@ -29,11 +31,8 @@ ul.products
       img
         +all-transitions
         +border-radius(2px)
-        +filter(blur(0))
         display: block
-        height: auto
-        margin: 0 auto
-        width: auto
+        width: 100%
         
       &:hover img
         opacity: .85
@@ -71,15 +70,6 @@ ul.products
         text-transform: uppercase
         top: 10px
 
-.flexbox ul.products
-  @include flexbox
-  @include flex-direction(row)
-  @include flex-wrap(wrap)
-  
-  li
-    @include flexbox
-    float: none
-            
 .pagination
   +pie-clearfix
   border-top: 1px solid $border-color
