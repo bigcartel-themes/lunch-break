@@ -140,6 +140,15 @@ a.mfp-arrow {
   font-size: 28px;
   font-family: Arial, Baskerville, monospace;
 }
+
+.mfp-close:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
 .mfp-close:hover,
 .mfp-close:focus {
   background: none;
