@@ -30,28 +30,52 @@ $break-extra-small: 500px
   -webkit-transform: translateY(-50%)
   -ms-transform: translateY(-50%)
   transform: translateY(-50%)
-  
+
 @mixin flexbox
   display: -webkit-box
   display: -webkit-flex
   display: -moz-flex
   display: -ms-flexbox
   display: flex
-  
-@mixin flex-direction($value: row) 
-  @if $value == row-reverse 
+
+@mixin align-items($value: stretch)
+  @if $value == flex-start
+    -ms-flex-align: start
+  @else if $value == flex-end
+    -ms-flex-align: end
+  @else
+    -ms-flex-align: $value
+  -webkit-align-items: $value
+  align-items: $value
+
+@mixin justify-content($value: flex-start)
+  @if $value == flex-start
+    -ms-flex-pack: start
+  @else if $value == flex-end
+    -ms-flex-pack: end
+  @else if $value == space-between
+    -ms-flex-pack: justify
+  @else if $value == space-around
+    -ms-flex-pack: distribute
+  @else
+    -ms-flex-pack: $value
+  -webkit-justify-content: $value
+  justify-content: $value
+
+@mixin flex-direction($value: row)
+  @if $value == row-reverse
     -webkit-box-direction: reverse
     -webkit-box-orient: horizontal
-  @else if $value == column 
+  @else if $value == column
     -webkit-box-direction: normal
     -webkit-box-orient: vertical
-  @else if $value == column-reverse 
+  @else if $value == column-reverse
     -webkit-box-direction: reverse
     -webkit-box-orient: vertical
   @else
     -webkit-box-direction: normal
     -webkit-box-orient: horizontal
-		
+
   -webkit-flex-direction: $value
   -moz-flex-direction: $value
   -ms-flex-direction: $value
@@ -60,32 +84,32 @@ $break-extra-small: 500px
 @mixin flex-wrap($value: nowrap)
   -webkit-flex-wrap: $value
   -moz-flex-wrap: $value
-  @if $value == nowrap 
+  @if $value == nowrap
     -ms-flex-wrap: none
   @else
     -ms-flex-wrap: $value
-    
+
   flex-wrap: $value
-  
+
 @mixin keyframes($animation-name)
   @-webkit-keyframes #{$animation-name}
     @content
-  
+
   @-moz-keyframes #{$animation-name}
     @content
-  
+
   @-ms-keyframes #{$animation-name}
     @content
-  
+
   @-o-keyframes #{$animation-name}
     @content
-  
+
   @keyframes #{$animation-name}
     @content
-    
+
 @mixin animation($str)
   -webkit-animation: $str
   -moz-animation: $str
   -ms-animation: $str
   -o-animation: $str
-  animation: $str   
+  animation: $str
