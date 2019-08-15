@@ -537,9 +537,9 @@ input
 button, a.button
   +all-transitions
   +border-radius(2px)
-  background-color: $background-color
-  border: 1px solid $button-color
-  color: $button-color
+  background-color: $button-color
+  border: 1px solid $background-color
+  color: $background-color
   cursor: pointer
   display: inline-block
   font-family: $secondary-font
@@ -551,9 +551,11 @@ button, a.button
   text-align: center
 
   &:hover, &:focus, &:active
-    background-color: $button-color
-    border: 1px solid $button-color
-    color: $background-color
+    opacity: .7
+
+  &:disabled, &.disabled
+    cursor: not-allowed
+    opacity: .3
 
 .select
   +all-transitions
