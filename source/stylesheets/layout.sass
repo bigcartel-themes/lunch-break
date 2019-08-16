@@ -105,7 +105,7 @@ ul, ol
   top: 0
   width: 100%
 
-  @media only screen and (max-width: $break-medium)
+  @media only screen and (max-width: $break-large)
     display: block
     z-index: 10
 
@@ -204,7 +204,7 @@ header
   margin-bottom: 40px
   text-align: #{"{{ theme.header_position }}"}
 
-  @media only screen and (max-width: $break-medium)
+  @media only screen and (max-width: $break-large)
     margin: 0 0 40px
     padding: 100px 15px 40px
 
@@ -253,9 +253,6 @@ header
     max-width: 75%
 
   @media only screen and (max-width: $break-large)
-    max-width: 71%
-
-  @media only screen and (max-width: $break-medium)
     float: none
     padding-bottom: 40px
     max-width: 100%
@@ -291,9 +288,6 @@ aside
     width: 20%
 
   @media only screen and (max-width: $break-large)
-    width: 23%
-
-  @media only screen and (max-width: $break-medium)
     +border-radius(0)
     height: auto
     left: 0
@@ -339,7 +333,7 @@ aside
       font-size: 13px
       height: 40px
 
-    @media only screen and (max-width: $break-medium)
+    @media only screen and (max-width: $break-large)
       display: none
 
     .cart_title
@@ -537,9 +531,9 @@ input
 button, a.button
   +all-transitions
   +border-radius(2px)
-  background-color: $button-color
-  border: 1px solid $background-color
-  color: $background-color
+  background-color: $background-color
+  border: 1px solid $button-color
+  color: $button-color
   cursor: pointer
   display: inline-block
   font-family: $secondary-font
@@ -551,7 +545,9 @@ button, a.button
   text-align: center
 
   &:hover, &:focus, &:active
-    opacity: .7
+    background-color: $button-color
+    border: 1px solid $button-color
+    color: $background-color
 
   &:disabled, &.disabled
     cursor: not-allowed
