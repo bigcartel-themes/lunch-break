@@ -1,6 +1,6 @@
 {
   "name": "Lunch Break",
-  "version": "1.2.3",
+  "version": "1.2.9",
   "images": [
     {
       "variable": "header_logo",
@@ -156,6 +156,14 @@
       "type": "boolean",
       "default": false,
       "description": "Displays a list of your top selling products in the sidebar"
+    },
+    {
+      "variable": "show_sold_out_product_options",
+      "label": "Show sold out product options",
+      "type": "boolean",
+      "default": true,
+      "description": "Shows sold out product options in the Product page dropdowns",
+      "requires": "inventory"
     },
     {
       "variable": "twitter_url",
