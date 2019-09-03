@@ -29,9 +29,6 @@ $(function() {
   $(window).on("load resize", function() {
     $('body').css('margin-bottom', $('footer').height());
   });
-  if ($('.product_option_select').length) {
-    disableAddButton();
-  }
   $('.product_option_select').on('change',function() {
     var option_price = $(this).find("option:selected").attr("data-price");
     enableAddButton(option_price);
