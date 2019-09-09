@@ -3,7 +3,7 @@
   <head>
     <title>{% if page.full_url contains "search=" %}Product Search{% else %}{{ page.name }}{% endif %} | {{ store.name }}</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href="{{ theme | theme_css_url }}" media="screen" rel="stylesheet" type="text/css">
     {{ head_content }}
   </head>
@@ -147,10 +147,14 @@
         {% endif %}
       </div>
     </footer>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="{{ theme | theme_js_url }}"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="{{ 'api' | theme_js_url }}"></script>
+    <script src="{{ theme | theme_js_url }}"></script>
     {% if page.full_url contains '/product/' %}
+      <script>
+        var show_sold_out_product_options = '{{ theme.show_sold_out_product_options }}';
+        Product.find('{{ product.permalink }}', processProduct)
+      </script>
       <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
     {% endif %}
     <script>
