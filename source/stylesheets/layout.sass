@@ -531,9 +531,9 @@ input
 button, a.button
   +all-transitions
   +border-radius(2px)
-  background-color: $background-color
+  background-color: $button-color
   border: 1px solid $button-color
-  color: $button-color
+  color: $background-color
   cursor: pointer
   display: inline-block
   font-family: $secondary-font
@@ -544,10 +544,21 @@ button, a.button
   padding: 0
   text-align: center
 
+  &.minimal-button
+    background: none
+    color: $text-color
+    border: none
+    font-size: 13px
+    padding: 0
+
+    &:not(:disabled):hover, &:not(:disabled):active, &:not(:disabled):focus
+      +transform(none)
+      box-shadow: none
+      background: none
+      text-decoration: underline
+
   &:hover, &:focus, &:active
-    background-color: $button-color
-    border: 1px solid $button-color
-    color: $background-color
+    opacity: .8
 
   &:disabled, &.disabled
     cursor: not-allowed
