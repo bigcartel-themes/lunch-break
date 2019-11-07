@@ -44,7 +44,7 @@
           <span class="cart_numbers">{{ cart.total | money: theme.money_format }}</span>
         </a>
         <div class="side_categories">
-          <h3>Shop</h3>
+          <h2>Shop</h2>
           <ul>
             <li><a href="/products">All Products</a></li>
             {% if theme.show_search %}
@@ -63,7 +63,7 @@
         </div>
         {% if artists.active != blank %}
           <div class="side_artists">
-            <h3>Artists</h3>
+            <h2>Artists</h2>
             <ul>
               {% for artist in artists.active %}
                 <li>{{ artist | link_to }}</li>
@@ -75,7 +75,7 @@
           {% get 5 products from products.all order: 'newest' %}
             {% if products != blank %}
               <div class="side_pages">
-                <h3>Newest Products</h3>
+                <h2>Newest Products</h2>
                 <ul>
                 	{% for product in products %}
                 	  <li>{{ product | link_to }}</li>
@@ -89,7 +89,7 @@
           {% get 5 products from products.all order: 'sales' %}
             {% if products != blank %}
               <div class="side_pages">
-                <h3>Top Selling</h3>
+                <h2>Top Selling</h2>
                 <ul>
                 	{% for product in products %}
                 	  <li>{{ product | link_to }}</li>
@@ -100,7 +100,7 @@
           {% endget %}
         {% endif %}
         <div class="side_pages">
-          <h3>Pages</h3>
+          <h2>Pages</h2>
           <ul>
             {% for page in pages.all %}
             	<li>{{ page | link_to }}</li>
