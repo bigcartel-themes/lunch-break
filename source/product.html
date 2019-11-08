@@ -1,6 +1,6 @@
 <section class="product_pricing">
   <h1>{{ page.name }}</h1>
-  <h2>
+  <div class="product_price_status">
     <span class="product_price">
       {% if product.variable_pricing %}
         {{ product.min_price | money: theme.money_format }} - {{ product.max_price | money: theme.money_format }}
@@ -16,7 +16,7 @@
 			{% when 'coming-soon' %}
 				<span class="small_status {{ product.css_class }}">Coming soon</span>
 		{% endcase %}
-	</h2>
+	</div>
 </section>
 <section class="product_images">
 	<a href="{{ product.image | product_image_url }}"><img src="{{ product.image | product_image_url }}" alt="Image of {{ product.name | escape }}" class="primary_image"></a>
