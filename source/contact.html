@@ -13,24 +13,24 @@
     <form method="post" action="/contact" class="contact_form">
       <div class="contact_name">
         <label for="name">Name</label>
-        {{ contact | contact_input: 'name', tabindex: 1 }}
+        {{ contact | contact_input: 'name' }}
       </div>
       <div class="contact_email">
         <label for="email">Email</label>
-        {{ contact | contact_input: 'email', tabindex: 2 }}
+        {{ contact | contact_input: 'email' }}
       </div>
       <div class="contact_subject">
         <label for="subject">Subject</label>
-        {{ contact | contact_input: 'subject', tabindex: 3 }}
+        {{ contact | contact_input: 'subject' }}
       </div>
       <div class="contact_message">
         <label for="message">Message</label>
-        {{ contact | contact_input: 'message', tabindex: 4 }}
+        {{ contact | contact_input: 'message' }}
       </div>
       <div class="contact_spam">
         <label for="captcha">Spam check</label>
         <div class="captcha_holder">
-          {{ contact | contact_input: 'captcha', tabindex: 5 }}
+          {{ contact | contact_input: 'captcha' }}
           {{ contact.captcha }}
         </div>
         <span>Please enter the characters from the image.</span>
