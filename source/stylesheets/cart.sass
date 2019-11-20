@@ -29,7 +29,7 @@
         @media screen and (max-width: $break-medium)
           max-width: 60px
 
-        @media screen and (max-width: $break-extra-small)
+        @media screen and (max-width: $break-small)
           display: none
 
         img
@@ -73,14 +73,13 @@
         max-width: 400px
         text-align: right
 
-        @media screen and (max-width: $break-medium)
-          max-width: 55%
-
         div
           display: inline-block
 
           &.quantity
-            width: 55px
+            label
+              font-size: 14px
+              margin-right: 13px
 
             input[type='text']
               +border-radius(2px)
