@@ -45,7 +45,7 @@
         </a>
         <nav role="navigation" aria-label="Main">
           <div class="side_categories">
-            <h2>Shop</h2>
+            <div class="nav_title">Shop</div>
             <ul>
               <li><a href="/products">All Products</a></li>
               {% if theme.show_search %}
@@ -64,7 +64,7 @@
           </div>
           {% if artists.active != blank %}
             <div class="side_artists">
-              <h2>Artists</h2>
+              <div class="nav_title">Artists</div>
               <ul>
                 {% for artist in artists.active %}
                   <li>{{ artist | link_to }}</li>
@@ -76,7 +76,7 @@
             {% get 5 products from products.all order: 'newest' %}
               {% if products != blank %}
                 <div class="side_pages">
-                  <h2>Newest Products</h2>
+                  <div class="nav_title">Newest Products</div>
                   <ul>
                           {% for product in products %}
                             <li>{{ product | link_to }}</li>
@@ -90,7 +90,7 @@
             {% get 5 products from products.all order: 'sales' %}
               {% if products != blank %}
                 <div class="side_pages">
-                  <h2>Top Selling</h2>
+                  <div class="nav_title">Top Selling</div>
                   <ul>
                           {% for product in products %}
                             <li>{{ product | link_to }}</li>
@@ -101,7 +101,7 @@
             {% endget %}
           {% endif %}
           <div class="side_pages">
-            <h2>Pages</h2>
+            <div class="nav_title">Pages</div>
             <ul>
               {% for page in pages.all %}
                   <li>{{ page | link_to }}</li>
