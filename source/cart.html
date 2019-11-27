@@ -24,7 +24,7 @@
           </div>
           <div class="item_actions">
             <div class="quantity">
-              <label for="item_{{ item.id }}_qty">Quantity:</label>
+              <label for="item_{{ item.id }}_qty" class="sr-only">Quantity:</label>
               {{ item | item_quantity_input }}
             </div>
             <div class="price">{{ item.price | money: theme.money_format }}</div>
