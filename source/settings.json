@@ -46,12 +46,12 @@
     {
       "variable": "text_color",
       "label": "Text",
-      "default": "#646464"
+      "default": "#2E2E2E"
     },
     {
       "variable": "link_color",
       "label": "Links",
-      "default": "#717C82"
+      "default": "#646464"
     },
     {
       "variable": "link_hover_color",
