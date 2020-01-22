@@ -31,7 +31,7 @@
     {
       "variable": "background_color",
       "label": "Background",
-      "default": "#FCFCFC"
+      "default": "#FFFFFF"
     },
     {
       "variable": "secondary_background",
@@ -46,7 +46,7 @@
     {
       "variable": "text_color",
       "label": "Text",
-      "default": "#2E2E2E"
+      "default": "#222222"
     },
     {
       "variable": "link_color",
