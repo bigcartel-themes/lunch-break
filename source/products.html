@@ -5,9 +5,9 @@
       {% for product in products %}
       <li class="{{ product.css_class }}">
         <a href="{{ product.url }}">
-          <img alt="Image of {{ product.name | escape }}" src="{{ product.image | product_image_url | constrain: 600, 600  }}">
-          <h4 class="product_name">{{ product.name }}</h4>
-          <h5>{{ product.default_price | money: theme.money_format }}</h5>
+          <img alt="" src="{{ product.image | product_image_url | constrain: 600, 600  }}">
+          <div class="product_name">{{ product.name }}</div>
+          <div class="product_price">{{ product.default_price | money: theme.money_format }}</div>
 					{% case product.status %}
 						{% when 'active' %}
 							{% if product.on_sale %}<span class="status">On Sale</span>{% endif %}
@@ -21,7 +21,9 @@
       {% endfor %}
     </ul>
     {% if paginate.pages > 1 %}
-      {{ paginate | default_pagination, 'pagination', 'pagination', '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7.6 15" enable-background="new 0 0 7.6 15"><path d="M6.4 15l-6.4-7.5 6.3-7.5 1.1 1-5.4 6.5 5.6 6.5z"/></svg> Prev' , 'Next <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7.6 15" enable-background="new 0 0 7.6 15"><path d="M1.1 0l6.5 7.5-6.3 7.5-1.2-1 5.5-6.5-5.6-6.5z"/></svg>' }}
+      <nav role="navigation" aria-label="Pagination">
+	{{ paginate | default_pagination, 'pagination', 'pagination', '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7.6 15" enable-background="new 0 0 7.6 15"><path d="M6.4 15l-6.4-7.5 6.3-7.5 1.1 1-5.4 6.5 5.6 6.5z"/></svg> Prev' , 'Next <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7.6 15" enable-background="new 0 0 7.6 15"><path d="M1.1 0l6.5 7.5-6.3 7.5-1.2-1 5.5-6.5-5.6-6.5z"/></svg>' }}
+      </nav>
     {% endif %}
   {% else %}
     <p class="no_products">No products found.</p>

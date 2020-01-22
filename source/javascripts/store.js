@@ -10,6 +10,13 @@ $(function() {
     e.preventDefault();
     $(this).toggleClass('open');
     $('aside').toggleClass('open');
+    if($(this).hasClass('open')) {
+      $(this).attr('title', $(this).data('close'));
+      $(this).attr('aria-label', $(this).data('close'));
+    } else {
+      $(this).attr('title', $(this).data('open'));
+      $(this).attr('aria-label', $(this).data('open'));
+    }
   });
   $('.remove a').click(function(e) {
     e.preventDefault();

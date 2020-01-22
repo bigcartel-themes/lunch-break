@@ -1,6 +1,6 @@
 <section class="product_pricing">
   <h1>{{ page.name }}</h1>
-  <h2>
+  <div class="product_price_status">
     <span class="product_price">
       {% if product.variable_pricing %}
         {{ product.min_price | money: theme.money_format }} - {{ product.max_price | money: theme.money_format }}
@@ -16,14 +16,14 @@
 			{% when 'coming-soon' %}
 				<span class="small_status {{ product.css_class }}">Coming soon</span>
 		{% endcase %}
-	</h2>
+	</div>
 </section>
 <section class="product_images">
-	<a href="{{ product.image | product_image_url }}"><img src="{{ product.image | product_image_url }}" alt="Image of {{ product.name | escape }}" class="primary_image"></a>
+	<a href="{{ product.image | product_image_url }}"><img src="{{ product.image | product_image_url }}" alt="{{ product.name | escape }}" class="primary_image"></a>
 	{% if product.images.size > 1 %}
   	<ul class="product_thumbnails">
   	{% for image in product.images offset: 1 %}
-  	  <li><a href="{{ image | product_image_url }}"><img src="{{ image | product_image_url | constrain: 300 }}" alt="Image of {{ product.name | escape }}"></a></li>
+  	  <li><a href="{{ image | product_image_url }}"><img src="{{ image | product_image_url | constrain: 300 }}" alt="{{ product.name | escape }}"></a></li>
   	{% endfor %}
   	</ul>
 	{% endif %}
@@ -68,7 +68,7 @@
           </div>
         {% endif %}
       {% endif %}
-      <button class="button add-to-cart-button" name="submit" type="submit" title="Add to Cart" data-add-title="Add to Cart" data-sold-title="Sold out"{% if product.has_default_option %}{% else %}disabled="disabled"{% endif %}>Add to Cart</button>
+      <button class="button add-to-cart-button" name="submit" type="submit" data-add-title="Add to Cart" data-sold-title="Sold out"{% if product.has_default_option %}{% else %}disabled="disabled"{% endif %}>Add to Cart</button>
       {{ store | instant_checkout_button: 'dark', '44px' }}
       {% if product.has_option_groups %}
         <div class="reset-selection-button-container">
@@ -79,14 +79,14 @@
 	{% endif %}
   <ul class="share_buttons">
     <li class="social_twitter">
-      <a title="Tweet" href="https://twitter.com/intent/tweet?status={{product.name}}%20-%20{{store.name}}%20{{store.url}}{{product.url}}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=no,scrollbars=no,height=400,width=600');return false;"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 150.857 612 490.298"><path d="M606 209c-22.2 9.7-46 16.4-70.8 19.4 25.4-15.3 45-39.6 54-68.5-23.7 14-50 24-78 30-22.5-24-54.4-39-89.8-39-68 0-123 55-123 123 0 9.3 1 19 3 28-102.2-5-192.8-54-253.4-129-11 18.3-17 39.5-17 62.2 0 43 21.5 81 54.6 103-20.2-.6-39.2-6-55.8-15.4v2c0 60 42.3 110 98.6 121.2-10.4 3-21.3 4.6-32.5 4.6-8 0-16-1-23-2.5 15 49.3 61 85 115 86-42 33.3-96 53-153 53-10 0-20-.5-30-1.7 55 35 119.5 55.5 189 55.5 226.3 0 350-188.5 350-352 0-5.5 0-10.8-.3-16 24-17.6 45-39.4 61.4-64z"/></svg>
+      <a title="Tweet" aria-label="Tweet" href="https://twitter.com/intent/tweet?status={{product.name}}%20-%20{{store.name}}%20{{store.url}}{{product.url}}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=no,scrollbars=no,height=400,width=600');return false;"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 150.857 612 490.298"><path d="M606 209c-22.2 9.7-46 16.4-70.8 19.4 25.4-15.3 45-39.6 54-68.5-23.7 14-50 24-78 30-22.5-24-54.4-39-89.8-39-68 0-123 55-123 123 0 9.3 1 19 3 28-102.2-5-192.8-54-253.4-129-11 18.3-17 39.5-17 62.2 0 43 21.5 81 54.6 103-20.2-.6-39.2-6-55.8-15.4v2c0 60 42.3 110 98.6 121.2-10.4 3-21.3 4.6-32.5 4.6-8 0-16-1-23-2.5 15 49.3 61 85 115 86-42 33.3-96 53-153 53-10 0-20-.5-30-1.7 55 35 119.5 55.5 189 55.5 226.3 0 350-188.5 350-352 0-5.5 0-10.8-.3-16 24-17.6 45-39.4 61.4-64z"/></svg>
       </a>
     </li>
     <li class="social_facebook">
-      <a title="Share on Facebook" href="https://www.facebook.com/sharer/sharer.php?u={{store.url}}{{product.url}}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=no,scrollbars=no,height=400,width=600');return false;"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="157.162 90 297.799 612"><path d="M369.036 193.795h85.68V90H333.662c-97.553 19.707-98.776 108.936-98.776 108.936V304.69h-77.724v102.937h77.724V702H343.21V407.383h102.08l9.67-102.938H343.945v-75.52c-.123-33.172 25.092-35.13 25.092-35.13z"/></svg></a>
+      <a title="Share on Facebook" aria-label="Share on Facebook" href="https://www.facebook.com/sharer/sharer.php?u={{store.url}}{{product.url}}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=no,scrollbars=no,height=400,width=600');return false;"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="157.162 90 297.799 612"><path d="M369.036 193.795h85.68V90H333.662c-97.553 19.707-98.776 108.936-98.776 108.936V304.69h-77.724v102.937h77.724V702H343.21V407.383h102.08l9.67-102.938H343.945v-75.52c-.123-33.172 25.092-35.13 25.092-35.13z"/></svg></a>
     </li>
     <li class="social_pinterest">
-      <a title="Pin" data-pin-custom="true" data-pin-do="buttonPin" href="https://www.pinterest.com/pin/create/button/?url={{ page.full_url }}&media={{ product.images.first.url }}&description={{ product.description | escape | truncate: 200 }}"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 12 16"><path d="M4.933 10.582c-.406 2.203-.9 4.314-2.366 5.418-.452-3.33.665-5.83 1.183-8.484C2.866 6 3.9 2.9 5.7 3.63c2.315.97-2 5.77.9 6.34 3 .6 4.225-5.4 2.365-7.36C6.285-.22 1.1 2.5 1.8 6.596c.154 1 1.1 1.3.4 2.658C.48 8.858-.034 7.45.032 5.574.138 2.504 2.692.352 5.255.054c3.24-.376 6.3 1.2 6.7 4.396.473 3.568-1.462 7.433-4.927 7.2C6.063 11.5 5.7 11 4.9 10.582z"/></svg>
+      <a title="Pin" aria-label="Pin" data-pin-custom="true" data-pin-do="buttonPin" href="https://www.pinterest.com/pin/create/button/?url={{ page.full_url }}&media={{ product.images.first.url }}&description={{ product.description | escape | truncate: 200 }}"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 12 16"><path d="M4.933 10.582c-.406 2.203-.9 4.314-2.366 5.418-.452-3.33.665-5.83 1.183-8.484C2.866 6 3.9 2.9 5.7 3.63c2.315.97-2 5.77.9 6.34 3 .6 4.225-5.4 2.365-7.36C6.285-.22 1.1 2.5 1.8 6.596c.154 1 1.1 1.3.4 2.658C.48 8.858-.034 7.45.032 5.574.138 2.504 2.692.352 5.255.054c3.24-.376 6.3 1.2 6.7 4.396.473 3.568-1.462 7.433-4.927 7.2C6.063 11.5 5.7 11 4.9 10.582z"/></svg>
       </a>
     </li>
   </ul>

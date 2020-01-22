@@ -10,9 +10,9 @@
       +pie-clearfix
       border-bottom: 1px solid $border-color
       display: block
-      font-size: 14px
+      font-size: $text-size
       height: 120px
-      line-height: 15px
+      line-height: 18px
       overflow: hidden
       padding: 20px 0
 
@@ -60,12 +60,9 @@
           span
             color: $text-color
             display: block
-            font-size: 13px
+            font-size: 14px
             line-height: 1.4em
             margin-top: 5px
-
-            @media screen and (max-width: $break-small)
-              font-size: 12px
 
       .item_actions
         +vertical-align
@@ -85,7 +82,7 @@
             input[type='text']
               +border-radius(2px)
               height: 46px
-              font-size: 14px
+              font-size: $text-size
               text-align: center
               text-indent: 0
               width: 56px
@@ -121,7 +118,6 @@
                 fill: $hover-color
 
       @media screen and (max-width: $break-small)
-        font-size: 13px
         height: 100px
 
   .cart_footer
@@ -130,8 +126,13 @@
     margin-top: 40px
     text-align: right
 
-    h3
-      font-size: 22px
+    .cart_total
+      color: $header-color
+      font-family: $primary-font
+      font-weight: 500
+      margin: 0
+      padding: 0
+      font-size: 24px
       line-height: 22px
       margin-bottom: 40px
       text-align: right

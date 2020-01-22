@@ -36,33 +36,31 @@ ul.products
         
       &:hover img
         opacity: .85
-          
-      h4
+
+      .product_name
         +all-transitions
-        font-size: 14px
+        color: $header-color
+        font-size: 16px
         line-height: 1.3em
         margin-top: 10px
-        
-      &:hover h4
+
+      &:hover .product_name
         color: $hover-color
-        
-      h5
+
+      .product_price
         +all-transitions
         color: $text-color
         display: inline-block
         font-family: $secondary-font
-        font-size: 13px
+        font-size: 15px
         line-height: 1.4em
         margin-top: 5px
-        
-        @media only screen and (max-width: $break-small)
-          font-size: 12px
-      
+
       .status
         +border-radius(2px)
         background: $background-color
         color: $text-color
-        font-size: 10px
+        font-size: 12px
         letter-spacing: .8px
         padding: 5px 10px
         position: absolute

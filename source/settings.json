@@ -1,6 +1,6 @@
 {
   "name": "Lunch Break",
-  "version": "1.3.2",
+  "version": "1.4.0",
   "images": [
     {
       "variable": "header_logo",
@@ -31,7 +31,7 @@
     {
       "variable": "background_color",
       "label": "Background",
-      "default": "#FCFCFC"
+      "default": "#FFFFFF"
     },
     {
       "variable": "secondary_background",
@@ -46,12 +46,12 @@
     {
       "variable": "text_color",
       "label": "Text",
-      "default": "#646464"
+      "default": "#222222"
     },
     {
       "variable": "link_color",
       "label": "Links",
-      "default": "#717C82"
+      "default": "#646464"
     },
     {
       "variable": "link_hover_color",

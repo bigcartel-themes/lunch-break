@@ -23,17 +23,20 @@
             </a>
           </div>
           <div class="item_actions">
-            <div class="quantity">{{ item | item_quantity_input }}</div>
+            <div class="quantity">
+              <label for="item_{{ item.id }}_qty" class="sr-only">Quantity:</label>
+              {{ item | item_quantity_input }}
+            </div>
             <div class="price">{{ item.price | money: theme.money_format }}</div>
             <div class="remove">
-              <a href="#" data-item-id="{{ item.id }}"><svg class="remove_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14.1 14.1" enable-background="new 0 0 14.1 14.1"><path d="M14.1 1.1l-1.1-1.1-6 6-5.9-6-1.1 1.1 6 5.9-6 6 1.1 1.1 5.9-6 6 6 1.1-1.1-6-6z"/></svg></a>
+              <a href="#" data-item-id="{{ item.id }}" title="Remove Item" aria-label="Remove Item"><svg aria-hidden="true" class="remove_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14.1 14.1" enable-background="new 0 0 14.1 14.1"><path d="M14.1 1.1l-1.1-1.1-6 6-5.9-6-1.1 1.1 6 5.9-6 6 1.1 1.1 5.9-6 6 6 1.1-1.1-6-6z"/></svg></a>
             </div>
           </div>
         </li>
       {% endfor %}
     </ul>
     <div class="cart_footer">
-      <h3>Total: <span>{{ cart.total | money: theme.money_format }}</span></h3>
+      <div class="cart_total">Total: <span>{{ cart.total | money: theme.money_format }}</span></div>
       <button type="submit" name="checkout" title="Checkout" class="checkout_btn">Checkout</button>
       <a class="button continue_shopping minimal-button" href="/products">Continue Shopping</a>
     </div>
