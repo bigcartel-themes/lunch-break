@@ -41,12 +41,17 @@
     {
       "variable": "header_color",
       "label": "Headers",
-      "default": "#507B96"
+      "default": "#135884"
     },
     {
       "variable": "text_color",
       "label": "Text",
-      "default": "#222222"
+      "default": "#000000"
+    },
+    {
+      "variable": "secondary_text_color",
+      "label": "Secondary Text",
+      "default": "#444444"
     },
     {
       "variable": "link_color",
@@ -110,20 +115,40 @@
       "description": "The order of products on the Home page"
     },
     {
+      "variable": "max_products_per_row",
+      "label": "Maximum products per row",
+      "type": "select",
+      "options": "1..4",
+      "default": 4,
+      "description": "The maximum number of products displayed per row on larger screens"
+    },
+    {
+      "variable": "max_products_per_row_mobile",
+      "label": "Maximum products per row (mobile)",
+      "type": "select",
+      "options": "1..2",
+      "default": 2,
+      "description": "The number of products displayed per row on smaller screens"
+    },
+    {
+      "variable": "grid_image_style",
+      "label": "Product grid image style",
+      "type": "select",
+      "options": [
+        ["Normal", "default"],
+        ["Fit to square", "fit-to-square"],
+        ["Crop to square", "crop-to-square"]
+      ],
+      "default": "crop-to-square",
+      "description": "Sets the display of images in the product grid"
+    },
+    {
       "variable": "products_per_page",
       "label": "Products per page",
       "type": "select",
       "options": "1..100",
-      "default": 12,
+      "default": 36,
       "description": "The number of products displayed per page"
-    },
-    {
-      "variable": "products_per_row",
-      "label": "Max Products per row",
-      "type": "select",
-      "options": "2..4",
-      "default": 3,
-      "description": "The maximum number of products displayed per row"
     },
     {
       "variable": "money_format",

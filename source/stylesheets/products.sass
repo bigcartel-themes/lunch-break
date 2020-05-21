@@ -1,5 +1,139 @@
 @import 'config'
 
+.product-list-container
+  margin-top: -10px
+
+.product-list
+  +flexbox
+  +flex-wrap(wrap)
+  +justify-content(flex-start)
+  margin: 0 -10px
+
+.product-list-link
+  text-decoration: none
+
+  &:hover, &:focus
+    text-decoration: none
+
+.product-list-thumb
+  border-radius: $border-radius
+  color: $text-color
+  display: block
+  font-size: 0
+  padding: 10px
+  padding-bottom: 30px
+  position: relative
+  text-decoration: none
+  vertical-align: middle
+  width: calc(100% / #{"{{ theme.max_products_per_row }}"})
+  word-break: break-word
+
+  &:hover, &:focus
+    text-decoration: none
+
+  @media screen and (max-width: $break-medium)
+    width: calc(100% / 3)
+
+  @media screen and (max-width: $break-small)
+    padding: 10px
+    width: calc(100% / #{"{{ theme.max_products_per_row_mobile }}"})
+
+_:-ms-fullscreen, :root .product-list-thumb
+  +flex-basis(auto)
+
+.product-list-thumb-container
+  position: relative
+  width: 100%
+
+.product-list-image-container
+  border-radius: $border-radius
+  font-size: 0
+  margin: 0
+  overflow: hidden
+  padding-bottom: 100%
+  position: relative
+  width: 100%
+
+  .default &
+    padding-bottom: 0
+
+.product-list-image
+  +transition(opacity .1s linear)
+  border-radius: $border-radius
+  display: block
+  overflow: hidden
+
+  &.lazy
+    filter: blur(5px)
+
+  .default &
+    width: 100%
+
+  .crop-to-square &
+    height: 100% !important
+    left: 0
+    object-fit: cover
+    position: absolute
+    top: 0
+    width: 100%
+
+  .fit-to-square &
+    left: 0
+    will-change: transform
+    cursor: pointer
+    position: absolute
+    max-width: 100%
+    height: 100%
+    top: 0
+    width: 100%
+
+    &.image-tall
+      height: 100%
+      left: auto
+      width: auto
+
+    &.image-wide
+      height: auto
+      top: auto
+      width: 100%
+
+    &.image-square
+      height: 100%
+      width: 100%
+
+.image-wrapper
+  +flexbox
+  +align-items(center)
+  +justify-content(center)
+  height: 100%
+  position: absolute
+  width: 100%
+
+.product-list-thumb-info
+  font-size: 16px
+  line-height: 1.25em
+  padding: 10px
+  position: relative
+  text-align: center
+
+.product-list-thumb-name
+  color: $header-color
+  overflow-wrap: break-word
+  position: relative
+
+.product-list-thumb-price
+  font-family: $secondary-font
+  font-weight: bold
+  font-size: 16px
+  margin-top: 6px
+
+.product-list-thumb-status
+  color: $secondary-text-color
+  display: inline-block
+  font-size: 15px
+  font-style: italic
+  font-weight: normal
+
 ul.products
   +flexbox
   +flex-direction(row)
@@ -14,14 +148,14 @@ ul.products
     padding: 0 10px 40px 10px
     position: relative
     width: #{"{% if theme.products_per_row == 2 %} 50% {% elsif theme.products_per_row == 3 %} 33.33% {% else %} 25% {% endif %}"}
-    
+
     @media only screen and (max-width: $break-large)
       width: #{"{% if theme.products_per_row == 2 %} 50% {% elsif theme.products_per_row == 3 %} 33.33% {% else %} 33.33% {% endif %}"}
-    
+
     @media only screen and (max-width: $break-medium)
       padding-bottom: 30px
       width: 50%
-      
+
     a
       display: block
       position: relative
@@ -33,7 +167,7 @@ ul.products
         +border-radius(2px)
         display: block
         width: 100%
-        
+
       &:hover img
         opacity: .85
 
@@ -68,6 +202,15 @@ ul.products
         text-transform: uppercase
         top: 10px
 
+
+
+
+
+
+
+
+
+
 .pagination
   +pie-clearfix
   border-top: 1px solid $border-color
@@ -75,18 +218,18 @@ ul.products
   padding-top: 40px
   text-align: center
   width: 100%
-  
+
   @media only screen and (max-width: $break-small)
     font-size: 14px
-  
+
   span, a
     display: inline-block
     padding: 2px 7px
-    
+
     i
       font-size: 12px
       position: relative
-      
+
   .previous, .next
     svg
       +all-transitions
@@ -96,35 +239,35 @@ ul.products
       right: 2px
       top: 0
       width: 13px
-      
+
       @media only screen and (max-width: $break-small)
         height: 12px
-        
+
     &:hover
       svg
         fill: $hover-color
-  
+
   .previous
     float: left
     padding-left: 0
-    
+
     svg
       margin-right: 5px
-      
+
       @media only screen and (max-width: $break-small)
         margin-right: 0
 
   .next
     float: right
     padding-right: 0
-    
+
     svg
       margin-left: 5px
       right: 0
-      
+
       @media only screen and (max-width: $break-small)
         margin-left: 0
-    
+
   .disabled
     display: none
 
