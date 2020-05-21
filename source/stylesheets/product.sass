@@ -63,8 +63,11 @@
     +align-items(center)
     color: $text-color
     font-family: $secondary-font
-    font-size: 20px
+    font-size: 22px
     margin-bottom: 40px
+
+    @media screen and (max-width: $break-medium)
+      +justify-content(center)
 
     .small_status
       +border-radius(2px)
