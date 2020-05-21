@@ -55,7 +55,7 @@ a
     text-decoration: underline
 
 h1, h2, h3, h4, h5, h6
-  display:inline-block
+  display: inline-block
   color: $header-color
   font-family: $primary-font
   font-weight: 500
@@ -201,12 +201,6 @@ header
     &:hover, &:active
       color: $hover-color
 
-    &.logo
-      height: 140px
-
-      @media screen and (max-width: $break-medium)
-        height: 100px
-
     &.text
       display: inline-block
       line-height: 1.2em
@@ -216,7 +210,11 @@ header
 
     img
       height: 100%
+      max-height: 140px
       max-width: 100%
+
+      @media screen and (max-width: $break-medium)
+        max-height: 100px
 
   .inner-wrapper
     padding: 0 20px
