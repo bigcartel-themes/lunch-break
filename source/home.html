@@ -1,27 +1,12 @@
-{% assign slideshow_constrain_width = 915 %}
+{% assign page_content_width = 915 %}
+{% assign slideshow_constrain_width = page_content_width %}
 {% assign slideshow_constrain_width_large = slideshow_constrain_width | times: 2 %}
 
-{% if theme.max_products_per_row == 4 %}
-  {% assign product_image_constrain_width = 915 | divided_by: 4 %}
-  {% assign product_image_constrain_height = 915 | divided_by: 4 %}
-  {% assign product_image_constrain_width_large = product_image_constrain_width | times: 2 %}
-  {% assign product_image_constrain_height_large = product_image_constrain_height | times: 2 %}
-{% elsif theme.max_products_per_row == 3 %}
-  {% assign product_image_constrain_width = 915 | divided_by: 3 %}
-  {% assign product_image_constrain_height = 915 | divided_by: 3 %}
-  {% assign product_image_constrain_width_large = product_image_constrain_width | times: 2 %}
-  {% assign product_image_constrain_height_large = product_image_constrain_height | times: 2 %}
-{% elsif theme.max_products_per_row == 2 %}
-  {% assign product_image_constrain_width = 915 | divided_by: 2 %}
-  {% assign product_image_constrain_height = 915 | divided_by: 2 %}
-  {% assign product_image_constrain_width_large = product_image_constrain_width | times: 2 %}
-  {% assign product_image_constrain_height_large = product_image_constrain_height | times: 2 %}
-{% elsif theme.max_products_per_row == 1 %}
-  {% assign product_image_constrain_width = 915 %}
-  {% assign product_image_constrain_height = 915 %}
-  {% assign product_image_constrain_width_large = product_image_constrain_width | times: 2 %}
-  {% assign product_image_constrain_height_large = product_image_constrain_height | times: 2 %}
-{% endif %}
+{% assign product_image_constrain_width = page_content_width | divided_by: theme.max_products_per_row %}
+{% assign product_image_constrain_height = page_content_width | divided_by: theme.max_products_per_row %}
+{% assign product_image_constrain_width_large = product_image_constrain_width | times: 2 %}
+{% assign product_image_constrain_height_large = product_image_constrain_height | times: 2 %}
+
 {% assign thumb_constrain_width = 30 %}
 {% assign thumb_constrain_height = 30 %}
 

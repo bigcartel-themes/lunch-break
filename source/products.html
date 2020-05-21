@@ -1,25 +1,72 @@
+{% assign page_content_width = 915 %}
+{% assign slideshow_constrain_width = page_content_width %}
+{% assign slideshow_constrain_width_large = slideshow_constrain_width | times: 2 %}
+
+{% assign product_image_constrain_width = page_content_width | divided_by: theme.max_products_per_row %}
+{% assign product_image_constrain_height = page_content_width | divided_by: theme.max_products_per_row %}
+{% assign product_image_constrain_width_large = product_image_constrain_width | times: 2 %}
+{% assign product_image_constrain_height_large = product_image_constrain_height | times: 2 %}
+
+{% assign thumb_constrain_width = 30 %}
+{% assign thumb_constrain_height = 30 %}
+
 <h1>{% if page.full_url contains "search=" %}Product Search{% else %}{{ page.name }}{% endif %}</h1>
 {% paginate products from products.current by theme.products_per_page %}
   {% if products != blank %}
-    <ul class="products">
-      {% for product in products %}
-      <li class="{{ product.css_class }}">
-        <a href="{{ product.url }}">
-          <img alt="" src="{{ product.image | product_image_url | constrain: 600, 600  }}">
-          <div class="product_name">{{ product.name }}</div>
-          <div class="product_price">{{ product.default_price | money: theme.money_format }}</div>
-					{% case product.status %}
-						{% when 'active' %}
-							{% if product.on_sale %}<span class="status">On Sale</span>{% endif %}
-						{% when 'sold-out' %}
-							<span class="status">Sold Out</span>
-						{% when 'coming-soon' %}
-							<span class="status">Coming Soon</span>
-					{% endcase %}
-        </a>
-      </li>
-      {% endfor %}
-    </ul>
+    <div class="product-list-container">
+      <div class="product-list">
+        {% for product in products %}
+          {% assign product_status = '' %}
+          {% case product.status %}
+            {% when 'active' %}
+              {% if product.on_sale %}{% assign product_status = 'On sale' %}{% endif %}
+            {% when 'sold-out' %}
+              {% assign product_status = 'Sold out' %}
+            {% when 'coming-soon' %}
+              {% assign product_status = 'Coming soon' %}
+          {% endcase %}
+          {% capture image_class %}
+            {% if product.image.height > product.image.width %}
+              image-tall
+              {% if theme.grid_image_style == 'crop-to-square' %}
+                {% assign product_image_constrain_height = '' %}
+                {% assign product_image_constrain_height_large = '' %}
+                {% assign thumb_constrain_height = '' %}
+              {% endif %}
+            {% elsif product.image.height < product.image.width %}
+              image-wide
+              {% if theme.grid_image_style == 'crop-to-square' %}
+                {% assign product_image_constrain_width = '' %}
+                {% assign product_image_constrain_width_large = '' %}
+                {% assign thumb_constrain_width = '' %}
+              {% endif %}
+            {% else %}
+              image-square
+            {% endif %}
+          {% endcapture %}
+          <div class="product-list-thumb {{ theme.grid_image_style }} {{ product.css_class }}">
+            <a class="product-list-link" href="{{ product.url }}" title="View {{ product.name | escape }}">
+              <div class="product-list-thumb-container">
+                <figure class="product-list-image-container">
+                  <div class="image-wrapper">
+                    <img alt="" class="lazy product-list-image {{ image_class }}" src="{{ product.image | product_image_url | constrain: thumb_constrain_width,thumb_constrain_height }}" data-src="{{ product.image | product_image_url | constrain: product_image_constrain_width, product_image_constrain_height }}" data-srcset="{{ product.image | product_image_url | constrain: product_image_constrain_width_large, product_image_constrain_height_large }} 2x, {{ product.image | product_image_url | constrain: product_image_constrain_width, product_image_constrain_height }} 1x">
+                  </div>
+                </figure>
+              </div>
+              <div class="product-list-thumb-info">
+                <div class="product-list-thumb-name">{{ product.name }}</div>
+                <div class="product-list-thumb-price">
+                  {{ product.default_price | money: theme.money_format }}
+                  {% if product_status != blank %}
+                    <div class="product-list-thumb-status">{{ product_status }}</div>
+                  {% endif %}
+                </div>
+              </div>
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
     {% if paginate.pages > 1 %}
       <nav role="navigation" aria-label="Pagination">
 	{{ paginate | default_pagination, 'pagination', 'pagination', '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7.6 15" enable-background="new 0 0 7.6 15"><path d="M6.4 15l-6.4-7.5 6.3-7.5 1.1 1-5.4 6.5 5.6 6.5z"/></svg> Prev' , 'Next <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7.6 15" enable-background="new 0 0 7.6 15"><path d="M1.1 0l6.5 7.5-6.3 7.5-1.2-1 5.5-6.5-5.6-6.5z"/></svg>' }}
