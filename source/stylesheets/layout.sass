@@ -25,7 +25,7 @@ body
       padding: 60px 15px
 
     .message_holder
-      +border-radius(2px)
+      +border-radius($border-radius)
       background-color: $background-color
       border: 1px solid $border-color
       margin: 0 auto
@@ -77,14 +77,13 @@ h2
   font-size: 18px
   line-height: 18px
 
-
 img
   display: block
   max-width: 100%
 
 p
   font-size: 16px
-  line-height: 1.7em
+  line-height: 1.5em
   margin: 0 0 20px
 
 ul, ol
@@ -117,7 +116,7 @@ ul, ol
     width: 22px
 
     span
-      +border-radius(2px)
+      +border-radius($border-radius)
       +transform(rotate(0deg))
       +transition(.25s ease-in-out)
       display: block
@@ -249,8 +248,8 @@ header
     max-width: 100%
 
 .custom_content
-  font-size: 14px
-  line-height: 1.7em
+  font-size: 16px
+  line-height: 1.5em
   margin: 0 #{"{% if theme.sidebar_position == 'right' %} auto {% endif %}"}
   max-width: 700px
   width: 100%
@@ -262,19 +261,8 @@ header
   iframe
     max-width: 100%
 
-
-.success_message
-  margin-top: 20px
-
-  .button
-    margin: 32px 0
-    width: 320px
-
-  @media screen and (max-width: $break-medium)
-    text-align: center
-
 aside
-  +border-radius(2px)
+  +border-radius($border-radius)
   background-color: $background-color
   float: #{"{% if theme.sidebar_position == 'right' %} right {% else %} left {% endif %}"}
   padding-bottom: 80px
@@ -316,7 +304,7 @@ aside
 
   .side_cart
     +pie-clearfix
-    +border-radius(2px)
+    +border-radius($border-radius)
     background-color: $background-color
     border: 1px solid $button-background-color
     color: $button-background-color
@@ -495,8 +483,8 @@ footer
         fill: $hover-color
 
 .errors
-  +border-radius(2px)
-  background: #B3091D
+  +border-radius($border-radius)
+  background: #950f1e
   color: #FFFFFF
   font-size: 15px
   line-height: 20px
@@ -507,38 +495,47 @@ footer
   @media only screen and (max-width: $break-medium)
     text-align: center
 
-input, textarea
-  +all-transitions
+
+a[href], label[for], select, button, .pointer
+  cursor: pointer
+
+button, input, textarea, select
   +appearance(none)
-  +border-radius(2px)
+  background: none
+  border: none
+  border-radius: $border-radius
+  color: $text-color
+  font-family: $primary-font
+  font-size: 16px
+  height: 54px
+  letter-spacing: 1px
+  padding: 0
+
+textarea
+  height: auto
+
+input, textarea
   background: $background-color
-  border: 1px solid $link-color
-  color: $link-color
-  font-family: $secondary-font
-  font-size: 14px
+  border: 1px solid $text-color
+  color: $text-color
   padding: 8px 10px
 
-  &:focus
+  &:hover, &:focus
     border: 1px solid $hover-color
     color: $hover-color
-    outline: none
-
-input
-  height: 50px
 
 button, a.button
-  +all-transitions
-  +border-radius(2px)
+  +transition(background .2s ease)
+  +border-radius($border-radius)
   background-color: $button-background-color
-  border: 1px solid $button-background-color
+  border: none
   color: $button-text-color
   cursor: pointer
   display: inline-block
   font-family: $secondary-font
   font-size: $text-size
-  height: 50px
-  line-height: 46px
-  outline: none
+  height: 54px
+  line-height: 54px
   padding: 0
   text-align: center
 
@@ -555,16 +552,16 @@ button, a.button
       background: none
       text-decoration: underline
 
-  &:hover, &:focus, &:active
-    opacity: .8
+  &:hover, &:focus
+    background-color: $button-background-hover-color
 
   &:disabled, &.disabled
+    background-color: $button-background-color !important
     cursor: not-allowed
-    opacity: .3
+    opacity: .4
 
 .select
-  +all-transitions
-  +border-radius(2px)
+  +border-radius($border-radius)
   position: relative
   border: 1px solid $button-background-color
   color: $button-background-color
@@ -576,8 +573,6 @@ button, a.button
   width: 100%
 
   select
-    +all-transitions
-    +appearance(none)
     background: none
     border: 0
     color: $button-background-color

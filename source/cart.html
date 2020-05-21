@@ -36,7 +36,7 @@
       {% endfor %}
     </ul>
     <div class="cart_footer">
-      <div class="cart_total">Total: <span>{{ cart.total | money: theme.money_format }}</span></div>
+      <div class="cart_total">Subtotal: <span>{{ cart.total | money: theme.money_format }}</span></div>
       <button type="submit" name="checkout" title="Checkout" class="checkout_btn">Checkout</button>
       <a class="button continue_shopping minimal-button" href="/products">Continue Shopping</a>
     </div>

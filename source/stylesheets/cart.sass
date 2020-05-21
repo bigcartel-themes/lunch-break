@@ -176,10 +176,16 @@
           width: 100%
 
     .continue_shopping
+      border: 1px solid $link-color
+      color: $link-color
       float: left
       margin-left: 0
       max-width: 300px
       width: 48%
+
+      &:hover, &:focus
+        border-color: $hover-color
+        color: $hover-color
 
       @media screen and (max-width: $break-medium)
         border: 1px solid transparent
