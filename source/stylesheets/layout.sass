@@ -304,10 +304,11 @@ aside
 
   .side_cart
     +pie-clearfix
+    +transition(background .2s ease, color .2s ease, border .2s ease)
     +border-radius($border-radius)
     background-color: $background-color
-    border: 1px solid $button-background-color
-    color: $button-background-color
+    border: 1px solid $header-color
+    color: $header-color
     display: block
     font-family: $secondary-font
     font-size: 15px
@@ -333,8 +334,8 @@ aside
 
     .cart_icon
       +vertical-align
-      +all-transitions
-      fill: $button-background-color
+      +transition(fill .2s ease)
+      fill: $header-color
       height: 20px
       left: 10px
       position: absolute
@@ -345,13 +346,12 @@ aside
         width: 16px
 
     &:hover, &:focus, &:active
-      +all-transitions
       background-color: $button-background-color
       border: 1px solid $button-background-color
-      color: $background-color
+      color: $button-text-color
 
       .cart_icon
-        fill: $background-color
+        fill: $button-text-color
 
   .side_search
     padding: 4px 0
@@ -486,8 +486,6 @@ footer
   +border-radius($border-radius)
   background: #950f1e
   color: #FFFFFF
-  font-size: 15px
-  line-height: 20px
   list-style: none
   margin-bottom: 20px
   padding: 12px 20px

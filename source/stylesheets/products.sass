@@ -29,6 +29,7 @@
     width: calc(100% / #{"{{ theme.max_products_per_row_mobile }}"})
 
 .product-list-link
+  +transition(color .2s ease)
   color: $header-color
   text-decoration: none
 
@@ -118,11 +119,13 @@
   text-align: center
 
 .product-list-thumb-name
+  +transition(color .2s ease)
   color: $header-color
   overflow-wrap: break-word
   position: relative
 
 .product-list-thumb-price
+  +transition(color .2s ease)
   color: $secondary-text-color
   font-weight: bold
   margin-top: 6px

@@ -1,5 +1,11 @@
 @import 'config'
 
+.empty-cart-message
+  display: none
+
+  .empty-cart &
+    display: block
+
 .cart-items
   border-top: 1px solid $border-color
   padding: 0
@@ -199,7 +205,7 @@ a.button.continue_shopping
     color: $hover-color
 
   @media screen and (max-width: $break-medium)
-    border: 1px solid transparent
+    border: 1px solid transparent !important
     float: none
     margin: 0
     max-width: 100%

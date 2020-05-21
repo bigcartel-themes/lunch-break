@@ -18,13 +18,6 @@ $(function() {
       $(this).attr('aria-label', $(this).data('open'));
     }
   });
-  $('.remove a').click(function(e) {
-    e.preventDefault();
-    $(this).closest('li').find('input[id$=_qty]').val(0).closest('form').submit();
-  });
-  $('[name*="cart[update]"]').on('change',function() {
-    $(this).closest('form').submit();
-  });
   $('.search_form input')
     .on('focus', function() {
       $(this).parent().addClass('focus');

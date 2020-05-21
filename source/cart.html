@@ -1,56 +1,56 @@
-<h1>{{ page.name }}</h1>
-{% if errors != blank %}
-  <ul class="errors">
-    {% for error in errors %}
-      <li>{{ error }}</li>
-    {% endfor %}
-  </ul>
-{% endif %}
-{% if cart.items != blank %}
-  <form method="post" action="/cart" id="cart_form" class="cart_form">
-    <ul class="cart-items">
-      {% for item in cart.items %}
-        <li class="cart-item" data-item-id="{{ item.id }}">
-          <a class="cart-item-image" href="{{ item.product.url }}">
-            <img src="{{ item.product.image | product_image_url | constrain: 200, 200 }}" alt="View {{ item.product.name | escape }}" />
-          </a>
-          <div class="cart-item-details">
-            <a class="cart-item-details-name" href="{{ item.product.url }}">
-              {{ item.product.name }}
-            </a>
-            <div class="cart-item-details-option">
-              {% unless item.product.has_default_option %}
-                {{ item.option.name }} -
-              {% endunless %}
-              {{ item.unit_price | money: theme.money_format }}
-            </div>
+<h1 class="page-title">{{ page.name }}</h1>
+<div class="cart-container{% if cart.item_count == 0 %} empty-cart{% endif %}">
+  <div class="empty-cart-message">
+    <p class="empty-cart-message centered-message">
+      <b>Your cart is empty!</b> Sounds like a good time to <a href="/products" title="Start shopping">start shopping</a>.
+    </p>
+  </div>
+  {% if cart.items != blank %}
+    <div class="cart-holder">
+      <form method="post" action="/cart" id="cart-form" class="cart-form">
+        <ul class="cart-items">
+          {% for item in cart.items %}
+            <li class="cart-item" data-item-id="{{ item.id }}">
+              <a class="cart-item-image" href="{{ item.product.url }}">
+                <img src="{{ item.product.image | product_image_url | constrain: 200, 200 }}" alt="View {{ item.product.name | escape }}" />
+              </a>
+              <div class="cart-item-details">
+                <a class="cart-item-details-name" href="{{ item.product.url }}">
+                  {{ item.product.name }}
+                </a>
+                <div class="cart-item-details-option">
+                  {% unless item.product.has_default_option %}
+                    {{ item.option.name }} -
+                  {% endunless %}
+                  {{ item.unit_price | money: theme.money_format }}
+                </div>
 
-            <div class="cart-item-details-unit-price"></div>
-            <button class="remove-item-button cart-item-remove-text minimal-button" type="button" aria-label="Remove item: {{ item.product.name | escape }}">Remove</button>
+                <div class="cart-item-details-unit-price"></div>
+                <button class="remove-item-button cart-item-remove-text minimal-button" type="button" aria-label="Remove item: {{ item.product.name | escape }}">Remove</button>
+              </div>
+              <div class="cart-item-quantity-price">
+                <div class="cart-item-quantity-holder" data-item-id="{{ item.id }}">
+                  <label class="sr-only" for="item_{{item.id}}_qty">Quantity</label>
+                  {{ item | item_quantity_input, nil, 'option-quantity' }}
+                </div>
+                <div class="cart-item-details-price">
+                  {{ item.price | money: theme.money_format }}
+                </div>
+                <button title="Remove item: {{ item.product.name | escape }}" class="remove-item-button cart-item-remove" aria-label="Remove item: {{ item.product.name }}" type="button">
+                  <svg aria-hidden="true" class="cart-item-remove-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14.1 14.1" enable-background="new 0 0 14.1 14.1"><path d="M14.1 1.1l-1.1-1.1-6 6-5.9-6-1.1 1.1 6 5.9-6 6 1.1 1.1 5.9-6 6 6 1.1-1.1-6-6z"/></svg>
+                </button>
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+        <div class="cart_footer">
+          <div class="cart_total">
+            <span class="cart_subtotal_label">Subtotal:</span>
+            <span class="cart-subtotal-amount">{{ cart.total | money: theme.money_format }}</span>
           </div>
-          <div class="cart-item-quantity-price">
-            <div class="cart-item-quantity-holder" data-item-id="{{ item.id }}">
-              <label class="sr-only" for="item_{{item.id}}_qty">Quantity</label>
-              {{ item | item_quantity_input, nil, 'option-quantity' }}
-            </div>
-            <div class="cart-item-details-price">
-              {{ item.price | money: theme.money_format }}
-            </div>
-            <button title="Remove item: {{ item.product.name | escape }}" class="remove-item-button cart-item-remove" aria-label="Remove item: {{ item.product.name }}" type="button">
-              <svg aria-hidden="true" class="cart-item-remove-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14.1 14.1" enable-background="new 0 0 14.1 14.1"><path d="M14.1 1.1l-1.1-1.1-6 6-5.9-6-1.1 1.1 6 5.9-6 6 1.1 1.1 5.9-6 6 6 1.1-1.1-6-6z"/></svg>
-            </button>
-          </div>
-        </li>
-      {% endfor %}
-    </ul>
-    <div class="cart_footer">
-      <div class="cart_total">Subtotal: <span>{{ cart.total | money: theme.money_format }}</span></div>
-      <button type="submit" name="checkout" title="Checkout" class="checkout_btn">Checkout</button>
-      <a class="button continue_shopping minimal-button" href="/products">Continue Shopping</a>
+          <button type="submit" name="checkout" title="Checkout" class="checkout_btn">Checkout</button>
+          <a class="button continue_shopping minimal-button" href="/products">Continue Shopping</a>
+        </div>
+      </form>
     </div>
-  </form>
-{% else %}
-	<div class="empty_cart">
-		<p><strong>Your cart is empty!</strong> Sounds like a good time to <a href="/">start shopping.</a></p>
-	</div>
 {% endif %}
