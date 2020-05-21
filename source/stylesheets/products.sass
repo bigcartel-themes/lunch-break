@@ -17,9 +17,13 @@
   padding: 10px
   padding-bottom: 30px
   position: relative
+  text-align: #{"{{ theme.product_detail_alignment }}"}
   vertical-align: middle
   width: calc(100% / #{"{{ theme.max_products_per_row }}"})
   word-break: break-word
+
+  @media screen and (max-width: 1100px)
+    width: calc(100% / #{"{% if theme.max_products_per_row == 4 %} 3 {% elsif theme.max_products_per_row == 3 %} 3 {% elsif theme.max_products_per_row == 2 %} 2 {% else %} 1 {% endif %}"})
 
   @media screen and (max-width: $break-medium)
     width: calc(100% / 3)
@@ -114,9 +118,8 @@
 .product-list-thumb-info
   font-size: 16px
   line-height: 1.25em
-  padding: 10px
+  padding: 10px 0
   position: relative
-  text-align: center
 
 .product-list-thumb-name
   +transition(color .2s ease)

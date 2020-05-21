@@ -92,12 +92,12 @@ ul, ol
   padding: 0
 
 .mobile_nav
-  +pie-clearfix
   +box-shadow(0px 1px 3px $border-color)
+  +align-items(center)
+  +justify-content(flex-start)
   background-color: $background-color
   border-bottom: 1px solid $border-color
   display: none
-  font-size: 21px
   height: 60px
   padding: 0 20px
   position: absolute
@@ -105,14 +105,13 @@ ul, ol
   width: 100%
 
   @media only screen and (max-width: $break-large)
-    display: block
+    +flexbox
     z-index: 10
 
   .open_menu
-    +vertical-align
     +transition(.5s ease-in-out)
-    float: left
     height: 14px
+    position: relative
     width: 22px
 
     span
@@ -163,26 +162,16 @@ ul, ol
       +transform(translateY(2px))
 
   .mobile_cart
-    +pie-clearfix
-    +vertical-align
-    float: right
-    height: 14px
-    font-size: 15px
+    +flexbox
+    +align-items(center)
+    margin-left: auto
 
     .cart_icon
-      +all-transitions
+      display: block
       fill: $link-color
-      float: left
-      height: 21px
+      height: 22px
       margin-right: 10px
-      margin-top: -4px
-      width: 21px
-
-    &:hover, &:focus, &:active
-      +all-transitions
-
-      .cart_icon
-        fill: $hover-color
+      width: 22px
 
 .wrap
   +pie-clearfix
@@ -262,37 +251,22 @@ header
     max-width: 100%
 
 aside
-  +border-radius($border-radius)
   background-color: $background-color
   float: #{"{% if theme.sidebar_position == 'right' %} right {% else %} left {% endif %}"}
   padding-bottom: 80px
   width: 20%
 
-  @media only screen and (max-width: $break-extra-large)
-    width: 24%
-    margin: 0 -16px
-
   @media only screen and (max-width: $break-large)
-    +border-radius(0)
-    height: auto
-    left: 0
-    opacity: 0
-    padding: 0 20px
-    position: absolute
-    top: 0
-    visibility: hidden
-    width: 100%
-    margin: auto
-
-  &.open
-    +all-transitions
-    +box-shadow(0px 1px 3px $border-color)
+    +transition(all .4s ease-in-out)
     border-bottom: 1px solid $border-color
-    display: block
-    opacity: 1
-    padding-top: 80px
-    visibility: visible
-    z-index: 9
+    left: 0
+    padding: 80px 20px
+    position: absolute
+    top: -100%
+    width: 100%
+
+    &.open
+      top: 0
 
   .nav_title
     color: $header-color
@@ -303,47 +277,39 @@ aside
     padding: 0 0 6px
 
   .side_cart
-    +pie-clearfix
+    +flexbox
+    +align-items(center)
+    +justify-content(flex-start)
     +transition(background .2s ease, color .2s ease, border .2s ease)
     +border-radius($border-radius)
     background-color: $background-color
     border: 1px solid $header-color
     color: $header-color
-    display: block
     font-family: $secondary-font
     font-size: 15px
     height: 50px
     margin-bottom: 40px
     padding: 0 10px
     position: relative
+    text-decoration: none !important
 
     @media only screen and (max-width: $break-large)
       display: none
 
     .cart_title
-      +vertical-align
-      float: left
-      margin-left: 27px
-
-      @media only screen and (max-width: $break-extra-large)
-        margin-left: 22px
+      margin-left: 6px
 
     .cart_numbers
-      +vertical-align
-      float: right
+      margin-left: auto
+
+      @media only screen and (max-width: 1100px)
+        display: none
 
     .cart_icon
-      +vertical-align
       +transition(fill .2s ease)
       fill: $header-color
-      height: 20px
-      left: 10px
-      position: absolute
-      width: 20px
-
-      @media only screen and (max-width: $break-extra-large)
-        height: 16px
-        width: 16px
+      height: 22px
+      width: 22px
 
     &:hover, &:focus, &:active
       background-color: $button-background-color
@@ -493,7 +459,6 @@ footer
   @media only screen and (max-width: $break-medium)
     text-align: center
 
-
 a[href], label[for], select, button, .pointer
   cursor: pointer
 
@@ -506,7 +471,6 @@ button, input, textarea, select
   font-family: $primary-font
   font-size: 16px
   height: 54px
-  letter-spacing: 1px
   padding: 0
 
 textarea
@@ -524,7 +488,6 @@ input, textarea
 
 button, a.button
   +transition(background .2s ease)
-  +border-radius($border-radius)
   background-color: $button-background-color
   border: none
   color: $button-text-color
