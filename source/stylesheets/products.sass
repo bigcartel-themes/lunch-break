@@ -9,18 +9,9 @@
   +justify-content(flex-start)
   margin: 0 -10px
 
-.product-list-link
-  text-decoration: none
-
-  &:hover, &:focus
-    text-decoration: none
-
-    .product-list-thumb-name
-      text-decoration: underline
-
 .product-list-thumb
   border-radius: $border-radius
-  color: $text-color
+  color: $header-color
   display: block
   font-size: 0
   padding: 10px
@@ -37,8 +28,16 @@
     padding: 10px
     width: calc(100% / #{"{{ theme.max_products_per_row_mobile }}"})
 
-_:-ms-fullscreen, :root .product-list-thumb
-  +flex-basis(auto)
+.product-list-link
+  color: $header-color
+  text-decoration: none
+
+  &:hover, &:focus
+    color: $hover-color
+    text-decoration: none
+
+    .product-list-thumb-name, .product-list-thumb-price
+      color: $hover-color
 
 .product-list-thumb-container
   position: relative
@@ -108,6 +107,9 @@ _:-ms-fullscreen, :root .product-list-thumb
   position: absolute
   width: 100%
 
+  .default &
+    position: relative
+
 .product-list-thumb-info
   font-size: 16px
   line-height: 1.25em
@@ -121,13 +123,11 @@ _:-ms-fullscreen, :root .product-list-thumb
   position: relative
 
 .product-list-thumb-price
-  font-family: $secondary-font
+  color: $secondary-text-color
   font-weight: bold
-  font-size: 16px
   margin-top: 6px
 
 .product-list-thumb-status
-  color: $secondary-text-color
   display: inline-block
   font-size: 15px
   font-style: italic

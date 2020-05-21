@@ -167,9 +167,6 @@
         width: 100%
 
       &.checkout_btn
-        background-color: $button-color
-        border: 1px solid $button-color
-        color: $background-color
         max-width: 300px
         width: 48%
 
@@ -178,23 +175,11 @@
           max-width: 100%
           width: 100%
 
-        &:hover, &:focus, &:active
-          opacity: .8
-
     .continue_shopping
-      border: 1px solid $button-color
       float: left
       margin-left: 0
       max-width: 300px
       width: 48%
-
-      &:hover, &:focus, &:active
-        +all-transitions
-        background-color: $button-color !important
-        border: 1px solid $button-color !important
-        color: $background-color !important
-        text-decoration: none !important
-        opacity: 1 !important
 
       @media screen and (max-width: $break-medium)
         border: 1px solid transparent
