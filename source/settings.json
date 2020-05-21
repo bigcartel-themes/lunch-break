@@ -1,11 +1,11 @@
 {
   "name": "Lunch Break",
-  "version": "1.4.005",
+  "version": "1.4.008",
   "images": [
     {
       "variable": "header_logo",
       "label": "Header image",
-      "description": "Good for an image up to 1300 by 250 pixels"
+      "description": "Good for an image up to 140 pixels high"
     }
   ],
   "image_sets": [
@@ -101,9 +101,9 @@
       "label": "Header alignment",
       "type": "select",
       "options": [
-        ["Left", "left"],
+        ["Left", "flex-start"],
         ["Center", "center"],
-        ["Right", "right"]
+        ["Right", "flex-end"]
       ],
       "default": "center",
       "description": "Sets the position of your store name or header logo"
@@ -129,7 +129,7 @@
       "label": "Maximum products per row",
       "type": "select",
       "options": "1..4",
-      "default": 4,
+      "default": 3,
       "description": "The maximum number of products displayed per row on larger screens"
     },
     {
