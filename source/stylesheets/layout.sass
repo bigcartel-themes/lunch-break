@@ -54,6 +54,7 @@ a
     text-decoration: underline
 
 h1, h2, h3, h4, h5, h6
+  display:inline-block
   color: $header-color
   font-family: $primary-font
   font-weight: 500
@@ -66,9 +67,6 @@ h1
 
   @media only screen and (max-width: $break-medium)
     text-align: center
-
-  @media only screen and (max-width: $break-small)
-    margin-bottom: 15px
 
 img
   display: block
@@ -191,9 +189,13 @@ header
     display: inline-block
     font-size: 44px
 
+    &:hover, &:active
+      color: $hover-color
+
     &.text
-      display: block
+      display: inline-block
       line-height: 1.2em
+      text-decoration: none
       white-space: normal
       word-wrap: break-word
 
@@ -250,10 +252,9 @@ aside
   width: 20%
 
   @media only screen and (max-width: $break-large)
-    +transition(all .4s ease-in-out)
     border-bottom: 1px solid $border-color
     left: 0
-    padding: 80px 20px
+    padding: 80px 20px 0
     position: absolute
     top: -100%
     width: 100%
@@ -264,7 +265,7 @@ aside
   .nav_title
     color: $header-color
     border-bottom: 1px solid $border-color
-    font-size: 20px
+    font-size: 22px
     line-height: 1.3em
     margin-bottom: 4px
     padding: 0 0 6px
@@ -279,7 +280,6 @@ aside
     border: 1px solid $header-color
     color: $header-color
     font-family: $secondary-font
-    font-size: 15px
     height: 50px
     margin-bottom: 40px
     padding: 0 10px
@@ -312,42 +312,6 @@ aside
       .cart_icon
         fill: $button-text-color
 
-  .side_search
-    padding: 4px 0
-
-  .search_form
-    +all-transitions
-    display: block
-    margin: 0
-    padding: 0
-    position: relative
-
-    label
-      +all-transitions
-      bottom: 6px
-      color: $link-color
-      cursor: pointer
-      font-size: 15px
-      position: absolute
-
-      &:hover
-        color: $hover-color
-
-    input
-      +appearance(none)
-      +border-radius(0)
-      background: none
-      border: none
-      color: $link-color
-      cursor: pointer
-      font-size: 14px
-      height: 100%
-      padding: 4px 0
-      width: 100%
-
-    &.focus label
-      opacity: 0
-
   ul
     list-style: none
     margin: 0
@@ -358,7 +322,6 @@ aside
 
       a
         display: block
-        font-size: 15px
         padding: 8px 0
         line-height: 18px
 
@@ -368,12 +331,64 @@ aside
     &:first-child
       margin-top: 0
 
+.search-form
+  +flexbox
+  +align-items(center)
+  height: 34px
+  position: relative
+
+  &:focus-within
+    .search-icon
+      display: block
+
+.search-input
+  border: none !important
+  cursor: pointer
+  height: auto
+  padding: 6px 32px 4px 0
+  width: calc(100% + 4px)
+
+  &:hover, &:focus
+    left: -4px
+    padding-left: 4px
+    position: absolute
+
+
+  &::-webkit-input-placeholder
+    color: $link-color
+
+  &::-moz-placeholder
+    color: $link-color
+
+  &:-ms-input-placeholder
+    color: $link-color
+
+  &:-moz-placeholder
+    color: $link-color
+
+button.search-button
+  +flexbox
+  +align-items(center)
+  +justify-content(center)
+  background: none
+  height: 20px
+  padding: 0
+  position: absolute
+  right: 5px
+  top: 50%
+  transform: translateY(-50%)
+  width: 20px
+
+.search-icon
+  fill: $link-color
+  display: none
+  height: 16px
+  width: 16px
 
 footer
   background: $secondary-background
   border-top: 1px solid $border-color
   bottom: 0
-  font-size: 15px
   height: 120px
   position: absolute
   width: 100%
