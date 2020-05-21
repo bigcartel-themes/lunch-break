@@ -8,29 +8,37 @@
 {% endif %}
 {% if cart.items != blank %}
   <form method="post" action="/cart" id="cart_form" class="cart_form">
-    <ul class="cart_items">
+    <ul class="cart-items">
       {% for item in cart.items %}
-        <li>
-          <a href="{{ item.product.url }}" class="item_image">
-            <img src="{{ item.product.image | product_image_url | constrain: 200, 200 }}" alt="{{ item.product.name }}">
+        <li class="cart-item" data-item-id="{{ item.id }}">
+          <a class="cart-item-image" href="{{ item.product.url }}">
+            <img src="{{ item.product.image | product_image_url | constrain: 200, 200 }}" alt="View {{ item.product.name | escape }}" />
           </a>
-          <div class="item_details">
-            <a href="{{ item.product.url }}">
+          <div class="cart-item-details">
+            <a class="cart-item-details-name" href="{{ item.product.url }}">
               {{ item.product.name }}
-              {% unless item.product.has_default_option %}
-                <span>{{ item.option.name }}</span>
-              {% endunless %}
             </a>
+            <div class="cart-item-details-option">
+              {% unless item.product.has_default_option %}
+                {{ item.option.name }} -
+              {% endunless %}
+              {{ item.unit_price | money: theme.money_format }}
+            </div>
+
+            <div class="cart-item-details-unit-price"></div>
+            <button class="remove-item-button cart-item-remove-text minimal-button" type="button" aria-label="Remove item: {{ item.product.name | escape }}">Remove</button>
           </div>
-          <div class="item_actions">
-            <div class="quantity">
-              <label for="item_{{ item.id }}_qty" class="sr-only">Quantity:</label>
-              {{ item | item_quantity_input }}
+          <div class="cart-item-quantity-price">
+            <div class="cart-item-quantity-holder" data-item-id="{{ item.id }}">
+              <label class="sr-only" for="item_{{item.id}}_qty">Quantity</label>
+              {{ item | item_quantity_input, nil, 'option-quantity' }}
             </div>
-            <div class="price">{{ item.price | money: theme.money_format }}</div>
-            <div class="remove">
-              <a href="#" data-item-id="{{ item.id }}" title="Remove Item" aria-label="Remove Item"><svg aria-hidden="true" class="remove_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14.1 14.1" enable-background="new 0 0 14.1 14.1"><path d="M14.1 1.1l-1.1-1.1-6 6-5.9-6-1.1 1.1 6 5.9-6 6 1.1 1.1 5.9-6 6 6 1.1-1.1-6-6z"/></svg></a>
+            <div class="cart-item-details-price">
+              {{ item.price | money: theme.money_format }}
             </div>
+            <button title="Remove item: {{ item.product.name | escape }}" class="remove-item-button cart-item-remove" aria-label="Remove item: {{ item.product.name }}" type="button">
+              <svg aria-hidden="true" class="cart-item-remove-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14.1 14.1" enable-background="new 0 0 14.1 14.1"><path d="M14.1 1.1l-1.1-1.1-6 6-5.9-6-1.1 1.1 6 5.9-6 6 1.1 1.1 5.9-6 6 6 1.1-1.1-6-6z"/></svg>
+            </button>
           </div>
         </li>
       {% endfor %}
