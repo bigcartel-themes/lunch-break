@@ -56,12 +56,12 @@
     {
       "variable": "link_color",
       "label": "Links",
-      "default": "#646464"
+      "default": "#484848"
     },
     {
       "variable": "link_hover_color",
       "label": "Link hover",
-      "default": "#2E2E2E"
+      "default": "#111111"
     },
     {
       "variable": "button_color",
