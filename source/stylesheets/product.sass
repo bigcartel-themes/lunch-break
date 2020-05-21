@@ -59,23 +59,22 @@
     min-height: 0
 
   .product_price_status
+    +flexbox
+    +align-items(center)
     color: $text-color
     font-family: $secondary-font
-    font-size: 19px
-    line-height: 18px
+    font-size: 20px
     margin-bottom: 40px
 
-    > span
-      vertical-align: middle
-
-      &.small_status
-        +border-radius(2px)
-        background-color: $link-color
-        color: $background-color
-        font-size: 12px
-        margin-left: 5px
-        padding: 3px 7px
-        text-transform: uppercase
+    .small_status
+      +border-radius(2px)
+      border: 1px solid $secondary-text-color
+      color: $secondary-text-color
+      font-size: 13px
+      margin-left: 10px
+      padding: 4px 8px
+      position: relative
+      text-transform: uppercase
 
   h4
     border-bottom: none
