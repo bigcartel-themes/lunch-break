@@ -15,6 +15,9 @@
   &:hover, &:focus
     text-decoration: none
 
+    .product-list-thumb-name
+      text-decoration: underline
+
 .product-list-thumb
   border-radius: $border-radius
   color: $text-color
@@ -23,13 +26,9 @@
   padding: 10px
   padding-bottom: 30px
   position: relative
-  text-decoration: none
   vertical-align: middle
   width: calc(100% / #{"{{ theme.max_products_per_row }}"})
   word-break: break-word
-
-  &:hover, &:focus
-    text-decoration: none
 
   @media screen and (max-width: $break-medium)
     width: calc(100% / 3)

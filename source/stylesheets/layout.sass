@@ -44,13 +44,14 @@ body
       p:last-child
         margin: 15px 0 0
 
-a, a:visited
-  +all-transitions
+a
+  transition: color 0.2s ease, text-decoration-color .2s ease
   color: $link-color
-  text-decoration: none
+  text-decoration-color: transparent
 
-  &:hover
+  &:hover, &:focus
     color: $hover-color
+    text-decoration: underline
 
 h1, h2, h3, h4, h5, h6
   color: $header-color
@@ -254,8 +255,13 @@ header
   max-width: 700px
   width: 100%
 
+  a
+    font-weight: 600
+    text-decoration: underline
+
   iframe
     max-width: 100%
+
 
 .success_message
   margin-top: 20px
