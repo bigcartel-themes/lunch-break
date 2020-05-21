@@ -1,6 +1,6 @@
 {
   "name": "Lunch Break",
-  "version": "1.4.02",
+  "version": "1.4.005",
   "images": [
     {
       "variable": "header_logo",
@@ -66,22 +66,22 @@
     {
       "variable": "button_text_color",
       "label": "Button text",
-      "default": "#2B4759"
+      "default": "#FFFFFF"
     },
     {
       "variable": "button_background_color",
       "label": "Button background",
-      "default": "#2B4759"
+      "default": "#235575"
     },
     {
       "variable": "button_background_hover_color",
       "label": "Button background hover",
-      "default": "#2B4759"
+      "default": "#193648"
     },
     {
       "variable": "border_color",
       "label": "Borders",
-      "default": "#E5E5E5"
+      "default": "#d4d4d4"
     }
   ],
   "options": [
@@ -153,6 +153,17 @@
       "description": "Sets the display of images in the product grid"
     },
     {
+      "variable": "product_detail_alignment",
+      "label": "Product grid details alignment",
+      "type": "select",
+      "options": [
+        ["Left", "left"],
+        ["Center", "center"]
+      ],
+      "default": "center",
+      "description": "Alignment for product details under thumbnail images"
+    },
+    {
       "variable": "products_per_page",
       "label": "Products per page",
       "type": "select",
@@ -199,6 +210,13 @@
       "default": true,
       "description": "Shows sold out product options in the Product page dropdowns",
       "requires": "inventory"
+    },
+    {
+      "variable": "show_share_buttons",
+      "label": "Show Product share buttons",
+      "type": "boolean",
+      "default": false,
+      "description": "Adds Facebook, Twitter, and Pinterest buttons to Product pages"
     },
     {
       "variable": "twitter_url",
