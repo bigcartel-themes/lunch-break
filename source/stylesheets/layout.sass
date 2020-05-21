@@ -3,19 +3,20 @@
 *
   box-sizing: border-box
 
-html
+body, html
+  height: 100%
   min-height: 100%
-  overflow-y: scroll
   position: relative
 
 body
+  +flexbox
+  +flex-direction(column)
   -moz-osx-font-smoothing: grayscale
   -webkit-font-smoothing: antialiased
   background-color: $background-color
   color: $text-color
   font-family: $secondary-font
   line-height: 1
-  margin-bottom: 120px
 
   &.standalone
     background-color: $secondary-background
@@ -100,7 +101,7 @@ ul, ol
     z-index: 10
 
   .open_menu
-    +transition(.5s ease-in-out)
+    +transition(.1s ease-in-out)
     height: 14px
     position: relative
     width: 22px
@@ -108,7 +109,7 @@ ul, ol
     span
       +border-radius($border-radius)
       +transform(rotate(0deg))
-      +transition(.25s ease-in-out)
+      +transition(.1s ease-in-out)
       display: block
       background: $header-color
       width: 100%
@@ -165,11 +166,15 @@ ul, ol
       width: 22px
 
 .wrap
+  +flex(1)
   +pie-clearfix
   margin: 0 auto
   max-width: 1300px
-  padding: 0 20px
+  padding: 0 20px 80px
   width: 100%
+
+_:-ms-fullscreen, :root .wrap
+  +flex(1 0 auto)
 
 header
   background: $secondary-background
@@ -178,7 +183,7 @@ header
   font-size: 28px
   padding: 80px 0
   margin-bottom: 40px
-  text-align: #{"{{ theme.header_position }}"}
+  text-align: center
 
   @media only screen and (max-width: $break-large)
     margin: 0 0 40px
@@ -209,8 +214,12 @@ header
     @media only screen and (max-width: $break-medium)
       padding: 100px 15px 40px
 
-  &.wrap
-    padding: 0
+  .inner-wrapper
+    padding: 0 20px
+    +justify-content(#{"{{ theme.header_position }}"})
+
+    @media screen and (max-width: $break-medium)
+      +justify-content(center)
 
 .hidden
   display: none
@@ -219,7 +228,6 @@ header
   +pie-clearfix
   float: #{"{% if theme.sidebar_position == 'right' %} left {% else %} right {% endif %}"}
   position: relative
-  padding-bottom: 80px
   max-width: 75%
   width: 100%
 
@@ -228,7 +236,6 @@ header
 
   @media only screen and (max-width: $break-large)
     float: none
-    padding-bottom: 40px
     max-width: 100%
 
 .custom_content
@@ -248,19 +255,19 @@ header
 aside
   background-color: $background-color
   float: #{"{% if theme.sidebar_position == 'right' %} right {% else %} left {% endif %}"}
-  padding-bottom: 80px
   width: 20%
 
   @media only screen and (max-width: $break-large)
     border-bottom: 1px solid $border-color
+    display: none
     left: 0
     padding: 80px 20px 0
     position: absolute
-    top: -100%
+    top: 0
     width: 100%
 
     &.open
-      top: 0
+      display: block
 
   .nav_title
     color: $header-color
@@ -353,7 +360,6 @@ aside
     padding-left: 4px
     position: absolute
 
-
   &::-webkit-input-placeholder
     color: $link-color
 
@@ -370,7 +376,7 @@ button.search-button
   +flexbox
   +align-items(center)
   +justify-content(center)
-  background: none
+  background: none !important
   height: 20px
   padding: 0
   position: absolute
@@ -385,25 +391,23 @@ button.search-button
   height: 16px
   width: 16px
 
+.inner-wrapper
+  +flexbox
+  +flex-direction(row)
+  +align-items(center)
+  +justify-content(space-between)
+  height: 100%
+  margin: 0 auto
+  padding: 60px 20px
+  max-width: 1300px
+  width: 100%
+
 footer
   background: $secondary-background
   border-top: 1px solid $border-color
-  bottom: 0
-  height: 120px
-  position: absolute
   width: 100%
 
-  .wrapper
-    +flexbox
-    +flex-direction(row)
-    +align-items(center)
-    +justify-content(space-between)
-    height: 100%
-    margin: 0 auto
-    max-width: 1300px
-    padding: 0 40px
-    width: 100%
-
+  .inner-wrapper
     &>div:only-child
       text-align: center
       width: 100%
