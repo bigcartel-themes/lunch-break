@@ -50,7 +50,6 @@
           <div class="side_categories">
             <div class="nav_title">Shop</div>
             <ul>
-              <li><a href="/products">All Products</a></li>
               {% if theme.show_search %}
                 <li>
                   <form class="search-form" name="search" action="/products" method="get" accept-charset="utf8">
@@ -61,6 +60,7 @@
                   </form>
                 </li>
               {% endif %}
+              <li><a href="/products">All Products</a></li>
               {% for category in categories.active %}
                 <li>{{ category | link_to }}</li>
               {% endfor %}
