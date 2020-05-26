@@ -1,14 +1,6 @@
-{% assign page_content_width = 915 %}
+{% assign page_content_width = 968 %}
 {% assign slideshow_constrain_width = page_content_width %}
 {% assign slideshow_constrain_width_large = slideshow_constrain_width | times: 2 %}
-
-{% assign product_image_constrain_width = page_content_width | divided_by: theme.max_products_per_row %}
-{% assign product_image_constrain_height = page_content_width | divided_by: theme.max_products_per_row %}
-{% assign product_image_constrain_width_large = product_image_constrain_width | times: 2 %}
-{% assign product_image_constrain_height_large = product_image_constrain_height | times: 2 %}
-
-{% assign thumb_constrain_width = 30 %}
-{% assign thumb_constrain_height = 30 %}
 
 {% if errors != blank %}
   <ul class="errors">
@@ -52,6 +44,14 @@
       <div class="product-list-container">
         <div class="product-list">
           {% for product in products %}
+            {% assign product_image_constrain_width = page_content_width | divided_by: theme.max_products_per_row %}
+            {% assign product_image_constrain_height = page_content_width | divided_by: theme.max_products_per_row %}
+            {% assign product_image_constrain_width_large = product_image_constrain_width | times: 2 %}
+            {% assign product_image_constrain_height_large = product_image_constrain_height | times: 2 %}
+
+            {% assign thumb_constrain_width = 30 %}
+            {% assign thumb_constrain_height = 30 %}
+
             {% assign product_status = '' %}
             {% case product.status %}
               {% when 'active' %}

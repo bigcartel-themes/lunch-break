@@ -1,14 +1,4 @@
-{% assign page_content_width = 915 %}
-{% assign slideshow_constrain_width = page_content_width %}
-{% assign slideshow_constrain_width_large = slideshow_constrain_width | times: 2 %}
-
-{% assign product_image_constrain_width = page_content_width | divided_by: theme.max_products_per_row %}
-{% assign product_image_constrain_height = page_content_width | divided_by: theme.max_products_per_row %}
-{% assign product_image_constrain_width_large = product_image_constrain_width | times: 2 %}
-{% assign product_image_constrain_height_large = product_image_constrain_height | times: 2 %}
-
-{% assign thumb_constrain_width = 30 %}
-{% assign thumb_constrain_height = 30 %}
+{% assign page_content_width = 968 %}
 
 <h1>{% if page.full_url contains "search=" %}Product Search{% else %}{{ page.name }}{% endif %}</h1>
 {% paginate products from products.current by theme.products_per_page %}
@@ -16,6 +6,14 @@
     <div class="product-list-container">
       <div class="product-list">
         {% for product in products %}
+          {% assign product_image_constrain_width = page_content_width | divided_by: theme.max_products_per_row %}
+          {% assign product_image_constrain_height = page_content_width | divided_by: theme.max_products_per_row %}
+          {% assign product_image_constrain_width_large = product_image_constrain_width | times: 2 %}
+          {% assign product_image_constrain_height_large = product_image_constrain_height | times: 2 %}
+
+          {% assign thumb_constrain_width = 30 %}
+          {% assign thumb_constrain_height = 30 %}
+
           {% assign product_status = '' %}
           {% case product.status %}
             {% when 'active' %}
