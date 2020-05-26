@@ -66,10 +66,39 @@
       </div>
     </div>
     {% if paginate.pages > 1 %}
-      <nav role="navigation" aria-label="Pagination">
-	{{ paginate | default_pagination, 'pagination', 'pagination', '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7.6 15" enable-background="new 0 0 7.6 15"><path d="M6.4 15l-6.4-7.5 6.3-7.5 1.1 1-5.4 6.5 5.6 6.5z"/></svg> Previous' , 'Next <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7.6 15" enable-background="new 0 0 7.6 15"><path d="M1.1 0l6.5 7.5-6.3 7.5-1.2-1 5.5-6.5-5.6-6.5z"/></svg>' }}
+      <nav class="pagination" aria-label="Pagination">
+
+          {% if paginate.previous.is_link %}
+            <a aria-label="Go to previous page" class="page-link previous-page-link" href="{{ paginate.previous.url }}">
+              <svg aria-hidden="true" height="16" width="16" viewBox="0 0 7.6 15" enable-background="new 0 0 7.6 15"><path d="M1.1 0l6.5 7.5-6.3 7.5-1.2-1 5.5-6.5-5.6-6.5z"/></svg>
+              <span>Previous</span>
+            </a>
+          {% else %}
+            <span class="page-link previous-page-link disabled">
+              <svg aria-hidden="true" height="16" width="16" viewBox="0 0 7.6 15" enable-background="new 0 0 7.6 15"><path d="M1.1 0l6.5 7.5-6.3 7.5-1.2-1 5.5-6.5-5.6-6.5z"/></svg>
+              <span>Previous</span>
+            </span>
+          {% endif %}
+
+          {{ paginate | default_pagination, 'page-numbers', 'page-numbers' }}
+          <div class="pagination-caption">Page {{ paginate.current_page }} of {{ paginate.pages }}</div>
+
+          {% if paginate.next.is_link %}
+            <a aria-label="Go to next page" class="page-link next-page-link" href="{{ paginate.next.url }}">
+              <span>Next</span>
+              <svg aria-hidden="true" height="16" width="16" viewBox="0 0 7.6 15" enable-background="new 0 0 7.6 15"><path d="M1.1 0l6.5 7.5-6.3 7.5-1.2-1 5.5-6.5-5.6-6.5z"/></svg>
+            </a>
+          {% else %}
+            <span class="page-link next-page-link disabled">
+              <span>Next</span>
+              <svg aria-hidden="true" height="16" width="16" viewBox="0 0 7.6 15" enable-background="new 0 0 7.6 15"><path d="M1.1 0l6.5 7.5-6.3 7.5-1.2-1 5.5-6.5-5.6-6.5z"/></svg>
+            </span>
+          {% endif %}
+
       </nav>
+
     {% endif %}
+
   {% else %}
     <p class="no_products">No products found.</p>
   {% endif %}

@@ -153,144 +153,105 @@ _:-ms-fullscreen, :root .product-list-thumb
   font-style: italic
   font-weight: normal
 
-ul.products
+.pagination
   +flexbox
   +flex-direction(row)
-  +flex-wrap(wrap)
-  list-style: none
-  margin: 0 -10px 10px
-  padding: 0
-  position: relative
-
-  li
-    +border-radius(2px)
-    padding: 0 10px 40px 10px
-    position: relative
-    width: #{"{% if theme.products_per_row == 2 %} 50% {% elsif theme.products_per_row == 3 %} 33.33% {% else %} 25% {% endif %}"}
-
-    @media only screen and (max-width: $break-large)
-      width: #{"{% if theme.products_per_row == 2 %} 50% {% elsif theme.products_per_row == 3 %} 33.33% {% else %} 33.33% {% endif %}"}
-
-    @media only screen and (max-width: $break-medium)
-      padding-bottom: 30px
-      width: 50%
-
-    a
-      display: block
-      position: relative
-      text-align: center
-      width: 100%
-
-      img
-        +all-transitions
-        +border-radius(2px)
-        display: block
-        width: 100%
-
-      &:hover img
-        opacity: .85
-
-      .product_name
-        +all-transitions
-        color: $header-color
-        font-size: 16px
-        line-height: 1.3em
-        margin-top: 10px
-
-      &:hover .product_name
-        color: $hover-color
-
-      .product_price
-        +all-transitions
-        color: $text-color
-        display: inline-block
-        font-family: $secondary-font
-        font-size: 15px
-        line-height: 1.4em
-        margin-top: 5px
-
-      .status
-        +border-radius(2px)
-        background: $background-color
-        color: $text-color
-        font-size: 12px
-        letter-spacing: .8px
-        padding: 5px 10px
-        position: absolute
-        right: 10px
-        text-transform: uppercase
-        top: 10px
-
-
-
-
-
-
-
-
-
-
-.pagination
-  +pie-clearfix
+  +justify-content(space-between)
+  +align-items(center)
   border-top: 1px solid $border-color
-  font-size: 17px
-  padding-top: 40px
-  text-align: center
-  width: 100%
+  line-height: 40px
+  padding: 10px 0
 
-  @media only screen and (max-width: $break-small)
-    font-size: 14px
+  @media screen and (max-width: $break-large)
+    font-size: 15px
 
-  span, a
-    display: inline-block
-    padding: 2px 7px
 
-    i
-      font-size: 12px
-      position: relative
-
-  .previous, .next
-    svg
-      +all-transitions
-      fill: $link-color
-      height: 14px
-      position: relative
-      right: 2px
-      top: 0
-      width: 13px
-
-      @media only screen and (max-width: $break-small)
-        height: 12px
-
-    &:hover
-      svg
-        fill: $hover-color
-
-  .previous
-    float: left
-    padding-left: 0
-
-    svg
-      margin-right: 5px
-
-      @media only screen and (max-width: $break-small)
-        margin-right: 0
-
-  .next
-    float: right
-    padding-right: 0
-
-    svg
-      margin-left: 5px
-      right: 0
-
-      @media only screen and (max-width: $break-small)
-        margin-left: 0
-
-  .disabled
+@media screen and (min-width: $break-small+1)
+  .pagination-caption
     display: none
 
-.home .pagination
+.page-numbers
+  +flexbox
+  +flex-wrap(wrap)
+  +justify-content(center)
+  margin: 0 20px
+
+  @media screen and (max-width: $break-small)
+    display: none
+
+  .previous, .next
+    display: none
+
+  > a, > span
+    +flexbox
+    +align-items(center)
+    +justify-content(center)
+    background: $background-color
+    border-radius: 100%
+    color: $link-color
+    text-align: center
+    height: 40px
+    margin-right: 8px
+    order: 1
+    position: relative
+    text-decoration: none
+    width: 40px
+
+    &.current
+      background: $button-background-color
+      color: $button-text-color
+
+    &.disabled
+      cursor: not-allowed
+      opacity: .4
+
+  > a
+    &:hover, &:focus
+      color: $hover-color
+      text-decoration: underline
+
+.page-link
+  +flexbox
+  +align-items(center)
+  color: $link-color
+  line-height: 40px
+  text-align: center
+  height: 40px
+  padding: 0
+  position: relative
+  text-decoration: none
+
+  &:not(.disabled):hover, &:not(.disabled):focus
+    background: none
+    color: $hover-color
+    text-decoration: underline
+
+    svg
+      fill: $hover-color
+
+  &.next-page-link
+
+    span
+      margin-right: 5px
+
+  &.previous-page-link
+
+    span
+      margin-left: 5px
+
+    svg
+      +transform(rotate(-180deg))
+
+  &.disabled
+    cursor: not-allowed
+    opacity: 0
+    visibility: hidden
+
+  svg
+    display: block
+    fill: $link-color
+
+#home-page .pagination
   display: none
 
 p.no_products

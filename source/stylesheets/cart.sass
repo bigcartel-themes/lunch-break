@@ -69,9 +69,6 @@ _:-ms-fullscreen, :root .cart-item-details
   font-size: 15px
   margin-top: 5px
 
-  @media screen and (max-width: $break-small)
-    font-size: 14px
-
 .cart-item-quantity-price
   +flexbox
   +align-items(center)
@@ -106,6 +103,11 @@ _:-ms-fullscreen, :root .cart-item-quantity-price
     padding: 10px
     text-align: center
     width: 64px
+
+    @media screen and (max-width: $break-medium)
+      height: 40px
+      padding: 5px
+      width: 56px
 
 button.cart-item-remove
   +flexbox
@@ -150,8 +152,6 @@ button.cart-item-remove-text
 .cart_footer
   +pie-clearfix
   clear: both
-  margin-bottom: 30px
-  margin-top: 40px
   text-align: right
 
   .cart_total
@@ -159,15 +159,13 @@ button.cart-item-remove-text
     font-family: $primary-font
     font-weight: 500
     margin: 0
-    padding: 0
     font-size: 24px
-    line-height: 22px
-    margin-bottom: 40px
+    padding: 30px 0
     text-align: right
 
     > span
       display: inline-block
-      margin-left: 10px
+      margin-left: 8px
 
   h4
     color: $text-color
@@ -204,6 +202,7 @@ button.cart-item-remove-text
         width: 100%
 
 a.button.continue_shopping
+  border-radius: $border-radius
   border: 1px solid $link-color
   color: $link-color
   float: left
