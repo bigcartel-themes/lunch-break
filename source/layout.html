@@ -8,6 +8,7 @@
     {{ head_content }}
   </head>
   <body id="{{ page.permalink }}-page" class="{{ page.permalink }} {{ page.category }}">
+    <a class="skip-link" href="#main">Skip to main content</a>
     <div class="mobile_nav">
       <button class="open_menu" role="button" href="#" data-open="Open Menu" data-close="Close Menu" title="Open Menu" aria-label="Open Menu">
         <span></span>
@@ -31,7 +32,7 @@
   		</div>
     </header>
     <div class="wrap">
-      <main class="content">
+      <main class="content" id="main">
         {% if page.category == 'custom' %}
           <div class="custom_content">
             <h1>{{ page.name }}</h1>
@@ -49,6 +50,7 @@
           <div class="side_categories">
             <div class="nav_title">Shop</div>
             <ul>
+              <li><a href="/products">All Products</a></li>
               {% if theme.show_search %}
                 <li>
                   <form class="search-form" name="search" action="/products" method="get" accept-charset="utf8">
@@ -59,7 +61,6 @@
                   </form>
                 </li>
               {% endif %}
-              <li><a href="/products">All Products</a></li>
               {% for category in categories.active %}
                 <li>{{ category | link_to }}</li>
               {% endfor %}

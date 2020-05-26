@@ -181,6 +181,21 @@ ul, ol
 _:-ms-fullscreen, :root .wrap
   +flex(1 0 auto)
 
+a.skip-link
+  +transition(all .3s)
+  background: $background-color
+  border: 1px solid $link-color
+  color: $link-color
+  left: 25px
+  padding: 15px 20px
+  position: absolute
+  text-decoration: underline
+  top: -150px
+  z-index: 100
+
+  &:focus
+    top: 20px
+
 header
   background: $secondary-background
   border-bottom: 1px solid $border-color
@@ -243,6 +258,7 @@ header
     padding-right: 0
 
 .custom_content
+  font-family: $secondary-font
   font-size: 16px
   line-height: 1.5em
   margin: 0 #{"{% if theme.sidebar_position == 'right' %} auto {% endif %}"}
@@ -250,7 +266,6 @@ header
   width: 100%
 
   a
-    font-weight: 600
     text-decoration: underline
 
   iframe
@@ -277,6 +292,7 @@ aside
   .nav_title
     color: $header-color
     border-bottom: 1px solid $border-color
+    font-family: $primary-font
     font-size: 22px
     line-height: 1.3em
     margin-bottom: 4px
@@ -338,7 +354,7 @@ aside
       a
         display: block
         padding: 6px 0
-        line-height: 1.3em
+        line-height: 1.25em
 
         @media screen and (max-width: $break-large)
           font-size: 18px
@@ -352,7 +368,7 @@ aside
 .search-form
   +flexbox
   +align-items(center)
-  height: 34px
+  height: 32px
   position: relative
 
   &:focus-within
@@ -362,8 +378,10 @@ aside
 .search-input
   border: none !important
   cursor: pointer
+  font-family: $secondary-font
   height: auto
-  padding: 6px 32px 4px 0
+  padding: 4px 32px 4px 0
+  position: absolute
   width: calc(100% + 4px)
 
   @media screen and (max-width: $break-large)
@@ -372,8 +390,19 @@ aside
   &:hover, &:focus
     left: -4px
     padding-left: 4px
-    position: absolute
-    top: 3px
+
+  &:hover
+    &::-webkit-input-placeholder
+      color: $hover-color
+
+    &::-moz-placeholder
+      color: $hover-color
+
+    &:-ms-input-placeholder
+      color: $hover-color
+
+    &:-moz-placeholder
+      color: $hover-color
 
   &::-webkit-input-placeholder
     color: $link-color
@@ -476,7 +505,7 @@ button, input, textarea, select
   border: none
   border-radius: $border-radius
   color: $text-color
-  font-family: $primary-font
+  font-family: $secondary-font
   font-size: 16px
   height: 54px
   padding: 0
