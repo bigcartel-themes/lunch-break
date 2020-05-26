@@ -59,6 +59,7 @@ h1, h2, h3, h4, h5, h6
   color: $header-color
   font-family: $primary-font
   font-weight: 500
+  line-height: 1.25
   margin: 0
   padding: 0
 
@@ -206,7 +207,7 @@ header
       line-height: 1.2em
       text-decoration: none
       white-space: normal
-      word-wrap: break-word
+      word-break: break-word
 
     img
       height: 100%
@@ -229,8 +230,8 @@ header
 .content
   +pie-clearfix
   float: #{"{% if theme.sidebar_position == 'right' %} left {% else %} right {% endif %}"}
-  padding-left: #{"{% if theme.sidebar_position == 'left' %} 30px {% else %} 0 {% endif %}"}
-  padding-right: #{"{% if theme.sidebar_position == 'right' %} 30px {% else %} 0 {% endif %}"}
+  padding-left: #{"{% if theme.sidebar_position == 'left' %} 60px {% else %} 0 {% endif %}"}
+  padding-right: #{"{% if theme.sidebar_position == 'right' %} 60px {% else %} 0 {% endif %}"}
   position: relative
   max-width: 80%
   width: 100%
@@ -331,6 +332,9 @@ aside
     li
       display: block
 
+      @media screen and (max-width: $break-large)
+        margin: 4px 0
+
       a
         display: block
         padding: 6px 0
@@ -369,6 +373,7 @@ aside
     left: -4px
     padding-left: 4px
     position: absolute
+    top: 3px
 
   &::-webkit-input-placeholder
     color: $link-color
@@ -415,51 +420,25 @@ button.search-button
 footer
   background: $secondary-background
   border-top: 1px solid $border-color
+  text-align: center
   width: 100%
 
   .inner-wrapper
-    &>div:only-child
-      text-align: center
-      width: 100%
-
-    @media only screen and (max-width: $break-medium)
-      +flex-direction(column)
-      +justify-content(center)
-      padding: 0 20px
-
-      .footer_left
-        order: 2
-
-      .footer_right
-        order: 1
-
-  @media only screen and (max-width: $break-medium)
-    height: 160px
-    margin-top: 20px
+    +flex-direction(column)
+    +justify-content(center)
+    padding: 40px 20px
 
   .social_icons
-    +pie-clearfix
-    border-bottom: 0
-    font-size: 22px
+    +flexbox
     list-style: none
-
-    @media only screen and (max-width: $break-medium)
-      margin: 0 0 25px
+    margin: 0
+    padding: 0
 
     li
-      float: left
-      margin-left: 22px
-
-      @media only screen and (max-width: $break-medium)
-        display: inline-block
-        float: none
-        margin: 0 10px
-        text-align: center
+      margin: 0 12px
 
       a
-        border: 0px
         display: block
-        text-align: center
 
         svg
           +transition(fill .2s ease)
@@ -470,6 +449,12 @@ footer
 
       &:hover svg
         fill: $hover-color
+
+  .social_icons + .footer_credit
+    margin-top: 30px
+
+  .footer_credit
+    font-size: 14px
 
 .errors
   +border-radius($border-radius)
