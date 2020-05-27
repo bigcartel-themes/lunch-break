@@ -46,22 +46,12 @@
     {
       "variable": "text_color",
       "label": "Text",
-      "default": "#000000"
+      "default": "#111111"
     },
     {
       "variable": "secondary_text_color",
       "label": "Secondary Text",
       "default": "#444444"
-    },
-    {
-      "variable": "link_color",
-      "label": "Links",
-      "default": "#484848"
-    },
-    {
-      "variable": "link_hover_color",
-      "label": "Link hover",
-      "default": "#111111"
     },
     {
       "variable": "button_text_color",
@@ -282,8 +272,8 @@
     "content_header_color": "{{ text_color }}",
     "content_color": "{{ text_color }}",
     "link_font_size": "16px",
-    "link_color": "{{ text_color }}",
-    "link_hover_color": "{{ hover_color }}",
+    "link_color": "{{ secondary_text_color }}",
+    "link_hover_color": "{{ text_color }}",
     "error_border_width": "0",
     "error_font_size": "16px",
     "error_background_color": "#950f1e",
