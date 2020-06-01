@@ -1,87 +1,85 @@
 @import 'config'
 
-.contact_form  
-  &>div  
+.contact_form
+  &>div
     margin-bottom: 20px
     text-align: left
-    
+
     @media screen and (max-width: $break-small)
       margin-bottom: 15px
-    
+
   .contact_send
     @media screen and (max-width: $break-small)
       text-align: center
-      
+
       button
         margin-left: 0
-  
+
   input, textarea
-    font-size: 14px
     width: 100%
-  
-  textarea  
-    height: 300px
+
+  textarea
+    height: 220px
     display: block
 
   label
     display: block
-    font-size: 16px
     margin-bottom: 10px
-    
-  .contact_name, .contact_spam, .contact_send, .contact_email 
+
+  .contact_name, .contact_spam, .contact_send, .contact_email
     display: inline-block
     position: relative
     width: 48%
-    
+
     @media screen and (max-width: $break-small)
       display: block
       width: 100%
-  
+
   .contact_name
     float: left
-    
+
     @media screen and (max-width: $break-small)
       float: none
-      
+
   .contact_email
     float: right
-    
+
     @media screen and (max-width: $break-small)
       float: none
-      
+
   .contact_spam
     width: 100%
-    
+
     span
       display: block
       font-size: 14px
       margin-top: 5px
-      
+
     .captcha_holder
       position: relative
-  
+
   #captcha
     &:active, &:focus
       #captcha_image
         border-left: 1px solid $hover-color
-  
+
   #captcha_image
     position: absolute
     right: 2px
-    border-left: 1px solid $button-color
-    height: 48px
+    border-left: 1px solid $button-background-color
+    height: 52px
     top: 1px
-    
+
   .contact_send
     text-align: center
     width: 100%
-    
+
     @media screen and (max-width: $break-small)
       text-align: center
-    
+
     button
       margin: 40px auto
       width: 320px
-      
+
       @media screen and (max-width: $break-small)
         width: 100%

@@ -18,24 +18,7 @@ $(function() {
       $(this).attr('aria-label', $(this).data('open'));
     }
   });
-  $('.remove a').click(function(e) {
-    e.preventDefault();
-    $(this).closest('li').find('input[id$=_qty]').val(0).closest('form').submit();
-  });
-  $('[name*="cart[update]"]').on('change',function() {
-    $(this).closest('form').submit();
-  });
-  $('.search_form input')
-    .on('focus', function() {
-      $(this).parent().addClass('focus');
-    })
-    .on('blur',function() {
-      $(this).parent().removeClass('focus');
-      $(this).val('');
-  });
-  $(window).on("load resize", function() {
-    $('body').css('margin-bottom', $('footer').height());
-  });
+
   $('.product_option_select').on('change',function() {
     var option_price = $(this).find("option:selected").attr("data-price");
     enableAddButton(option_price);
@@ -117,9 +100,11 @@ if (!Array.prototype.includes) {
   });
 }
 
-Array.prototype.count = function(filterMethod) {
-  return this.reduce((count, item) => filterMethod(item)? count + 1 : count, 0);
-}
+Array.prototype.count = function (filterMethod) {
+  return this.reduce(function (count, item) {
+    return filterMethod(item) ? count + 1 : count;
+  }, 0);
+};
 
 function enableAddButton(updated_price) {
   var addButton = $('.add-to-cart-button');
@@ -182,3 +167,26 @@ function disableSelectOption(select_option, type) {
     }
   }
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+  var lazyImages = [].slice.call(document.querySelectorAll("img.lazy"));
+  if ("IntersectionObserver" in window) {
+    let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          let lazyImage = entry.target;
+          lazyImage.src = lazyImage.dataset.src;
+          lazyImage.srcset = lazyImage.dataset.srcset;
+          lazyImage.classList.remove("lazy");
+          lazyImageObserver.unobserve(lazyImage);
+        }
+      }, {
+        rootMargin: "0px 0px 256px 0px"
+      });
+    });
+
+    lazyImages.forEach(function(lazyImage) {
+      lazyImageObserver.observe(lazyImage);
+    });
+  }
+});

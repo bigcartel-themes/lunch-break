@@ -39,13 +39,11 @@
 .product_pricing, .product_details
   float: right
   padding-left: 40px
-  padding-right: 20px
   max-width: 45%
   width: 100%
 
   @media only screen and (max-width: $break-large)
     padding-left: 20px
-    padding-right: 0
 
   @media only screen and (max-width: $break-medium)
     float: none
@@ -55,27 +53,31 @@
 .product_pricing
 
   h1
-    margin: -.2em 0 10px
-    min-height: 0
+    margin-bottom: 10px
 
   .product_price_status
+    +flexbox
+    +align-items(center)
     color: $text-color
     font-family: $secondary-font
-    font-size: 19px
-    line-height: 18px
+    font-size: 22px
     margin-bottom: 40px
 
-    > span
+    @media screen and (max-width: $break-medium)
+      +justify-content(center)
+
+    .product_price
       vertical-align: middle
 
-      &.small_status
-        +border-radius(2px)
-        background-color: $link-color
-        color: $background-color
-        font-size: 12px
-        margin-left: 5px
-        padding: 3px 7px
-        text-transform: uppercase
+    .small_status
+      +border-radius(2px)
+      border: 1px solid $secondary-text-color
+      color: $secondary-text-color
+      font-size: 13px
+      margin-left: 10px
+      padding: 4px 8px
+      position: relative
+      text-transform: uppercase
 
   h4
     border-bottom: none
@@ -103,12 +105,12 @@ button.reset-selection-button
 .product_details
 
   .product_description
-    font-size: 14px
-    line-height: 1.7em
+    font-size: 16px
+    line-height: 1.5em
     margin: 0 0 40px
 
     a
-      font-weight: 600
+      text-decoration: underline
 
     iframe
       max-width: 100%
@@ -164,27 +166,101 @@ button.reset-selection-button
             bottom: 0
             left: 0
 
-.product-form select span, .product-form select span option
-  display: none
-  opacity: 0
-  visibility: hidden
+.product-form
+  max-width: 350px
+  width: 100%
 
-.mfp-arrow
-  background: #FFF !important
-  height: 45px
-  opacity: .4
-  width: 45px
+  @media screen and (max-width: $break-large)
+    max-width: 100%
+
+  select span, select span option
+    display: none
+    opacity: 0
+    visibility: hidden
+
+
+.mfp-top-bar
+  +flexbox
+  +align-items(center)
+  padding: 5px 0
+  position: absolute
+  top: 48px
+  width: 100%
+
+.mfp-title
+  display: none
+
+.mfp-counter
+  color: #F7F7F7
+  font-size: 15px
+  position: relative
+
+.mfp-arrow:before, .mfp-arrow:after
+  display: none
+
+.mfp-image-holder button.mfp-close
+  +flexbox
+  +align-items(center)
+  +justify-content(center)
+  background: none !important
+  margin-left: auto
+  opacity: 1
+  padding: 6px
+  right: 0
+  position: relative
+  width: auto !important
 
   svg
+    fill: #F7F7F7
+    pointer-events: none
+
+img.mfp-img
+  padding: 100px 0 40px
+
+.mfp-figure:after
+  display: none
+
+.mfp-arrow
+  +flexbox
+  +align-items(center)
+  +justify-content(center)
+  background: #FFF !important
+  height: 65px
+  margin-top: 0
+  opacity: .7
+  width: 65px
+
+  &:active
+    margin-top: 0
+
+  svg
+    display: block
     fill: #000
     height: 20px
+    margin: 0 auto
+    pointer-events: none
     width: 20px
 
   &:hover
     opacity: 1
 
   @media (max-width: 900px)
-    +transform(scale(.8))
+    +transform(scale(.7))
+
+.mfp-container
+  padding: 0 10px !important
+
+.mfp-arrow-left
+  left: 40px
+
+  @media (max-width: $break-large)
+    left: 14px
+
+.mfp-arrow-right
+  right: 40px
+
+  @media (max-width: $break-large)
+    right: 14px
 
 .mfp-preloader
   +animation(loading-animation 1.5s infinite ease-in-out)

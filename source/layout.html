@@ -3,25 +3,28 @@
   <head>
     <title>{% if page.full_url contains "search=" %}Product Search{% else %}{{ page.name }}{% endif %} | {{ store.name }}</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="{{ theme | theme_css_url }}" media="screen" rel="stylesheet" type="text/css">
     {{ head_content }}
   </head>
   <body id="{{ page.permalink }}-page" class="{{ page.permalink }} {{ page.category }}">
+    <a class="skip-link" href="#main">Skip to main content</a>
     <div class="mobile_nav">
-      <a class="open_menu" role="button" href="#" data-open="Open Menu" data-close="Close Menu" title="Open Menu" aria-label="Open Menu">
+      <button class="open_menu" role="button" href="#" data-open="Open Menu" data-close="Close Menu" title="Open Menu" aria-label="Open Menu">
         <span></span>
         <span></span>
         <span></span>
         <span></span>
-      </a>
-      <a href="/cart" class="mobile_cart"><svg role="img" aria-labelledby="cart-mobile-title" class="cart_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 17" enable-background="new 0 0 22 17"><title id="cart-mobile-title">View Cart</title><path d="M4.3 0h-4.3l.5 1.4h2.8l4.2 10.9h10.5l.5-1.4h-10zM6.9 1.9l2.8 7.1h9.5l2.8-7.1h-15.1zm11.4 5.7h-7.6l-1.7-4.3h10.9l-1.6 4.3z"/><circle cx="10.2" cy="15.6" r="1.4"/><circle cx="15.6" cy="15.6" r="1.4"/></svg><span class="cart_numbers">{{ cart.item_count | pluralize: 'item', 'items' }} / {{ cart.total | money: theme.money_format }}</span></a>
+      </button>
+      <a href="/cart" class="mobile_cart"><svg role="img" aria-labelledby="cart-mobile-title" class="cart_icon" xmlns="http://www.w3.org/2000/svg" height="20" width="20" viewBox="0 0 22 17" enable-background="new 0 0 22 17"><title id="cart-mobile-title">View Cart</title><path d="M4.3 0h-4.3l.5 1.4h2.8l4.2 10.9h10.5l.5-1.4h-10zM6.9 1.9l2.8 7.1h9.5l2.8-7.1h-15.1zm11.4 5.7h-7.6l-1.7-4.3h10.9l-1.6 4.3z"/><circle cx="10.2" cy="15.6" r="1.4"/><circle cx="15.6" cy="15.6" r="1.4"/></svg><span class="cart_numbers">{{ cart.item_count | pluralize: 'item', 'items' }} / {{ cart.total | money: theme.money_format }}</span></a>
   	</div>
     <header class="{% if theme.header_logo != blank %}logo{% else %}text{% endif %}">
-  		<div class="wrap">
+  		<div class="inner-wrapper">
         <a href="/" title="{{ store.name | escape }}" class="store_header {% if theme.header_logo != blank %}logo{% else %}text{% endif %}">
       		{% if theme.header_logo != blank %}
-      			<img src="{{ theme.images.header_logo.url | constrain: 1300, 250 }}" alt="{{ store.name }} Home">
+
+            <img alt="{{ store.name }} Home" class="store-image" src="{{ theme.images.header_logo.url | constrain: '', 140 }}" srcset="{{ theme.images.header_logo.url | constrain: '', 280 }} 2x, {{ theme.images.header_logo.url | constrain: '', 140 }} 1x">
+
       		{% else %}
       			{{ store.name }}
       		{% endif %}
@@ -29,7 +32,7 @@
   		</div>
     </header>
     <div class="wrap">
-      <main class="content">
+      <main class="content" id="main">
         {% if page.category == 'custom' %}
           <div class="custom_content">
             <h1>{{ page.name }}</h1>
@@ -40,23 +43,24 @@
         {% endif %}
       </main>
       <aside>
-        <a href="/cart" class="side_cart" title="View Cart"><svg role="img" aria-labelledby="cart-title" class="cart_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 17" enable-background="new 0 0 22 17"><title id="cart-title">View Cart</title><path d="M4.3 0h-4.3l.5 1.4h2.8l4.2 10.9h10.5l.5-1.4h-10zM6.9 1.9l2.8 7.1h9.5l2.8-7.1h-15.1zm11.4 5.7h-7.6l-1.7-4.3h10.9l-1.6 4.3z"/><circle cx="10.2" cy="15.6" r="1.4"/><circle cx="15.6" cy="15.6" r="1.4"/></svg><span class="cart_title">{{ cart.item_count | pluralize: 'item', 'items' }}</span>
+        <a href="/cart" class="side_cart" title="View Cart"><svg role="img" aria-labelledby="cart-title" class="cart_icon" xmlns="http://www.w3.org/2000/svg" height="20" width="20" viewBox="0 0 22 17" enable-background="new 0 0 22 17"><title id="cart-title">View Cart</title><path d="M4.3 0h-4.3l.5 1.4h2.8l4.2 10.9h10.5l.5-1.4h-10zM6.9 1.9l2.8 7.1h9.5l2.8-7.1h-15.1zm11.4 5.7h-7.6l-1.7-4.3h10.9l-1.6 4.3z"/><circle cx="10.2" cy="15.6" r="1.4"/><circle cx="15.6" cy="15.6" r="1.4"/></svg><span class="cart_title">{{ cart.item_count | pluralize: 'item', 'items' }}</span>
           <span class="cart_numbers">{{ cart.total | money: theme.money_format }}</span>
         </a>
         <nav role="navigation" aria-label="Main">
           <div class="side_categories">
             <div class="nav_title">Shop</div>
             <ul>
-              <li><a href="/products">All Products</a></li>
               {% if theme.show_search %}
-                <li class="side_search">
-                  <form class="search_form" name="search" action="/products" method="get" accept-charset="utf8">
+                <li>
+                  <form class="search-form" name="search" action="/products" method="get" accept-charset="utf8">
                     <input type="hidden" name="utf8" value='✓'>
-                    <label for="search">Search...</label>
-                    <input class="search_input" id="search" name="search" type="text" autocomplete="off" />
+                    <label class="sr-only" for="search">Search products</label>
+                    <input class="search-input" id="search" name="search" placeholder="Search..." type="text" autocomplete="off" />
+                    <button type="submit" class="search-button" aria-label="Submit search form"><svg aria-hidden="true" class="search-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path d="M15.707 14.293l-3.112-3.092-.006-.004c.882-1.197 1.411-2.597 1.411-4.197 0-3.859-3.141-7-7-7s-7 3.1-7 7 3.141 7 7 7c1.575 0 3.025-.529 4.196-1.41v.006l3.093 3.111c.199.193.411.293.711.293s.512-.098.707-.293c.391-.407.393-1.007-.007-1.414zm-8.707-2.293c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.2 5 5-2.243 5-5 5z"/></svg></button>
                   </form>
                 </li>
               {% endif %}
+              <li><a href="/products">All Products</a></li>
               {% for category in categories.active %}
                 <li>{{ category | link_to }}</li>
               {% endfor %}
@@ -78,8 +82,8 @@
                 <div class="side_pages">
                   <div class="nav_title">Newest Products</div>
                   <ul>
-                          {% for product in products %}
-                            <li>{{ product | link_to }}</li>
+                    {% for product in products %}
+                      <li>{{ product | link_to }}</li>
                     {% endfor %}
                   </ul>
                 </div>
@@ -92,8 +96,8 @@
                 <div class="side_pages">
                   <div class="nav_title">Top Selling</div>
                   <ul>
-                          {% for product in products %}
-                            <li>{{ product | link_to }}</li>
+                    {% for product in products %}
+                      <li>{{ product | link_to }}</li>
                     {% endfor %}
                   </ul>
                 </div>
@@ -104,11 +108,11 @@
             <div class="nav_title">Pages</div>
             <ul>
               {% for page in pages.all %}
-                  <li>{{ page | link_to }}</li>
+                <li>{{ page | link_to }}</li>
               {% endfor %}
               <li><a href="/contact" title="View Contact">Contact</a></li>
               {% if store.website != blank %}
-                  <li><a href="{{ store.website }}">Back to Site</a></li>
+                <li><a href="{{ store.website }}">Back to Site</a></li>
               {% endif %}
             </ul>
           </div>
@@ -116,41 +120,50 @@
       </aside>
     </div>
     <footer role="contentinfo">
-      <div class="wrapper">
-        <div class="footer_left">
-  	  	  {{ bigcartel_credit }}
-  	    </div>
+      <div class="inner-wrapper">
         {% if theme.twitter_url != blank or theme.facebook_url != blank or theme.instagram_url != blank or theme.tumblr_url != blank or theme.pinterest_url != blank %}
-          <div class="footer_right">
-            <div class="social_links">
-              <ul class="social_icons">
-                {% if theme.twitter_url != blank %}
-                  <li><a href="{{ theme.twitter_url }}" aria-label="Twitter" title="Twitter"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 150.857 612 490.298"><path d="M606 209c-22.2 9.7-46 16.4-70.8 19.4 25.4-15.3 45-39.6 54-68.5-23.7 14-50 24-78 30-22.5-24-54.4-39-89.8-39-68 0-123 55-123 123 0 9.3 1 19 3 28-102.2-5-192.8-54-253.4-129-11 18.3-17 39.5-17 62.2 0 43 21.5 81 54.6 103-20.2-.6-39.2-6-55.8-15.4v2c0 60 42.3 110 98.6 121.2-10.4 3-21.3 4.6-32.5 4.6-8 0-16-1-23-2.5 15 49.3 61 85 115 86-42 33.3-96 53-153 53-10 0-20-.5-30-1.7 55 35 119.5 55.5 189 55.5 226.3 0 350-188.5 350-352 0-5.5 0-10.8-.3-16 24-17.6 45-39.4 61.4-64z"/></svg></a></li>
-                {% endif %}
+          <ul class="social_icons">
+            {% if theme.twitter_url != blank %}
+              <li><a href="{{ theme.twitter_url }}" aria-label="Twitter" title="Twitter"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 150.857 612 490.298"><path d="M606 209c-22.2 9.7-46 16.4-70.8 19.4 25.4-15.3 45-39.6 54-68.5-23.7 14-50 24-78 30-22.5-24-54.4-39-89.8-39-68 0-123 55-123 123 0 9.3 1 19 3 28-102.2-5-192.8-54-253.4-129-11 18.3-17 39.5-17 62.2 0 43 21.5 81 54.6 103-20.2-.6-39.2-6-55.8-15.4v2c0 60 42.3 110 98.6 121.2-10.4 3-21.3 4.6-32.5 4.6-8 0-16-1-23-2.5 15 49.3 61 85 115 86-42 33.3-96 53-153 53-10 0-20-.5-30-1.7 55 35 119.5 55.5 189 55.5 226.3 0 350-188.5 350-352 0-5.5 0-10.8-.3-16 24-17.6 45-39.4 61.4-64z"/></svg></a></li>
+            {% endif %}
 
-                {% if theme.facebook_url != blank %}
-                  <li><a href="{{ theme.facebook_url }}" aria-label="Facebook" title="Facebook"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="157.162 90 297.799 612"><path d="M369.036 193.795h85.68V90H333.662c-97.553 19.707-98.776 108.936-98.776 108.936V304.69h-77.724v102.937h77.724V702H343.21V407.383h102.08l9.67-102.938H343.945v-75.52c-.123-33.172 25.092-35.13 25.092-35.13z"/></svg></a></li>
-                {% endif %}
+            {% if theme.facebook_url != blank %}
+              <li><a href="{{ theme.facebook_url }}" aria-label="Facebook" title="Facebook"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="157.162 90 297.799 612"><path d="M369.036 193.795h85.68V90H333.662c-97.553 19.707-98.776 108.936-98.776 108.936V304.69h-77.724v102.937h77.724V702H343.21V407.383h102.08l9.67-102.938H343.945v-75.52c-.123-33.172 25.092-35.13 25.092-35.13z"/></svg></a></li>
+            {% endif %}
 
-                {% if theme.instagram_url != blank %}
-                  <li><a href="{{ theme.instagram_url }}" aria-label="Instagram" title="Instagram"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 90 612 612"><path d="M540.273 90H71.727C32.19 90 0 122.19 0 161.727v468.67C0 669.81 32.19 702 71.727 702h468.67c39.535 0 71.726-32.19 71.726-71.727V161.727C612 122.313 579.687 90 540.273 90zM306 280.332c63.893 0 115.668 51.775 115.668 115.668S369.893 511.668 306 511.668 190.332 459.893 190.332 396 242.107 280.332 306 280.332zM542.232 608.12c0 13.096-10.77 23.867-23.868 23.867H92.412c-13.097 0-23.868-10.77-23.868-23.868V348.51h56.304c-3.917 15.177-6.12 31.21-6.12 47.49 0 103.55 83.966 187.272 187.272 187.272S493.272 499.552 493.272 396c0-16.524-2.204-32.313-6.12-47.49h55.08v259.61zm0-353.002c0 13.097-10.77 23.868-23.868 23.868h-69.77c-13.096 0-23.867-10.77-23.867-23.868V185.35c0-13.097 10.77-23.868 23.868-23.868h69.77c13.096 0 23.867 10.77 23.867 23.868v69.768z"/></svg></a></li>
-                {% endif %}
+            {% if theme.instagram_url != blank %}
+              <li><a href="{{ theme.instagram_url }}" aria-label="Instagram" title="Instagram"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 90 612 612"><path d="M540.273 90H71.727C32.19 90 0 122.19 0 161.727v468.67C0 669.81 32.19 702 71.727 702h468.67c39.535 0 71.726-32.19 71.726-71.727V161.727C612 122.313 579.687 90 540.273 90zM306 280.332c63.893 0 115.668 51.775 115.668 115.668S369.893 511.668 306 511.668 190.332 459.893 190.332 396 242.107 280.332 306 280.332zM542.232 608.12c0 13.096-10.77 23.867-23.868 23.867H92.412c-13.097 0-23.868-10.77-23.868-23.868V348.51h56.304c-3.917 15.177-6.12 31.21-6.12 47.49 0 103.55 83.966 187.272 187.272 187.272S493.272 499.552 493.272 396c0-16.524-2.204-32.313-6.12-47.49h55.08v259.61zm0-353.002c0 13.097-10.77 23.868-23.868 23.868h-69.77c-13.096 0-23.867-10.77-23.867-23.868V185.35c0-13.097 10.77-23.868 23.868-23.868h69.77c13.096 0 23.867 10.77 23.867 23.868v69.768z"/></svg></a></li>
+            {% endif %}
 
-                {% if theme.tumblr_url != blank %}
-                  <li><a href="{{ theme.tumblr_url }}" aria-label="Tumblr" title="Tumblr"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="117.504 90 377.114 611.937"><path d="M493.272 571.276c-14.566 13.832-55.692 26.194-55.692 26.194-115.18 27.907-107.957-66.464-107.957-66.464v-189.72h144.31v-96.818h-144.31V90H241.74c-11.383 139.658-124.236 164.628-124.236 164.628v87.394h67.81v224.604c-.98 62.424 36.475 92.656 36.475 92.656 115.055 89.964 272.83 9.67 272.83 9.67v-99.02l-1.348 1.344z"/></svg></a></li>
-                {% endif %}
+            {% if theme.tumblr_url != blank %}
+              <li><a href="{{ theme.tumblr_url }}" aria-label="Tumblr" title="Tumblr"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="117.504 90 377.114 611.937"><path d="M493.272 571.276c-14.566 13.832-55.692 26.194-55.692 26.194-115.18 27.907-107.957-66.464-107.957-66.464v-189.72h144.31v-96.818h-144.31V90H241.74c-11.383 139.658-124.236 164.628-124.236 164.628v87.394h67.81v224.604c-.98 62.424 36.475 92.656 36.475 92.656 115.055 89.964 272.83 9.67 272.83 9.67v-99.02l-1.348 1.344z"/></svg></a></li>
+            {% endif %}
 
-                {% if theme.pinterest_url != blank %}
-                  <li><a href="{{ theme.pinterest_url }}" aria-label="Pinterest" title="Pinterest"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 12 16"><path d="M4.933 10.582c-.406 2.203-.9 4.314-2.366 5.418-.452-3.33.665-5.83 1.183-8.484C2.866 6 3.9 2.9 5.7 3.63c2.315.97-2 5.77.9 6.34 3 .6 4.225-5.4 2.365-7.36C6.285-.22 1.1 2.5 1.8 6.596c.154 1 1.1 1.3.4 2.658C.48 8.858-.034 7.45.032 5.574.138 2.504 2.692.352 5.255.054c3.24-.376 6.3 1.2 6.7 4.396.473 3.568-1.462 7.433-4.927 7.2C6.063 11.5 5.7 11 4.9 10.582z"/></svg></a></li>
-                {% endif %}
-              </ul>
-            </div>
-          </div>
+            {% if theme.pinterest_url != blank %}
+              <li><a href="{{ theme.pinterest_url }}" aria-label="Pinterest" title="Pinterest"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 12 16"><path d="M4.933 10.582c-.406 2.203-.9 4.314-2.366 5.418-.452-3.33.665-5.83 1.183-8.484C2.866 6 3.9 2.9 5.7 3.63c2.315.97-2 5.77.9 6.34 3 .6 4.225-5.4 2.365-7.36C6.285-.22 1.1 2.5 1.8 6.596c.154 1 1.1 1.3.4 2.658C.48 8.858-.034 7.45.032 5.574.138 2.504 2.692.352 5.255.054c3.24-.376 6.3 1.2 6.7 4.396.473 3.568-1.462 7.433-4.927 7.2C6.063 11.5 5.7 11 4.9 10.582z"/></svg></a></li>
+            {% endif %}
+          </ul>
         {% endif %}
+        <div class="footer_credit">
+          {{ bigcartel_credit }}
+        </div>
       </div>
     </footer>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="{{ 'api' | theme_js_url }}"></script>
+    <script type="text/javascript">
+      var formatMoney = Format.money;
+      Format.money = function(number) {
+        {% case theme.money_format %}
+        {% when 'sign' %}
+          return formatMoney(number, true, true, false);
+        {% when 'code' %}
+          return formatMoney(number, true, false, true);
+        {% when 'sign_and_code' %}
+          return formatMoney(number, true, true, true);
+        {% endcase %}
+      };
+    </script>
     <script src="{{ theme | theme_js_url }}"></script>
     {% if page.full_url contains '/product/' %}
       <script>

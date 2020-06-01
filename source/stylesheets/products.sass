@@ -1,134 +1,257 @@
 @import 'config'
 
-ul.products
-  +flexbox
-  +flex-direction(row)
-  +flex-wrap(wrap)
-  list-style: none
-  margin: 0 -10px 10px
-  padding: 0
-  position: relative
+.product-list-container
+  margin-top: -10px
 
-  li
-    +border-radius(2px)
-    padding: 0 10px 40px 10px
-    position: relative
-    width: #{"{% if theme.products_per_row == 2 %} 50% {% elsif theme.products_per_row == 3 %} 33.33% {% else %} 25% {% endif %}"}
-    
-    @media only screen and (max-width: $break-large)
-      width: #{"{% if theme.products_per_row == 2 %} 50% {% elsif theme.products_per_row == 3 %} 33.33% {% else %} 33.33% {% endif %}"}
-    
-    @media only screen and (max-width: $break-medium)
-      padding-bottom: 30px
-      width: 50%
-      
-    a
-      display: block
-      position: relative
-      text-align: center
+.product-list
+  +flexbox
+  +flex-wrap(wrap)
+  +justify-content(flex-start)
+  margin: 0 -10px
+
+.product-list-thumb
+  border-radius: $border-radius
+  color: $header-color
+  display: block
+  font-size: 0
+  padding: 10px
+  padding-bottom: 30px
+  position: relative
+  text-align: #{"{{ theme.product_detail_alignment }}"}
+  vertical-align: middle
+  width: calc(100% / #{"{{ theme.max_products_per_row }}"})
+  word-break: break-word
+
+  @media screen and (max-width: 1100px)
+    width: calc(100% / #{"{% if theme.max_products_per_row == 4 %} 3 {% elsif theme.max_products_per_row == 3 %} 3 {% elsif theme.max_products_per_row == 2 %} 2 {% else %} 1 {% endif %}"})
+
+  @media screen and (max-width: $break-medium)
+    width: calc(100% / 3)
+
+  @media screen and (max-width: $break-small)
+    padding: 10px
+    width: calc(100% / #{"{{ theme.max_products_per_row_mobile }}"})
+
+_:-ms-fullscreen, :root .product-list-thumb
+  width: calc(100% / #{"{{ theme.max_products_per_row }}"} - .1px)
+
+  @media screen and (max-width: 1100px)
+    width: calc(100% / #{"{% if theme.max_products_per_row == 4 %} 3 {% elsif theme.max_products_per_row == 3 %} 3 {% elsif theme.max_products_per_row == 2 %} 2 {% else %} 1 {% endif %}"} - .1px)
+
+  @media screen and (max-width: $break-medium)
+    width: calc(100% / 3 - .1px)
+
+  @media screen and (max-width: $break-small)
+    padding: 10px
+    width: calc(100% / #{"{{ theme.max_products_per_row_mobile }}"} - .1px)
+
+.product-list-link
+  +transition(color .2s ease)
+  color: $header-color
+  text-decoration: none
+
+  &:hover, &:focus
+    color: $hover-color
+    text-decoration: none
+
+    .product-list-thumb-name, .product-list-thumb-price
+      color: $hover-color
+
+.product-list-thumb-container
+  position: relative
+  width: 100%
+
+.product-list-image-container
+  border-radius: $border-radius
+  font-size: 0
+  margin: 0
+  overflow: hidden
+  padding-bottom: 100%
+  position: relative
+  width: 100%
+
+  .default &
+    padding-bottom: 0
+
+.product-list-image
+  +transition(opacity .1s linear)
+  border-radius: $border-radius
+  display: block
+  overflow: hidden
+
+  &.lazy
+    filter: blur(5px)
+
+  .default &
+    width: 100%
+
+  .crop-to-square &
+    height: 100% !important
+    left: 0
+    object-fit: cover
+    position: absolute
+    top: 0
+    width: 100%
+
+  .fit-to-square &
+    left: 0
+    will-change: transform
+    cursor: pointer
+    position: absolute
+    max-width: 100%
+    height: 100%
+    top: 0
+    width: 100%
+
+    &.image-tall
+      height: 100%
+      left: auto
+      width: auto
+
+    &.image-wide
+      height: auto
+      top: auto
       width: 100%
 
-      img
-        +all-transitions
-        +border-radius(2px)
-        display: block
-        width: 100%
-        
-      &:hover img
-        opacity: .85
+    &.image-square
+      height: 100%
+      width: 100%
 
-      .product_name
-        +all-transitions
-        color: $header-color
-        font-size: 16px
-        line-height: 1.3em
-        margin-top: 10px
+.image-wrapper
+  +flexbox
+  +align-items(center)
+  +justify-content(center)
+  height: 100%
+  position: absolute
+  width: 100%
 
-      &:hover .product_name
-        color: $hover-color
+  .default &
+    position: relative
 
-      .product_price
-        +all-transitions
-        color: $text-color
-        display: inline-block
-        font-family: $secondary-font
-        font-size: 15px
-        line-height: 1.4em
-        margin-top: 5px
+.product-list-thumb-info
+  font-size: 16px
+  line-height: 1.25em
+  padding: 10px 0
+  position: relative
 
-      .status
-        +border-radius(2px)
-        background: $background-color
-        color: $text-color
-        font-size: 12px
-        letter-spacing: .8px
-        padding: 5px 10px
-        position: absolute
-        right: 10px
-        text-transform: uppercase
-        top: 10px
+.product-list-thumb-name
+  +transition(color .2s ease)
+  color: $header-color
+  font-family: $primary-font
+  overflow-wrap: break-word
+  position: relative
+
+.product-list-thumb-price
+  +transition(color .2s ease)
+  color: $secondary-text-color
+  font-weight: bold
+  font-size: 15px
+  margin-top: 6px
+
+.product-list-thumb-status
+  display: inline-block
+  font-style: italic
+  font-weight: normal
 
 .pagination
-  +pie-clearfix
+  +flexbox
+  +flex-direction(row)
+  +justify-content(space-between)
+  +align-items(center)
   border-top: 1px solid $border-color
-  font-size: 17px
-  padding-top: 40px
-  text-align: center
-  width: 100%
-  
-  @media only screen and (max-width: $break-small)
-    font-size: 14px
-  
-  span, a
-    display: inline-block
-    padding: 2px 7px
-    
-    i
-      font-size: 12px
-      position: relative
-      
-  .previous, .next
-    svg
-      +all-transitions
-      fill: $link-color
-      height: 14px
-      position: relative
-      right: 2px
-      top: 0
-      width: 13px
-      
-      @media only screen and (max-width: $break-small)
-        height: 12px
-        
-    &:hover
-      svg
-        fill: $hover-color
-  
-  .previous
-    float: left
-    padding-left: 0
-    
-    svg
-      margin-right: 5px
-      
-      @media only screen and (max-width: $break-small)
-        margin-right: 0
+  line-height: 40px
+  padding: 10px 0
 
-  .next
-    float: right
-    padding-right: 0
-    
-    svg
-      margin-left: 5px
-      right: 0
-      
-      @media only screen and (max-width: $break-small)
-        margin-left: 0
-    
-  .disabled
+  @media screen and (max-width: $break-large)
+    font-size: 15px
+
+
+@media screen and (min-width: $break-small+1)
+  .pagination-caption
     display: none
 
-.home .pagination
+.page-numbers
+  +flexbox
+  +flex-wrap(wrap)
+  +justify-content(center)
+  margin: 0 20px
+
+  @media screen and (max-width: $break-small)
+    display: none
+
+  .previous, .next
+    display: none
+
+  > a, > span
+    +flexbox
+    +align-items(center)
+    +justify-content(center)
+    background: $background-color
+    border-radius: 100%
+    color: $link-color
+    text-align: center
+    height: 40px
+    margin-right: 8px
+    order: 1
+    position: relative
+    text-decoration: none
+    width: 40px
+
+    &.current
+      background: $button-background-color
+      color: $button-text-color
+
+    &.disabled
+      cursor: not-allowed
+      opacity: .4
+
+  > a
+    &:hover, &:focus
+      color: $hover-color
+      text-decoration: underline
+
+.page-link
+  +flexbox
+  +align-items(center)
+  color: $link-color
+  line-height: 40px
+  text-align: center
+  height: 40px
+  padding: 0
+  position: relative
+  text-decoration: none
+
+  &:not(.disabled):hover, &:not(.disabled):focus
+    background: none
+    color: $hover-color
+    text-decoration: underline
+
+    svg
+      fill: $hover-color
+
+  &.next-page-link
+
+    span
+      margin-right: 5px
+
+  &.previous-page-link
+
+    span
+      margin-left: 5px
+
+    svg
+      +transform(rotate(-180deg))
+
+  &.disabled
+    cursor: not-allowed
+    opacity: 0
+    visibility: hidden
+
+  svg
+    display: block
+    fill: $link-color
+
+#home-page .pagination
   display: none
 
 p.no_products
