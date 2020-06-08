@@ -149,7 +149,7 @@
         </div>
       </div>
     </footer>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="{{ 'api' | theme_js_url }}"></script>
     <script type="text/javascript">
       var formatMoney = Format.money;
@@ -177,7 +177,7 @@
         if ($('.flexslider').length) {
           $('.flexslider').flexslider({
             animation: "slide",
-            customDirectionNav: $(".flex-nav a")
+            customDirectionNav: $(".flex-nav .flex-nav-button")
           });
         }
       });
