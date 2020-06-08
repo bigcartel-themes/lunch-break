@@ -1,6 +1,6 @@
 {
   "name": "Lunch Break",
-  "version": "1.5.2",
+  "version": "1.6.0",
   "images": [
     {
       "variable": "header_logo",
@@ -136,10 +136,10 @@
       "type": "select",
       "options": [
         ["Normal", "default"],
-        ["Fit to square", "fit-to-square"],
-        ["Crop to square", "crop-to-square"]
+        ["Fit to square", "contain"],
+        ["Crop to square", "cover"]
       ],
-      "default": "crop-to-square",
+      "default": "cover",
       "description": "Sets the display of images in the product grid"
     },
     {
