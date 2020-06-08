@@ -44,7 +44,7 @@
           {% endfor %}
         </ul>
         <div class="cart_footer">
-          <div class="cart_total">
+          <div class="cart_total" aria-live="polite" aria-atomic="true">
             <span class="cart_subtotal_label">Subtotal:</span>
             <span class="cart-subtotal-amount">{{ cart.total | money: theme.money_format }}</span>
           </div>
