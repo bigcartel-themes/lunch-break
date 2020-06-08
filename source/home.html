@@ -1,7 +1,3 @@
-{% assign page_content_width = 968 %}
-{% assign slideshow_constrain_width = page_content_width %}
-{% assign slideshow_constrain_width_large = slideshow_constrain_width | times: 2 %}
-
 {% if errors != blank %}
   <ul class="errors">
     {% for error in errors %}
@@ -16,7 +12,19 @@
       <ul class="slides">
         {% for image in theme.image_sets.slideshow_images %}
           <li>
-            <img alt="Slideshow image {{ forloop.index }}" srcset="{{ image.url | constrain: slideshow_constrain_width }}, {{ image.url | constrain: slideshow_constrain_width_large }} 2x" src="{{ image.url | constrain: slideshow_constrain_width }}">
+            <img
+              alt="Slideshow image {{ forloop.index }}"
+              class="lazyload"
+              src="{{ image.url | constrain: 948 }}"
+              data-srcset="
+                {{ image.url | constrain: 540 }} 540w,
+                {{ image.url | constrain: 948 }} 948w,
+                {{ image.url | constrain: 1200 }} 1200w,
+                {{ image.url | constrain: 1500 }} 1500w,
+                {{ image.url | constrain: 1900 }} 1900w
+              "
+              data-sizes="auto"
+            >
           </li>
         {% endfor %}
       </ul>
@@ -32,7 +40,19 @@
   {% else %}
     <div class="welcome_image">
       {% for image in theme.image_sets.slideshow_images limit: 1 %}
-        <img alt="Welcome image" class="lazy" src="{{ image.url | constrain: 100 }}" data-src="{{ image.url | constrain: slideshow_constrain_width }}" data-srcset="{{ image.url | constrain: slideshow_constrain_width_large }} 2x, {{ image.url | constrain: slideshow_constrain_width }} 1x">
+            <img
+              alt="Welcome image"
+              class="lazyload"
+              src="{{ image.url | constrain: 948 }}"
+              data-srcset="
+                {{ image.url | constrain: 540 }} 540w,
+                {{ image.url | constrain: 948 }} 948w,
+                {{ image.url | constrain: 1200 }} 1200w,
+                {{ image.url | constrain: 1500 }} 1500w,
+                {{ image.url | constrain: 1900 }} 1900w
+              "
+              data-sizes="auto"
+            >
       {% endfor %}
     </div>
   {% endif %}
@@ -44,13 +64,9 @@
       <div class="product-list-container">
         <div class="product-list">
           {% for product in products %}
-            {% assign product_image_constrain_width = page_content_width | divided_by: theme.max_products_per_row %}
-            {% assign product_image_constrain_height = page_content_width | divided_by: theme.max_products_per_row %}
-            {% assign product_image_constrain_width_large = product_image_constrain_width | times: 2 %}
-            {% assign product_image_constrain_height_large = product_image_constrain_height | times: 2 %}
-
-            {% assign thumb_constrain_width = 30 %}
-            {% assign thumb_constrain_height = 30 %}
+            {% assign image_width = product.image.width | times: 1.0 %}
+            {% assign image_height = product.image.height | times: 1.0 %}
+            {% assign aspect_ratio = image_width | divided_by: image_height %}
 
             {% assign product_status = '' %}
             {% case product.status %}
@@ -64,30 +80,35 @@
             {% capture image_class %}
               {% if product.image.height > product.image.width %}
                 image-tall
-                {% if theme.grid_image_style == 'crop-to-square' %}
-                  {% assign product_image_constrain_height = '' %}
-                  {% assign product_image_constrain_height_large = '' %}
-                  {% assign thumb_constrain_height = '' %}
-                {% endif %}
               {% elsif product.image.height < product.image.width %}
                 image-wide
-                {% if theme.grid_image_style == 'crop-to-square' %}
-                  {% assign product_image_constrain_width = '' %}
-                  {% assign product_image_constrain_width_large = '' %}
-                  {% assign thumb_constrain_width = '' %}
-                {% endif %}
               {% else %}
                 image-square
               {% endif %}
             {% endcapture %}
-            <div class="product-list-thumb {{ theme.grid_image_style }} {{ product.css_class }}">
+            <div class="product-list-thumb {{ product.css_class }}">
               <a class="product-list-link" href="{{ product.url }}" title="View {{ product.name | escape }}">
-                <div class="product-list-thumb-container">
-                  <figure class="product-list-image-container">
-                    <div class="image-wrapper">
-                      <img alt="" class="lazy product-list-image {{ image_class }}" src="{{ product.image | product_image_url | constrain: thumb_constrain_width,thumb_constrain_height }}" data-src="{{ product.image | product_image_url | constrain: product_image_constrain_width, product_image_constrain_height }}" data-srcset="{{ product.image | product_image_url | constrain: product_image_constrain_width_large, product_image_constrain_height_large }} 2x, {{ product.image | product_image_url | constrain: product_image_constrain_width, product_image_constrain_height }} 1x">
-                    </div>
-                  </figure>
+                <div class="product-list-image-container product-list-image-container-{{ theme.grid_image_style }}">
+                  <img
+                    alt=""
+
+                    class="blur-up product-list-image lazyload grid-{{ theme.grid_image_style }}"
+
+                    src="{{ product.image | product_image_url | constrain: 20 }}"
+
+                    {% unless theme.grid_image_style == 'default' %}data-aspectratio="{{ aspect_ratio }}"{% endunless %}
+
+                    data-srcset="
+                      {{ product.image | product_image_url | constrain: 240 }} 240w,
+                      {{ product.image | product_image_url | constrain: 320 }} 320w,
+                      {{ product.image | product_image_url | constrain: 400 }} 400w,
+                      {{ product.image | product_image_url | constrain: 540 }} 540w,
+                      {{ product.image | product_image_url | constrain: 600 }} 600w,
+                      {{ product.image | product_image_url | constrain: 800 }} 800w,
+                      {{ product.image | product_image_url | constrain: 1000 }} 1000w
+                    "
+                    data-sizes="auto"
+                  >
                 </div>
                 <div class="product-list-thumb-info">
                   <div class="product-list-thumb-name">{{ product.name }}</div>
