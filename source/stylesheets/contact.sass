@@ -26,7 +26,7 @@
     display: block
     margin-bottom: 10px
 
-  .contact_name, .contact_spam, .contact_send, .contact_email
+  .contact_name, .contact_send, .contact_email
     display: inline-block
     position: relative
     width: 48%
@@ -47,28 +47,13 @@
     @media screen and (max-width: $break-small)
       float: none
 
-  .contact_spam
+  .contact_recaptcha
     width: 100%
 
-    span
-      display: block
-      font-size: 14px
-      margin-top: 5px
-
-    .captcha_holder
-      position: relative
-
-  #captcha
-    &:active, &:focus
-      #captcha_image
-        border-left: 1px solid $hover-color
-
-  #captcha_image
-    position: absolute
-    right: 2px
-    border-left: 1px solid $button-background-color
-    height: 52px
-    top: 1px
+  .recaptcha_note
+    display: block
+    font-size: 14px
+    margin-top: 5px
 
   .contact_send
     text-align: center

@@ -27,13 +27,8 @@
         <label for="message">Message</label>
         {{ contact | contact_input: 'message' }}
       </div>
-      <div class="contact_spam">
-        <label for="captcha">Spam check</label>
-        <div class="captcha_holder">
-          {{ contact | contact_input: 'captcha' }}
-          {{ contact.captcha }}
-        </div>
-        <span>Please enter the characters from the image.</span>
+      <div class="contact_recaptcha">
+        <div class="recaptcha_note">{{ contact.recaptcha }}</div>
       </div>
       <div class="contact_send">
         <button type="submit" name="submit" title="Send message" tabindex="6">Send message</button>
