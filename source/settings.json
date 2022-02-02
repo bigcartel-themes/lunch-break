@@ -1,6 +1,6 @@
 {
   "name": "Lunch Break",
-  "version": "1.6.7",
+  "version": "1.7.0",
   "images": [
     {
       "variable": "header_logo",
@@ -35,17 +35,17 @@
     },
     {
       "variable": "secondary_background",
-      "label": "Header & Footer Background",
-      "default": "#F7F7F7"
+      "label": "Header Background",
+      "default": "#FAFAFA"
     },
     {
       "variable": "header_color",
-      "label": "Headers",
+      "label": "Header Text",
       "default": "#135884"
     },
     {
       "variable": "text_color",
-      "label": "Text",
+      "label": "Primary Text",
       "default": "#111111"
     },
     {
@@ -76,6 +76,13 @@
   ],
   "options": [
     {
+      "variable": "maintenance_message",
+      "label": "Maintenance mode message",
+      "type": "text",
+      "description": "A message visitors see when your shop is in Maintenance Mode",
+      "default": "We're working on our shop right now.<br /><br />Please check back soon."
+    },
+    {
       "variable": "sidebar_position",
       "label": "Sidebar position",
       "type": "select",
@@ -83,7 +90,7 @@
         ["Left", "left"],
         ["Right", "right"]
       ],
-      "default": "right",
+      "default": "left",
       "description": "Sets the position of the side navigation on the page"
     },
     {
@@ -212,31 +219,36 @@
       "variable": "twitter_url",
       "label": "Twitter URL",
       "type": "text",
-      "description": "Ex: http://twitter.com/bigcartel"
+      "description": "Ex: http://twitter.com/bigcartel",
+      "default": "ya"
     },
     {
       "variable": "facebook_url",
       "label": "Facebook URL",
       "type": "text",
-      "description": "Ex: http://facebook.com/bigcartel"
+      "description": "Ex: http://facebook.com/bigcartel",
+      "default": "ya"
     },
     {
       "variable": "tumblr_url",
       "label": "Tumblr URL",
       "type": "text",
-      "description": "Ex: http://bigcartel.tumblr.com"
+      "description": "Ex: http://bigcartel.tumblr.com",
+      "default": "ya"
     },
     {
       "variable": "instagram_url",
       "label": "Instagram URL",
       "type": "text",
-      "description": "Ex: http://instagram.com/bigcartel"
+      "description": "Ex: http://instagram.com/bigcartel",
+      "default": "ya"
     },
     {
       "variable": "pinterest_url",
       "label": "Pinterest URL",
       "type": "text",
-      "description": "Ex: http://pinterest.com/bigcartel"
+      "description": "Ex: http://pinterest.com/bigcartel",
+      "default": "ya"
     }
   ],
  "checkout": {

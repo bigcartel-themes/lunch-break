@@ -18,33 +18,6 @@ body
   font-family: $secondary-font
   line-height: 1
 
-  &.standalone
-    background-color: $secondary-background
-    padding: 100px 15px
-
-    @media screen and (max-width: $break-medium)
-      padding: 60px 15px
-
-    .message_holder
-      +border-radius($border-radius)
-      background-color: $background-color
-      border: 1px solid $border-color
-      margin: 0 auto
-      max-width: 600px
-      padding: 40px
-      text-align: center
-      width: 100%
-
-      @media screen and (max-width: $break-medium)
-        padding: 20px
-
-      h1
-        margin: 0
-        min-height: 0
-
-      p:last-child
-        margin: 15px 0 0
-
 a
   transition: color 0.2s ease, text-decoration-color .2s ease
   color: $link-color
@@ -445,7 +418,6 @@ button.search-button
   width: 100%
 
 footer
-  background: $secondary-background
   border-top: 1px solid $border-color
   text-align: center
   width: 100%
@@ -455,36 +427,36 @@ footer
     +justify-content(center)
     padding: 40px 20px
 
-  .social_icons
-    +flexbox
-    list-style: none
-    margin: 0
-    padding: 0
+.social_icons
+  +flexbox
+  list-style: none
+  margin: 0
+  padding: 0
 
-    li
-      margin: 0 12px
+  li
+    margin: 0 12px
 
-      a
+    a
+      display: block
+
+      svg
+        +transition(fill .2s ease)
         display: block
+        fill: $link-color
+        height: 26px
+        width: 26px
 
-        svg
-          +transition(fill .2s ease)
-          display: block
-          fill: $link-color
-          height: 26px
-          width: 26px
+        &.tumblr-icon
+          width: 16px
 
-          &.tumblr-icon
-            width: 16px
+    &:hover svg
+      fill: $hover-color
 
-      &:hover svg
-        fill: $hover-color
+.social_icons + .footer_credit
+  margin-top: 30px
 
-  .social_icons + .footer_credit
-    margin-top: 30px
-
-  .footer_credit
-    font-size: 14px
+.footer_credit
+  font-size: 14px
 
 .errors
   +border-radius($border-radius)
