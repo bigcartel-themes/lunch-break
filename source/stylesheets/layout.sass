@@ -425,7 +425,8 @@ footer
   .inner-wrapper
     +flex-direction(column)
     +justify-content(center)
-    padding: 40px 20px
+    padding: 60px 20px
+    gap: 30px
 
 .social_icons
   +flexbox
@@ -452,11 +453,27 @@ footer
     &:hover svg
       fill: $hover-color
 
-.social_icons + .footer_credit
-  margin-top: 30px
+.bigcartel-credit
+  line-height: 1em
+  font-size: 15px
+  display: flex
+  align-items: center
+  gap: 8px
+  outline-offset: 4px
+  padding: 2px 0
+  text-decoration: none
 
-.footer_credit
-  font-size: 14px
+  &:hover, &:focus
+    text-decoration: none
+
+  &__text
+    position: relative
+
+  &__lockup
+    display: block
+    fill: currentColor
+    padding-top: 1px
+    width: 86px
 
 .errors
   +border-radius($border-radius)
