@@ -56,17 +56,63 @@ ul, ol
   margin: 0
   padding: 0
 
+.announcement-message
+  background-color: $announcement-background-color
+  color: $announcement-text-color
+  display: none
+  line-height: 1.2em
+  padding: 20px 144px
+  position: relative
+  text-align: center
+  width: 100%
+  z-index: 1
+
+  @media screen and (max-width: $break-medium)
+    padding: 20px 64px
+
+  &.visible
+    display: block
+
+.button.announcement-message-close
+  +transform(translateY(-50%))
+  +transition(none)
+  +flexbox
+  +align-items(center)
+  +justify-content(center)
+  background: none
+  height: 32px
+  padding: 0
+  position: absolute
+  right: 16px
+  top: 50%
+  width: 32px
+
+  @media screen and (max-width: $break-small)
+    right: 4px
+
+  &:hover, &:focus
+    background: none !important
+    opacity: .7
+
+    svg
+      fill: $announcement-text-color
+
+  svg
+    display: block
+    fill: $announcement-text-color
+    height: 14px
+    width: 14px
+
 .mobile_nav
   +box-shadow(0px 1px 3px $border-color)
   +align-items(center)
   +justify-content(flex-start)
+  +flex-shrink(0)
   background-color: $background-color
   border-bottom: 1px solid $border-color
   display: none
   height: 60px
   padding: 0 20px
-  position: absolute
-  top: 0
   width: 100%
 
   @media only screen and (max-width: $break-large)
@@ -179,7 +225,7 @@ header
 
   @media only screen and (max-width: $break-large)
     margin: 0 0 40px
-    padding: 100px 20px 40px
+    padding: 40px 20px
 
   .inner-wrapper
     padding: 0 20px
@@ -242,7 +288,7 @@ header
   iframe
     max-width: 100%
 
-aside
+.sidebar-navigation
   background-color: $background-color
   float: #{"{% if theme.sidebar_position == 'right' %} right {% else %} left {% endif %}"}
   width: 20%
@@ -251,7 +297,7 @@ aside
     border-bottom: 1px solid $border-color
     display: none
     left: 0
-    padding: 80px 20px 0
+    padding: 20px 20px 0
     position: absolute
     top: 0
     width: 100%

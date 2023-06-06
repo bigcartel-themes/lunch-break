@@ -8,6 +8,16 @@
     {{ head_content }}
   </head>
   <body id="{{ page.permalink }}-page" class="{{ page.permalink }} {{ page.category }}">
+    {% if theme.announcement_message_text != blank %}
+      <aside role="complementary" aria-label="Announcement message" class="announcement-message" id="announce-message">
+        <div class="announcement-wrapper">
+          <div class="announcement-message-text">{{ theme.announcement_message_text }}</div>
+        </div>
+        <button class="button announcement-message-close" title="Close announcement message">
+          <svg aria-hidden="true" class="close-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14.1 14.1" enable-background="new 0 0 14.1 14.1"><path d="M14.1 1.1l-1.1-1.1-6 6-5.9-6-1.1 1.1 6 5.9-6 6 1.1 1.1 5.9-6 6 6 1.1-1.1-6-6z"/></svg>
+        </button>
+      </aside>
+    {% endif %}
     <a class="skip-link" href="#main">Skip to main content</a>
     <div class="mobile_nav">
       <button class="open_menu" role="button" href="#" data-open="Open Menu" data-close="Close Menu" title="Open Menu" aria-label="Open Menu">
@@ -16,7 +26,7 @@
         <span></span>
         <span></span>
       </button>
-      <a href="/cart" class="mobile_cart"><svg role="img" aria-labelledby="cart-mobile-title" class="cart_icon" xmlns="http://www.w3.org/2000/svg" height="20" width="20" viewBox="0 0 22 17" enable-background="new 0 0 22 17"><title id="cart-mobile-title">View Cart</title><path d="M4.3 0h-4.3l.5 1.4h2.8l4.2 10.9h10.5l.5-1.4h-10zM6.9 1.9l2.8 7.1h9.5l2.8-7.1h-15.1zm11.4 5.7h-7.6l-1.7-4.3h10.9l-1.6 4.3z"/><circle cx="10.2" cy="15.6" r="1.4"/><circle cx="15.6" cy="15.6" r="1.4"/></svg><span class="cart_numbers">{{ cart.item_count | pluralize: 'item', 'items' }} / {{ cart.total | money: theme.money_format }}</span></a>
+      <a href="/cart" class="mobile_cart" title="View cart"><svg aria-hidden="true" class="cart_icon" xmlns="http://www.w3.org/2000/svg" height="20" width="20" viewBox="0 0 22 17" enable-background="new 0 0 22 17"><path d="M4.3 0h-4.3l.5 1.4h2.8l4.2 10.9h10.5l.5-1.4h-10zM6.9 1.9l2.8 7.1h9.5l2.8-7.1h-15.1zm11.4 5.7h-7.6l-1.7-4.3h10.9l-1.6 4.3z"/><circle cx="10.2" cy="15.6" r="1.4"/><circle cx="15.6" cy="15.6" r="1.4"/></svg><span class="cart_numbers">{{ cart.item_count | pluralize: 'item', 'items' }} / {{ cart.total | money: theme.money_format }}</span></a>
   	</div>
     <header class="{% if theme.header_logo != blank %}logo{% else %}text{% endif %}">
   		<div class="inner-wrapper">
@@ -42,7 +52,7 @@
           {{ page_content }}
         {% endif %}
       </main>
-      <aside>
+      <aside class="sidebar-navigation">
         <a href="/cart" class="side_cart" title="View Cart"><svg role="img" aria-labelledby="cart-title" class="cart_icon" xmlns="http://www.w3.org/2000/svg" height="20" width="20" viewBox="0 0 22 17" enable-background="new 0 0 22 17"><title id="cart-title">View Cart</title><path d="M4.3 0h-4.3l.5 1.4h2.8l4.2 10.9h10.5l.5-1.4h-10zM6.9 1.9l2.8 7.1h9.5l2.8-7.1h-15.1zm11.4 5.7h-7.6l-1.7-4.3h10.9l-1.6 4.3z"/><circle cx="10.2" cy="15.6" r="1.4"/><circle cx="15.6" cy="15.6" r="1.4"/></svg><span class="cart_title">{{ cart.item_count | pluralize: 'item', 'items' }}</span>
           <span class="cart_numbers">{{ cart.total | money: theme.money_format }}</span>
         </a>
@@ -148,6 +158,59 @@
         </div>
       </div>
     </footer>
+    <script>
+      let themeOptions = {
+        hasAnnouncement: {% if theme.announcement_message_text %}true{%else %}false{%endif %}
+      }
+      function setCookie(name,value,days) {
+        var expires = "";
+        if (days) {
+          var date = new Date();
+          date.setTime(date.getTime() + (days*24*60*60*1000));
+          expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+      }
+      function getCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for(var i=0;i < ca.length;i++) {
+          var c = ca[i];
+          while (c.charAt(0)==' ') c = c.substring(1,c.length);
+          if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+        }
+        return null;
+      }
+      function eraseCookie(name) {
+        document.cookie = name+'=; Max-Age=-99999999;';
+      }
+      String.prototype.hashCode = function() {
+        var hash = 0, i, chr;
+        if (this.length === 0) return hash;
+        for (i = 0; i < this.length; i++) {
+          chr   = this.charCodeAt(i);
+          hash  = ((hash << 5) - hash) + chr;
+          hash |= 0;
+        }
+        return hash;
+      };
+      if (themeOptions.hasAnnouncement) {
+        announceDiv = document.getElementById("announce-message");
+        if (announceDiv) {
+          announcementMessage = document.querySelector(".announcement-message-text").innerHTML;
+          hashedMessage = announcementMessage.hashCode();
+          cookieValue = getCookie("hide-announcement-message");
+          if (cookieValue) {
+            if (cookieValue != hashedMessage) {
+              announceDiv.classList.add('visible');
+            }
+          }
+          else {
+            announceDiv.classList.add('visible');
+          }
+        }
+      }
+    </script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="{{ 'api' | theme_js_url }}"></script>
     <script type="text/javascript">

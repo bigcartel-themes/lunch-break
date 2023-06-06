@@ -1,6 +1,6 @@
 {
   "name": "Lunch Break",
-  "version": "1.8.0",
+  "version": "1.9.0",
   "images": [
     {
       "variable": "header_logo",
@@ -72,9 +72,25 @@
       "variable": "border_color",
       "label": "Borders",
       "default": "#d4d4d4"
+    },
+    {
+      "variable": "announcement_text_color",
+      "label": "Announcement Message Text",
+      "default": "#FFFFFF"
+    },
+    {
+      "variable": "announcement_background_color",
+      "label": "Announcement Message Background",
+      "default": "#235575"
     }
   ],
   "options": [
+    {
+      "variable": "announcement_message_text",
+      "label": "Announcement text",
+      "type": "text",
+      "description": "Displays an announcement message on the top of every page"
+    },
     {
       "variable": "maintenance_message",
       "label": "Maintenance mode message",

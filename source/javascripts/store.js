@@ -9,7 +9,8 @@ $(function() {
   $('.open_menu').click(function(e) {
     e.preventDefault();
     $(this).toggleClass('open');
-    $('aside').toggleClass('open');
+    $('.sidebar-navigation').toggleClass('open');
+    setMobileNavPosition();
     if($(this).hasClass('open')) {
       $(this).attr('title', $(this).data('close'));
       $(this).attr('aria-label', $(this).data('close'));
@@ -24,6 +25,25 @@ $(function() {
     enableAddButton(option_price);
   });
 });
+$('.announcement-message-close').click(function(e) {
+  $('.announcement-message').slideUp('fast', function() {
+    setMobileNavPosition();
+    $('.announcement-message').removeClass('visible');
+    setCookie('hide-announcement-message',hashedMessage,7);
+  });
+})
+$(window).on("load resize", function() {
+  setMobileNavPosition();
+});
+function setMobileNavPosition() {
+  let marginTop = 0;
+  if (window.innerWidth < 946) {
+    let mobileNav = document.querySelector('.mobile_nav');
+    let mobileRect = mobileNav.getBoundingClientRect();
+    marginTop = mobileRect.bottom+'px';
+  }
+  $('.sidebar-navigation').css('margin-top',marginTop);
+}
 var isGreaterThanZero = function(currentValue) {
   return currentValue > 0;
 }
