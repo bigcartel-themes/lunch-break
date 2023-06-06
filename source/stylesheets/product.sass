@@ -17,7 +17,7 @@
     max-width: 100%
 
   .primary_image
-    +border-radius(2px)
+    border-radius: $border-radius
     display: block
     width: 100%
 
@@ -35,7 +35,7 @@
       width: 25%
 
       img
-        +border-radius(2px)
+        border-radius: $border-radius
         display: block
         width: 100%
 
@@ -73,7 +73,7 @@
       vertical-align: middle
 
     .small_status
-      +border-radius(2px)
+      border-radius: $border-radius
       border: 1px solid $secondary-text-color
       color: $secondary-text-color
       font-size: 13px
@@ -267,21 +267,21 @@ img.mfp-img
 
 .mfp-preloader
   +animation(loading-animation 1.5s infinite ease-in-out)
-  +border-radius(100%)
+  border-radius: 100%
   background: #FFF
   height: 40px
   margin: 0 auto
   opacity: 1
   width: 40px
 
-+keyframes(loading-animation)
+@keyframes loading-animation
   0%
-    -webkit-transform: scale(0.1, 0.1)
+    transform: scale(0.1, 0.1)
     opacity: 0.0
   50%
     opacity: 1.0
   100%
-    -webkit-transform: scale(1.2, 1.2)
+    transform: scale(1.2, 1.2)
     opacity: 0.0
 
 #instant-checkout-button

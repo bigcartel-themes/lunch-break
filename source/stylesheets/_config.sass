@@ -16,6 +16,9 @@ $button-background-hover-color: #{'{{ theme.button_background_hover_color }}'}
 
 $border-color: #{'{{ theme.border_color }}'}
 
+$announcement-text-color: #{"{{ theme.announcement_text_color }}"}
+$announcement-background-color: #{"{{ theme.announcement_background_color }}"}
+
 $break-extra-large: 1200px
 $break-large: 945px
 $break-medium: 800px
@@ -35,15 +38,12 @@ $border-radius: 2px
 @mixin vertical-align
   position: relative
   top: 50%
-  -webkit-transform: translateY(-50%)
-  -ms-transform: translateY(-50%)
   transform: translateY(-50%)
 
 @mixin all-transitions
   +transition(.2s linear)
 
 @mixin transition($transition...)
-  -webkit-transition: #{$transition}
   transition: #{$transition}
 
 @mixin transform($str...)
@@ -51,7 +51,6 @@ $border-radius: 2px
   transform: $str
 
 @mixin transform-origin($str...)
-  -webkit-transform-origin: $str
   transform-origin: $str
 
 @mixin appearance($str...)
@@ -59,15 +58,7 @@ $border-radius: 2px
   -moz-appearance: none
   appearance: none
 
-@mixin keyframes($animation...)
-  @-webkit-keyframes #{$animation}
-    @content
-
-  @keyframes #{$animation}
-    @content
-
 @mixin animation($str...)
-  -webkit-animation: $str
   animation: $str
 
 @mixin pie-clearfix
