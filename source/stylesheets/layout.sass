@@ -127,7 +127,7 @@ ul, ol
     width: 22px
 
     span
-      +border-radius($border-radius)
+      border-radius: $border-radius
       +transform(rotate(0deg))
       +transition(.1s ease-in-out)
       display: block
@@ -320,31 +320,29 @@ header
     +align-items(center)
     +justify-content(flex-start)
     +transition(background .2s ease, color .2s ease, border .2s ease)
-    +border-radius($border-radius)
+    border-radius: $border-radius
+    gap: 8px
     background-color: $background-color
     border: 1px solid $header-color
     color: $header-color
     font-family: $secondary-font
-    height: 50px
     margin-bottom: 40px
-    padding: 0 10px
+    padding: 15px 12px
     position: relative
     text-decoration: none !important
+
+    @media only screen and (max-width: $break-extra-large)
+      font-size: 15px
 
     @media only screen and (max-width: $break-large)
       display: none
 
-    .cart_title
-      margin-left: 6px
-
     .cart_numbers
       margin-left: auto
 
-      @media only screen and (max-width: 1100px)
-        display: none
-
     .cart_icon
       +transition(fill .2s ease)
+      flex-shrink: 0
       fill: $header-color
       height: 22px
       width: 22px
@@ -522,7 +520,7 @@ footer
     width: 86px
 
 .errors
-  +border-radius($border-radius)
+  border-radius: $border-radius
   background: #950f1e
   color: #FFFFFF
   list-style: none
@@ -595,7 +593,7 @@ button, a.button
     opacity: .4
 
 .select
-  +border-radius($border-radius)
+  border-radius: $border-radius
   position: relative
   border: 1px solid $text-color
   color: $text-color
