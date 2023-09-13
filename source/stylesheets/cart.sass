@@ -52,19 +52,16 @@
     +flex-basis(30%)
     padding-right: 16px
 
-_:-ms-fullscreen, :root .cart-item-details
-  width: calc(55% - 106px)
-
 .cart-item-details-name
   font-family: $primary-font
-  font-size: 18px
+  font-size: 1.125em
 
   @media screen and (max-width: $break-small)
-    font-size: 16px
+    font-size: 1em
 
 .cart-item-details-option
   font-family: $secondary-font
-  font-size: 15px
+  font-size: .925em
   margin-top: 5px
 
 .cart-item-quantity-price
@@ -78,9 +75,6 @@ _:-ms-fullscreen, :root .cart-item-details
     +flex-direction(column)
     +align-items(flex-end)
     width: 45%
-
-_:-ms-fullscreen, :root .cart-item-quantity-price
-  width: calc(45% - 106px)
 
 .cart-item-details-price
   margin-right: 24px
@@ -220,7 +214,5 @@ a.button.continue_shopping
     width: 100%
 
 .empty_cart
-  line-height: 1.3em
-
   @media only screen and (max-width: $break-medium)
     text-align: center
