@@ -30,19 +30,6 @@
     padding: 10px
     width: calc(100% / #{"{{ theme.max_products_per_row_mobile }}"})
 
-_:-ms-fullscreen, :root .product-list-thumb
-  width: calc(100% / #{"{{ theme.max_products_per_row }}"} - .1px)
-
-  @media screen and (max-width: 1100px)
-    width: calc(100% / #{"{% if theme.max_products_per_row == 4 %} 3 {% elsif theme.max_products_per_row == 3 %} 3 {% elsif theme.max_products_per_row == 2 %} 2 {% else %} 1 {% endif %}"} - .1px)
-
-  @media screen and (max-width: $break-medium)
-    width: calc(100% / 3 - .1px)
-
-  @media screen and (max-width: $break-small)
-    padding: 10px
-    width: calc(100% / #{"{{ theme.max_products_per_row_mobile }}"} - .1px)
-
 .product-list-link
   +transition(color .2s ease)
   color: $header-color
