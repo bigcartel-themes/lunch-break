@@ -1,11 +1,4 @@
 $(function() {
-  $('.product_images a').magnificPopup({
-    type:'image',
-    tLoading: '',
-    gallery: {
-      enabled: true
-    }
-  });
   $('.open_menu').click(function(e) {
     e.preventDefault();
     $(this).toggleClass('open');
@@ -25,13 +18,6 @@ $(function() {
     enableAddButton(option_price);
   });
 });
-$('.announcement-message-close').click(function(e) {
-  $('.announcement-message').slideUp('fast', function() {
-    setMobileNavPosition();
-    $('.announcement-message').removeClass('visible');
-    setCookie('hide-announcement-message',hashedMessage,7);
-  });
-})
 $(window).on("load resize", function() {
   setMobileNavPosition();
 });

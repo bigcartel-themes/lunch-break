@@ -159,8 +159,16 @@
       </div>
     </footer>
     <script>
-      let themeOptions = {
-        hasAnnouncement: {% if theme.announcement_message_text %}true{%else %}false{%endif %}
+      const themeOptions = {
+        hasAnnouncement: {% if theme.announcement_message_text %}true{%else %}false{%endif %},
+        showSoldOutOptions: {{ theme.show_sold_out_product_options }},
+        desktopProductPageImages: '{{ theme.desktop_product_page_images }}',
+        mobileProductPageImages: '{{ theme.mobile_product_page_images }}',
+        productImageZoom: '{{ theme.product_image_zoom }}',
+      }
+      const themeColors = {
+        textColor: '{{ theme.text_color }}',
+        backgroundColor: '{{ theme.background_color }}',
       }
       function setCookie(name,value,days) {
         var expires = "";
@@ -208,10 +216,16 @@
           else {
             announceDiv.classList.add('visible');
           }
+          if (announceDiv.classList.contains('visible')) {
+            document.querySelector('.announcement-message-close').addEventListener('click', function(e) {
+              announceDiv.remove();
+              setCookie('hide-announcement-message', hashedMessage, 7);
+            });
+          }
         }
       }
     </script>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="{{ 'api' | theme_js_url }}"></script>
     <script type="text/javascript">
       var formatMoney = Format.money;
@@ -234,15 +248,5 @@
       </script>
       <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
     {% endif %}
-    <script>
-      $(function() {
-        if ($('.flexslider').length) {
-          $('.flexslider').flexslider({
-            animation: "slide",
-            customDirectionNav: $(".flex-nav .flex-nav-button")
-          });
-        }
-      });
-    </script>
   </body>
 </html>
