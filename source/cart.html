@@ -37,7 +37,9 @@
               </div>
               <div class="cart-item-quantity-price">
                 <div class="cart-item-quantity-holder" data-item-id="{{ item.id }}">
-                  <label class="sr-only" for="item_{{item.id}}_qty">Quantity</label>
+                  <label class="sr-only" for="item_{{item.id}}_qty">
+                    Update quantity for {{ item.product.name }} {% unless item.product.has_default_option %}- {{ item.option.name }}{% endunless %}
+                  </label>
                   {{ item | item_quantity_input, nil, 'option-quantity' }}
                 </div>
                 <div class="cart-item-details-price">
@@ -55,7 +57,7 @@
             <span class="cart_subtotal_label">Subtotal:</span>
             <span class="cart-subtotal-amount">{{ cart.total | money: theme.money_format }}</span>
           </div>
-          <button type="submit" name="checkout" title="Checkout" class="checkout_btn">Checkout</button>
+          <button type="submit" name="checkout" title="Checkout" class="button checkout_btn">Checkout</button>
           <a class="button continue_shopping minimal-button" href="/products">Continue Shopping</a>
         </div>
       </form>
