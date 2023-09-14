@@ -142,77 +142,39 @@ button.cart-item-remove-text
     display: inline-block
 
 .cart_footer
-  +pie-clearfix
-  clear: both
   text-align: right
 
-  .cart_total
-    color: $header-color
-    font-family: $primary-font
-    font-weight: 500
-    margin: 0
-    font-size: 24px
-    padding: 30px 0
-    text-align: right
+.cart_total
+  color: $header-color
+  font-family: $primary-font
+  font-weight: 500
+  margin: 0
+  font-size: 24px
+  padding: 30px 0
+  text-align: right
 
-    > span
-      display: inline-block
-      margin-left: 8px
+  > span
+    display: inline-block
+    margin-left: 8px
 
-  h4
-    color: $text-color
-    font-size: 14px
-    margin-bottom: 10px
-    text-align: right
+.cart_footer_buttons
+  display: flex
+  justify-content: flex-end
+  flex-direction: column
+  gap: 24px
 
-    > span
-      display: inline-block
-      margin-left: 10px
+  .button
+    margin-left: auto
+    display: flex
+    align-items: center
+    justify-content: center
+    width: 300px
 
-  h4 + h3
-    margin-top: 20px
-
-  .small_message
-    font-size: 13px
-
-  button, .button
-    margin-left: 12px
-    padding: 0 35px
-
-    @media screen and (max-width: $break-extra-small)
-      float: none
-      margin: 5px 0
+    @media screen and (max-width: $break-small)
       width: 100%
 
-    &.checkout_btn
-      max-width: 300px
-      width: 48%
+  .continue_shopping
+    text-decoration: underline
 
-      @media screen and (max-width: $break-medium)
-        margin: 0 0 10px
-        max-width: 100%
-        width: 100%
-
-a.button.continue_shopping
-  border-radius: $border-radius
-  border: 1px solid $link-color
-  color: $link-color
-  float: left
-  margin-left: 0
-  max-width: 300px
-  width: 48%
-
-  &:hover, &:focus
-    border-color: $hover-color
-    color: $hover-color
-
-  @media screen and (max-width: $break-medium)
-    border: 1px solid transparent !important
-    float: none
-    margin: 0
-    max-width: 100%
-    width: 100%
-
-.empty_cart
-  @media only screen and (max-width: $break-medium)
-    text-align: center
+  @media screen and (max-width: $break-small)
+    flex-direction: column

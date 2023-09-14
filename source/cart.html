@@ -57,8 +57,10 @@
             <span class="cart_subtotal_label">Subtotal:</span>
             <span class="cart-subtotal-amount">{{ cart.total | money: theme.money_format }}</span>
           </div>
-          <button type="submit" name="checkout" class="button checkout_btn">Checkout</button>
-          <a class="button continue_shopping minimal-button" href="/products">Continue Shopping</a>
+          <div class="cart_footer_buttons">
+            <button type="submit" name="checkout" class="button checkout_btn">Checkout</button>
+            <a class="button continue_shopping minimal-button" href="/products">Continue Shopping</a>
+          </div>
         </div>
       </form>
     </div>
