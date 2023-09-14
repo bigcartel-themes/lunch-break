@@ -1,42 +1,10 @@
 @import 'flexbox'
 
-$primary-font: #{"{{ theme.primary_font | font_family }}"}
-$secondary-font: #{"{{ theme.secondary_font | font_family }}"}
-$background-color: #{'{{ theme.background_color }}'}
-$secondary-background: #{'{{ theme.secondary_background }}'}
-$header-color: #{'{{ theme.header_color }}'}
-$text-color: #{'{{ theme.text_color }}'}
-$secondary-text-color: #{'{{ theme.secondary_text_color }}'}
-$hover-color: #{'{{ theme.text_color }}'}
-$link-color: #{'{{ theme.secondary_text_color }}'}
-
-$button-text-color: #{'{{ theme.button_text_color }}'}
-$button-background-color: #{'{{ theme.button_background_color }}'}
-$button-background-hover-color: #{'{{ theme.button_background_hover_color }}'}
-
-$border-color: #{'{{ theme.border_color }}'}
-
-$announcement-text-color: #{"{{ theme.announcement_text_color }}"}
-$announcement-background-color: #{"{{ theme.announcement_background_color }}"}
-
 $break-extra-large: 1200px
 $break-large: 945px
 $break-medium: 800px
 $break-small: 640px
 $break-extra-small: 500px
-
-$border-radius: 2px
-
-@mixin border-radius($radius...)
-  border-radius: $radius
-
-@mixin box-shadow($shadow...)
-  box-shadow: $shadow
-
-@mixin vertical-align
-  position: relative
-  top: 50%
-  transform: translateY(-50%)
 
 @mixin all-transitions
   +transition(.2s linear)
@@ -85,6 +53,7 @@ input, button, textarea, select
   +appearance(none)
   border: 0
   background: none
+  color: inherit
   font: inherit
 
 button

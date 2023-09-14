@@ -13,29 +13,6 @@
     margin: 20px 0 40px
     max-width: 100%
 
-  .primary_image
-    border-radius: $border-radius
-    display: block
-    width: 100%
-
-  .product_thumbnails
-    +pie-clearfix
-    font-size: 0
-    margin: 10px -5px 0 -5px
-    padding: 0
-    text-align: center
-
-    li
-      display: inline-block
-      padding: 0 5px
-      vertical-align: top
-      width: 25%
-
-      img
-        border-radius: $border-radius
-        display: block
-        width: 100%
-
 .product_pricing, .product_details
   float: right
   padding-left: 40px
@@ -58,8 +35,8 @@
   .product_price_status
     +flexbox
     +align-items(center)
-    color: $text-color
-    font-family: $secondary-font
+    color: var(--text-color)
+    font-family: var(--secondary-font)
     font-size: 22px
     margin-bottom: 40px
 
@@ -70,9 +47,9 @@
       vertical-align: middle
 
     .small_status
-      border-radius: $border-radius
-      border: 1px solid $secondary-text-color
-      color: $secondary-text-color
+      border-radius: var(--border-radius)
+      border: 1px solid var(--secondary-text-color)
+      color: var(--secondary-text-color)
       font-size: 13px
       margin-left: 10px
       padding: 4px 8px
@@ -142,13 +119,13 @@ button.reset-selection-button
 
         svg
           +all-transitions
-          fill: $link-color
+          fill: var(--link-color)
           height: 20px
           width: 20px
 
         &:hover
           svg
-            fill: $hover-color
+            fill: var(--hover-color)
 
       &.social_pinterest
 
@@ -175,109 +152,6 @@ button.reset-selection-button
     display: none
     opacity: 0
     visibility: hidden
-
-
-.mfp-top-bar
-  +flexbox
-  +align-items(center)
-  padding: 5px 0
-  position: absolute
-  top: 48px
-  width: 100%
-
-.mfp-title
-  display: none
-
-.mfp-counter
-  color: #F7F7F7
-  font-size: 15px
-  position: relative
-
-.mfp-arrow:before, .mfp-arrow:after
-  display: none
-
-.mfp-image-holder button.mfp-close
-  +flexbox
-  +align-items(center)
-  +justify-content(center)
-  background: none !important
-  margin-left: auto
-  opacity: 1
-  padding: 6px
-  right: 0
-  position: relative
-  width: auto !important
-
-  svg
-    fill: #F7F7F7
-    pointer-events: none
-
-img.mfp-img
-  padding: 100px 0 40px
-
-.mfp-figure:after
-  display: none
-
-.mfp-arrow
-  +flexbox
-  +align-items(center)
-  +justify-content(center)
-  background: #FFF !important
-  height: 65px
-  margin-top: 0
-  opacity: .7
-  width: 65px
-
-  &:active
-    margin-top: 0
-
-  svg
-    display: block
-    fill: #000
-    height: 20px
-    margin: 0 auto
-    pointer-events: none
-    width: 20px
-
-  &:hover
-    opacity: 1
-
-  @media (max-width: 900px)
-    +transform(scale(.7))
-
-.mfp-container
-  padding: 0 10px !important
-
-.mfp-arrow-left
-  left: 40px
-
-  @media (max-width: $break-large)
-    left: 14px
-
-.mfp-arrow-right
-  right: 40px
-
-  @media (max-width: $break-large)
-    right: 14px
-
-.mfp-preloader
-  +animation(loading-animation 1.5s infinite ease-in-out)
-  border-radius: 100%
-  background: #FFF
-  height: 40px
-  margin: 0 auto
-  opacity: 1
-  width: 40px
-
-@keyframes loading-animation
-  0%
-    transform: scale(0.1, 0.1)
-    opacity: 0.0
-  50%
-    opacity: 1.0
-  100%
-    transform: scale(1.2, 1.2)
-    opacity: 0.0
 
 #instant-checkout-button
   margin-top: 12px

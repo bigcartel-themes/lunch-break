@@ -8,13 +8,13 @@
     display: block
 
 .cart-items
-  border-top: 1px solid $border-color
+  border-top: 1px solid var(--border-color)
   padding: 0
 
 .cart-item
   +flexbox
   +align-items(center)
-  border-bottom: 1px solid $border-color
+  border-bottom: 1px solid var(--border-color)
   padding: 24px 0
 
   @media screen and (max-width: $break-small)
@@ -24,7 +24,7 @@
 
 .cart-item-image
   +flex-shrink(0)
-  border-radius: $border-radius
+  border-radius: var(--border-radius)
   display: block
   height: 90px
   margin-right: 16px
@@ -36,7 +36,7 @@
     width: 60px
 
   img
-    border-radius: $border-radius
+    border-radius: var(--border-radius)
     display: block
     object-fit: cover
     height: 100%
@@ -53,14 +53,14 @@
     padding-right: 16px
 
 .cart-item-details-name
-  font-family: $primary-font
+  font-family: var(--primary-font)
   font-size: 1.125em
 
   @media screen and (max-width: $break-small)
     font-size: 1em
 
 .cart-item-details-option
-  font-family: $secondary-font
+  font-family: var(--secondary-font)
   font-size: .925em
   margin-top: 5px
 
@@ -119,16 +119,16 @@ button.cart-item-remove
     background: none
 
     .cart-item-remove-icon
-      fill: $hover-color
+      fill: var(--hover-color)
 
   .cart-item-remove-icon
     display: block
-    fill: $secondary-text-color
+    fill: var(--secondary-text-color)
     height: 16px
     width: 16px
 
 button.cart-item-remove-text
-  color: $link-color
+  color: var(--link-color)
   display: none
   height: auto
   line-height: normal
@@ -145,8 +145,8 @@ button.cart-item-remove-text
   text-align: right
 
 .cart_total
-  color: $header-color
-  font-family: $primary-font
+  color: var(--header-color)
+  font-family: var(--primary-font)
   font-weight: 500
   margin: 0
   font-size: 24px

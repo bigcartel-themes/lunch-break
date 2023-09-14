@@ -1,3 +1,22 @@
+\:root
+  --border-color: #{"{{ theme.border_color }}"}
+  --primary-font: #{"{{ theme.primary_font | font_family }}"}
+  --secondary-font: #{"{{ theme.secondary_font | font_family }}"}
+  --background-color: #{'{{ theme.background_color }}'}
+  --secondary-background: #{'{{ theme.secondary_background }}'}
+  --header-color: #{'{{ theme.header_color }}'}
+  --text-color: #{'{{ theme.text_color }}'}
+  --secondary-text-color: #{'{{ theme.secondary_text_color }}'}
+  --hover-color: #{'{{ theme.text_color }}'}
+  --link-color: #{'{{ theme.secondary_text_color }}'}
+  --button-text-color: #{'{{ theme.button_text_color }}'}
+  --button-background-color: #{'{{ theme.button_background_color }}'}
+  --button-background-hover-color: #{'{{ theme.button_background_hover_color }}'}
+  --announcement-text-color: #{"{{ theme.announcement_text_color }}"}
+  --announcement-background-color: #{"{{ theme.announcement_background_color }}"}
+
+  --border-radius: 2px
+
 body, html
   height: 100%
   min-height: 100%
@@ -8,23 +27,23 @@ body
   +flex-direction(column)
   -moz-osx-font-smoothing: grayscale
   -webkit-font-smoothing: antialiased
-  background-color: $background-color
-  color: $text-color
-  font-family: $secondary-font
+  background-color: var(--background-color)
+  color: var(--text-color)
+  font-family: var(--secondary-font)
   font-size: 16px
 
 a
   transition: color 0.2s ease, text-decoration-color .2s ease
-  color: $link-color
+  color: var(--link-color)
   text-decoration-color: transparent
 
   &:hover, &:focus
-    color: $hover-color
+    color: var(--hover-color)
     text-decoration: underline
 
 h1, h2, h3, h4, h5, h6
-  color: $header-color
-  font-family: $primary-font
+  color: var(--header-color)
+  font-family: var(--primary-font)
   font-weight: 500
   line-height: 1.25
   margin: 0
@@ -50,8 +69,8 @@ ul, ol
   padding: 0
 
 .announcement-message
-  background-color: $announcement-background-color
-  color: $announcement-text-color
+  background-color: var(--announcement-background-color)
+  color: var(--announcement-text-color)
   display: none
   line-height: 1.2em
   padding: 20px 144px
@@ -88,21 +107,21 @@ ul, ol
     opacity: .7
 
     svg
-      fill: $announcement-text-color
+      fill: var(--announcement-text-color)
 
   svg
     display: block
-    fill: $announcement-text-color
+    fill: var(--announcement-text-color)
     height: 14px
     width: 14px
 
 .mobile_nav
-  +box-shadow(0px 1px 3px $border-color)
   +align-items(center)
   +justify-content(flex-start)
   +flex-shrink(0)
-  background-color: $background-color
-  border-bottom: 1px solid $border-color
+  background-color: var(--background-color)
+  border-bottom: 1px solid var(--border-color)
+  box-shadow: 0px 1px 3px var(--border-color)
   display: none
   height: 60px
   padding: 0 20px
@@ -120,11 +139,11 @@ ul, ol
     width: 22px
 
     span
-      border-radius: $border-radius
+      border-radius: var(--border-radius)
       +transform(rotate(0deg))
       +transition(.1s ease-in-out)
       display: block
-      background: $header-color
+      background: var(--header-color)
       width: 100%
       height: 2px
       position: absolute
@@ -173,7 +192,7 @@ ul, ol
 
     .cart_icon
       display: block
-      fill: $link-color
+      fill: var(--link-color)
       height: 22px
       margin-right: 10px
       width: 22px
@@ -194,9 +213,9 @@ _:-ms-fullscreen, :root .wrap
 
 a.skip-link
   +transition(all .3s)
-  background: $background-color
-  border: 1px solid $link-color
-  color: $link-color
+  background: var(--background-color)
+  border: 1px solid var(--link-color)
+  color: var(--link-color)
   left: 25px
   padding: 15px 20px
   position: absolute
@@ -208,9 +227,9 @@ a.skip-link
     top: 20px
 
 header
-  background: $secondary-background
-  border-bottom: 1px solid $border-color
-  font-family: $primary-font
+  background: var(--secondary-background)
+  border-bottom: 1px solid var(--border-color)
+  font-family: var(--primary-font)
   font-size: 28px
   padding: 50px 0
   margin-bottom: 40px
@@ -229,12 +248,12 @@ header
       padding: 0
 
 .store_header
-  color: $header-color
+  color: var(--header-color)
   display: inline-block
   font-size: 44px
 
   &:hover, &:active
-    color: $hover-color
+    color: var(--hover-color)
 
   &.text
     display: inline-block
@@ -268,7 +287,7 @@ header
     padding-right: 0
 
 .custom_content
-  font-family: $secondary-font
+  font-family: var(--secondary-font)
   margin: 0 #{"{% if theme.sidebar_position == 'right' %} auto {% endif %}"}
   max-width: 700px
   width: 100%
@@ -280,12 +299,12 @@ header
     max-width: 100%
 
 .sidebar-navigation
-  background-color: $background-color
+  background-color: var(--background-color)
   float: #{"{% if theme.sidebar_position == 'right' %} right {% else %} left {% endif %}"}
   width: 20%
 
   @media only screen and (max-width: $break-large)
-    border-bottom: 1px solid $border-color
+    border-bottom: 1px solid var(--border-color)
     display: none
     left: 0
     padding: 20px 20px 0
@@ -298,9 +317,9 @@ header
       display: block
 
   .nav_title
-    color: $header-color
-    border-bottom: 1px solid $border-color
-    font-family: $primary-font
+    color: var(--header-color)
+    border-bottom: 1px solid var(--border-color)
+    font-family: var(--primary-font)
     font-size: 22px
     line-height: 1.3em
     margin-bottom: 4px
@@ -311,12 +330,12 @@ header
     +align-items(center)
     +justify-content(flex-start)
     +transition(background .2s ease, color .2s ease, border .2s ease)
-    border-radius: $border-radius
+    border-radius: var(--border-radius)
     gap: 8px
-    background-color: $background-color
-    border: 1px solid $header-color
-    color: $header-color
-    font-family: $secondary-font
+    background-color: var(--background-color)
+    border: 1px solid var(--header-color)
+    color: var(--header-color)
+    font-family: var(--secondary-font)
     margin-bottom: 40px
     padding: 15px 12px
     position: relative
@@ -334,17 +353,17 @@ header
     .cart_icon
       +transition(fill .2s ease)
       flex-shrink: 0
-      fill: $header-color
+      fill: var(--header-color)
       height: 22px
       width: 22px
 
     &:hover, &:focus, &:active
-      background-color: $button-background-color
-      border: 1px solid $button-background-color
-      color: $button-text-color
+      background-color: var(--button-background-color)
+      border: 1px solid var(--button-background-color)
+      color: var(--button-text-color)
 
       .cart_icon
-        fill: $button-text-color
+        fill: var(--button-text-color)
 
   ul
     list-style: none
@@ -384,7 +403,7 @@ header
 .search-input
   border: none !important
   cursor: pointer
-  font-family: $secondary-font
+  font-family: var(--secondary-font)
   height: auto
   padding: 4px 32px 4px 0
   position: absolute
@@ -399,28 +418,28 @@ header
 
   &:hover
     &::-webkit-input-placeholder
-      color: $hover-color
+      color: var(--hover-color)
 
     &::-moz-placeholder
-      color: $hover-color
+      color: var(--hover-color)
 
     &:-ms-input-placeholder
-      color: $hover-color
+      color: var(--hover-color)
 
     &:-moz-placeholder
-      color: $hover-color
+      color: var(--hover-color)
 
   &::-webkit-input-placeholder
-    color: $link-color
+    color: var(--link-color)
 
   &::-moz-placeholder
-    color: $link-color
+    color: var(--link-color)
 
   &:-ms-input-placeholder
-    color: $link-color
+    color: var(--link-color)
 
   &:-moz-placeholder
-    color: $link-color
+    color: var(--link-color)
 
 button.search-button
   +flexbox
@@ -436,7 +455,7 @@ button.search-button
   width: 20px
 
 .search-icon
-  fill: $link-color
+  fill: var(--link-color)
   display: none
   height: 16px
   width: 16px
@@ -453,7 +472,7 @@ button.search-button
   width: 100%
 
 footer
-  border-top: 1px solid $border-color
+  border-top: 1px solid var(--border-color)
   text-align: center
   width: 100%
 
@@ -478,7 +497,7 @@ footer
       svg
         +transition(fill .2s ease)
         display: block
-        fill: $link-color
+        fill: var(--link-color)
         height: 26px
         width: 26px
 
@@ -486,7 +505,7 @@ footer
           width: 16px
 
     &:hover svg
-      fill: $hover-color
+      fill: var(--hover-color)
 
 .bigcartel-credit
   line-height: 1em
@@ -511,7 +530,7 @@ footer
     width: 86px
 
 .errors
-  border-radius: $border-radius
+  border-radius: var(--border-radius)
   background: #950f1e
   color: #FFFFFF
   list-style: none
@@ -522,7 +541,7 @@ footer
     text-align: center
 
 button, input, textarea, select
-  border-radius: $border-radius
+  border-radius: var(--border-radius)
   height: 50px
   padding: 0
 
@@ -530,24 +549,24 @@ textarea
   height: auto
 
 input, textarea
-  background: $background-color
-  border: 1px solid $text-color
-  color: $text-color
+  background: var(--background-color)
+  border: 1px solid var(--text-color)
+  color: var(--text-color)
   padding: 8px 10px
 
 .button
   +transition(background .2s ease)
-  background-color: $button-background-color
-  color: $button-text-color
+  background-color: var(--button-background-color)
+  color: var(--button-text-color)
   display: inline-block
-  font-family: $secondary-font
+  font-family: var(--secondary-font)
   height: 54px
   padding: 0
   text-align: center
 
   &.minimal-button
     background: none
-    color: $text-color
+    color: var(--text-color)
     padding: 0
 
     &:not(:disabled):hover, &:not(:disabled):active, &:not(:disabled):focus
@@ -557,18 +576,18 @@ input, textarea
       text-decoration: underline
 
   &:hover, &:focus
-    background-color: $button-background-hover-color
+    background-color: var(--button-background-hover-color)
 
   &:disabled, &.disabled
-    background-color: $button-background-color !important
+    background-color: var(--button-background-color) !important
     cursor: not-allowed
     opacity: .4
 
 .select
-  border-radius: $border-radius
+  border-radius: var(--border-radius)
   position: relative
-  border: 1px solid $text-color
-  color: $text-color
+  border: 1px solid var(--text-color)
+  color: var(--text-color)
   height: 50px
   margin-bottom: 15px
   padding: 0
@@ -596,8 +615,7 @@ input, textarea
       display: none
 
   svg
-    +all-transitions
-    fill: $text-color
+    fill: currentColor
     height: 8px
     margin-top: -2px
     position: absolute
@@ -605,16 +623,6 @@ input, textarea
     top: 50%
     width: 13px
     z-index: 1
-
-  &:hover, &:focus, &:active
-    color: $hover-color
-    border-color: $hover-color
-
-    select
-      color: $hover-color
-
-    svg
-      fill: $hover-color
 
 .sr-only
   border: 0
