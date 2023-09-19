@@ -28,7 +28,7 @@
 {% if theme.featured_products > 0 %}
   {% paginate products from products.current by theme.featured_products order:theme.featured_order %}
     {% if products != blank %}
-      <h1>Featured Products</h1>
+      <h1>Featured</h1>
       <div class="product-list-container">
         <div class="product-list">
           {% for product in products %}
