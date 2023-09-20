@@ -29,7 +29,7 @@
               {% assign aspect_ratio = image_width | divided_by: image_height %}
               <li class="splide__slide">
                 {% if theme.product_image_zoom %}
-                  <a aria-label="Open image {{ forloop.index }} in lightbox" class="gallery-link" href="{{ image | product_image_url | constrain: 2000 }}" data-pswp-width="{{ image_width | times: 2 }}" data-pswp-height="{{ image_height | times: 2 }}" >
+                  <a aria-label="Open image {{ forloop.index }} in image viewer" class="gallery-link" href="{{ image | product_image_url | constrain: 2000 }}" data-pswp-width="{{ image_width | times: 2 }}" data-pswp-height="{{ image_height | times: 2 }}" >
                 {% endif %}
                   <img
                     alt="Image {{ forloop.index }} of {{ product.name | escape }}"
@@ -93,7 +93,7 @@
       {% assign image_width = product.image.width | times: 1.0 %}
       {% assign image_height = product.image.height | times: 1.0 %}
       {% if theme.product_image_zoom %}
-        <a aria-label="Open image of {{ product.name | escape }} in lightbox" class="gallery-link" href="{{ product.image | product_image_url | constrain: 2000 }}" data-pswp-width="{{ image_width | times: 2 }}" data-pswp-height="{{ image_height | times: 2 }}" >
+        <a aria-label="Open image of {{ product.name | escape }} in image viewer" class="gallery-link" href="{{ product.image | product_image_url | constrain: 2000 }}" data-pswp-width="{{ image_width | times: 2 }}" data-pswp-height="{{ image_height | times: 2 }}" >
       {% endif %}
         <img
           alt="{{ product.name | escape }}"
@@ -153,7 +153,7 @@
           </div>
         {% endif %}
       {% endif %}
-      <button class="button add-to-cart-button" name="submit" type="submit" data-add-title="Add to Cart" data-sold-title="Sold out">Add to Cart</button>
+      <button class="button add-to-cart-button" name="submit" type="submit" data-add-title="Add to cart" data-sold-title="Sold out">Add to cart</button>
       {{ store | instant_checkout_button: 'dark', '44px' }}
       {% if product.has_option_groups %}
         <div class="reset-selection-button-container">
