@@ -195,17 +195,17 @@ ul, ol
 
 .wrap
   +flex(1)
-  +pie-clearfix
   margin: 0 auto
   max-width: 1300px
   padding: 0 20px 80px
   width: 100%
+  display: grid
+  grid-template-columns: #{"{% if theme.sidebar_position == 'right' %} 1fr 220px {% else %} 220px 1fr {% endif %}"}
+  grid-gap: 60px
 
   @media screen and (max-width: $break-large)
     padding-bottom: 40px
-
-_:-ms-fullscreen, :root .wrap
-  +flex(1 0 auto)
+    grid-template-columns: 1fr
 
 a.skip-link
   +transition(all .3s)
@@ -269,18 +269,7 @@ header
 
 .content
   +pie-clearfix
-  float: #{"{% if theme.sidebar_position == 'right' %} left {% else %} right {% endif %}"}
-  padding-left: #{"{% if theme.sidebar_position == 'left' %} 60px {% else %} 0 {% endif %}"}
-  padding-right: #{"{% if theme.sidebar_position == 'right' %} 60px {% else %} 0 {% endif %}"}
   position: relative
-  max-width: 80%
-  width: 100%
-
-  @media only screen and (max-width: $break-large)
-    float: none
-    max-width: 100%
-    padding-left: 0
-    padding-right: 0
 
 .custom_content
   font-family: var(--secondary-font)
@@ -296,8 +285,7 @@ header
 
 .sidebar-navigation
   background-color: var(--background-color)
-  float: #{"{% if theme.sidebar_position == 'right' %} right {% else %} left {% endif %}"}
-  width: 20%
+  padding-bottom: 40px
 
   @media only screen and (max-width: $break-large)
     border-bottom: 1px solid var(--border-color)
@@ -333,7 +321,7 @@ header
     color: var(--header-color)
     font-family: var(--secondary-font)
     margin-bottom: 40px
-    padding: 15px 12px
+    padding: 14px 12px
     position: relative
     text-decoration: none !important
 
