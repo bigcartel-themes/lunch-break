@@ -28,6 +28,7 @@
     padding: 0
 
 .product_pricing
+  margin-bottom: 30px
 
   h1
     margin-bottom: 5px
@@ -38,7 +39,6 @@
     color: var(--text-color)
     font-family: var(--secondary-font)
     font-size: 22px
-    margin-bottom: 40px
     gap: 10px
 
     @media screen and (max-width: $break-medium)
@@ -70,11 +70,22 @@ button.reset-selection-button
   .product_description
     margin: 0 0 40px
 
-    a
-      text-decoration: underline
+    p:not(:last-child)
+      margin-bottom: 1.25em
 
-    iframe
-      max-width: 100%
+    ol, ul
+      margin: 1em 0
+
+    ul
+      list-style: disc
+      list-style-position: inside
+
+    ol
+      list-style: decimal
+      list-style-position: inside
+
+    a[href]
+      text-decoration: underline
 
   form
     margin-bottom: 40px
