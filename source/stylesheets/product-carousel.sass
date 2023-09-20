@@ -1,8 +1,10 @@
 \:root
   --thumbnail-active-color: var(--link-color)
   --thumb-scroller-color: var(--text-color)
+  --thumb-scroller-border-width: 1px
+  --thumb-scroller-border-color: var(--border-color)
   --thumb-scroller-background: var(--background-color)
-  --thumb-scroller-background-hover: var(--background-color-80)
+  --thumb-scroller-background-hover: transparent
   --current-slide-background: var(--background-color)
   --current-slide-color: var(--text-color)
   --active-slide-border-width: 2px
@@ -165,10 +167,11 @@
     align-items: center
     justify-content: center
     width: 32px
-    height: 56px
+    height: 48px
     color: var(--thumb-scroller-color)
     background: var(--thumb-scroller-background)
     border-radius: var(--border-radius)
+    border: var(--thumb-scroller-border-width) solid var(--thumb-scroller-border-color)
 
     @media screen and (max-width: $break-small)
       height: 44px
