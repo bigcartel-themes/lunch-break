@@ -5,7 +5,7 @@
 
   --border-color: #{"{{ theme.border_color }}"}
   --background-color: #{'{{ theme.background_color }}'}
-  --secondary-background: #{'{{ theme.secondary_background }}'}
+  --header-background: #{'{{ theme.header_background_color }}'}
   --header-color: #{'{{ theme.header_color }}'}
   --text-color: #{'{{ theme.text_color }}'}
   --secondary-text-color: #{'{{ theme.secondary_text_color }}'}
@@ -16,6 +16,8 @@
   --button-background-hover-color: #{'{{ theme.button_background_hover_color }}'}
   --announcement-text-color: #{"{{ theme.announcement_text_color }}"}
   --announcement-background-color: #{"{{ theme.announcement_background_color }}"}
+  --error-background-color: #950f1e
+  --error-text-color: #FFFFFF
 
   --border-radius: 4px
 
@@ -167,7 +169,7 @@ a.skip-link
     top: 20px
 
 header
-  background: var(--secondary-background)
+  background: var(--header-background)
   font-family: var(--primary-font)
   font-size: 28px
   padding: 50px 0
@@ -480,8 +482,8 @@ footer
 
 .errors
   border-radius: var(--border-radius)
-  background: #950f1e
-  color: #FFFFFF
+  background: var(--error-background-color)
+  color: var(--error-text-color)
   list-style: none
   margin-bottom: 20px
   padding: 12px 20px
