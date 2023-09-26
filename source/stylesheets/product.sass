@@ -97,46 +97,46 @@ button.reset-selection-button
     .add-to-cart-button
       width: 100%
 
-  .share_buttons
+.share_buttons
 
-    @media only screen and (max-width: $break-medium)
-      text-align: center
+  @media only screen and (max-width: $break-medium)
+    text-align: center
 
-    li
-      display: inline-block
-      margin-right: 20px
-      position: relative
+  li
+    display: inline-block
+    margin-right: 20px
+    position: relative
 
-      @media screen and (max-width: $break-medium)
-        margin: 0 10px
+    @media screen and (max-width: $break-medium)
+      margin: 0 10px
+
+    a
+      cursor: pointer
+      display: block
+
+      svg
+        +all-transitions
+        fill: var(--link-color)
+        height: 20px
+        width: 20px
+
+      &:hover
+        svg
+          fill: var(--hover-color)
+
+    &.social_pinterest
 
       a
-        cursor: pointer
-        display: block
+        display: inline-block
+        position: relative
 
-        svg
-          +all-transitions
-          fill: var(--link-color)
-          height: 20px
-          width: 20px
-
-        &:hover
-          svg
-            fill: var(--hover-color)
-
-      &.social_pinterest
-
-        a
-          display: inline-block
-          position: relative
-
-          &:after
-            content: ""
-            position: absolute
-            top: 0
-            right: 0
-            bottom: 0
-            left: 0
+        &:after
+          content: ""
+          position: absolute
+          top: 0
+          right: 0
+          bottom: 0
+          left: 0
 
 .product-form
   max-width: 350px

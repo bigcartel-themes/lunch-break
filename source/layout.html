@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="{{ theme | theme_css_url }}" media="screen" rel="stylesheet" type="text/css">
     {{ head_content }}
-    <style type="text/css">.preload *, .transition-preload * { opacity:0;visibility:hidden;transition:none!important; }</style>
+    <style type="text/css">.preload * { opacity: 0 } .transition-preload * { transition:none!important; }</style>
   </head>
   <body id="{{ page.permalink }}-page" class="{{ page.permalink }} {{ page.category }} preload transition-preload">
     {% if theme.announcement_message_text != blank %}
@@ -173,7 +173,7 @@
         showSoldOutOptions: {{ theme.show_sold_out_product_options }},
         desktopProductPageImages: '{{ theme.desktop_product_page_images }}',
         mobileProductPageImages: '{{ theme.mobile_product_page_images }}',
-        productImageZoom: '{{ theme.product_image_zoom }}',
+        productImageZoom: {{ theme.product_image_zoom }},
       }
       const themeColors = {
         textColor: '{{ theme.text_color }}',
@@ -234,7 +234,7 @@
         }
       }
     </script>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="{{ 'api' | theme_js_url }}"></script>
     <script type="text/javascript">
       var formatMoney = Format.money;
@@ -252,7 +252,6 @@
     <script src="{{ theme | theme_js_url }}"></script>
     {% if page.full_url contains '/product/' %}
       <script>
-        var show_sold_out_product_options = '{{ theme.show_sold_out_product_options }}';
         Product.find('{{ product.permalink }}', processProduct)
       </script>
       <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
