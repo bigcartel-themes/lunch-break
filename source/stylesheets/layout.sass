@@ -58,53 +58,6 @@ h1
   @media only screen and (max-width: $break-medium)
     text-align: center
 
-.announcement-message
-  background-color: var(--announcement-background-color)
-  color: var(--announcement-text-color)
-  display: none
-  line-height: 1.2em
-  padding: 20px 144px
-  position: relative
-  text-align: center
-  width: 100%
-  z-index: 1
-
-  @media screen and (max-width: $break-medium)
-    padding: 20px 64px
-
-  &.visible
-    display: block
-
-.button.announcement-message-close
-  +transform(translateY(-50%))
-  +transition(none)
-  +flexbox
-  +align-items(center)
-  +justify-content(center)
-  background: none
-  height: 32px
-  padding: 0
-  position: absolute
-  right: 16px
-  top: 50%
-  width: 32px
-
-  @media screen and (max-width: $break-small)
-    right: 4px
-
-  &:hover, &:focus
-    background: none !important
-    opacity: .7
-
-    svg
-      fill: var(--announcement-text-color)
-
-  svg
-    display: block
-    fill: var(--announcement-text-color)
-    height: 14px
-    width: 14px
-
 .mobile_nav
   +align-items(center)
   +justify-content(flex-start)
