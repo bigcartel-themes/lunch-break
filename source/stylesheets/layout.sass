@@ -228,19 +228,24 @@ header
 
 .custom-page-content
 
-  p:not(:last-child)
-    margin-bottom: 1.25em
+  p
+    margin: revert
+
+  &>:first-child
+    margin-top: 0
+
+  &>:last-child
+    margin-bottom: 0
 
   ol, ul
-    margin: 1em 0
+    margin: 1em
 
   ul
     list-style: disc
-    list-style-position: inside
 
   ol
     list-style: decimal
-    list-style-position: inside
+
 
   a[href]
     text-decoration: underline
@@ -250,14 +255,15 @@ header
   padding-bottom: 40px
 
   @media only screen and (max-width: $break-large)
-    border-bottom: 1px solid var(--border-color)
     display: none
     left: 0
-    padding: 20px 20px 0
+    padding: 20px
     position: absolute
-    top: 0
+    top: var(--header-bottom-position)
     width: 100%
     z-index: 10
+    overflow: scroll
+    height: calc(100vh - var(--header-bottom-position))
 
     &.open
       display: block

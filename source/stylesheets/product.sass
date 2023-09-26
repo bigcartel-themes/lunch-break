@@ -70,19 +70,24 @@ button.reset-selection-button
   .product_description
     margin: 0 0 40px
 
-    p:not(:last-child)
-      margin-bottom: 1.25em
+    p
+      margin: revert
+
+    &>:first-child
+      margin-top: 0
+
+    &>:last-child
+      margin-bottom: 0
 
     ol, ul
-      margin: 1em 0
+      margin: 1em
 
     ul
       list-style: disc
-      list-style-position: inside
 
     ol
       list-style: decimal
-      list-style-position: inside
+
 
     a[href]
       text-decoration: underline
