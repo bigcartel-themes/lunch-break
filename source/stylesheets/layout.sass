@@ -559,6 +559,7 @@ input, textarea
   border: 1px solid var(--text-color)
   color: var(--text-color)
   height: 50px
+  line-height: 1em
   margin-bottom: 15px
   padding: 0
   position: relative
@@ -587,11 +588,12 @@ input, textarea
   svg
     fill: currentColor
     height: 8px
-    margin-top: -2px
     position: absolute
+    pointer-events: none
     right: 14px
     top: 50%
-    width: 13px
+    transform: translateY(-50%)
+    width: 14px
     z-index: 1
 
 .sr-only
