@@ -270,6 +270,19 @@
       "description": "Adds Facebook, Twitter, and Pinterest buttons to Product pages"
     },
     {
+      "variable": "border_radius",
+      "label": "Rounded corners",
+      "type": "select",
+      "options": [
+        ["Off", "0"],
+        ["Small", "2px"],
+        ["Medium", "4px"],
+        ["Large", "8px"]
+      ],
+      "default": "4px",
+      "description": "Controls the rounded corner style on images and other site elements"
+    },
+    {
       "variable": "twitter_url",
       "label": "Twitter URL",
       "type": "text",
