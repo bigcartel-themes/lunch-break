@@ -122,6 +122,13 @@
       "description": "Sets the position of your store name or header logo"
     },
     {
+      "variable": "featured_header",
+      "label": "Featured header",
+      "type": "text",
+      "description": "Featured products header on the Home page",
+      "default": "Featured"
+    },
+    {
       "variable": "featured_products",
       "label": "Featured products",
       "type": "select",
