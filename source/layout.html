@@ -212,9 +212,6 @@
         }
         return null;
       }
-      function eraseCookie(name) {
-        document.cookie = name+'=; Max-Age=-99999999;';
-      }
       String.prototype.hashCode = function() {
         var hash = 0, i, chr;
         if (this.length === 0) return hash;
@@ -242,13 +239,13 @@
           if (announceDiv.classList.contains('visible')) {
             document.querySelector('.announcement-message-close').addEventListener('click', function(e) {
               announceDiv.remove();
-              setCookie('hide-announcement-message', hashedMessage, 7);
+              setCookie('hide-announcement-message', hashedMessage);
             });
           }
         }
       }
     </script>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="{{ 'api' | theme_js_url }}"></script>
     <script type="text/javascript">
       var formatMoney = Format.money;
