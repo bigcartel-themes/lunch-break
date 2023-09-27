@@ -38,32 +38,20 @@ window.addEventListener("load", () => {
 });
 
 function setHeaderBottomPosition() {
-  const mobileNav = document.querySelector('.mobile_nav');
-  const headerBottomPosition = mobileNav.getBoundingClientRect().bottom;
+  const headerBottomPosition = document.querySelector('header').getBoundingClientRect().top;
   document.documentElement.style.setProperty('--header-bottom-position', `${headerBottomPosition}px`);
 }
 
-// Set the initial value on page load
-setHeaderBottomPosition();
-
-// Track the value on resize
-window.addEventListener('resize', setHeaderBottomPosition);
-
-
-
-const openMenuButton = document.querySelector('.open_menu');
+const toggleMenuButton = document.querySelector('.open_menu');
 const sidebarNavigation = document.querySelector('.sidebar-navigation');
 
-function openSidebarNavigation() {
-  sidebarNavigation.classList.add('open');
-  openMenuButton.setAttribute('aria-expanded', 'true');
-  sidebarNavigation.setAttribute('aria-hidden', 'false');
+function toggleSidebarNavigation() {
+  setHeaderBottomPosition();
+  toggleMenuButton.classList.toggle('open');
+  sidebarNavigation.classList.toggle('open');
+  document.body.classList.toggle('show_menu');
+  const isHidden = toggleMenuButton.getAttribute('aria-expanded') === 'true';
+  toggleMenuButton.setAttribute('aria-expanded', isHidden ? 'false' : 'true');
 }
 
-function closeSidebarNavigation() {
-  sidebarNavigation.classList.remove('open');
-  openMenuButton.setAttribute('aria-expanded', 'false');
-  sidebarNavigation.setAttribute('aria-hidden', 'true');
-}
-
-openMenuButton.addEventListener('click', openSidebarNavigation);
+toggleMenuButton.addEventListener('click', toggleSidebarNavigation);

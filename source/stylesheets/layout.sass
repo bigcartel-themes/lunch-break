@@ -36,6 +36,22 @@ body
   font-family: var(--secondary-font)
   font-size: 16px
 
+  @media screen and (max-width: $break-small)
+    &.show_menu
+      overflow: hidden
+
+      &:after
+        content: ""
+        position: fixed
+        height: 100vh
+        width: 100vw
+        background: var(--background-color)
+        display: block
+        opacity: .5
+        z-index: 1
+        left: 0
+        top: 0
+
 a
   transition: color 0.2s ease, text-decoration-color .2s ease
   color: var(--link-color)
@@ -254,18 +270,24 @@ header
   padding-bottom: 40px
 
   @media only screen and (max-width: $break-large)
-    display: none
     left: 0
     padding: 20px
     position: absolute
-    top: var(--header-bottom-position)
+    top: 60px
     width: 100%
     z-index: 10
     overflow: scroll
     height: calc(100vh - var(--header-bottom-position))
+    width: calc(100vw - 3rem)
+    transform: translateX(-100%)
+    opacity: 0
+    visibility: hidden
+    transition: transform .2s
 
     &.open
-      display: block
+      opacity: 1
+      visibility: visible
+      transform: translateX(0)
 
   .nav_title
     color: var(--header-color)
