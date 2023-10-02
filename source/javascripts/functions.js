@@ -84,3 +84,11 @@ Array.prototype.count = function (filterMethod) {
   }, 0);
 };
 
+const htmlHighlight = function(element, newText) {
+  element.style.transition = "opacity .2s ease";
+  element.style.opacity = 0;
+  setTimeout(() => {
+    element.innerHTML = newText;
+    element.style.opacity = 1;
+  }, 200)
+}

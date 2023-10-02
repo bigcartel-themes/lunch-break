@@ -34,6 +34,7 @@ body
   color: var(--text-color)
   font-family: var(--secondary-font)
   font-size: 16px
+  width: 100%
 
   @media screen and (max-width: $break-small)
     &.show_menu
@@ -464,7 +465,6 @@ footer
         width: 14px
 
 .bigcartel-credit
-  line-height: 1em
   font-size: 15px
   display: flex
   align-items: center
@@ -543,7 +543,6 @@ input, textarea
   border: 1px solid var(--secondary-text-color)
   color: var(--secondary-text-color)
   height: 50px
-  line-height: 1em
   margin-bottom: 15px
   padding: 0
   position: relative
@@ -595,3 +594,9 @@ input, textarea
 
   &.lazyloaded
     opacity: 1
+
+.alert-message
+  font-weight: normal
+
+  a
+    text-decoration: underline

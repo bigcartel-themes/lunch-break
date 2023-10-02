@@ -46,17 +46,17 @@
     {
       "variable": "text_color",
       "label": "Primary Text",
-      "default": "#111111"
+      "default": "#ff3300"
     },
     {
       "variable": "secondary_text_color",
       "label": "Secondary Text",
-      "default": "#444444"
+      "default": "#ff3300"
     },
     {
       "variable": "link_hover_color",
       "label": "Link Hover",
-      "default": "#135884"
+      "default": "#ff3300"
     },
     {
       "variable": "button_text_color",
@@ -115,8 +115,7 @@
       "type": "select",
       "options": [
         ["Left", "flex-start"],
-        ["Center", "center"],
-        ["Right", "flex-end"]
+        ["Center", "center"]
       ],
       "default": "center",
       "description": "Sets the position of your store name or header logo"
@@ -180,7 +179,7 @@
         ["Left", "left"],
         ["Center", "center"]
       ],
-      "default": "center",
+      "default": "left",
       "description": "Alignment for product details under thumbnail images"
     },
     {
