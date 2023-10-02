@@ -254,9 +254,12 @@ header
   ol
     list-style: decimal
 
-
-  a[href]
+  a
+    color: var(--secondary-text-color)
     text-decoration: underline
+
+    &:hover
+      color: var(--hover-color)
 
 .sidebar-navigation
   background-color: var(--background-color)
@@ -271,12 +274,14 @@ header
     z-index: 10
     overflow: scroll
     height: calc(100vh - var(--header-bottom-position))
+    height: calc(100svh - var(--header-bottom-position))
     width: calc(100vw - 3rem)
     transform: translateX(-100%)
     opacity: 0
     visibility: hidden
     transition: transform .2s
     padding-bottom: 60px
+    border-right: 1px solid var(--border-color)
 
     &.open
       opacity: 1

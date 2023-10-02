@@ -36,7 +36,7 @@
   .product_price_status
     +flexbox
     +align-items(center)
-    color: var(--text-color)
+    color: var(--secondary-text-color)
     font-family: var(--secondary-font)
     font-size: 22px
     gap: 10px
@@ -65,32 +65,35 @@ button.reset-selection-button
   padding: 4px
   width: auto
 
+.product_description
+  margin: 0 0 40px
+
+  p
+    margin: revert
+
+  &>:first-child
+    margin-top: 0
+
+  &>:last-child
+    margin-bottom: 0
+
+  ol, ul
+    margin: 1em
+
+  ul
+    list-style: disc
+
+  ol
+    list-style: decimal
+
+  a
+    color: var(--secondary-text-color)
+    text-decoration: underline
+
+    &:hover
+      color: var(--hover-color)
+
 .product_details
-
-  .product_description
-    margin: 0 0 40px
-
-    p
-      margin: revert
-
-    &>:first-child
-      margin-top: 0
-
-    &>:last-child
-      margin-bottom: 0
-
-    ol, ul
-      margin: 1em
-
-    ul
-      list-style: disc
-
-    ol
-      list-style: decimal
-
-
-    a[href]
-      text-decoration: underline
 
   form
     margin-bottom: 40px
