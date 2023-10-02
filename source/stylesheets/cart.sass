@@ -53,16 +53,17 @@
     padding-right: 16px
 
 .cart-item-details-name
+  color: var(--text-color)
   font-family: var(--primary-font)
-  font-size: 1.125em
+  font-size: 1.25em
 
   @media screen and (max-width: $break-small)
     font-size: 1em
 
 .cart-item-details-option
   font-family: var(--secondary-font)
-  font-size: .925em
-  margin-top: 5px
+  font-size: 1em
+  margin-top: 8px
 
 .cart-item-quantity-price
   +flexbox
@@ -107,7 +108,6 @@ button.cart-item-remove
   +justify-content(center)
   +flex-shrink(0)
   background: none
-  border-radius: 50%
   height: 32px
   padding: 0
   width: 32px
@@ -117,18 +117,13 @@ button.cart-item-remove
 
   &:hover, &:focus
     background: none
-
-    .cart-item-remove-icon
-      fill: var(--hover-color)
+    color: var(--hover-color)
 
   .cart-item-remove-icon
-    display: block
-    fill: var(--secondary-text-color)
     height: 16px
     width: 16px
 
 button.cart-item-remove-text
-  color: var(--link-color)
   display: none
   height: auto
   line-height: normal
@@ -145,7 +140,6 @@ button.cart-item-remove-text
   text-align: right
 
 .cart_total
-  color: var(--header-color)
   font-family: var(--primary-font)
   font-weight: 500
   margin: 0

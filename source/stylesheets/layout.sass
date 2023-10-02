@@ -3,14 +3,13 @@
   --primary-font: #{"{{ theme.primary_font | font_family }}"}
   --secondary-font: #{"{{ theme.secondary_font | font_family }}"}
 
-  --border-color: #{"{{ theme.border_color }}"}
+  --border-color: #{'rgba(var(--text-color-rgb), .2)'}
   --background-color: #{'{{ theme.background_color }}'}
   --header-background: #{'{{ theme.header_background_color }}'}
-  --header-color: #{'{{ theme.header_color }}'}
+  --header-text-color: #{'{{ theme.header_color }}'}
   --text-color: #{'{{ theme.text_color }}'}
   --secondary-text-color: #{'{{ theme.secondary_text_color }}'}
-  --hover-color: #{'{{ theme.text_color }}'}
-  --link-color: #{'{{ theme.secondary_text_color }}'}
+  --hover-color: #{'{{ theme.link_hover_color }}'}
   --button-text-color: #{'{{ theme.button_text_color }}'}
   --button-background-color: #{'{{ theme.button_background_color }}'}
   --button-background-hover-color: #{'{{ theme.button_background_hover_color }}'}
@@ -39,6 +38,7 @@ body
   @media screen and (max-width: $break-small)
     &.show_menu
       overflow: hidden
+      position: fixed
 
       &:after
         content: ""
@@ -53,8 +53,7 @@ body
         top: 0
 
 a
-  transition: color 0.2s ease, text-decoration-color .2s ease
-  color: var(--link-color)
+  color: var(--text-color)
   text-decoration-color: transparent
 
   &:hover, &:focus
@@ -62,7 +61,6 @@ a
     text-decoration: underline
 
 h1, h2, h3, h4, h5, h6
-  color: var(--header-color)
   font-family: var(--primary-font)
   font-weight: 500
   line-height: 1.25
@@ -101,7 +99,7 @@ h1
       +transform(rotate(0deg))
       +transition(.1s ease-in-out)
       display: block
-      background: var(--header-color)
+      background: var(--text-color)
       width: 100%
       height: 2px
       position: absolute
@@ -147,12 +145,10 @@ h1
     +flexbox
     +align-items(center)
     margin-left: auto
+    gap: 10px
 
     .cart_icon
-      display: block
-      fill: var(--link-color)
       height: 22px
-      margin-right: 10px
       width: 22px
 
 .wrap
@@ -172,8 +168,8 @@ h1
 a.skip-link
   +transition(all .3s)
   background: var(--background-color)
-  border: 1px solid var(--link-color)
-  color: var(--link-color)
+  border: 1px solid var(--text-color)
+  color: var(--text-color)
   left: 25px
   padding: 15px 20px
   position: absolute
@@ -205,15 +201,12 @@ header
       padding: 0
 
 .store_header
-  color: var(--header-color)
+  color: var(--header-text-color)
   display: inline-block
   font-size: 44px
 
   @media screen and (max-width: $break-medium)
     font-size: 36px
-
-  &:hover, &:active
-    color: var(--hover-color)
 
   &.text
     display: inline-block
@@ -273,7 +266,7 @@ header
     left: 0
     padding: 20px
     position: absolute
-    top: 60px
+    top: var(--header-bottom-position,60px)
     width: 100%
     z-index: 10
     overflow: scroll
@@ -283,6 +276,7 @@ header
     opacity: 0
     visibility: hidden
     transition: transform .2s
+    padding-bottom: 60px
 
     &.open
       opacity: 1
@@ -290,7 +284,6 @@ header
       transform: translateX(0)
 
   .nav_title
-    color: var(--header-color)
     border-bottom: 1px solid var(--border-color)
     font-family: var(--primary-font)
     font-size: 22px
@@ -306,8 +299,8 @@ header
     border-radius: var(--border-radius)
     gap: 8px
     background-color: var(--background-color)
-    border: 1px solid var(--header-color)
-    color: var(--header-color)
+    border: 1px solid var(--secondary-text-color)
+    color: var(--secondary-text-color)
     font-family: var(--secondary-font)
     margin-bottom: 40px
     padding: 12px
@@ -324,9 +317,8 @@ header
       margin-left: auto
 
     .cart_icon
-      +transition(fill .2s ease)
+      fill: currentColor
       flex-shrink: 0
-      fill: var(--header-color)
       height: 22px
       width: 22px
 
@@ -334,9 +326,6 @@ header
       background-color: var(--button-background-color)
       border: 1px solid var(--button-background-color)
       color: var(--button-text-color)
-
-      .cart_icon
-        fill: var(--button-text-color)
 
   ul
     list-style: none
@@ -353,6 +342,9 @@ header
         display: block
         padding: 6px 0
         line-height: 1.25em
+
+        &:focus
+          outline-offset: 2px
 
         @media screen and (max-width: $break-large)
           font-size: 18px
@@ -390,35 +382,28 @@ header
     padding-left: 4px
 
   &:hover
-    &::-webkit-input-placeholder
-      color: var(--hover-color)
-
-    &::-moz-placeholder
+    &::placeholder
+      opacity: 1
       color: var(--hover-color)
 
     &:-ms-input-placeholder
+      opacity: 1
       color: var(--hover-color)
 
-    &:-moz-placeholder
-      color: var(--hover-color)
-
-  &::-webkit-input-placeholder
-    color: var(--link-color)
-
-  &::-moz-placeholder
-    color: var(--link-color)
+  &::placeholder
+    opacity: 1
+    color: var(--text-color)
 
   &:-ms-input-placeholder
-    color: var(--link-color)
-
-  &:-moz-placeholder
-    color: var(--link-color)
+    opacity: 1
+    color: var(--text-color)
 
 button.search-button
   +flexbox
   +align-items(center)
   +justify-content(center)
   background: none !important
+  color: var(--text-color)
   height: 20px
   padding: 0
   position: absolute
@@ -428,7 +413,6 @@ button.search-button
   width: 20px
 
 .search-icon
-  fill: var(--link-color)
   display: none
   height: 16px
   width: 16px
@@ -463,15 +447,10 @@ footer
   padding: 0
 
   a
-    color: var(--link-color)
-    transition: color .2s ease
+    color: var(--text-color)
     display: block
 
-    &:hover
-      color: var(--hover-color)
-
     svg
-      display: block
       fill: currentColor
       height: 24px
       width: 24px
@@ -508,7 +487,6 @@ footer
   list-style: none
   margin-bottom: 20px
   padding: 12px 20px
-  text-align: center
 
 button, input, textarea, select
   border-radius: var(--border-radius)
@@ -543,6 +521,7 @@ input, textarea
       +transform(none)
       box-shadow: none
       background: none
+      color: var(--hover-color)
       text-decoration: underline
 
   &:hover, &:focus
@@ -556,8 +535,8 @@ input, textarea
 .select
   border-radius: var(--border-radius)
   position: relative
-  border: 1px solid var(--text-color)
-  color: var(--text-color)
+  border: 1px solid var(--secondary-text-color)
+  color: var(--secondary-text-color)
   height: 50px
   line-height: 1em
   margin-bottom: 15px

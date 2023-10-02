@@ -3,69 +3,72 @@ function camelCaseToDash(string) {
   return string.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase();
 }
 
-const isGreaterThanZero = (currentValue) => currentValue > 0;
+var isGreaterThanZero = function (currentValue) {
+  return currentValue > 0;
+};
 
 function arrayContainsArray(superset, subset) {
-  if (subset.length === 0) {
+  if (0 === subset.length) {
     return false;
   }
-  const supersetSet = new Set(superset);
-  return subset.every((value) => supersetSet.has(value));
+  return subset.every(function (value) {
+    return superset.indexOf(value) >= 0;
+  });
 }
 
 function unique(item, index, array) {
-  return array.indexOf(item) === index;
+  return array.indexOf(item) == index;
 }
 
-function cartesianProduct(arrays) {
-  if (arrays.length === 0) return [];
-  if (arrays.length === 1) return arrays[0];
-
-  const [first, ...rest] = arrays;
-  const result = [];
-
-  const recursiveProduct = (current, remaining) => {
-    if (remaining.length === 0) {
-      result.push(current);
-      return;
-    }
-    const [head, ...tail] = remaining;
-    for (const item of head) {
-      recursiveProduct([...current, item], tail);
-    }
-  };
-
-  recursiveProduct([], arrays);
-  return result;
+function cartesianProduct(a) {
+  var i,
+    j,
+    l,
+    m,
+    a1,
+    o = [];
+  if (!a || a.length == 0) return a;
+  a1 = a.splice(0, 1)[0];
+  a = cartesianProduct(a);
+  for (i = 0, l = a1.length; i < l; i++) {
+    if (a && a.length) for (j = 0, m = a.length; j < m; j++) o.push([a1[i]].concat(a[j]));
+    else o.push([a1[i]]);
+  }
+  return o;
 }
 
 Array.prototype.equals = function (array) {
   if (!array) return false;
-  if (this.length !== array.length) return false;
-  return this.every((value, index) => {
-    if (Array.isArray(value) && Array.isArray(array[index])) {
-      return value.equals(array[index]);
+  if (this.length != array.length) return false;
+  for (var i = 0, l = this.length; i < l; i++) {
+    if (this[i] instanceof Array && array[i] instanceof Array) {
+      if (!this[i].equals(array[i])) return false;
+    } else if (this[i] != array[i]) {
+      return false;
     }
-    return value === array[index];
-  });
+  }
+  return true;
 };
 
+// From https://github.com/kevlatus/polyfill-array-includes/blob/master/array-includes.js
 if (!Array.prototype.includes) {
-  Object.defineProperty(Array.prototype, 'includes', {
+  Object.defineProperty(Array.prototype, "includes", {
     value: function (searchElement, fromIndex) {
       if (this == null) {
         throw new TypeError('"this" is null or not defined');
       }
-      const o = Object(this);
-      const len = o.length >>> 0;
+      var o = Object(this);
+      var len = o.length >>> 0;
       if (len === 0) {
         return false;
       }
-      const n = fromIndex | 0;
-      const k = Math.max(n >= 0 ? n : len - Math.abs(n), 0);
-
+      var n = fromIndex | 0;
+      var k = Math.max(n >= 0 ? n : len - Math.abs(n), 0);
+      function sameValueZero(x, y) {
+        return x === y || (typeof x === "number" && typeof y === "number" && isNaN(x) && isNaN(y));
+      }
       while (k < len) {
-        if (o[k] === searchElement || (isNaN(o[k]) && isNaN(searchElement))) {
+        if (sameValueZero(o[k], searchElement)) {
           return true;
         }
         k++;
@@ -76,5 +79,8 @@ if (!Array.prototype.includes) {
 }
 
 Array.prototype.count = function (filterMethod) {
-  return this.filter(filterMethod).length;
+  return this.reduce(function (count, item) {
+    return filterMethod(item) ? count + 1 : count;
+  }, 0);
 };
+

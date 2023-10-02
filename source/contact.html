@@ -1,4 +1,5 @@
 <div class="custom_content">
+  <h1>{{ page.name }}</h1>
   {% if errors != blank %}
     <ul class="errors">
       {% for error in errors %}
@@ -6,7 +7,6 @@
       {% endfor %}
     </ul>
   {% endif %}
-  <h1>{{ page.name }}</h1>
   {% if contact.sent %}
     <p>Your message has been sent and we'll get back to you soon.</p>
   {% else %}

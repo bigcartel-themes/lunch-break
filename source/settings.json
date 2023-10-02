@@ -1,6 +1,6 @@
 {
   "name": "Lunch Break",
-  "version": "1.9.0",
+  "version": "2.0.0",
   "images": [
     {
       "variable": "header_logo",
@@ -54,24 +54,24 @@
       "default": "#444444"
     },
     {
+      "variable": "link_hover_color",
+      "label": "Link Hover",
+      "default": "#135884"
+    },
+    {
       "variable": "button_text_color",
-      "label": "Button text",
+      "label": "Button Text",
       "default": "#FFFFFF"
     },
     {
       "variable": "button_background_color",
-      "label": "Button background",
-      "default": "#235575"
+      "label": "Button Background color",
+      "default": "#135884"
     },
     {
       "variable": "button_background_hover_color",
-      "label": "Button background hover",
+      "label": "Button Background Hover",
       "default": "#193648"
-    },
-    {
-      "variable": "border_color",
-      "label": "Borders",
-      "default": "#d4d4d4"
     },
     {
       "variable": "announcement_text_color",
@@ -81,7 +81,7 @@
     {
       "variable": "announcement_background_color",
       "label": "Announcement Message Background",
-      "default": "#235575"
+      "default": "#135884"
     }
   ],
   "options": [
@@ -283,6 +283,12 @@
       "description": "Controls the rounded corner style on images and other site elements"
     },
     {
+      "variable": "instagram_url",
+      "label": "Instagram URL",
+      "type": "text",
+      "description": "Ex: http://instagram.com/bigcartel"
+    },
+    {
       "variable": "twitter_url",
       "label": "Twitter URL",
       "type": "text",
@@ -295,22 +301,16 @@
       "description": "Ex: http://facebook.com/bigcartel"
     },
     {
-      "variable": "tumblr_url",
-      "label": "Tumblr URL",
-      "type": "text",
-      "description": "Ex: http://bigcartel.tumblr.com"
-    },
-    {
-      "variable": "instagram_url",
-      "label": "Instagram URL",
-      "type": "text",
-      "description": "Ex: http://instagram.com/bigcartel"
-    },
-    {
       "variable": "pinterest_url",
       "label": "Pinterest URL",
       "type": "text",
       "description": "Ex: http://pinterest.com/bigcartel"
+    },
+    {
+      "variable": "tumblr_url",
+      "label": "Tumblr URL",
+      "type": "text",
+      "description": "Ex: http://bigcartel.tumblr.com"
     }
   ],
  "checkout": {
@@ -346,8 +346,8 @@
     "content_header_color": "{{ text_color }}",
     "content_color": "{{ text_color }}",
     "link_font_size": "16px",
-    "link_color": "{{ secondary_text_color }}",
-    "link_hover_color": "{{ text_color }}",
+    "link_color": "{{ text_color }}",
+    "link_hover_color": "{{ link_hover_color }}",
     "error_border_width": "0",
     "error_font_size": "16px",
     "error_background_color": "#950f1e",
@@ -389,10 +389,10 @@
     "button_position": "center",
     "button_hover_background_color": "{{ button_background_hover_color }}",
     "step_inactive_header_color": "opacify({{ text_color }}, .5)",
-    "step_border_color": "{{ border_color }}",
+    "step_border_color": "opacify({{ text_color }}, .5)",
     "step_border_width": "4px",
     "step_background_color": "{{ background_color }}",
-    "step_inactive_border_color": "opacify({{ border_color }}, .5)",
+    "step_inactive_border_color": "opacify({{ text_color }}, .5)",
     "step_primary_font_weight": "normal",
     "step_header_color": "{{ text_color }}",
     "step_header_position": "center",
@@ -401,19 +401,19 @@
     "step_primary_font_size": "24px",
     "step_border_style": "solid",
     "step_primary_font": "{{ primary_font }}",
-    "summary_inactive_item_border_color": "opacify({{ border_color }}, .5)",
+    "summary_inactive_item_border_color": "opacify({{ text_color }}, .5)",
     "summary_font_size": "16px",
     "summary_submit_background_color": "{{ background_color }}",
     "summary_inactive_color": "opacify({{ text_color }}, .5)",
-    "summary_submit_border_color": "opacify({{ border_color }}, .5)",
+    "summary_submit_border_color": "opacify({{ text_color }}, .5)",
     "summary_item_border_width": "1px",
-    "summary_item_border_color": "{{ border_color }}",
+    "summary_item_border_color": "opacify({{ text_color }}, .5)",
     "summary_secondary_color": "{{ text_color }}",
     "summary_submit_border_width": "2px",
-    "summary_item_list_border_color": "{{ border_color }}",
+    "summary_item_list_border_color": "opacify({{ text_color }}, .5)",
     "summary_inactive_secondary_color": "opacify({{ text_color }}, .5)",
     "summary_item_list_border_width": "2px",
     "summary_color": "{{ text_color }}",
-    "summary_inactive_item_list_border_color": "opacify({{ border_color }}, .5)"
+    "summary_inactive_item_list_border_color": "opacify({{ text_color }}, .5)"
   }
 }

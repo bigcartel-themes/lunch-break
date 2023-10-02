@@ -9,7 +9,7 @@
 
 .product-list-thumb
   border-radius: var(--border-radius)
-  color: var(--header-color)
+  color: var(--text-color)
   display: block
   padding: 10px
   padding-bottom: 30px
@@ -30,19 +30,13 @@
     width: calc(100% / #{"{{ theme.max_products_per_row_mobile }}"})
 
 .product-list-link
-  +transition(color .2s ease)
-  color: var(--header-color)
   text-decoration: none
 
   &:hover, &:focus
-    color: var(--hover-color)
     text-decoration: none
 
     .product-list-thumb-name
       text-decoration: underline
-
-    .product-list-thumb-name, .product-list-thumb-price
-      color: var(--hover-color)
 
 .product-list-image-container
   border-radius: var(--border-radius)
@@ -83,15 +77,11 @@
   position: relative
 
 .product-list-thumb-name
-  +transition(color .2s ease)
-  color: var(--header-color)
   font-family: var(--primary-font)
   overflow-wrap: break-word
   position: relative
 
 .product-list-thumb-price
-  +transition(color .2s ease)
-  color: var(--secondary-text-color)
   font-weight: bold
   margin-top: 4px
 
@@ -134,7 +124,6 @@
     +justify-content(center)
     background: var(--background-color)
     border-radius: 100%
-    color: var(--link-color)
     text-align: center
     height: 40px
     margin-right: 8px
@@ -153,13 +142,11 @@
 
   > a
     &:hover, &:focus
-      color: var(--hover-color)
       text-decoration: underline
 
 .page-link
   +flexbox
   +align-items(center)
-  color: var(--link-color)
   line-height: 40px
   text-align: center
   height: 40px
@@ -171,9 +158,6 @@
     background: none
     color: var(--hover-color)
     text-decoration: underline
-
-    svg
-      fill: var(--hover-color)
 
   &.next-page-link
 
@@ -194,8 +178,7 @@
     visibility: hidden
 
   svg
-    display: block
-    fill: var(--link-color)
+    fill: currentColor
 
 #home-page .pagination
   display: none
