@@ -3,7 +3,8 @@
   --primary-font: #{"{{ theme.primary_font | font_family }}"}
   --secondary-font: #{"{{ theme.secondary_font | font_family }}"}
 
-  --border-color: #{'rgba(var(--text-color-rgb), .2)'}
+  --border-color: #{'rgba(var(--text-color-rgb), .5)'}
+  --mobile-nav-border-color: #{'rgba(var(--text-color-rgb), .2)'}
   --background-color: #{'{{ theme.background_color }}'}
   --header-background: #{'{{ theme.header_background_color }}'}
   --header-text-color: #{'{{ theme.header_color }}'}
@@ -59,6 +60,7 @@ a
 
   &:hover, &:focus
     color: var(--hover-color)
+  &:hover
     text-decoration: underline
 
 h1, h2, h3, h4, h5, h6
@@ -77,8 +79,7 @@ h1
   +justify-content(flex-start)
   +flex-shrink(0)
   background-color: var(--background-color)
-  border-bottom: 1px solid var(--border-color)
-  box-shadow: 0px 1px 3px var(--border-color)
+  border-bottom: 1px solid var(--mobile-nav-border-color)
   display: none
   height: 60px
   padding: 0 20px
@@ -146,9 +147,10 @@ h1
     +flexbox
     +align-items(center)
     margin-left: auto
-    gap: 10px
+    gap: 4px
 
     .cart_icon
+      margin-right: 6px
       height: 22px
       width: 22px
 
@@ -191,7 +193,7 @@ header
 
   @media only screen and (max-width: $break-large)
     margin: 0 0 40px
-    padding: 40px 20px
+    padding: 20px
 
   .inner-wrapper
     padding: 0 20px
@@ -334,94 +336,44 @@ header
       color: var(--button-text-color)
 
   ul
+    display: flex
+    flex-direction: column
+    gap: 6px
     list-style: none
     margin: 0
     padding: 0
 
     li
+      &:first-child
+        margin-top: 4px
+
+    a, button
+      color: var(--secondary-text-color)
       display: block
+      padding: 4px 0
+      height: auto
+      border-radius: 0
+      line-height: 1.25em
+      text-align: left
+      width: 100%
+
+      &:hover, &:focus
+        color: var(--hover-color)
+
+      &:hover
+        text-decoration: underline
+
+      &:focus
+        outline-offset: 2px
 
       @media screen and (max-width: $break-large)
-        margin: 4px 0
-
-      a
-        display: block
-        padding: 6px 0
-        line-height: 1.25em
-
-        &:focus
-          outline-offset: 2px
-
-        @media screen and (max-width: $break-large)
-          font-size: 18px
+        font-size: 18px
 
   nav > div
     margin-bottom: 20px
 
     &:first-child
       margin-top: 0
-
-.search-form
-  +flexbox
-  +align-items(center)
-  height: 32px
-  position: relative
-
-  &:focus-within
-    .search-icon
-      display: block
-
-.search-input
-  border: none !important
-  cursor: pointer
-  font-family: var(--secondary-font)
-  height: auto
-  padding: 4px 32px 4px 0
-  position: absolute
-  width: calc(100% + 4px)
-
-  @media screen and (max-width: $break-large)
-    font-size: 18px
-
-  &:hover, &:focus
-    left: -4px
-    padding-left: 4px
-
-  &:hover
-    &::placeholder
-      opacity: 1
-      color: var(--hover-color)
-
-    &:-ms-input-placeholder
-      opacity: 1
-      color: var(--hover-color)
-
-  &::placeholder
-    opacity: 1
-    color: var(--text-color)
-
-  &:-ms-input-placeholder
-    opacity: 1
-    color: var(--text-color)
-
-button.search-button
-  +flexbox
-  +align-items(center)
-  +justify-content(center)
-  background: none !important
-  color: var(--text-color)
-  height: 20px
-  padding: 0
-  position: absolute
-  right: 5px
-  top: 50%
-  transform: translateY(-50%)
-  width: 20px
-
-.search-icon
-  display: none
-  height: 16px
-  width: 16px
 
 .inner-wrapper
   +flexbox
@@ -453,7 +405,6 @@ footer
   padding: 0
 
   a
-    color: var(--text-color)
     display: block
 
     svg

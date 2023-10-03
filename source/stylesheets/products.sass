@@ -31,8 +31,9 @@
 
 .product-list-link
   text-decoration: none
+  outline-offset: 4px
 
-  &:hover, &:focus
+  &:hover
     text-decoration: none
 
     .product-list-thumb-name
@@ -91,94 +92,89 @@
   font-weight: normal
 
 .pagination
-  +flexbox
-  +flex-direction(row)
-  +justify-content(space-between)
-  +align-items(center)
-  border-top: 1px solid var(--border-color)
-  line-height: 40px
-  padding: 10px 0
-
-  @media screen and (max-width: $break-large)
-    font-size: 15px
-
-@media screen and (min-width: $break-small+1)
-  .pagination-caption
-    display: none
-
-.page-numbers
-  +flexbox
-  +flex-wrap(wrap)
-  +justify-content(center)
-  margin: 0 20px
+  display: grid
+  font-size: 1rem
+  padding: 32px 0
+  justify-content: center
+  margin-top: 32px
 
   @media screen and (max-width: $break-small)
-    display: none
+    margin-top: 8px
+
+.page-arrows
+  display: flex
+  border: 1px solid var(--border-color)
+  border-radius: var(--border-radius)
+  height: 46px
 
   .previous, .next
     display: none
 
-  > a, > span
-    +flexbox
-    +align-items(center)
-    +justify-content(center)
-    background: var(--background-color)
-    border-radius: 100%
-    text-align: center
-    height: 40px
-    margin-right: 8px
-    order: 1
-    position: relative
-    text-decoration: none
-    width: 40px
+.page-link
+  display: flex
+  align-items: center
+  justify-content: center
+  gap: 8px
+  min-width: 100px
+  padding: 0 12px
 
-    &.current
-      background: var(--button-background-color)
-      color: var(--button-text-color)
+  @media screen and (max-width: $break-small)
+    min-width: 44px
 
-    &.disabled
-      cursor: not-allowed
-      opacity: .4
+    span
+      display: none
 
-  > a
+  svg
+    flex-shrink: 0
+    width: 12px
+
+  &--previous
+    border-right: 1px solid var(--border-color)
+
+    svg
+      transform: rotate(90deg)
+
+  &--next
+    border-left: 1px solid var(--border-color)
+
+    svg
+      transform: rotate(-90deg)
+
+  &.disabled
+    opacity: .5
+
+  &:not(.disabled)
     &:hover, &:focus
       text-decoration: underline
 
-.page-link
-  +flexbox
-  +align-items(center)
-  line-height: 40px
-  text-align: center
-  height: 40px
-  padding: 0
-  position: relative
-  text-decoration: none
+.page-numbers
+  display: flex
+  align-items: center
+  justify-content: center
 
-  &:not(.disabled):hover, &:not(.disabled):focus
-    background: none
-    color: var(--hover-color)
-    text-decoration: underline
+  span, a
+    display: flex
+    cursor: pointer
+    align-items: center
+    justify-content: center
+    height: 100%
+    min-width: 44px
+    text-align: center
 
-  &.next-page-link
+    @media screen and (max-width: $break-small)
+      min-width: 40px
 
-    span
-      margin-right: 5px
+    &.gap
+      opacity: .5
+      padding: 8px
+      min-width: 0
 
-  &.previous-page-link
+    &.current
+      font-weight: bold
 
-    span
-      margin-left: 5px
-
-    svg
-      +transform(rotate(-180deg))
-
-  &.disabled
-    cursor: not-allowed
-    opacity: 0
-    visibility: hidden
-
-  svg
-    fill: currentColor
+    &:not(.current):not(.gap)
+      &:hover, &:focus
+        color: var(--hover-color)
 
 #home-page .pagination
   display: none
