@@ -3,6 +3,7 @@ const modal = document.getElementById('search-modal');
 const searchBtn = document.querySelector('.button--open-search');
 const closeBtn = document.querySelector('.close-modal');
 const inputField = document.querySelector('#search-modal input[type="search"]');
+const focusableElements = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
 
 const openSearch = () => {
   if (modal && inputField) {
@@ -11,6 +12,7 @@ const openSearch = () => {
     modal.setAttribute('aria-hidden', 'false');
     document.body.classList.add('overlay-open');
     modal.addEventListener("transitionend", focusInputField, { once: true });
+    modal.addEventListener('keydown', trapFocus);
   }
 };
 
@@ -27,6 +29,7 @@ const closeSearch = () => {
     document.removeEventListener("click", clickOutsideToClose);
     document.removeEventListener('keydown', closeOnEscape);
     modal.addEventListener("transitionend", focusSearchButton, { once: true });
+    modal.removeEventListener('keydown', trapFocus);
   }
 };
 
@@ -42,6 +45,23 @@ const focusInputField = () => {
 
 const focusSearchButton = () => {
   searchBtn.focus();
+};
+
+const trapFocus = (event) => {
+  const firstFocusableElement = focusableElements[0];
+  const lastFocusableElement = focusableElements[focusableElements.length - 1];
+
+  if (event.key === 'Tab' && event.shiftKey) {
+    if (document.activeElement === firstFocusableElement) {
+      event.preventDefault();
+      lastFocusableElement.focus();
+    }
+  } else if (event.key === 'Tab') {
+    if (document.activeElement === lastFocusableElement) {
+      event.preventDefault();
+      firstFocusableElement.focus();
+    }
+  }
 };
 
 searchBtn?.addEventListener('click', openSearch);
