@@ -56,10 +56,11 @@ body
 
 a
   color: var(--text-color)
-  text-decoration-color: transparent
+  text-decoration: none
 
   &:hover, &:focus
     color: var(--hover-color)
+
   &:hover
     text-decoration: underline
 
@@ -73,6 +74,9 @@ h1, h2, h3, h4, h5, h6
 h1
   font-size: 1.75em
   margin-bottom: 30px
+
+  @media screen and (max-width: $break-small)
+    font-size: 1.5em
 
 .mobile_nav
   +align-items(center)
@@ -187,13 +191,13 @@ header
   background: var(--header-background)
   font-family: var(--primary-font)
   font-size: 28px
-  padding: 50px 0
-  margin-bottom: 40px
+  padding: 48px 0
+  margin-bottom: 36px
   text-align: center
 
   @media only screen and (max-width: $break-large)
     margin: 0 0 40px
-    padding: 20px
+    padding: 32px 24px
 
   .inner-wrapper
     padding: 0 20px
@@ -209,7 +213,7 @@ header
   font-size: 44px
 
   @media screen and (max-width: $break-medium)
-    font-size: 36px
+    font-size: 32px
 
   &.text
     display: inline-block
@@ -278,13 +282,13 @@ header
     overflow: scroll
     height: calc(100vh - var(--header-bottom-position))
     height: calc(100svh - var(--header-bottom-position))
-    width: calc(100vw - 3rem)
+    width: calc(100vw - 5rem)
     transform: translateX(-100%)
     opacity: 0
     visibility: hidden
     transition: transform .2s
     padding-bottom: 60px
-    border-right: 1px solid var(--border-color)
+    border-right: 1px solid var(--mobile-nav-border-color)
 
     &.open
       opacity: 1
