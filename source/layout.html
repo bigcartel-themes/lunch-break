@@ -14,7 +14,7 @@
         <div class="announcement-wrapper">
           <div class="announcement-message-text">{{ theme.announcement_message_text }}</div>
         </div>
-        <button class="button announcement-message-close" title="Close announcement message">
+        <button class="button announcement-message-close" title="Close announcement message" id="close-announce-message">
           <svg aria-hidden="true" class="close-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14.1 14.1" enable-background="new 0 0 14.1 14.1"><path d="M14.1 1.1l-1.1-1.1-6 6-5.9-6-1.1 1.1 6 5.9-6 6 1.1 1.1 5.9-6 6 6 1.1-1.1-6-6z"/></svg>
         </button>
       </aside>
@@ -209,56 +209,19 @@
         textColor: '{{ theme.text_color }}',
         backgroundColor: '{{ theme.background_color }}',
       }
-      function setCookie(name,value,days) {
-        var expires = "";
-        if (days) {
-          var date = new Date();
-          date.setTime(date.getTime() + (days*24*60*60*1000));
-          expires = "; expires=" + date.toUTCString();
-        }
-        document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+      function closeAnnouncement() {
+        let announcement = document.getElementById("announce-message");
+        announcement.remove();
+        sessionStorage.setItem("announcementClosed", "true");
       }
-      function getCookie(name) {
-        var nameEQ = name + "=";
-        var ca = document.cookie.split(';');
-        for(var i=0;i < ca.length;i++) {
-          var c = ca[i];
-          while (c.charAt(0)==' ') c = c.substring(1,c.length);
-          if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-        }
-        return null;
-      }
-      String.prototype.hashCode = function() {
-        var hash = 0, i, chr;
-        if (this.length === 0) return hash;
-        for (i = 0; i < this.length; i++) {
-          chr   = this.charCodeAt(i);
-          hash  = ((hash << 5) - hash) + chr;
-          hash |= 0;
-        }
-        return hash;
-      };
       if (themeOptions.hasAnnouncement) {
-        announceDiv = document.getElementById("announce-message");
-        if (announceDiv) {
-          announcementMessage = document.querySelector(".announcement-message-text").innerHTML;
-          hashedMessage = announcementMessage.hashCode();
-          cookieValue = getCookie("hide-announcement-message");
-          if (cookieValue) {
-            if (cookieValue != hashedMessage) {
-              announceDiv.classList.add('visible');
-            }
-          }
-          else {
-            announceDiv.classList.add('visible');
-          }
-          if (announceDiv.classList.contains('visible')) {
-            document.querySelector('.announcement-message-close').addEventListener('click', function(e) {
-              announceDiv.remove();
-              setCookie('hide-announcement-message', hashedMessage);
-            });
-          }
+        let announcement = document.getElementById("announce-message");
+        let closeAnnounceBtn = document.getElementById("close-announce-message");
+        let announcementClosed = sessionStorage.getItem("announcementClosed");
+        if (!announcementClosed) {
+          announcement.classList.add('visible');
         }
+        closeAnnounceBtn.addEventListener("click", closeAnnouncement);
       }
     </script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
