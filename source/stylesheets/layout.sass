@@ -73,7 +73,7 @@ h1, h2, h3, h4, h5, h6
 
 h1
   font-size: 1.75em
-  margin-bottom: 30px
+  margin-bottom: 32px
 
   @media screen and (max-width: $break-small)
     font-size: 1.5em
@@ -86,7 +86,7 @@ h1
   border-bottom: 1px solid var(--mobile-nav-border-color)
   display: none
   height: 60px
-  padding: 0 20px
+  padding: 0 16px
   width: 100%
 
   @media only screen and (max-width: $break-large)
@@ -95,10 +95,18 @@ h1
 
   button.open_menu
     +transition(.1s ease-in-out)
-    background: none !important
-    height: 14px
+    display: flex
+    align-items: center
+    justify-content: center
+    height: 40px
+    margin-left: -10px
     position: relative
-    width: 22px
+    width: 40px
+
+    .hamburger-container
+      width: 22px
+      height: 14px
+      position: relative
 
     span
       border-radius: var(--border-radius)
@@ -162,7 +170,7 @@ h1
   +flex(1)
   margin: 0 auto
   max-width: 1300px
-  padding: 0 20px 80px
+  padding: 0 16px 80px
   width: 100%
   display: grid
   grid-template-columns: #{"{% if theme.sidebar_position == 'right' %} 1fr 220px {% else %} 220px 1fr {% endif %}"}
@@ -178,7 +186,7 @@ a.skip-link
   border: 1px solid var(--text-color)
   color: var(--text-color)
   left: 25px
-  padding: 15px 20px
+  padding: 12px 24px
   position: absolute
   text-decoration: underline
   top: -150px
@@ -192,7 +200,7 @@ header
   font-family: var(--primary-font)
   font-size: 28px
   padding: 48px 0
-  margin-bottom: 36px
+  margin-bottom: 32px
   text-align: center
 
   @media only screen and (max-width: $break-large)
@@ -200,7 +208,7 @@ header
     padding: 32px 24px
 
   .inner-wrapper
-    padding: 0 20px
+    padding: 0 16px
     +justify-content(#{"{{ theme.header_position }}"})
 
     @media screen and (max-width: $break-medium)
@@ -374,7 +382,7 @@ header
         font-size: 18px
 
   nav > div
-    margin-bottom: 20px
+    margin-bottom: 24px
 
     &:first-child
       margin-top: 0
@@ -398,29 +406,25 @@ footer
   .inner-wrapper
     +flex-direction(column)
     +justify-content(center)
-    padding: 60px 20px
-    gap: 30px
+    padding: 60px 36px
+    gap: 32px
 
 .social_icons
   +flexbox
-  gap: 30px
+  gap: 8px
   list-style: none
   margin: 0
   padding: 0
   flex-wrap: wrap
   justify-content: center
 
-  @media screen and (max-width: $break-small)
-    gap: 24px
-
   a
     display: flex
     align-items: center
     justify-content: center
     flex-shrink: 0
-    outline-offset: 4px
-    width: 20px
-    height: 20px
+    width: 40px
+    height: 40px
 
     svg
       fill: currentColor
@@ -456,8 +460,8 @@ footer
   background: var(--error-background-color)
   color: var(--error-text-color)
   list-style: none
-  margin-bottom: 20px
-  padding: 12px 20px
+  margin-bottom: 24px
+  padding: 12px 16px
 
 button, input, textarea, select
   border-radius: var(--border-radius)
@@ -519,7 +523,7 @@ input, textarea
     background: none
     border: 0
     height: 100%
-    padding: 0 38px 0 12px
+    padding: 0 40px 0 12px
     position: relative
     width: 100%
     z-index: 2

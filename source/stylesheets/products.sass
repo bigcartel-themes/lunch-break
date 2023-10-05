@@ -1,18 +1,18 @@
 .product-list-container
-  margin-top: -10px
+  margin-top: -8px
 
 .product-list
   +flexbox
   +flex-wrap(wrap)
   +justify-content(flex-start)
-  margin: 0 -10px
+  margin: 0 -8px
 
 .product-list-thumb
   border-radius: var(--border-radius)
   color: var(--text-color)
   display: block
-  padding: 10px
-  padding-bottom: 30px
+  padding: 8px
+  padding-bottom: 32px
   position: relative
   text-align: #{"{{ theme.product_detail_alignment }}"}
   vertical-align: middle
@@ -26,7 +26,7 @@
     width: calc(100% / 3)
 
   @media screen and (max-width: $break-small)
-    padding: 10px
+    padding: 8px
     width: calc(100% / #{"{{ theme.max_products_per_row_mobile }}"})
 
 .product-list-link
@@ -74,7 +74,7 @@
 .product-list-thumb-info
   font-size: 1em
   line-height: 1.25em
-  padding: 10px 0
+  padding: 8px 0
   position: relative
 
 .product-list-thumb-name
