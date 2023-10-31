@@ -9,9 +9,9 @@
 {% if theme.image_sets.slideshow_images.size > 0 %}
   <div class="splide home-slideshow">
     <div class="splide__track">
-      <ul class="splide__list">
+      <div class="splide__list">
         {% for image in theme.image_sets.slideshow_images %}
-          <li class="splide__slide">
+          <div class="splide__slide">
             <img
               alt="Slideshow image {{ forloop.index }}"
               class="slideshow-image lazyload "
@@ -25,9 +25,9 @@
               "
               data-sizes="auto"
             >
-          </li>
+          </div>
         {% endfor %}
-      </ul>
+      </div>
     </div>
   </div>
 {% endif %}
