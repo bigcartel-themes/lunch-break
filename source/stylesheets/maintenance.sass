@@ -1,7 +1,5 @@
-@import 'config'
-
 #maintenance
-  background-color: $secondary-background
+  background-color: var(--header-background)
   padding: 100px 15px
 
   @media screen and (max-width: $break-medium)
@@ -12,18 +10,16 @@
     +align-items(center)
     +justify-content(center)
     +flex-direction(column)
-    border-radius: $border-radius
-    background-color: $background-color
-    border: 1px solid $border-color
-    font-size: 1.25em
+    border-radius: var(--border-radius)
+    background-color: var(--background-color)
+    border: 1px solid var(--border-color)
+    font-size: 1em
     margin: 0 auto
     max-width: 600px
-    padding: 40px
+    padding: 60px 20px
     text-align: center
     width: 100%
+    gap: 40px
 
-    > * + *
-      margin-top: 40px
-
-    .store-name
-      font-size: 2.5em
+  h1
+    margin: 0

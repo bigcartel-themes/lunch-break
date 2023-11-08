@@ -1,21 +1,18 @@
-@import 'config'
-
 .product-list-container
-  margin-top: -10px
+  margin-top: -8px
 
 .product-list
   +flexbox
   +flex-wrap(wrap)
   +justify-content(flex-start)
-  margin: 0 -10px
+  margin: 0 -8px
 
 .product-list-thumb
-  border-radius: $border-radius
-  color: $header-color
+  border-radius: var(--border-radius)
+  color: var(--text-color)
   display: block
-  font-size: 0
-  padding: 10px
-  padding-bottom: 30px
+  padding: 8px
+  padding-bottom: 32px
   position: relative
   text-align: #{"{{ theme.product_detail_alignment }}"}
   vertical-align: middle
@@ -29,36 +26,21 @@
     width: calc(100% / 3)
 
   @media screen and (max-width: $break-small)
-    padding: 10px
+    padding: 8px
     width: calc(100% / #{"{{ theme.max_products_per_row_mobile }}"})
 
-_:-ms-fullscreen, :root .product-list-thumb
-  width: calc(100% / #{"{{ theme.max_products_per_row }}"} - .1px)
-
-  @media screen and (max-width: 1100px)
-    width: calc(100% / #{"{% if theme.max_products_per_row == 4 %} 3 {% elsif theme.max_products_per_row == 3 %} 3 {% elsif theme.max_products_per_row == 2 %} 2 {% else %} 1 {% endif %}"} - .1px)
-
-  @media screen and (max-width: $break-medium)
-    width: calc(100% / 3 - .1px)
-
-  @media screen and (max-width: $break-small)
-    padding: 10px
-    width: calc(100% / #{"{{ theme.max_products_per_row_mobile }}"} - .1px)
-
 .product-list-link
-  +transition(color .2s ease)
-  color: $header-color
   text-decoration: none
+  outline-offset: 4px
 
-  &:hover, &:focus
-    color: $hover-color
+  &:hover
     text-decoration: none
 
-    .product-list-thumb-name, .product-list-thumb-price
-      color: $hover-color
+    .product-list-thumb-name
+      text-decoration: underline
 
 .product-list-image-container
-  border-radius: $border-radius
+  border-radius: var(--border-radius)
   overflow: hidden
   position: relative
 
@@ -90,24 +72,19 @@ _:-ms-fullscreen, :root .product-list-thumb
     object-fit: contain
 
 .product-list-thumb-info
-  font-size: 16px
+  font-size: 1em
   line-height: 1.25em
-  padding: 10px 0
+  padding: 8px 0
   position: relative
 
 .product-list-thumb-name
-  +transition(color .2s ease)
-  color: $header-color
-  font-family: $primary-font
+  font-family: var(--primary-font)
   overflow-wrap: break-word
   position: relative
 
 .product-list-thumb-price
-  +transition(color .2s ease)
-  color: $secondary-text-color
   font-weight: bold
-  font-size: 15px
-  margin-top: 6px
+  margin-top: 4px
 
 .product-list-thumb-status
   display: inline-block
@@ -115,102 +92,89 @@ _:-ms-fullscreen, :root .product-list-thumb
   font-weight: normal
 
 .pagination
-  +flexbox
-  +flex-direction(row)
-  +justify-content(space-between)
-  +align-items(center)
-  border-top: 1px solid $border-color
-  line-height: 40px
-  padding: 10px 0
-
-  @media screen and (max-width: $break-large)
-    font-size: 15px
-
-
-@media screen and (min-width: $break-small+1)
-  .pagination-caption
-    display: none
-
-.page-numbers
-  +flexbox
-  +flex-wrap(wrap)
-  +justify-content(center)
-  margin: 0 20px
+  display: grid
+  font-size: 1rem
+  padding: 32px 0
+  justify-content: center
+  margin-top: 32px
 
   @media screen and (max-width: $break-small)
-    display: none
+    margin-top: 8px
+
+.page-arrows
+  display: flex
+  border: 1px solid var(--border-color)
+  border-radius: var(--border-radius)
+  height: 46px
 
   .previous, .next
     display: none
 
-  > a, > span
-    +flexbox
-    +align-items(center)
-    +justify-content(center)
-    background: $background-color
-    border-radius: 100%
-    color: $link-color
-    text-align: center
-    height: 40px
-    margin-right: 8px
-    order: 1
-    position: relative
-    text-decoration: none
-    width: 40px
-
-    &.current
-      background: $button-background-color
-      color: $button-text-color
-
-    &.disabled
-      cursor: not-allowed
-      opacity: .4
-
-  > a
-    &:hover, &:focus
-      color: $hover-color
-      text-decoration: underline
-
 .page-link
-  +flexbox
-  +align-items(center)
-  color: $link-color
-  line-height: 40px
-  text-align: center
-  height: 40px
-  padding: 0
-  position: relative
-  text-decoration: none
+  display: flex
+  align-items: center
+  justify-content: center
+  gap: 8px
+  min-width: 100px
+  padding: 0 12px
 
-  &:not(.disabled):hover, &:not(.disabled):focus
-    background: none
-    color: $hover-color
-    text-decoration: underline
-
-    svg
-      fill: $hover-color
-
-  &.next-page-link
+  @media screen and (max-width: $break-small)
+    min-width: 44px
 
     span
-      margin-right: 5px
-
-  &.previous-page-link
-
-    span
-      margin-left: 5px
-
-    svg
-      +transform(rotate(-180deg))
-
-  &.disabled
-    cursor: not-allowed
-    opacity: 0
-    visibility: hidden
+      display: none
 
   svg
-    display: block
-    fill: $link-color
+    flex-shrink: 0
+    width: 12px
+
+  &--previous
+    border-right: 1px solid var(--border-color)
+
+    svg
+      transform: rotate(90deg)
+
+  &--next
+    border-left: 1px solid var(--border-color)
+
+    svg
+      transform: rotate(-90deg)
+
+  &.disabled
+    opacity: .5
+
+  &:not(.disabled)
+    &:hover, &:focus
+      text-decoration: underline
+
+.page-numbers
+  display: flex
+  align-items: center
+  justify-content: center
+
+  span, a
+    display: flex
+    cursor: pointer
+    align-items: center
+    justify-content: center
+    height: 100%
+    min-width: 44px
+    text-align: center
+
+    @media screen and (max-width: $break-small)
+      min-width: 40px
+
+    &.gap
+      opacity: .5
+      padding: 8px
+      min-width: 0
+
+    &.current
+      font-weight: bold
+
+    &:not(.current):not(.gap)
+      &:hover, &:focus
+        color: var(--hover-color)
 
 #home-page .pagination
   display: none

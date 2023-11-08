@@ -7,60 +7,35 @@
 {% endif %}
 
 {% if theme.image_sets.slideshow_images.size > 0 %}
-  {% if theme.image_sets.slideshow_images.size > 1 %}
-    <div class="flexslider">
-      <ul class="slides">
+  <div class="splide home-slideshow">
+    <div class="splide__track">
+      <div class="splide__list">
         {% for image in theme.image_sets.slideshow_images %}
-          <li>
+          <div class="splide__slide">
             <img
               alt="Slideshow image {{ forloop.index }}"
-              class="lazyload"
-              src="{{ image.url | constrain: 948 }}"
+              class="slideshow-image lazyload "
+              src="{{ image.url | constrain: 400 }}"
+              {% if forloop.index == 1 %}fetchpriority="high"{% endif %}
               data-srcset="
-                {{ image.url | constrain: 540 }} 540w,
-                {{ image.url | constrain: 948 }} 948w,
-                {{ image.url | constrain: 1200 }} 1200w,
-                {{ image.url | constrain: 1500 }} 1500w,
-                {{ image.url | constrain: 1900 }} 1900w
+                {{ image.url | constrain: 600 }} 600w,
+                {{ image.url | constrain: 800 }} 800w,
+                {{ image.url | constrain: 1400 }} 1400w,
+                {{ image.url | constrain: 2000 }} 2000w
               "
               data-sizes="auto"
             >
-          </li>
+          </div>
         {% endfor %}
-      </ul>
-      <ul class="flex-nav">
-        <li class="flex-nav-prev">
-          <button class="flex-nav-button flex-prev" aria-label="Previous image"><svg aria-hidden="true" height="15" width="15" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7.6 15" enable-background="new 0 0 7.6 15"><path d="M6.4 15l-6.4-7.5 6.3-7.5 1.1 1-5.4 6.5 5.6 6.5z"/></svg></button>
-        </li>
-        <li class="flex-nav-next">
-          <button class="flex-nav-button flex-next" aria-label="Next image"><svg aria-hidden="true" height="15" width="15" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7.6 15" enable-background="new 0 0 7.6 15"><path d="M1.1 0l6.5 7.5-6.3 7.5-1.2-1 5.5-6.5-5.6-6.5z"/></svg></button>
-        </li>
-      </ul>
+      </div>
     </div>
-  {% else %}
-    <div class="welcome_image">
-      {% for image in theme.image_sets.slideshow_images limit: 1 %}
-        <img
-          alt="Welcome image"
-          class="lazyload"
-          src="{{ image.url | constrain: 948 }}"
-          data-srcset="
-            {{ image.url | constrain: 540 }} 540w,
-            {{ image.url | constrain: 948 }} 948w,
-            {{ image.url | constrain: 1200 }} 1200w,
-            {{ image.url | constrain: 1500 }} 1500w,
-            {{ image.url | constrain: 1900 }} 1900w
-          "
-          data-sizes="auto"
-        >
-      {% endfor %}
-    </div>
-  {% endif %}
+  </div>
 {% endif %}
+
 {% if theme.featured_products > 0 %}
   {% paginate products from products.current by theme.featured_products order:theme.featured_order %}
     {% if products != blank %}
-      <h1>Featured Products</h1>
+      <h1>{{ theme.featured_header }}</h1>
       <div class="product-list-container">
         <div class="product-list">
           {% for product in products %}
@@ -90,7 +65,7 @@
                 <div class="product-list-image-container product-list-image-container-{{ theme.grid_image_style }}">
                   <img
                     alt=""
-                    class="blur-up product-list-image lazyload grid-{{ theme.grid_image_style }}"
+                    class="product-list-image blur-up lazyload grid-{{ theme.grid_image_style }}"
                     src="{{ product.image | product_image_url | constrain: 20 }}"
                     {% unless theme.grid_image_style == 'default' %}data-aspectratio="{{ aspect_ratio }}"{% endunless %}
                     data-srcset="

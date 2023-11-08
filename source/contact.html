@@ -1,4 +1,5 @@
 <div class="custom_content">
+  <h1>{{ page.name }}</h1>
   {% if errors != blank %}
     <ul class="errors">
       {% for error in errors %}
@@ -6,7 +7,6 @@
       {% endfor %}
     </ul>
   {% endif %}
-  <h1>{{ page.name }}</h1>
   {% if contact.sent %}
     <p>Your message has been sent and we'll get back to you soon.</p>
   {% else %}
@@ -27,11 +27,11 @@
         <label for="message">Message</label>
         {{ contact | contact_input: 'message' }}
       </div>
+      <div class="contact_send">
+        <button type="submit" name="submit" class="button">Send message</button>
+      </div>
       <div class="contact_recaptcha">
         <div class="recaptcha_note">{{ contact.recaptcha }}</div>
-      </div>
-      <div class="contact_send">
-        <button type="submit" name="submit" title="Send message" tabindex="6">Send message</button>
       </div>
     </form>
   {% endif %}

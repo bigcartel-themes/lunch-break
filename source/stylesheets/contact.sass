@@ -1,19 +1,10 @@
-@import 'config'
-
 .contact_form
   &>div
-    margin-bottom: 20px
+    margin-bottom: 16px
     text-align: left
 
     @media screen and (max-width: $break-small)
       margin-bottom: 15px
-
-  .contact_send
-    @media screen and (max-width: $break-small)
-      text-align: center
-
-      button
-        margin-left: 0
 
   input, textarea
     width: 100%
@@ -24,7 +15,7 @@
 
   label
     display: block
-    margin-bottom: 10px
+    margin-bottom: 8px
 
   .contact_name, .contact_send, .contact_email
     display: inline-block
@@ -55,15 +46,14 @@
     font-size: 14px
     margin-top: 5px
 
+    a
+      text-decoration: underline
+
   .contact_send
-    text-align: center
     width: 100%
 
-    @media screen and (max-width: $break-small)
-      text-align: center
-
     button
-      margin: 40px auto
+      margin: 16px auto
       width: 320px
 
       @media screen and (max-width: $break-small)

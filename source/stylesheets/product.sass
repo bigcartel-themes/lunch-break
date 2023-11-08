@@ -1,6 +1,3 @@
-@import 'config'
-
-
 .product_images
   float: left
   max-width: 55%
@@ -13,31 +10,8 @@
 
   @media only screen and (max-width: $break-medium)
     float: none
-    margin: 20px 0 40px
+    margin: 16px 0 40px
     max-width: 100%
-
-  .primary_image
-    border-radius: $border-radius
-    display: block
-    width: 100%
-
-  .product_thumbnails
-    +pie-clearfix
-    font-size: 0
-    margin: 10px -5px 0 -5px
-    padding: 0
-    text-align: center
-
-    li
-      display: inline-block
-      padding: 0 5px
-      vertical-align: top
-      width: 25%
-
-      img
-        border-radius: $border-radius
-        display: block
-        width: 100%
 
 .product_pricing, .product_details
   float: right
@@ -46,7 +20,7 @@
   width: 100%
 
   @media only screen and (max-width: $break-large)
-    padding-left: 20px
+    padding-left: 16px
 
   @media only screen and (max-width: $break-medium)
     float: none
@@ -54,43 +28,29 @@
     padding: 0
 
 .product_pricing
+  margin-bottom: 32px
 
   h1
-    margin-bottom: 10px
+    margin-bottom: 4px
 
   .product_price_status
     +flexbox
     +align-items(center)
-    color: $text-color
-    font-family: $secondary-font
+    color: var(--secondary-text-color)
+    font-family: var(--secondary-font)
     font-size: 22px
-    margin-bottom: 40px
+    gap: 10px
 
     @media screen and (max-width: $break-medium)
-      +justify-content(center)
-
-    .product_price
-      vertical-align: middle
+      +justify-content(flex-start)
 
     .small_status
-      border-radius: $border-radius
-      border: 1px solid $secondary-text-color
-      color: $secondary-text-color
+      border-radius: var(--border-radius)
+      border: 1px solid var(--secondary-text-color)
+      color: var(--secondary-text-color)
       font-size: 13px
-      margin-left: 10px
-      padding: 4px 8px
-      position: relative
+      padding: 2px 8px
       text-transform: uppercase
-
-  h4
-    border-bottom: none
-    font-size: 20px
-    margin: 0
-    padding: 0 0 6px
-
-  @media only screen and (max-width: $break-medium)
-    margin-bottom: 40px
-    text-align: center
 
 .reset-selection-button-container
   text-align: center
@@ -105,18 +65,35 @@ button.reset-selection-button
   padding: 4px
   width: auto
 
+.product_description
+  margin: 0 0 40px
+
+  p
+    margin: revert
+
+  &>:first-child
+    margin-top: 0
+
+  &>:last-child
+    margin-bottom: 0
+
+  ol, ul
+    margin: 1em
+
+  ul
+    list-style: disc
+
+  ol
+    list-style: decimal
+
+  a
+    color: var(--secondary-text-color)
+    text-decoration: underline
+
+    &:hover
+      color: var(--hover-color)
+
 .product_details
-
-  .product_description
-    font-size: 16px
-    line-height: 1.5em
-    margin: 0 0 40px
-
-    a
-      text-decoration: underline
-
-    iframe
-      max-width: 100%
 
   form
     margin-bottom: 40px
@@ -128,46 +105,41 @@ button.reset-selection-button
     .add-to-cart-button
       width: 100%
 
-  .share_buttons
+.share_buttons
 
-    @media only screen and (max-width: $break-medium)
-      text-align: center
+  @media only screen and (max-width: $break-medium)
+    text-align: center
 
-    li
-      display: inline-block
-      margin-right: 20px
-      position: relative
+  li
+    display: inline-block
+    margin-right: 20px
+    position: relative
 
-      @media screen and (max-width: $break-medium)
-        margin: 0 10px
+    @media screen and (max-width: $break-medium)
+      margin: 0 8px
+
+    a
+      cursor: pointer
+      display: block
+
+      svg
+        fill: currentColor
+        height: 20px
+        width: 20px
+
+    &.social_pinterest
 
       a
-        cursor: pointer
-        display: block
+        display: inline-block
+        position: relative
 
-        svg
-          +all-transitions
-          fill: $link-color
-          height: 20px
-          width: 20px
-
-        &:hover
-          svg
-            fill: $hover-color
-
-      &.social_pinterest
-
-        a
-          display: inline-block
-          position: relative
-
-          &:after
-            content: ""
-            position: absolute
-            top: 0
-            right: 0
-            bottom: 0
-            left: 0
+        &:after
+          content: ""
+          position: absolute
+          top: 0
+          right: 0
+          bottom: 0
+          left: 0
 
 .product-form
   max-width: 350px
@@ -180,109 +152,6 @@ button.reset-selection-button
     display: none
     opacity: 0
     visibility: hidden
-
-
-.mfp-top-bar
-  +flexbox
-  +align-items(center)
-  padding: 5px 0
-  position: absolute
-  top: 48px
-  width: 100%
-
-.mfp-title
-  display: none
-
-.mfp-counter
-  color: #F7F7F7
-  font-size: 15px
-  position: relative
-
-.mfp-arrow:before, .mfp-arrow:after
-  display: none
-
-.mfp-image-holder button.mfp-close
-  +flexbox
-  +align-items(center)
-  +justify-content(center)
-  background: none !important
-  margin-left: auto
-  opacity: 1
-  padding: 6px
-  right: 0
-  position: relative
-  width: auto !important
-
-  svg
-    fill: #F7F7F7
-    pointer-events: none
-
-img.mfp-img
-  padding: 100px 0 40px
-
-.mfp-figure:after
-  display: none
-
-.mfp-arrow
-  +flexbox
-  +align-items(center)
-  +justify-content(center)
-  background: #FFF !important
-  height: 65px
-  margin-top: 0
-  opacity: .7
-  width: 65px
-
-  &:active
-    margin-top: 0
-
-  svg
-    display: block
-    fill: #000
-    height: 20px
-    margin: 0 auto
-    pointer-events: none
-    width: 20px
-
-  &:hover
-    opacity: 1
-
-  @media (max-width: 900px)
-    +transform(scale(.7))
-
-.mfp-container
-  padding: 0 10px !important
-
-.mfp-arrow-left
-  left: 40px
-
-  @media (max-width: $break-large)
-    left: 14px
-
-.mfp-arrow-right
-  right: 40px
-
-  @media (max-width: $break-large)
-    right: 14px
-
-.mfp-preloader
-  +animation(loading-animation 1.5s infinite ease-in-out)
-  border-radius: 100%
-  background: #FFF
-  height: 40px
-  margin: 0 auto
-  opacity: 1
-  width: 40px
-
-@keyframes loading-animation
-  0%
-    transform: scale(0.1, 0.1)
-    opacity: 0.0
-  50%
-    opacity: 1.0
-  100%
-    transform: scale(1.2, 1.2)
-    opacity: 0.0
 
 #instant-checkout-button
   margin-top: 12px
