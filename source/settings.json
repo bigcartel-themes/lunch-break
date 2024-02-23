@@ -1,6 +1,6 @@
 {
   "name": "Lunch Break",
-  "version": "1.10.0",
+  "version": "1.10.1",
   "images": [
     {
       "variable": "header_logo",
@@ -15,6 +15,131 @@
       "description": "1000px by 400px images recommended"
     }
   ],
+  "preset_styles": {
+    "preview": {
+      "title_font": "primary_font",
+      "body_font": "secondary_font",
+      "text_color": "text_color",
+      "background_color": "background_color"
+    },
+    "presets": [
+      {
+        "group_name": "Classic",
+        "styles": [
+          {
+            "style_name": "Classic #1",
+            "fonts": {
+              "primary_font": "Open Sans",
+              "secondary_font": "Open Sans"
+            },
+            "colors": {
+              "background_color": "#FFFFFF",
+              "header_background_color": "#FAFAFA",
+              "header_text_color": "#135884",
+              "text_color": "#111111",
+              "secondary_text_color": "#404147",
+              "link_hover_color": "#135884",
+              "button_text_color": "#FFFFFF",
+              "button_background_color": "#135884",
+              "button_background_hover_color": "#193648",
+              "announcement_text_color": "#FFFFFF",
+              "announcement_background_color": "#135884"
+            }
+          },
+          {
+            "style_name": "Classic #2",
+            "fonts": {
+              "primary_font": "DM Sans",
+              "secondary_font": "DM Sans"
+            },
+            "colors": {
+              "background_color": "#141415",
+              "header_background_color": "#141415",
+              "header_text_color": "#F8F8F8",
+              "text_color": "#F8F8F8",
+              "secondary_text_color": "#C6C6C6",
+              "link_hover_color": "#F8F8F8",
+              "button_text_color": "#141415",
+              "button_background_color": "#F8F8F8",
+              "button_background_hover_color": "#C6C6C6",
+              "announcement_text_color": "#141415",
+              "announcement_background_color": "#F8F8F8"
+            }
+          }
+        ]
+      },
+      {
+        "group_name": "Elegant",
+        "styles": [
+          {
+            "style_name": "Elegant #1",
+            "fonts": {
+              "primary_font": "Prata",
+              "secondary_font": "Karla"
+            },
+            "colors": {
+              "background_color": "#F6F4F4",
+              "header_background_color": "#EDE8E8",
+              "header_text_color": "#0F1B27",
+              "text_color": "#0F1B27",
+              "secondary_text_color": "#0F1B27",
+              "link_hover_color": "#8A5A5A",
+              "button_text_color": "#0F1B27",
+              "button_background_color": "#DBD1D1",
+              "button_background_hover_color": "#C7B3B3",
+              "announcement_text_color": "#F1F1F1",
+              "announcement_background_color": "#8A5A5A"
+            }
+          }
+        ]
+      },
+      {
+        "group_name": "Playful",
+        "styles": [
+          {
+            "style_name": "Playful #1",
+            "fonts": {
+              "primary_font": "Syne",
+              "secondary_font": "Syne"
+            },
+            "colors": {
+              "background_color": "#FFFFFF",
+              "header_background_color": "#FFFFFF",
+              "header_text_color": "#0000FF",
+              "text_color": "#0000FF",
+              "secondary_text_color": "#0000FF",
+              "link_hover_color": "#000098",
+              "button_text_color": "#0000FF",
+              "button_background_color": "#FFE500",
+              "button_background_hover_color": "#EBD300",
+              "announcement_text_color": "#0000FF",
+              "announcement_background_color": "#FFE500"
+            }
+          },
+          {
+            "style_name": "Playful #2",
+            "fonts": {
+              "primary_font": "Quicksand",
+              "secondary_font": "Quicksand"
+            },
+            "colors": {
+              "background_color": "#FFE9F4",
+              "header_background_color": "#FFFBFD",
+              "header_text_color": "#243588",
+              "text_color": "#243588",
+              "secondary_text_color": "#243588",
+              "link_hover_color": "#0C143B",
+              "button_text_color": "#243588",
+              "button_background_color": "#FFFA8D",
+              "button_background_hover_color": "#FFF520",
+              "announcement_text_color": "#243588",
+              "announcement_background_color": "#FFFA8D"
+            }
+          }
+        ]
+      }
+    ]
+  },
   "fonts": [
     {
       "variable": "primary_font",
@@ -39,7 +164,7 @@
       "default": "#FAFAFA"
     },
     {
-      "variable": "header_color",
+      "variable": "header_text_color",
       "label": "Header Text",
       "default": "#135884"
     },
@@ -132,7 +257,7 @@
       "label": "Featured products",
       "type": "select",
       "options": "0..100",
-      "default": 12,
+      "default": 6,
       "description": "The number of products displayed on the home page"
     },
     {
@@ -265,7 +390,7 @@
       "variable": "show_share_buttons",
       "label": "Show Product share buttons",
       "type": "boolean",
-      "default": false,
+      "default": true,
       "description": "Adds Facebook, Twitter, and Pinterest buttons to Product pages"
     },
     {
@@ -353,7 +478,7 @@
     "title_background_color": "transparent",
     "title_position": "center",
     "title_font_size": "42px",
-    "title_color": "{{ header_color }}",
+    "title_color": "{{ header_text_color }}",
     "secondary_font": "{{ secondary_font }}",
     "secondary_font_size": "16px",
     "content_border_radius": "0",
