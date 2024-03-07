@@ -8,7 +8,7 @@
     {{ head_content }}
     <style type="text/css">.preload * { opacity: 0 } .transition-preload * { transition:none!important; }</style>
   </head>
-  <body id="{{ page.permalink }}-page" class="{{ page.permalink }} {{ page.category }} preload transition-preload">
+  <body id="{{ page.permalink }}" class="{{ page.permalink }} {{ page.category }} preload transition-preload">
     {% if theme.announcement_message_text != blank %}
       <div aria-label="Announcement message" class="announcement-message">
         <div class="announcement-message__text">{{ theme.announcement_message_text }}</div>
