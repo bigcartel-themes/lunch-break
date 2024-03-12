@@ -477,20 +477,27 @@ input, textarea
   color: var(--text-color)
   padding: 8px 10px
 
-.button
+button.button, a.button
   +transition(background .2s ease)
   background-color: var(--button-background-color)
+  border-radius: var(--border-radius)
   color: var(--button-text-color)
-  display: inline-block
+  display: flex
+  align-items: center
+  justify-content: center
+  white-space: pre-wrap
+  min-height: 54px
+  padding: 16px
   font-family: var(--secondary-font)
-  height: 54px
-  padding: 0
   text-align: center
+  text-decoration: none
 
   &.minimal-button
     background: none
     color: var(--text-color)
+    min-height: 0
     padding: 0
+    text-decoration: underline
 
     &:not(:disabled):hover, &:not(:disabled):active, &:not(:disabled):focus
       +transform(none)
@@ -506,6 +513,10 @@ input, textarea
     background-color: var(--button-background-color) !important
     cursor: not-allowed
     opacity: .4
+
+  &--centered
+    margin: 0 auto
+    max-width: 300px
 
 .select
   border-radius: var(--border-radius)
