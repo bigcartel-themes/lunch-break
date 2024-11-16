@@ -83,7 +83,9 @@
                 <div class="product-list-thumb-info">
                   <div class="product-list-thumb-name">{{ product.name }}</div>
                   <div class="product-list-thumb-price">
-                    {{ product.default_price | money: theme.money_format }}
+                    {% unless product.status == 'sold-out' and theme.show_sold_out_product_prices == false %}
+                      {{ product.default_price | money: theme.money_format }}
+                    {% endunless %}
                     {% if product_status != blank %}
                       <div class="product-list-thumb-status">{{ product_status }}</div>
                     {% endif %}
