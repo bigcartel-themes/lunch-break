@@ -41,10 +41,13 @@
     color: var(--secondary-text-color)
     font-family: var(--secondary-font)
     font-size: 22px
-    gap: 10px
 
     @media screen and (max-width: $break-medium)
       +justify-content(flex-start)
+
+    .product_price
+      &.with-spacing
+        margin-right: 10px
 
     .small_status
       border-radius: var(--border-radius)
