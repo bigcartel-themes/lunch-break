@@ -394,13 +394,6 @@
       "requires": "inventory"
     },
     {
-      "variable": "show_share_buttons",
-      "label": "Show Product share buttons",
-      "type": "boolean",
-      "default": true,
-      "description": "Adds Facebook, Twitter, and Pinterest buttons to Product pages"
-    },
-    {
       "variable": "border_radius",
       "label": "Rounded corners",
       "type": "select",
