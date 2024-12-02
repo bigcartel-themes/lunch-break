@@ -8,7 +8,7 @@
     {{ head_content }}
     <style type="text/css">.preload * { opacity: 0 } .transition-preload * { transition:none!important; }</style>
   </head>
-  <body id="{{ page.permalink }}" class="{{ page.permalink }} {{ page.category }} preload transition-preload">
+  <body id="{{ page.permalink }}" class="{{ page.permalink }} {{ page.category }} preload transition-preload" data-bc-page-type="{% if page.category == 'custom' %}custom{% else %}{{ page.permalink }}{% endif %}">
     {% if theme.announcement_message_text != blank %}
       <div aria-label="Announcement message" class="announcement-message">
         <div class="announcement-message__text">{{ theme.announcement_message_text }}</div>
@@ -32,7 +32,7 @@
         <span class="sr-only">View cart - </span><span class="cart_title">{{ cart.item_count | pluralize: 'item', 'items' }}</span>/<span class="cart_numbers">{{ cart.total | money: theme.money_format }}</span>
       </a>
   	</div>
-    <header class="{% if theme.header_logo != blank %}logo{% else %}text{% endif %}">
+    <header class="{% if theme.header_logo != blank %}logo{% else %}text{% endif %}" data-bc-hook="header">
   		<div class="inner-wrapper">
         <a href="/" title="{{ store.name | escape }}" class="store_header {% if theme.header_logo != blank %}logo{% else %}text{% endif %}">
       		{% if theme.header_logo != blank %}
@@ -145,7 +145,7 @@
         </main>
       {% endif %}
     </div>
-    <footer role="contentinfo">
+    <footer role="contentinfo" data-bc-hook="footer">
       <div class="inner-wrapper">
         {% if theme.instagram_url != blank
           or theme.tiktok_url != blank
