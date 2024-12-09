@@ -260,6 +260,27 @@
       "description": "Sets the position of your store name or header logo"
     },
     {
+      "variable": "homepage_slideshow_autoplay",
+      "label": "Auto-play homepage slideshow",
+      "type": "boolean",
+      "default": false,
+      "description": "Automatically advances slides in the homepage slideshow"
+    },
+    {
+      "variable": "homepage_slideshow_speed",
+      "label": "Slideshow speed",
+      "type": "select",
+      "options": [
+        ["Slowest", 6000],
+        ["Slower", 5000],
+        ["Normal", 4000],
+        ["Faster", 3500],
+        ["Fastest", 3000]
+      ],
+      "default": 4000,
+      "description": "Controls how quickly slides advance in the auto-playing slideshow"
+    },
+    {
       "variable": "featured_header",
       "label": "Featured header",
       "type": "text",
