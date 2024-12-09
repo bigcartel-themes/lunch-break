@@ -6,6 +6,7 @@
   --border-color: #{'rgba(var(--text-color-rgb), .5)'}
   --mobile-nav-border-color: #{'rgba(var(--text-color-rgb), .2)'}
   --background-color: #{'{{ theme.background_color }}'}
+  --header-logo-max-height: #{"{{ theme.header_logo_image_height | append: 'px' }}"}
   --header-background: #{'{{ theme.header_background_color }}'}
   --header-text-color: #{'{{ theme.header_text_color }}'}
   --text-color: #{'{{ theme.text_color }}'}
@@ -232,7 +233,7 @@ header
 
 .store-image
   display: block
-  max-height: 140px
+  max-height: var(--header-logo-max-height)
   object-fit: contain
   width: 100%
 
