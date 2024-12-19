@@ -36,7 +36,14 @@
   		<div class="inner-wrapper">
         <a href="/" title="{{ store.name | escape }}" class="store_header {% if theme.header_logo != blank %}logo{% else %}text{% endif %}">
       		{% if theme.header_logo != blank %}
-            <img alt="{{ store.name }} Home" class="store-image" src="{{ theme.images.header_logo.url | constrain: '', 140 }}" srcset="{{ theme.images.header_logo.url | constrain: '', 280 }} 2x, {{ theme.images.header_logo.url | constrain: '', 140 }} 1x">
+            {% assign header_logo_image_height_1x = theme.header_logo_image_height %}
+            {% assign header_logo_image_height_2x = header_logo_image_height_1x | times: 2 %}
+            <img 
+              alt="{{ store.name }} Home" 
+              class="store-image" 
+              src="{{ theme.images.header_logo.url | constrain: '', logo_image_height_1x }}" 
+              srcset="{{ theme.images.header_logo.url | constrain: '', header_logo_image_height_1x }}, {{ theme.images.header_logo.url | constrain: '', header_logo_image_height_2x }} 2x"
+            >
       		{% else %}
       			{{ store.name }}
       		{% endif %}
@@ -238,6 +245,8 @@
         desktopProductPageImages: '{{ theme.desktop_product_page_images }}',
         mobileProductPageImages: '{{ theme.mobile_product_page_images }}',
         productImageZoom: {{ theme.product_image_zoom }},
+        homepageSlideshowAutoplay: {{ theme.homepage_slideshow_autoplay }},
+        homepageSlideshowSpeed: {{ theme.homepage_slideshow_speed }}
       }
       const themeColors = {
         textColor: '{{ theme.text_color }}',
