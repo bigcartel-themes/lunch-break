@@ -5,7 +5,7 @@
     {
       "variable": "header_logo",
       "label": "Header image",
-      "description": "Good for an image up to 140 pixels high"
+      "description": "Recommend transparent background and 220px high"
     }
   ],
   "image_sets": [
