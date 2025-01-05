@@ -65,6 +65,26 @@
               "announcement_text_color": "#141415",
               "announcement_background_color": "#F8F8F8"
             }
+          },
+          {
+            "style_name": "Classic #3",
+            "fonts": {
+              "primary_font": "Lora",
+              "secondary_font": "Lora"
+            },
+            "colors": {
+              "background_color": "#EFEFEF",
+              "header_background_color": "#E2E2E2",
+              "header_text_color": "#262626",
+              "text_color": "#262626",
+              "secondary_text_color": "#707070",
+              "link_hover_color": "#135884",
+              "button_text_color": "#EFEFEF",
+              "button_background_color": "#262626",
+              "button_background_hover_color": "#404040",
+              "announcement_text_color": "#EFEFEF",
+              "announcement_background_color": "#135884"
+            }
           }
         ]
       },
@@ -89,6 +109,46 @@
               "button_background_hover_color": "#C7B3B3",
               "announcement_text_color": "#F1F1F1",
               "announcement_background_color": "#8A5A5A"
+            }
+          },
+          {
+            "style_name": "Elegant #2",
+            "fonts": {
+              "primary_font": "Merriweather",
+              "secondary_font": "Merriweather"
+            },
+            "colors": {
+              "background_color": "#EDEBEA",
+              "header_background_color": "#D8D3D1",
+              "header_text_color": "#1A232E",
+              "text_color": "#1A232E",
+              "secondary_text_color": "#56585B",
+              "link_hover_color": "#754242",
+              "button_text_color": "#EDEBEA",
+              "button_background_color": "#1A232E",
+              "button_background_hover_color": "#56585B",
+              "announcement_text_color": "#EDEBEA",
+              "announcement_background_color": "#754242"
+            }
+          },
+          {
+            "style_name": "Elegant #3",
+            "fonts": {
+              "primary_font": "Playfair Display",
+              "secondary_font": "Playfair Display"
+            },
+            "colors": {
+              "background_color": "#FBFAFA",
+              "header_background_color": "#EAE6E6",
+              "header_text_color": "#2D2D2D",
+              "text_color": "#2D2D2D",
+              "secondary_text_color": "#595959",
+              "link_hover_color": "#9C7676",
+              "button_text_color": "#FBFAFA",
+              "button_background_color": "#2D2D2D",
+              "button_background_hover_color": "#595959",
+              "announcement_text_color": "#FBFAFA",
+              "announcement_background_color": "#9C7676"
             }
           }
         ]
@@ -134,6 +194,26 @@
               "button_background_hover_color": "#FFF520",
               "announcement_text_color": "#243588",
               "announcement_background_color": "#FFFA8D"
+            }
+          },
+          {
+            "style_name": "Playful #3",
+            "fonts": {
+              "primary_font": "Overlock",
+              "secondary_font": "Overlock"
+            },
+            "colors": {
+              "background_color": "#FFFACD",
+              "header_background_color": "#FFF8DC",
+              "header_text_color": "#FF4500",
+              "text_color": "#FF4500",
+              "secondary_text_color": "#FF6347",
+              "link_hover_color": "#FF2400",
+              "button_text_color": "#FFFACD",
+              "button_background_color": "#FF4500",
+              "button_background_hover_color": "#FF6347",
+              "announcement_text_color": "#FFFACD",
+              "announcement_background_color": "#FF4500"
             }
           }
         ]
