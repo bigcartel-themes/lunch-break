@@ -223,12 +223,12 @@
   "fonts": [
     {
       "variable": "primary_font",
-      "label": "Header Font",
+      "label": "Header font",
       "default": "Open Sans"
     },
     {
       "variable": "secondary_font",
-      "label": "Secondary Font",
+      "label": "Secondary font",
       "default": "Open Sans"
     }
   ],
@@ -240,52 +240,52 @@
     },
     {
       "variable": "header_background_color",
-      "label": "Header Background",
+      "label": "Header background",
       "default": "#FAFAFA"
     },
     {
       "variable": "header_text_color",
-      "label": "Header Text",
+      "label": "Header text",
       "default": "#135884"
     },
     {
       "variable": "text_color",
-      "label": "Primary Text",
+      "label": "Primary text",
       "default": "#111111"
     },
     {
       "variable": "secondary_text_color",
-      "label": "Secondary Text",
+      "label": "Secondary text",
       "default": "#404147"
     },
     {
       "variable": "link_hover_color",
-      "label": "Link Hover",
+      "label": "Link hover",
       "default": "#135884"
     },
     {
       "variable": "button_text_color",
-      "label": "Button Text",
+      "label": "Button text",
       "default": "#FFFFFF"
     },
     {
       "variable": "button_background_color",
-      "label": "Button Background color",
+      "label": "Button background color",
       "default": "#135884"
     },
     {
       "variable": "button_background_hover_color",
-      "label": "Button Background Hover",
+      "label": "Button background hover",
       "default": "#193648"
     },
     {
       "variable": "announcement_text_color",
-      "label": "Announcement Message Text",
+      "label": "Announcement nessage text",
       "default": "#FFFFFF"
     },
     {
       "variable": "announcement_background_color",
-      "label": "Announcement Message Background",
+      "label": "Announcement message background",
       "default": "#135884"
     }
   ],
