@@ -41,8 +41,9 @@
             <img 
               alt="{{ store.name }} Home" 
               class="store-image" 
-              src="{{ theme.images.header_logo.url | constrain: '', logo_image_height_1x }}" 
-              srcset="{{ theme.images.header_logo.url | constrain: '', header_logo_image_height_1x }}, {{ theme.images.header_logo.url | constrain: '', header_logo_image_height_2x }} 2x"
+              src="{{ theme.images.header_logo.url | constrain: '', header_logo_image_height_1x }}" 
+              srcset="{{ theme.images.header_logo.url | constrain: '', header_logo_image_height_1x }} 1x, {{ theme.images.header_logo.url | constrain: '', header_logo_image_height_2x }} 2x"
+              style="height: {{ header_logo_image_height_1x }}px"
             >
       		{% else %}
       			{{ store.name }}
