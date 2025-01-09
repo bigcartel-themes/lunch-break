@@ -1,6 +1,6 @@
 {
   "name": "Lunch Break",
-  "version": "1.13.0",
+  "version": "1.13.1",
   "images": [
     {
       "variable": "header_logo",
@@ -319,6 +319,7 @@
       "label": "Header logo image height",
       "type": "select",
       "options": [
+        ["Extra Small", "70"],
         ["Small", "100"],
         ["Medium", "140"],
         ["Large", "180"],
