@@ -372,7 +372,7 @@
       "variable": "homepage_slideshow_autoplay",
       "label": "Auto-play homepage slideshow",
       "type": "boolean",
-      "default": false,
+      "default": true,
       "description": "Automatically advances slides in the homepage slideshow"
     },
     {
@@ -498,15 +498,43 @@
       "description": "The number of products displayed per page"
     },
     {
-      "variable": "money_format",
-      "label": "Price display",
+      "variable": "show_related_products",
+      "label": "Show related products",
+      "type": "boolean",
+      "default": true,
+      "description": "Displays related products on the Product page"
+    },
+    {
+      "variable": "related_products_header",
+      "label": "Related products header",
+      "type": "text",
+      "description": "Displays above related products on Products pages",
+      "default": "You might also like",
+      "requires": [
+        "show_related_products eq true"
+      ]
+    },
+    {
+      "variable": "related_products",
+      "label": "Related products",
       "type": "select",
-      "options": [
-        ["Currency sign", "sign"],
-        ["Currency code with sign", "sign_and_code"]
-      ],
-      "default": "sign",
-      "description": "Sets the display of prices in your shop"
+      "options": "1..8",
+      "default": 3,
+      "description": "The maximum number of related products to show on Product pages",
+      "requires": [
+        "show_related_products eq true"
+      ]
+    },
+    {
+      "variable": "related_products_order",
+      "label": "Related products order",
+      "type": "select",
+      "options": "product_orders",
+      "default": "sales",
+      "description": "The order of related products on the Product pages",
+      "requires": [
+        "show_related_products eq true"
+      ]
     },
     {
       "variable": "show_search",
@@ -535,7 +563,7 @@
       "type": "boolean",
       "default": true,
       "description": "Shows sold out product variants in the Product page dropdowns",
-      "requires": "inventory"
+      "requires": ["inventory"]
     },
     {
       "variable": "show_sold_out_product_prices",
@@ -543,7 +571,7 @@
       "type": "boolean",
       "default": true,
       "description": "Show the price of sold out products on product grids and product pages",
-      "requires": "inventory"
+      "requires": ["inventory"]
     },
     {
       "variable": "border_radius",
@@ -557,6 +585,17 @@
       ],
       "default": "4px",
       "description": "Controls the rounded corner style on images and other site elements"
+    },
+    {
+      "variable": "money_format",
+      "label": "Price display",
+      "type": "select",
+      "options": [
+        ["Currency sign", "sign"],
+        ["Currency code with sign", "sign_and_code"]
+      ],
+      "default": "sign",
+      "description": "Sets the display of prices in your shop"
     },
     {
       "variable": "instagram_url",
