@@ -18,6 +18,7 @@
             {% when 'coming-soon' %}
               {% assign product_status = 'Coming soon' %}
           {% endcase %}
+          {% capture status_class %}{% if product.status == 'active' and product.on_sale %}status-primary{% else %}status-secondary{% endif %}{% endcapture %}
           {% capture image_class %}
             {% if product.image.height > product.image.width %}
               image-tall
@@ -54,7 +55,7 @@
                     {{ product.default_price | money: theme.money_format }}
                   {% endunless %}
                   {% if product_status != blank %}
-                    <div class="product-list-thumb-status">{{ product_status }}</div>
+                    <div class="product-list-thumb-status {{ status_class }}">{{ product_status }}</div>
                   {% endif %}
                 </div>
               </div>

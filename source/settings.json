@@ -42,6 +42,8 @@
               "button_text_color": "#FFFFFF",
               "button_background_color": "#135884",
               "button_background_hover_color": "#193648",
+              "product_status_text_color": "#C81410",
+              "product_status_text_color_secondary": "#525252",
               "announcement_text_color": "#FFFFFF",
               "announcement_background_color": "#135884"
             }
@@ -62,6 +64,8 @@
               "button_text_color": "#141415",
               "button_background_color": "#F8F8F8",
               "button_background_hover_color": "#C6C6C6",
+              "product_status_text_color": "#C81410",
+              "product_status_text_color_secondary": "#525252",
               "announcement_text_color": "#141415",
               "announcement_background_color": "#F8F8F8"
             }
@@ -82,6 +86,8 @@
               "button_text_color": "#EFEFEF",
               "button_background_color": "#262626",
               "button_background_hover_color": "#404040",
+              "product_status_text_color": "#D63333",
+              "product_status_text_color_secondary": "#606060",
               "announcement_text_color": "#EFEFEF",
               "announcement_background_color": "#135884"
             }
@@ -107,6 +113,8 @@
               "button_text_color": "#0F1B27",
               "button_background_color": "#DBD1D1",
               "button_background_hover_color": "#C7B3B3",
+              "product_status_text_color": "#A8443F",
+              "product_status_text_color_secondary": "#525252",
               "announcement_text_color": "#F1F1F1",
               "announcement_background_color": "#8A5A5A"
             }
@@ -127,6 +135,8 @@
               "button_text_color": "#EDEBEA",
               "button_background_color": "#1A232E",
               "button_background_hover_color": "#56585B",
+              "product_status_text_color": "#B23A38",
+              "product_status_text_color_secondary": "#6E6E6E",
               "announcement_text_color": "#EDEBEA",
               "announcement_background_color": "#754242"
             }
@@ -147,6 +157,8 @@
               "button_text_color": "#FBFAFA",
               "button_background_color": "#2D2D2D",
               "button_background_hover_color": "#595959",
+              "product_status_text_color": "#A23D3D",
+              "product_status_text_color_secondary": "#6A6A6A",
               "announcement_text_color": "#FBFAFA",
               "announcement_background_color": "#9C7676"
             }
@@ -172,6 +184,8 @@
               "button_text_color": "#0000FF",
               "button_background_color": "#FFE500",
               "button_background_hover_color": "#EBD300",
+              "product_status_text_color": "#FF4D4D",
+              "product_status_text_color_secondary": "#707070",
               "announcement_text_color": "#0000FF",
               "announcement_background_color": "#FFE500"
             }
@@ -192,6 +206,8 @@
               "button_text_color": "#243588",
               "button_background_color": "#FFFA8D",
               "button_background_hover_color": "#FFF520",
+              "product_status_text_color": "#D93636",
+              "product_status_text_color_secondary": "#6B6B6B",
               "announcement_text_color": "#243588",
               "announcement_background_color": "#FFFA8D"
             }
@@ -212,6 +228,8 @@
               "button_text_color": "#FFFACD",
               "button_background_color": "#FF4500",
               "button_background_hover_color": "#FF6347",
+              "product_status_text_color": "#B22222",
+              "product_status_text_color_secondary": "#6B6B6B",
               "announcement_text_color": "#FFFACD",
               "announcement_background_color": "#FF4500"
             }
@@ -277,6 +295,16 @@
       "variable": "button_background_hover_color",
       "label": "Button background hover",
       "default": "#193648"
+    },
+    {
+      "variable": "product_status_text_color",
+      "label": "Product status text (primary)",
+      "default": "#C81410"
+    },
+    {
+      "variable": "product_status_text_color_secondary",
+      "label": "Product status text (secondary)",
+      "default": "#525252"
     },
     {
       "variable": "announcement_text_color",
@@ -597,7 +625,7 @@
       "description": "Ex: https://bigcartel.bandcamp.com"
     }
   ],
- "checkout": {
+  "checkout": {
     "optimize_legibility": "optimizeLegibility",
     "header_image_max_height": "140px",
     "antialias_text": "antialiased",
