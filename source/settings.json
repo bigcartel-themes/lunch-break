@@ -322,12 +322,14 @@
       "variable": "announcement_message_text",
       "label": "Announcement text",
       "type": "text",
+      "max_length": 500,
       "description": "Displays an announcement message on the top of every page"
     },
     {
       "variable": "maintenance_message",
       "label": "Maintenance mode message",
       "type": "text",
+      "max_length": 2048,
       "description": "A message visitors see when your shop is in Maintenance Mode",
       "default": "We're working on our shop right now.<br /><br />Please check back soon."
     },
@@ -387,14 +389,10 @@
         ["Fastest", 3000]
       ],
       "default": 4000,
-      "description": "Controls how quickly slides advance in the auto-playing slideshow"
-    },
-    {
-      "variable": "featured_header",
-      "label": "Featured header",
-      "type": "text",
-      "description": "Featured products header on the Home page",
-      "default": "Featured"
+      "description": "Controls how quickly slides advance in the auto-playing slideshow",
+      "requires": [
+        "homepage_slideshow_autoplay eq true"
+      ]
     },
     {
       "variable": "featured_products",
@@ -405,12 +403,25 @@
       "description": "The number of products displayed on the home page"
     },
     {
+      "variable": "featured_header",
+      "label": "Featured header",
+      "type": "text",
+      "description": "Featured products header on the Home page",
+      "default": "Featured",
+      "requires": [
+        "featured_products gt 0"
+      ]
+    },
+    {
       "variable": "featured_order",
       "label": "Featured products order",
       "type": "select",
       "options": "product_orders",
       "default": "position",
-      "description": "The order of products on the Home page"
+      "description": "The order of products on the Home page",
+      "requires": [
+        "featured_products gt 0"
+      ]
     },
     {
       "variable": "all_products_button_text",
