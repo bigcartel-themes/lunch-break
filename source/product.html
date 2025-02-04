@@ -165,6 +165,7 @@
       {% endif %}
       <button class="button add-to-cart-button" name="submit" type="submit" data-add-title="Add to cart" data-sold-title="Sold out">Add to cart</button>
       {{ store | instant_checkout_button: 'dark', '44px' }}
+      <div class="inventory-status-message" data-inventory-message></div>
       {% if product.has_option_groups %}
         <div class="reset-selection-button-container">
           <button class="button minimal-button reset-selection-button" title="Reset selection" type="reset">Reset selection</button>
