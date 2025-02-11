@@ -1,6 +1,6 @@
 {
   "name": "Lunch Break",
-  "version": "1.14.0",
+  "version": "1.14.1",
   "images": [
     {
       "variable": "header_logo",
@@ -733,7 +733,9 @@
       "type": "boolean",
       "default": true,
       "description": "Shows sold out product variants in the Product page dropdowns",
-      "requires": ["inventory"]
+      "requires": [
+        "inventory"
+      ]
     },
     {
       "variable": "show_sold_out_product_prices",
@@ -741,7 +743,9 @@
       "type": "boolean",
       "default": true,
       "description": "Show the price of sold out products on product grids and product pages",
-      "requires": ["inventory"]
+      "requires": [
+        "inventory"
+      ]
     },
     {
       "variable": "show_low_inventory_messages",
@@ -749,7 +753,9 @@
       "type": "boolean",
       "default": true,
       "description": "Show shoppers alerts on Product pages when it's running low on stock",
-      "requires": [ "inventory" ]
+      "requires": [
+        "inventory"
+      ]
     },
     {
       "variable": "low_inventory_threshold",
@@ -806,7 +812,7 @@
       "label": "Footer text",
       "type": "text",
       "max_length": 2048,
-      "description": "Show a custom message to your shop's footer"
+      "description": "Show a custom message in your shop's footer"
     },
     {
       "variable": "footer_text_position",
