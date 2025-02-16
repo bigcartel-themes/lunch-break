@@ -10,6 +10,9 @@
   {% if contact.sent %}
     <p>Your message has been sent and we'll get back to you soon.</p>
   {% else %}
+    {% if theme.contact_text %}
+      <div class="message-banner message-banner--contact">{{ theme.contact_text }}</div>
+    {% endif %}
     <form method="post" action="/contact" class="contact_form">
       <div class="contact_name">
         <label for="name">Name</label>
