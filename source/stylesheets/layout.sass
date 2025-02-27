@@ -177,12 +177,27 @@ h1
   padding: 0 16px 80px
   width: 100%
   display: grid
-  grid-template-columns: #{"{% if theme.sidebar_position == 'right' %} 1fr 220px {% else %} 220px 1fr {% endif %}"}
   grid-gap: 60px
+
+  &.left-sidebar
+    @media screen and (min-width: $break-large + 1)
+      grid-template-columns: 220px 1fr
+      grid-template-areas: "sidebar main" ". related"
+
+  &.right-sidebar
+    @media screen and (min-width: $break-large + 1)
+      grid-template-columns: 1fr 220px
+      grid-template-areas: "main sidebar" "related ."
 
   @media screen and (max-width: $break-large)
     padding-bottom: 40px
     grid-template-columns: 1fr
+    grid-template-areas: "main" "related"
+
+  @media screen and (max-width: $break-large)
+    padding-bottom: 40px
+    grid-template-columns: 1fr
+    grid-template-areas: "main" "related" "sidebar"
 
 a.skip-link
   +transition(all .3s)
@@ -249,6 +264,7 @@ header
 .content
   +pie-clearfix
   position: relative
+  grid-area: main
 
 .custom_content
   font-family: var(--secondary-font)
@@ -286,6 +302,10 @@ header
 .sidebar-navigation
   background-color: var(--background-color)
   padding-bottom: 40px
+  grid-area: sidebar
+
+  @media screen and (max-width: $break-large)
+    display: none
 
   @media only screen and (max-width: $break-large)
     left: 0

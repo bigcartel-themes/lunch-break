@@ -51,7 +51,7 @@
     		</a>
   		</div>
     </header>
-    <div class="wrap">
+    <div class="wrap {% if theme.sidebar_position == 'left' %}left-sidebar{% else %}right-sidebar{% endif %}">
       {% if theme.sidebar_position == 'right' %}
         <main class="content" id="main">
           {% if page.category == 'custom' %}
