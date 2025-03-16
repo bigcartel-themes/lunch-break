@@ -5,14 +5,14 @@
     {
       "variable": "header_logo",
       "label": "Header image",
-      "description": "Recommend transparent background and 220px high"
+      "description": "Rectangular image with 250px+ height, transparent background recommended"
     }
   ],
   "image_sets": [
     {
       "variable": "slideshow_images",
       "label": "Homepage slideshow",
-      "description": "1000px by 400px images recommended"
+      "description": "Use same size images, 1000 x 400px images recommended"
     }
   ],
   "preset_styles": {
@@ -515,18 +515,18 @@
     },
     {
       "variable": "header_logo_image_height",
-      "label": "Header logo image height",
+      "label": "Header logo image size",
       "type": "select",
       "options": [
-        ["Extra Small", "70"],
-        ["Small", "100"],
-        ["Medium", "140"],
-        ["Large", "180"],
-        ["Extra Large", "200"],
-        ["XX Large", "220"]
+        ["Extra Small", "50"],
+        ["Small", "70"],
+        ["Medium", "100"],
+        ["Large", "125"],
+        ["Extra Large", "150"],
+        ["XX Large", "175"]
       ],
-      "default": "140",
-      "description": "Controls the maximum height of your header logo"
+      "default": "70",
+      "description": "Controls the maximum size of your header logo"
     },
     {
       "variable": "header_position",

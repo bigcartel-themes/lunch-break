@@ -35,21 +35,20 @@
     <header class="{% if theme.header_logo != blank %}logo{% else %}text{% endif %}" data-bc-hook="header">
   		<div class="inner-wrapper">
         <a href="/" title="{{ store.name | escape }}" class="store_header {% if theme.header_logo != blank %}logo{% else %}text{% endif %}">
-      		{% if theme.header_logo != blank %}
-            {% assign header_logo_image_height_1x = theme.header_logo_image_height %}
+          {% if theme.header_logo != blank %}
+            {% assign header_logo_image_height_1x = theme.header_logo_image_height | times: 3 %}
             {% assign header_logo_image_height_2x = header_logo_image_height_1x | times: 2 %}
             <img 
               alt="{{ store.name }} Home" 
               class="store-image" 
               src="{{ theme.images.header_logo.url | constrain: '', header_logo_image_height_1x }}" 
               srcset="{{ theme.images.header_logo.url | constrain: '', header_logo_image_height_1x }} 1x, {{ theme.images.header_logo.url | constrain: '', header_logo_image_height_2x }} 2x"
-              style="height: {{ header_logo_image_height_1x }}px"
             >
-      		{% else %}
-      			{{ store.name }}
-      		{% endif %}
-    		</a>
-  		</div>
+          {% else %}
+            {{ store.name }}
+          {% endif %}
+        </a>
+      </div>
     </header>
     <div class="wrap {% if theme.sidebar_position == 'left' %}left-sidebar{% else %}right-sidebar{% endif %}">
       {% if theme.sidebar_position == 'right' %}
