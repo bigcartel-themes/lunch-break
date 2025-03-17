@@ -147,6 +147,7 @@ updateCartCounts = (cart) => {
 
   if (cartSubtotal) { htmlHighlight(cartSubtotal, sub_total); }
 
+  showBnplMessaging(cart.total, { alignment: 'center', displayMode: 'flex', pageType: 'cart' });
 }
 
 processUpdate = (input, item_id, new_val, cart) => {
@@ -177,3 +178,14 @@ processUpdate = (input, item_id, new_val, cart) => {
     document.querySelector('.cart-item[data-item-id="'+item_id+'"]').remove();
   }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  const isCartPage = document.body.getAttribute('data-bc-page-type') === 'cart';
+  if (isCartPage) {
+    Cart.refresh((cart) => {
+      if (cart?.total) {
+        showBnplMessaging(cart.total, { alignment: 'center', displayMode: 'flex', pageType: 'cart' });
+      }
+    });
+  }
+});
