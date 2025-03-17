@@ -103,8 +103,8 @@
           {
             "style_name": "Bold #1",
             "fonts": {
-              "primary_font": "Inknut Antiqua",
-              "secondary_font": "Source Sans Pro"
+              "primary_font": "Doto",
+              "secondary_font": "Source Code Pro"
             },
             "colors": {
               "background_color": "#000000",
@@ -149,7 +149,7 @@
           {
             "style_name": "Bold #3",
             "fonts": {
-              "primary_font": "Titillium Web",
+              "primary_font": "Rubik Dirt",
               "secondary_font": "Karla"
             },
             "colors": {
@@ -223,8 +223,8 @@
           {
             "style_name": "Playful #3",
             "fonts": {
-              "primary_font": "BioRhyme",
-              "secondary_font": "Nunito Sans"
+              "primary_font": "Playwrite HR Lijeva",
+              "secondary_font": "Lato"
             },
             "colors": {
               "background_color": "#794ACF",
