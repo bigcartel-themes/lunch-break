@@ -24,6 +24,18 @@
 				<span class="small_status {{ product.css_class }}">Coming soon</span>
 		{% endcase %}
 	</div>
+  {% if product.status == "active" and theme.show_bnpl_messaging %}
+    {% unless theme.features.opt_outs contains "theme_bnpl_messaging" %}
+      <div id="payment-processor-messaging">
+        <div id="paypal-messaging-container" style="height: 0; overflow: hidden;">
+          <div id="paypal-messaging-element"></div>
+        </div>
+        <div id="stripe-messaging-container" style="height: 0; overflow: hidden;">
+          <div id="payment-method-messaging-element"></div>
+        </div>
+      </div>
+    {% endunless %}
+  {% endif %}
 </section>
 <section class="product_images">
   <div class="product-images desktop-{{ theme.desktop_product_page_images }} mobile-{{ theme.mobile_product_page_images }}" data-total-images="{{ product.images.size }}">

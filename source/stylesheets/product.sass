@@ -97,6 +97,12 @@ button.reset-selection-button
 
     &:hover
       color: var(--hover-color)
+  
+  img
+    display: inline-block
+    margin: 0 auto
+    max-width: 100%
+    margin-bottom: 16px
 
 .product_details
 
@@ -124,6 +130,7 @@ button.reset-selection-button
 
 .related-products-container
   padding: 0
+  grid-area: related
 
 .related-products-title
   font-size: 1.5em
@@ -137,8 +144,7 @@ button.reset-selection-button
     margin-left: auto
 
     &:hover
-      text-decoration: underline
-      text-underline-offset: 3px
+      text-decoration: none
 
 #instant-checkout-button
   margin-top: 12px
@@ -149,3 +155,39 @@ button.reset-selection-button
   text-align: center
   padding: 8px 0
   font-weight: 500
+
+#payment-processor-messaging
+  margin: 20px 0 0
+  width: 100%
+  display: block
+  
+  body[data-bc-page-type="product"] &
+    margin-top: 20px
+
+  body[data-bc-page-type="cart"] &
+    margin-top: 30px
+
+  &.display-flex
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    
+    &.dual-messaging
+      gap: 15px
+  
+  &.display-grid
+    display: grid
+  
+  &.hidden
+    position: absolute
+    left: -9999px
+    top: -9999px
+
+  > div
+    margin-bottom: 0
+  
+  // Only apply the margin for non-flex layouts when dual messaging is present
+  &:not(.display-flex)
+    &.dual-messaging > div.visible:first-of-type
+      margin-bottom: 15px

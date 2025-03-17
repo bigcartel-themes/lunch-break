@@ -35,23 +35,22 @@
     <header class="{% if theme.header_logo != blank %}logo{% else %}text{% endif %}" data-bc-hook="header">
   		<div class="inner-wrapper">
         <a href="/" title="{{ store.name | escape }}" class="store_header {% if theme.header_logo != blank %}logo{% else %}text{% endif %}">
-      		{% if theme.header_logo != blank %}
-            {% assign header_logo_image_height_1x = theme.header_logo_image_height %}
+          {% if theme.header_logo != blank %}
+            {% assign header_logo_image_height_1x = theme.header_logo_image_height | times: 3 %}
             {% assign header_logo_image_height_2x = header_logo_image_height_1x | times: 2 %}
             <img 
               alt="{{ store.name }} Home" 
               class="store-image" 
               src="{{ theme.images.header_logo.url | constrain: '', header_logo_image_height_1x }}" 
               srcset="{{ theme.images.header_logo.url | constrain: '', header_logo_image_height_1x }} 1x, {{ theme.images.header_logo.url | constrain: '', header_logo_image_height_2x }} 2x"
-              style="height: {{ header_logo_image_height_1x }}px"
             >
-      		{% else %}
-      			{{ store.name }}
-      		{% endif %}
-    		</a>
-  		</div>
+          {% else %}
+            {{ store.name }}
+          {% endif %}
+        </a>
+      </div>
     </header>
-    <div class="wrap">
+    <div class="wrap {% if theme.sidebar_position == 'left' %}left-sidebar{% else %}right-sidebar{% endif %}">
       {% if theme.sidebar_position == 'right' %}
         <main class="content" id="main">
           {% if page.category == 'custom' %}
@@ -339,6 +338,15 @@
       </div>
     {% endif %}
     <script>
+      {% comment %}
+        Manual array construction needed for Liquid 3.0.6 since standard JSON filters 
+        (json, jsonify) don't work properly. This ensures proper JavaScript array 
+        formatting with quoted elements and commas.
+      {% endcomment %}
+      const themeFeatures = {
+        optIns: [{% if theme.features.opt_ins %}{% for opt in theme.features.opt_ins %}"{{ opt }}"{% unless forloop.last %}, {% endunless %}{% endfor %}{% endif %}],
+        optOuts: [{% if theme.features.opt_outs %}{% for opt in theme.features.opt_outs %}"{{ opt }}"{% unless forloop.last %}, {% endunless %}{% endfor %}{% endif %}],
+      };
       const themeOptions = {
         showSoldOutOptions: {{ theme.show_sold_out_product_options }},
         showLowInventoryMessages: {{ theme.show_low_inventory_messages }},
@@ -348,12 +356,14 @@
         mobileProductPageImages: '{{ theme.mobile_product_page_images }}',
         productImageZoom: {{ theme.product_image_zoom }},
         homepageSlideshowAutoplay: {{ theme.homepage_slideshow_autoplay }},
-        homepageSlideshowSpeed: {{ theme.homepage_slideshow_speed }}
-      }
+        homepageSlideshowSpeed: {{ theme.homepage_slideshow_speed }},
+        showBnplMessaging: {{ theme.show_bnpl_messaging }} && !themeFeatures.optOuts.includes("theme_bnpl_messaging"),
+      };
       const themeColors = {
+        primaryTextColor: '{{ theme.text_color }}',
         textColor: '{{ theme.text_color }}',
         backgroundColor: '{{ theme.background_color }}',
-      }
+      };
     </script>
     {% if theme.announcement_message_text %}
       <script>

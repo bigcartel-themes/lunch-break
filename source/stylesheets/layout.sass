@@ -6,7 +6,7 @@
   --border-color: #{'rgba(var(--text-color-rgb), .5)'}
   --mobile-nav-border-color: #{'rgba(var(--text-color-rgb), .2)'}
   --background-color: #{'{{ theme.background_color }}'}
-  --header-logo-max-height: #{"{{ theme.header_logo_image_height | append: 'px' }}"}
+  --header-logo-max-height-numeric: #{"{{ theme.header_logo_image_height }}"}
   --header-background: #{'{{ theme.header_background_color }}'}
   --header-text-color: #{'{{ theme.header_text_color }}'}
   --text-color: #{'{{ theme.text_color }}'}
@@ -66,7 +66,7 @@ a
     color: var(--hover-color)
 
   &:hover
-    text-decoration: underline
+    text-decoration: none
 
 h1, h2, h3, h4, h5, h6
   font-family: var(--primary-font)
@@ -177,12 +177,27 @@ h1
   padding: 0 16px 80px
   width: 100%
   display: grid
-  grid-template-columns: #{"{% if theme.sidebar_position == 'right' %} 1fr 220px {% else %} 220px 1fr {% endif %}"}
   grid-gap: 60px
+
+  &.left-sidebar
+    @media screen and (min-width: $break-large + 1)
+      grid-template-columns: 220px 1fr
+      grid-template-areas: "sidebar main" ". related"
+
+  &.right-sidebar
+    @media screen and (min-width: $break-large + 1)
+      grid-template-columns: 1fr 220px
+      grid-template-areas: "main sidebar" "related ."
 
   @media screen and (max-width: $break-large)
     padding-bottom: 40px
     grid-template-columns: 1fr
+    grid-template-areas: "main" "related"
+
+  @media screen and (max-width: $break-large)
+    padding-bottom: 40px
+    grid-template-columns: 1fr
+    grid-template-areas: "main" "related" "sidebar"
 
 a.skip-link
   +transition(all .3s)
@@ -235,13 +250,29 @@ header
     word-break: break-word
   
   .logo
-    display: inline-block
+    display: inline-flex
+    align-items: center
     line-height: 0
 
+// Logo image styling
 .store-image
   display: block
   object-fit: contain
   width: auto
+  // Base styles for largest screens - should be the largest size
+  height: clamp(50px, calc(var(--header-logo-max-height-numeric) * 1px), 300px)
+  max-width: clamp(200px, calc(var(--header-logo-max-height-numeric) * 2.5 * 1px), 750px)
+
+
+  // Medium screens - should be smaller than desktop
+  @media screen and (max-width: $break-medium) 
+    height: clamp(50px, calc(var(--header-logo-max-height-numeric) * 0.8 * 1px), 160px)
+    max-width: clamp(160px, calc(var(--header-logo-max-height-numeric) * 2 * 1px), 400px)
+    
+  // Small screens - should be smallest
+  @media screen and (max-width: $break-small)
+    height: clamp(50px, calc(var(--header-logo-max-height-numeric) * 0.6 * 1px), 120px)
+    max-width: clamp(125px, calc(var(--header-logo-max-height-numeric) * 1.75 * 1px), 300px)
 
 .hidden
   display: none
@@ -249,6 +280,8 @@ header
 .content
   +pie-clearfix
   position: relative
+  grid-area: main
+  min-height: 600px
 
 .custom_content
   font-family: var(--secondary-font)
@@ -283,9 +316,19 @@ header
     &:hover
       color: var(--hover-color)
 
+  img
+    display: inline-block
+    margin: 0 auto
+    max-width: 100%
+    margin-bottom: 16px
+
 .sidebar-navigation
   background-color: var(--background-color)
   padding-bottom: 40px
+  grid-area: sidebar
+
+  @media screen and (max-width: $break-large)
+    display: none
 
   @media only screen and (max-width: $break-large)
     left: 0
@@ -380,7 +423,7 @@ header
         color: var(--hover-color)
 
       &:hover
-        text-decoration: underline
+        text-decoration: none
 
       &:focus
         outline-offset: 2px
@@ -511,7 +554,7 @@ button.button, a.button
       box-shadow: none
       background: none
       color: var(--hover-color)
-      text-decoration: underline
+      text-decoration: none
 
   &:hover, &:focus
     background-color: var(--button-background-hover-color)

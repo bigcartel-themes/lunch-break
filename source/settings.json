@@ -1,18 +1,18 @@
 {
   "name": "Lunch Break",
-  "version": "1.15.0",
+  "version": "1.16.0",
   "images": [
     {
       "variable": "header_logo",
       "label": "Header image",
-      "description": "Recommend transparent background and 220px high"
+      "description": "Rectangular image with 250px+ height, transparent background recommended"
     }
   ],
   "image_sets": [
     {
       "variable": "slideshow_images",
       "label": "Homepage slideshow",
-      "description": "1000px by 400px images recommended"
+      "description": "Use same size images, 1000 x 400px images recommended"
     }
   ],
   "preset_styles": {
@@ -103,8 +103,8 @@
           {
             "style_name": "Bold #1",
             "fonts": {
-              "primary_font": "Inknut Antiqua",
-              "secondary_font": "Source Sans Pro"
+              "primary_font": "Doto",
+              "secondary_font": "Source Code Pro"
             },
             "colors": {
               "background_color": "#000000",
@@ -149,7 +149,7 @@
           {
             "style_name": "Bold #3",
             "fonts": {
-              "primary_font": "Titillium Web",
+              "primary_font": "Rubik Dirt",
               "secondary_font": "Karla"
             },
             "colors": {
@@ -209,7 +209,7 @@
               "header_text_color": "#FFFFFF",
               "text_color": "#FFFFFF",
               "secondary_text_color": "#FFE8E8",
-              "link_hover_color": "#4ECDC4",
+              "link_hover_color": "#FFE81A",
               "button_text_color": "#FFFFFF",
               "button_background_color": "#4ECDC4",
               "button_background_hover_color": "#3DBDB4",
@@ -223,8 +223,8 @@
           {
             "style_name": "Playful #3",
             "fonts": {
-              "primary_font": "BioRhyme",
-              "secondary_font": "Nunito Sans"
+              "primary_font": "Playwrite HR Lijeva",
+              "secondary_font": "Lato"
             },
             "colors": {
               "background_color": "#794ACF",
@@ -515,18 +515,18 @@
     },
     {
       "variable": "header_logo_image_height",
-      "label": "Header logo image height",
+      "label": "Header logo image size",
       "type": "select",
       "options": [
-        ["Extra Small", "70"],
-        ["Small", "100"],
-        ["Medium", "140"],
-        ["Large", "180"],
-        ["Extra Large", "200"],
-        ["XX Large", "220"]
+        ["Extra Small", "50"],
+        ["Small", "70"],
+        ["Medium", "100"],
+        ["Large", "125"],
+        ["Extra Large", "150"],
+        ["XX Large", "175"]
       ],
-      "default": "140",
-      "description": "Controls the maximum height of your header logo"
+      "default": "70",
+      "description": "Controls the maximum size of your header logo"
     },
     {
       "variable": "header_position",
@@ -696,7 +696,7 @@
       "label": "Related products",
       "type": "select",
       "options": "1..8",
-      "default": 3,
+      "default": 6,
       "description": "The maximum number of related products to show on Product pages",
       "requires": [
         "show_related_products eq true"
@@ -834,6 +834,13 @@
       "requires": [
         "footer_text present"
       ]
+    },
+    {
+      "variable": "show_bnpl_messaging",
+      "label": "Buy Now, Pay Later Messaging",
+      "type": "boolean",
+      "default": true,
+      "description": "Show payment options prior to checkout on product and cart pages. Requires paid plan."
     },
     {
       "variable": "money_format",
