@@ -84,7 +84,15 @@
                 <div class="product-list-thumb-info">
                   <div class="product-list-thumb-name">{{ product.name }}</div>
                   <div class="product-list-thumb-price">
-                    {% unless product.status == 'sold-out' and theme.show_sold_out_product_prices == false %}
+                    {% assign hide_price = false %}
+                    {% if product.status == 'sold-out' and theme.show_sold_out_product_prices == false %}
+                      {% assign hide_price = true %}
+                    {% endif -%}
+                    {% if product.status == 'coming-soon' and theme.show_coming_soon_product_prices == false %}
+                      {% assign hide_price = true %}
+                    {% endif %}
+
+                    {% unless hide_price %}
                       {{ product.default_price | money: theme.money_format }}
                     {% endunless %}
                     {% if product_status != blank %}
