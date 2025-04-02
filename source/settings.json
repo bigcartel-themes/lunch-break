@@ -4,6 +4,7 @@
   "images": [
     {
       "variable": "header_logo",
+      "section": "global_navigation",
       "label": "Header image",
       "description": "Rectangular image with 250px+ height, transparent background recommended"
     }
@@ -12,6 +13,7 @@
     {
       "variable": "slideshow_images",
       "label": "Homepage slideshow",
+      "section": "homepage",
       "description": "Use same size images, 1000 x 400px images recommended"
     }
   ],
@@ -481,41 +483,9 @@
   ],
   "options": [
     {
-      "variable": "announcement_message_text",
-      "label": "Announcement text",
-      "type": "text",
-      "max_length": 500,
-      "description": "Displays an announcement message on the top of every page"
-    },
-    {
-      "variable": "maintenance_message",
-      "label": "Maintenance mode message",
-      "type": "text",
-      "max_length": 2048,
-      "description": "A message visitors see when your shop is in Maintenance Mode",
-      "default": "We're working on our shop right now.<br /><br />Please check back soon."
-    },
-    {
-      "variable": "contact_text",
-      "label": "Contact page text",
-      "type": "text",
-      "max_length": 1024,
-      "description": "Displays a message on your contact page"
-    },
-    {
-      "variable": "sidebar_position",
-      "label": "Sidebar position",
-      "type": "select",
-      "options": [
-        ["Left", "left"],
-        ["Right", "right"]
-      ],
-      "default": "right",
-      "description": "Sets the position of the side navigation on the page"
-    },
-    {
       "variable": "header_logo_image_height",
       "label": "Header logo image size",
+      "section": "global_navigation",
       "type": "select",
       "options": [
         ["Extra Small", "50"],
@@ -531,6 +501,7 @@
     {
       "variable": "header_position",
       "label": "Header alignment",
+      "section": "global_navigation",
       "type": "select",
       "options": [
         ["Left", "flex-start"],
@@ -540,8 +511,120 @@
       "description": "Sets the position of your store name or header logo"
     },
     {
+      "variable": "show_search",
+      "label": "Show search",
+      "section": "global_navigation",
+      "type": "boolean",
+      "default": true,
+      "description": "Displays a search field in the sidebar"
+    },
+    {
+      "variable": "sidebar_position",
+      "label": "Sidebar position",
+      "section": "global_navigation",
+      "type": "select",
+      "options": [
+        ["Left", "left"],
+        ["Right", "right"]
+      ],
+      "default": "right",
+      "description": "Sets the position of the side navigation on the page"
+    },
+    {
+      "variable": "show_newest",
+      "label": "Show newest products",
+      "section": "global_navigation",
+      "type": "boolean",
+      "default": false,
+      "description": "Displays a list of your newest products in the sidebar"
+    },
+    {
+      "variable": "show_top_selling",
+      "label": "Show top selling products",
+      "section": "global_navigation",
+      "type": "boolean",
+      "default": false,
+      "description": "Displays a list of your top selling products in the sidebar"
+    },
+    {
+      "variable": "max_products_per_row",
+      "label": "Maximum products per row",
+      "section": "global_navigation",
+      "type": "select",
+      "options": "1..4",
+      "default": 3,
+      "description": "The maximum number of products displayed per row on larger screens"
+    },
+    {
+      "variable": "max_products_per_row_mobile",
+      "label": "Maximum products per row (mobile)",
+      "section": "global_navigation",
+      "type": "select",
+      "options": "1..2",
+      "default": 2,
+      "description": "The number of products displayed per row on smaller screens"
+    },
+    {
+      "variable": "grid_image_style",
+      "label": "Product grid image style",
+      "section": "global_navigation",
+      "type": "select",
+      "options": [
+        ["Normal", "default"],
+        ["Fit to square", "contain"],
+        ["Crop to square", "cover"]
+      ],
+      "default": "cover",
+      "description": "Sets the display of images in the product grid"
+    },
+    {
+      "variable": "product_detail_alignment",
+      "label": "Product grid details alignment",
+      "section": "global_navigation",
+      "type": "select",
+      "options": [
+        ["Left", "left"],
+        ["Center", "center"]
+      ],
+      "default": "left",
+      "description": "Alignment for product details under thumbnail images"
+    },
+    {
+      "variable": "products_per_page",
+      "label": "Products per page",
+      "section": "global_navigation",
+      "type": "select",
+      "options": "1..100",
+      "default": 48,
+      "description": "The number of products displayed per page"
+    },
+    {
+      "variable": "footer_text",
+      "label": "Footer text",
+      "section": "global_navigation",
+      "type": "text",
+      "max_length": 2048,
+      "description": "Show a custom message in your shop's footer"
+    },
+    {
+      "variable": "footer_text_position",
+      "label": "Footer text position",
+      "section": "global_navigation",
+      "type": "select",
+      "options": [
+        ["Start of footer", "start"],
+        ["End of footer", "end"]
+      ],
+      "default": "end",
+      "description": "Choose where to show your footer message",
+      "requires": [
+        "footer_text present"
+      ]
+    },
+    {
       "variable": "homepage_slideshow_autoplay",
       "label": "Auto-play homepage slideshow",
+      "section": "homepage",
       "type": "boolean",
       "default": true,
       "description": "Automatically advances slides in the homepage slideshow"
@@ -549,6 +632,7 @@
     {
       "variable": "homepage_slideshow_speed",
       "label": "Slideshow speed",
+      "section": "homepage",
       "type": "select",
       "options": [
         ["Slowest", 6000],
@@ -566,6 +650,7 @@
     {
       "variable": "featured_header",
       "label": "Featured header",
+      "section": "homepage",
       "type": "text",
       "description": "Featured products header on the Home page",
       "default": "Featured"
@@ -573,6 +658,7 @@
     {
       "variable": "featured_products",
       "label": "Featured products",
+      "section": "homepage",
       "type": "select",
       "options": "0..48",
       "default": 12,
@@ -581,6 +667,7 @@
     {
       "variable": "featured_order",
       "label": "Featured products order",
+      "section": "homepage",
       "type": "select",
       "options": "product_orders",
       "default": "position",
@@ -592,52 +679,15 @@
     {
       "variable": "all_products_button_text",
       "label": "All products button text",
+      "section": "homepage",
       "type": "text",
       "description": "Displays underneath featured products and links to the Products Page",
       "default": "All products"
     },
     {
-      "variable": "max_products_per_row",
-      "label": "Maximum products per row",
-      "type": "select",
-      "options": "1..4",
-      "default": 3,
-      "description": "The maximum number of products displayed per row on larger screens"
-    },
-    {
-      "variable": "max_products_per_row_mobile",
-      "label": "Maximum products per row (mobile)",
-      "type": "select",
-      "options": "1..2",
-      "default": 2,
-      "description": "The number of products displayed per row on smaller screens"
-    },
-    {
-      "variable": "grid_image_style",
-      "label": "Product grid image style",
-      "type": "select",
-      "options": [
-        ["Normal", "default"],
-        ["Fit to square", "contain"],
-        ["Crop to square", "cover"]
-      ],
-      "default": "cover",
-      "description": "Sets the display of images in the product grid"
-    },
-    {
-      "variable": "product_detail_alignment",
-      "label": "Product grid details alignment",
-      "type": "select",
-      "options": [
-        ["Left", "left"],
-        ["Center", "center"]
-      ],
-      "default": "left",
-      "description": "Alignment for product details under thumbnail images"
-    },
-    {
       "variable": "product_image_zoom",
       "label": "Enable product image zoom",
+      "section": "product_page",
       "type": "boolean",
       "default": true,
       "description": "Click to open a larger version of the Product page image"
@@ -645,6 +695,7 @@
     {
       "variable": "desktop_product_page_images",
       "label": "Desktop product page images",
+      "section": "product_page",
       "type": "select",
       "options": [
         ["Thumbnails", "thumbnails"],
@@ -658,6 +709,7 @@
     {
       "variable": "mobile_product_page_images",
       "label": "Mobile product page image carousel",
+      "section": "product_page",
       "type": "select",
       "options": [
         ["Show thumbnails", "show-thumbnails"],
@@ -667,16 +719,9 @@
       "description": "Choose to hide or show thumbnails on the mobile Product page carousel"
     },
     {
-      "variable": "products_per_page",
-      "label": "Products per page",
-      "type": "select",
-      "options": "1..100",
-      "default": 48,
-      "description": "The number of products displayed per page"
-    },
-    {
       "variable": "show_related_products",
       "label": "Show related products",
+      "section": "product_page",
       "type": "boolean",
       "default": true,
       "description": "Displays related products on the Product page"
@@ -684,6 +729,7 @@
     {
       "variable": "related_products_header",
       "label": "Related products header",
+      "section": "product_page",
       "type": "text",
       "description": "Displays above related products on Products pages",
       "default": "You might also like",
@@ -694,6 +740,7 @@
     {
       "variable": "related_products",
       "label": "Related products",
+      "section": "product_page",
       "type": "select",
       "options": "1..8",
       "default": 6,
@@ -705,6 +752,7 @@
     {
       "variable": "related_products_order",
       "label": "Related products order",
+      "section": "product_page",
       "type": "select",
       "options": "product_orders",
       "default": "top-selling",
@@ -714,29 +762,9 @@
       ]
     },
     {
-      "variable": "show_search",
-      "label": "Show search",
-      "type": "boolean",
-      "default": true,
-      "description": "Displays a search field in the sidebar"
-    },
-    {
-      "variable": "show_newest",
-      "label": "Show newest products",
-      "type": "boolean",
-      "default": false,
-      "description": "Displays a list of your newest products in the sidebar"
-    },
-    {
-      "variable": "show_top_selling",
-      "label": "Show top selling products",
-      "type": "boolean",
-      "default": false,
-      "description": "Displays a list of your top selling products in the sidebar"
-    },
-    {
       "variable": "show_sold_out_product_options",
       "label": "Show sold out product variants",
+      "section": "product_page",
       "type": "boolean",
       "default": true,
       "description": "Shows sold out product variants in the Product page dropdowns",
@@ -747,6 +775,7 @@
     {
       "variable": "show_sold_out_product_prices",
       "label": "Show prices for sold out products",
+      "section": "general",
       "type": "boolean",
       "default": true,
       "description": "Show the price of sold out products on product grids and product pages",
@@ -757,6 +786,7 @@
     {
       "variable": "show_coming_soon_product_prices",
       "label": "Show prices for coming soon products",
+      "section": "general",
       "type": "boolean",
       "default": true,
       "description": "Show the price of coming soon products on product grids and product pages"
@@ -764,6 +794,7 @@
     {
       "variable": "show_low_inventory_messages",
       "label": "Show product stock alerts",
+      "section": "product_page",
       "type": "boolean",
       "default": true,
       "description": "Show shoppers alerts on Product pages when it's running low on stock",
@@ -774,6 +805,7 @@
     {
       "variable": "low_inventory_threshold",
       "label": "Low stock alert",
+      "section": "product_page",
       "options": "1..100",
       "type": "select",
       "default": "10",
@@ -786,6 +818,7 @@
     {
       "variable": "low_inventory_message",
       "label": "Low stock message",
+      "section": "product_page",
       "type": "text",
       "max_length": 50,
       "description": "Message shown when stock drops below your alert level",
@@ -798,6 +831,7 @@
     {
       "variable": "almost_sold_out_message",
       "label": "Almost sold out message",
+      "section": "product_page",
       "type": "text",
       "max_length": 50,
       "description": "Message shown when stock drops below half your alert level",
@@ -809,8 +843,20 @@
       ]
     },
     {
+      "variable": "show_bnpl_messaging",
+      "label": "Buy Now, Pay Later Messaging",
+      "section": "product_page",
+      "type": "boolean",
+      "default": true,
+      "description": "Show payment options prior to checkout on product and cart pages. Requires paid plan.",
+      "requires": [
+        "feature:theme_bnpl_messaging neq opted_out"
+      ]
+    },
+    {
       "variable": "border_radius",
       "label": "Rounded corners",
+      "section": "general",
       "type": "select",
       "options": [
         ["Off", "0"],
@@ -822,39 +868,34 @@
       "description": "Controls the rounded corner style on images and other site elements"
     },
     {
-      "variable": "footer_text",
-      "label": "Footer text",
+      "variable": "announcement_message_text",
+      "label": "Announcement text",
+      "section": "messaging",
+      "type": "text",
+      "max_length": 500,
+      "description": "Displays an announcement message on the top of every page"
+    },
+    {
+      "variable": "maintenance_message",
+      "label": "Maintenance mode message",
+      "section": "messaging",
       "type": "text",
       "max_length": 2048,
-      "description": "Show a custom message in your shop's footer"
+      "description": "A message visitors see when your shop is in Maintenance Mode",
+      "default": "We're working on our shop right now.<br /><br />Please check back soon."
     },
     {
-      "variable": "footer_text_position",
-      "label": "Footer text position",
-      "type": "select",
-      "options": [
-        ["Start of footer", "start"],
-        ["End of footer", "end"]
-      ],
-      "default": "end",
-      "description": "Choose where to show your footer message",
-      "requires": [
-        "footer_text present"
-      ]
-    },
-    {
-      "variable": "show_bnpl_messaging",
-      "label": "Buy Now, Pay Later Messaging",
-      "type": "boolean",
-      "default": true,
-      "description": "Show payment options prior to checkout on product and cart pages. Requires paid plan.",
-      "requires": [
-        "feature:theme_bnpl_messaging neq opted_out"
-      ]
+      "variable": "contact_text",
+      "label": "Contact page text",
+      "section": "messaging",
+      "type": "text",
+      "max_length": 1024,
+      "description": "Displays a message on your contact page"
     },
     {
       "variable": "money_format",
       "label": "Price display",
+      "section": "general",
       "type": "select",
       "options": [
         ["Currency sign", "sign"],
@@ -866,84 +907,98 @@
     {
       "variable": "instagram_url",
       "label": "Instagram URL",
+      "section": "social",
       "type": "text",
       "description": "Ex: https://instagram.com/bigcartel"
     },
     {
       "variable": "tiktok_url",
       "label": "TikTok URL",
+      "section": "social",
       "type": "text",
       "description": "Ex: https://tiktok.com/@bigcartelofficial"
     },
     {
       "variable": "bluesky_url",
       "label": "Bluesky URL",
+      "section": "social",
       "type": "text",
       "description": "Ex: https://bsky.app/profile/bigcartel.com"
     },
     {
       "variable": "threads_url",
       "label": "Threads URL",
+      "section": "social",
       "type": "text",
       "description": "Ex: https://threads.net/@bigcartel"
     },
     {
       "variable": "twitter_url",
       "label": "X URL",
+      "section": "social",
       "type": "text",
       "description": "Ex: https://x.com/bigcartel"
     },
     {
       "variable": "facebook_url",
       "label": "Facebook URL",
+      "section": "social",
       "type": "text",
       "description": "Ex: https://facebook.com/bigcartel"
     },
     {
       "variable": "snapchat_url",
       "label": "Snapchat URL",
+      "section": "social",
       "type": "text",
       "description": "Ex: https://snapchat.com/add/bigcartel"
     },
     {
       "variable": "pinterest_url",
       "label": "Pinterest URL",
+      "section": "social",
       "type": "text",
       "description": "Ex: https://pinterest.com/big_cartel"
     },
     {
       "variable": "youtube_url",
       "label": "YouTube URL",
+      "section": "social",
       "type": "text",
       "description": "Ex: https://youtube.com/@BigCartelDotCom"
     },
     {
       "variable": "spotify_url",
       "label": "Spotify URL",
+      "section": "social",
       "type": "text",
       "description": "Ex: https://open.spotify.com/artist/0gxy..."
     },
     {
       "variable": "linkedin_url",
       "label": "LinkedIn URL",
+      "section": "social",
       "type": "text",
       "description": "Ex: https://linkedin.com/in/bigcartel"
     },
     {
       "variable": "twitch_url",
       "label": "Twitch URL",
+      "section": "social",
       "type": "text",
       "description": "Ex: https://twitch.tv/username"
     },
     {
       "variable": "tumblr_url",
       "label": "Tumblr URL",
+      "section": "social",
       "type": "text",
       "description": "Ex: https://bigcartel.tumblr.com"
     },
     {
       "variable": "bandcamp_url",
       "label": "Bandcamp URL",
+      "section": "social",
       "type": "text",
       "description": "Ex: https://bigcartel.bandcamp.com"
     }
