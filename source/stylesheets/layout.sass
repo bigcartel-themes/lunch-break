@@ -260,19 +260,19 @@ header
   object-fit: contain
   width: auto
   // Base styles for largest screens - should be the largest size
-  height: clamp(50px, calc(var(--header-logo-max-height-numeric) * 1px), 300px)
+  max-height: clamp(75px, calc(var(--header-logo-max-height-numeric) * 1px), 400px)
   max-width: clamp(200px, calc(var(--header-logo-max-height-numeric) * 2.5 * 1px), 750px)
 
 
   // Medium screens - should be smaller than desktop
-  @media screen and (max-width: $break-medium) 
-    height: clamp(50px, calc(var(--header-logo-max-height-numeric) * 0.8 * 1px), 160px)
-    max-width: clamp(160px, calc(var(--header-logo-max-height-numeric) * 2 * 1px), 400px)
-    
+  @media screen and (max-width: $break-medium)
+    max-height: clamp(75px, calc(var(--header-logo-max-height-numeric) * 0.8 * 1px), 250px)
+    max-width: clamp(200px, calc(var(--header-logo-max-height-numeric) * 2 * 1px), 500px)
+
   // Small screens - should be smallest
   @media screen and (max-width: $break-small)
-    height: clamp(50px, calc(var(--header-logo-max-height-numeric) * 0.6 * 1px), 120px)
-    max-width: clamp(125px, calc(var(--header-logo-max-height-numeric) * 1.75 * 1px), 300px)
+    max-height: clamp(75px, calc(var(--header-logo-max-height-numeric) * 0.6 * 1px), 150px)
+    max-width: clamp(200px, calc(var(--header-logo-max-height-numeric) * 1.75 * 1px), 350px)
 
 .hidden
   display: none
