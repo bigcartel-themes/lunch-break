@@ -1,12 +1,12 @@
 {
   "name": "Lunch Break",
-  "version": "1.17.1",
+  "version": "1.18.0",
   "images": [
     {
       "variable": "header_logo",
       "section": "global_navigation",
       "label": "Header image",
-      "description": "Rectangular image with 250px+ height, transparent background recommended"
+      "description": "Rectangular image with transparent background, at least 250px tall"
     }
   ],
   "image_sets": [
@@ -472,7 +472,7 @@
     },
     {
       "variable": "announcement_text_color",
-      "label": "Announcement nessage text",
+      "label": "Announcement message text",
       "default": "#FFFFFF"
     },
     {
@@ -488,14 +488,14 @@
       "section": "global_navigation",
       "type": "select",
       "options": [
-        ["Extra Small", "50"],
-        ["Small", "70"],
-        ["Medium", "100"],
-        ["Large", "125"],
-        ["Extra Large", "150"],
-        ["XX Large", "175"]
+        ["Extra Small", "75"],
+        ["Small", "125"],
+        ["Medium", "200"],
+        ["Large", "300"],
+        ["Extra Large", "400"],
+        ["XX Large", "500"]
       ],
-      "default": "70",
+      "default": "125",
       "description": "Controls the maximum size of your header logo"
     },
     {
