@@ -18,7 +18,7 @@
         </ul>
       {% endif %}
 
-      {% if theme.cart_text %}
+      {% if theme.cart_text != blank %}
         <div class="message-banner message-banner--cart">{{ theme.cart_text }}</div>
       {% endif %}
 
