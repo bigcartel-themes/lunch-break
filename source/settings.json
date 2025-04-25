@@ -531,12 +531,25 @@
       "description": "Sets the position of the side navigation on the page"
     },
     {
+      "variable": "nav_shop_items",
+      "label": "Navigation shop links",
+      "section": "global_navigation",
+      "type": "select",
+      "options": [
+        ["Products and Categories", "all"],
+        ["Products only", "products_only"],
+        ["Categories only", "categories_only"]
+      ],
+      "default": "all",
+      "description": "Controls whether products and categories links are shown in your navigation"
+    },
+    {
       "variable": "show_newest",
       "label": "Show newest products",
       "section": "global_navigation",
       "type": "boolean",
       "default": false,
-      "description": "Displays a list of your newest products in the sidebar"
+      "description": "Displays a list of your newest products in your navigation"
     },
     {
       "variable": "show_top_selling",
@@ -544,7 +557,30 @@
       "section": "global_navigation",
       "type": "boolean",
       "default": false,
-      "description": "Displays a list of your top selling products in the sidebar"
+      "description": "Displays a list of your top selling products in your navigation"
+    },
+    {
+      "variable": "nav_pages_types",
+      "label": "Navigation page types",
+      "section": "global_navigation",
+      "type": "select",
+      "options": [
+        ["Pages and Contact", "all"],
+        ["Pages only", "pages_only"],
+        ["Contacts only", "contact_only"],
+        ["None", "none"]
+      ],
+      "default": "all",
+      "description": "Controls which types of pages appear in your navigation"
+    },
+    {
+      "variable": "nav_pages_label",
+      "label": "Navigation page menu label",
+      "section": "global_navigation",
+      "type": "text",
+      "default": "Info",
+      "upgrade_default": "Pages",
+      "description": "Label for your menu containing custom pages and contact"
     },
     {
       "variable": "max_products_per_row",

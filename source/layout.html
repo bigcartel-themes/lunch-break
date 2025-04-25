@@ -95,14 +95,18 @@
               {% if theme.show_search %}
                 <li>
                   <button class="button--open-search link" aria-haspopup="dialog" aria-controls="search-modal">
-                    Search Products
+                    Search
                   </button>
                 </li>
               {% endif %}
-              <li><a href="/products">{{ pages.products.name }}</a></li>
-              {% for category in categories.active %}
-                <li>{{ category | link_to }}</li>
-              {% endfor %}
+              {% if theme.nav_shop_items == "all" or theme.nav_shop_items == "products_only" %}
+                <li><a href="/products">All products</a></li>
+              {% endif %}
+              {% if theme.nav_shop_items == "all" or theme.nav_shop_items == "categories_only" %}
+                {% for category in categories.active %}
+                  <li>{{ category | link_to }}</li>
+                {% endfor %}
+              {% endif %}
             </ul>
           </div>
           {% if artists.active != blank %}
@@ -119,7 +123,7 @@
             {% get 5 products from products.all order: 'newest' %}
               {% if products != blank %}
                 <div class="side_pages">
-                  <div class="nav_title">Newest Products</div>
+                  <div class="nav_title">Newest</div>
                   <ul>
                     {% for product in products %}
                       <li>{{ product | link_to }}</li>
@@ -133,7 +137,7 @@
             {% get 5 products from products.all order: 'sales' %}
               {% if products != blank %}
                 <div class="side_pages">
-                  <div class="nav_title">Top Selling</div>
+                  <div class="nav_title">Top-selling</div>
                   <ul>
                     {% for product in products %}
                       <li>{{ product | link_to }}</li>
@@ -143,18 +147,24 @@
               {% endif %}
             {% endget %}
           {% endif %}
-          <div class="side_pages">
-            <div class="nav_title">Pages</div>
-            <ul>
-              {% for page in pages.all %}
-                <li>{{ page | link_to }}</li>
-              {% endfor %}
-              <li><a href="/contact">{{ pages.contact.name }}</a></li>
-              {% if store.website != blank %}
-                <li><a href="{{ store.website }}">Back to Site</a></li>
-              {% endif %}
-            </ul>
-          </div>
+          {% if theme.nav_pages_types != "none" %}
+            <div class="side_pages">
+              <div class="nav_title">{{ theme.nav_pages_label | default: "Info" }}</div>
+              <ul>
+                {% if theme.nav_pages_types == "all" or theme.nav_pages_types == "pages_only" %}                  
+                  {% for page in pages.all %}
+                    <li>{{ page | link_to }}</li>
+                  {% endfor %}
+                {% endif %}
+                {% if theme.nav_pages_types == "all" or theme.nav_pages_types == "contact_only" %}
+                  <li><a href="/contact">{{ pages.contact.name }}</a></li>
+                {% endif %}
+                {% if store.website != blank %}
+                  <li><a href="{{ store.website }}">Back to site</a></li>
+                {% endif %}
+              </ul>
+            </div>
+          {% endif %}
         </nav>
       </aside>
       {% if theme.sidebar_position == 'left' %}
@@ -346,7 +356,7 @@
               </button>
               <form class="search-form" name="search" action="/products" method="get" accept-charset="utf8" role="search">
                 <input type="hidden" name="utf8" value='✓'>
-                <label for="desktop-search">Search products</label>
+                <label for="desktop-search">Search</label>
                 <input class="search-input" id="desktop-search" name="search" type="search" autocomplete="off" />
                 <button type="submit" class="button search-button" aria-label="Submit search form">
                   <svg aria-hidden="true" class="search-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path d="M15.707 14.293l-3.112-3.092-.006-.004c.882-1.197 1.411-2.597 1.411-4.197 0-3.859-3.141-7-7-7s-7 3.1-7 7 3.141 7 7 7c1.575 0 3.025-.529 4.196-1.41v.006l3.093 3.111c.199.193.411.293.711.293s.512-.098.707-.293c.391-.407.393-1.007-.007-1.414zm-8.707-2.293c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.2 5 5-2.243 5-5 5z"/></svg>
