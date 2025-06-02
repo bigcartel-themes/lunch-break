@@ -19,11 +19,13 @@
     </span>
 		{% case product.status %}
 			{% when 'active' %}
-				{% if product.on_sale %}<span class="small_status {{ product.css_class }}">On sale</span>{% endif %}
+				{% if product.on_sale %}
+          <span class="small_status {{ product.css_class }}">{{ t['product.on_sale'] }}</span>
+        {% endif %}
 			{% when 'sold-out' %}
-				<span class="small_status {{ product.css_class }}">Sold out</span>
+				<span class="small_status {{ product.css_class }}">{{ t['product.sold_out'] }}</span>
 			{% when 'coming-soon' %}
-				<span class="small_status {{ product.css_class }}">Coming soon</span>
+				<span class="small_status {{ product.css_class }}">{{ t['product.coming_soon'] }}</span>
 		{% endcase %}
 	</div>
   {% if product.status == "active" and theme.show_bnpl_messaging %}
@@ -153,8 +155,8 @@
             <input id="option" name="cart[add][id]" type="hidden" value="0">
             {% for option_group in product.option_groups %}
               <div class="select">
-                <select data-unavailable-text="(Unavailable)" data-sold-text="(Sold out)" data-group-id="{{ option_group.id }}" data-group-name="{{ option_group.name | escape }}" class="product_option_group" name="option_group[{{ option_group.id }}]" aria-label="Select {{ option_group.name | escape }}" required>
-                  <option value="" disabled="disabled" selected>Select {{ option_group.name }}</option>
+                <select data-unavailable-text="(Unavailable)" data-sold-text="({{ t['products.sold_out'] }})" data-group-id="{{ option_group.id }}" data-group-name="{{ option_group.name | escape }}" class="product_option_group" name="option_group[{{ option_group.id }}]" aria-label="Select {{ option_group.name | escape }}" required>
+                  <option value="" disabled="disabled" selected>{{ option_group.name }}</option>
                   {% for value in option_group.values %}
                     <option value="{{ value.id }}" data-name="{{ value.name | escape }}">{{ value.name }}</option>
                   {% endfor %}
@@ -165,22 +167,22 @@
           </div>
         {% else %}
           <div class="select">
-            <select class="product_option_select" id="option" name="cart[add][id]" aria-label="Select variant" required>
-              <option value="" disabled="disabled" selected>Select variant</option>
+            <select class="product_option_select" id="option" name="cart[add][id]" aria-label="{{ t['products.select_variant'] }}" required>
+              <option value="" disabled="disabled" selected>{{ t['products.select_variant'] }}</option>
               {% for option in product.options %}
-                <option value="{{ option.id }}" data-price="{{ option.price }}"{% if option.sold_out %} disabled="disabled" disabled-type="sold-out"{% endif %}>{{ option.name }} {% if option.sold_out %} (Sold out){% endif %}</option>
+                <option value="{{ option.id }}" data-price="{{ option.price }}"{% if option.sold_out %} disabled="disabled" disabled-type="sold-out"{% endif %}>{{ option.name }} {% if option.sold_out %} ({{ t['products.sold_out'] }}){% endif %}</option>
               {% endfor %}
             </select>
             <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 7.6" enable-background="new 0 0 15 7.6"><path d="M15 1.1l-7.5 6.5-7.5-6.3 1-1.2 6.5 5.5 6.5-5.6z"/></svg>
           </div>
         {% endif %}
       {% endif %}
-      <button class="button add-to-cart-button" name="submit" type="submit" data-add-title="Add to cart" data-sold-title="Sold out">Add to cart</button>
+      <button class="button add-to-cart-button" name="submit" type="submit" data-add-title="{{ t['products.add_to_cart'] }}" data-sold-title="{{ t['products.sold_out'] }}">{{ t['products.add_to_cart'] }}</button>
       {{ store | instant_checkout_button: 'dark', '44px' }}
       <div class="inventory-status-message" data-inventory-message></div>
       {% if product.has_option_groups %}
         <div class="reset-selection-button-container">
-          <button class="button minimal-button reset-selection-button" title="Reset selection" type="reset">Reset selection</button>
+          <button class="button minimal-button reset-selection-button" title="{{ t['products.reset'] }}" type="reset">{{ t['products.reset'] }}</button>
         </div>
       {% endif %}
     </form>

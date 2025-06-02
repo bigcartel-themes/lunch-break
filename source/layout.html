@@ -18,7 +18,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>{{ store.name }}</title>
+    <title>{{ page_title }}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="{{ theme | theme_css_url }}" media="screen" rel="stylesheet" type="text/css">
@@ -45,7 +45,7 @@
       </button>
       <a href="/cart" class="mobile_cart">
         <svg aria-hidden="true" fill="currentColor" class="cart_icon" xmlns="http://www.w3.org/2000/svg" height="20" width="20" viewBox="0 0 22 17" enable-background="new 0 0 22 17"><path d="M4.3 0h-4.3l.5 1.4h2.8l4.2 10.9h10.5l.5-1.4h-10zM6.9 1.9l2.8 7.1h9.5l2.8-7.1h-15.1zm11.4 5.7h-7.6l-1.7-4.3h10.9l-1.6 4.3z"/><circle cx="10.2" cy="15.6" r="1.4"/><circle cx="15.6" cy="15.6" r="1.4"/></svg>
-        <span class="sr-only">View cart - </span><span class="cart_title">{{ cart.item_count | pluralize: 'item', 'items' }}</span>/<span class="cart_numbers">{{ cart.total | money: theme.money_format }}</span>
+        <span class="sr-only">{{ t['cart.view_cart'] }} - </span><span class="cart_title">{{ cart.item_count | pluralize: t['navigation.item'], t['navigation.items'] }}</span>/<span class="cart_numbers">{{ cart.total | money: theme.money_format }}</span>
       </a>
   	</div>
     <header class="{% if theme.header_logo != blank %}logo{% else %}text{% endif %}" data-bc-hook="header">
@@ -83,24 +83,24 @@
       {% endif %}
       <aside class="sidebar-navigation" id="sidebar-navigation" aria-label="Main menu">
         <a href="/cart" class="side_cart">
-          <span class="sr-only">View cart - </span>
+          <span class="sr-only">{{ t['cart.view_cart'] }} - </span>
           <svg aria-hidden="true" class="cart_icon" xmlns="http://www.w3.org/2000/svg" height="20" width="20" viewBox="0 0 22 17" enable-background="new 0 0 22 17"><path d="M4.3 0h-4.3l.5 1.4h2.8l4.2 10.9h10.5l.5-1.4h-10zM6.9 1.9l2.8 7.1h9.5l2.8-7.1h-15.1zm11.4 5.7h-7.6l-1.7-4.3h10.9l-1.6 4.3z"/><circle cx="10.2" cy="15.6" r="1.4"/><circle cx="15.6" cy="15.6" r="1.4"/></svg>
-          <span class="cart_title">{{ cart.item_count | pluralize: 'item', 'items' }}</span>
+          <span class="cart_title">{{ cart.item_count | pluralize: t['navigation.item'], t['navigation.items'] }}</span>
           <span class="cart_numbers">{{ cart.total | money: theme.money_format }}</span>
         </a>
         <nav>
           <div class="side_categories">
-            <div class="nav_title">Shop</div>
+            <div class="nav_title">{{ t['navigation.shop'] }}</div>
             <ul>
               {% if theme.show_search %}
                 <li>
                   <button class="button--open-search link" aria-haspopup="dialog" aria-controls="search-modal">
-                    Search
+                    {{ t['navigation.search'] }}
                   </button>
                 </li>
               {% endif %}
               {% if theme.nav_shop_items == "all" or theme.nav_shop_items == "products_only" %}
-                <li><a href="/products">All products</a></li>
+                <li><a href="/products">{{ t['navigation.all_products'] }}</a></li>
               {% endif %}
               {% if theme.nav_shop_items == "all" or theme.nav_shop_items == "categories_only" %}
                 {% for category in categories.active %}
@@ -123,7 +123,7 @@
             {% get 5 products from products.all order: 'newest' %}
               {% if products != blank %}
                 <div class="side_pages">
-                  <div class="nav_title">Newest</div>
+                  <div class="nav_title">{{ t['navigation.newest'] }}</div>
                   <ul>
                     {% for product in products %}
                       <li>{{ product | link_to }}</li>
@@ -137,7 +137,7 @@
             {% get 5 products from products.all order: 'sales' %}
               {% if products != blank %}
                 <div class="side_pages">
-                  <div class="nav_title">Top-selling</div>
+                  <div class="nav_title">{{ t['navigation.top_selling'] }}</div>
                   <ul>
                     {% for product in products %}
                       <li>{{ product | link_to }}</li>
@@ -149,7 +149,7 @@
           {% endif %}
           {% if theme.nav_pages_types != "none" %}
             <div class="side_pages">
-              <div class="nav_title">{{ theme.nav_pages_label | default: "Info" }}</div>
+              <div class="nav_title">{{ t['navigation.more'] }}</div>
               <ul>
                 {% if theme.nav_pages_types == "all" or theme.nav_pages_types == "pages_only" %}                  
                   {% for page in pages.all %}
@@ -157,10 +157,10 @@
                   {% endfor %}
                 {% endif %}
                 {% if theme.nav_pages_types == "all" or theme.nav_pages_types == "contact_only" %}
-                  <li><a href="/contact">{{ pages.contact.name }}</a></li>
+                  <li><a href="/contact">{{ t['navigation.contact'] }}</a></li>
                 {% endif %}
                 {% if store.website != blank %}
-                  <li><a href="{{ store.website }}">Back to site</a></li>
+                  <li><a href="{{ store.website }}">{{ t['navigation.back_to_site'] }}</a></li>
                 {% endif %}
               </ul>
             </div>
@@ -181,7 +181,7 @@
       {% endif %}
 
     {% if theme.show_related_products %}
-      {% assign related_products_header = theme.related_products_header | default: 'You might also like' %}
+      {% assign related_products_header = t['products.related_products'] %}
       {% assign related_products_collection = product.related_products %}
       
       {% if related_products_collection.size > 0 %}
@@ -198,11 +198,13 @@
                 {% assign related_product_status = '' %}
                 {% case related_product.status %}
                   {% when 'active' %}
-                    {% if related_product.on_sale %}{% assign related_product_status = 'On sale' %}{% endif %}
+                    {% if related_product.on_sale %}
+                      {% assign related_product_status = t['products.on_sale'] %}
+                    {% endif %}
                   {% when 'sold-out' %}
-                    {% assign related_product_status = 'Sold out' %}
+                    {% assign related_product_status = t['products.sold_out'] %}
                   {% when 'coming-soon' %}
-                    {% assign related_product_status = 'Coming soon' %}
+                    {% assign related_product_status = t['products.coming_soon'] %}
                 {% endcase %}
                 {% capture related_product_status_class %}{% if related_product.status == 'active' and related_product.on_sale %}status-primary{% else %}status-secondary{% endif %}{% endcapture %}
                 {% capture image_class %}
@@ -216,7 +218,7 @@
                 {% endcapture %}
                 {% capture related_product_status_class %}{% if related_product.status == 'active' and related_product.on_sale %}status-primary{% else %}status-secondary{% endif %}{% endcapture %}
                 <div class="product-list-thumb {{ related_product.css_class }}">
-                  <a class="product-list-link" href="{{ related_product.url }}" title="View {{ related_product.name | escape }}">
+                  <a class="product-list-link" href="{{ related_product.url }}" title="{{ related_product.name | escape }}">
                     <div class="product-list-image-container product-list-image-container-{{ theme.grid_image_style }}">
                       <img
                         alt=""
@@ -355,7 +357,7 @@
               </button>
               <form class="search-form" name="search" action="/products" method="get" accept-charset="utf8" role="search">
                 <input type="hidden" name="utf8" value='✓'>
-                <label for="desktop-search">Search</label>
+                <label for="desktop-search">{{ t['navigation.search'] }}</label>
                 <input class="search-input" id="desktop-search" name="search" type="search" autocomplete="off" />
                 <button type="submit" class="button search-button" aria-label="Submit search form">
                   <svg aria-hidden="true" class="search-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path d="M15.707 14.293l-3.112-3.092-.006-.004c.882-1.197 1.411-2.597 1.411-4.197 0-3.859-3.141-7-7-7s-7 3.1-7 7 3.141 7 7 7c1.575 0 3.025-.529 4.196-1.41v.006l3.093 3.111c.199.193.411.293.711.293s.512-.098.707-.293c.391-.407.393-1.007-.007-1.414zm-8.707-2.293c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.2 5 5-2.243 5-5 5z"/></svg>
@@ -392,6 +394,11 @@
         primaryTextColor: '{{ theme.text_color }}',
         textColor: '{{ theme.text_color }}',
         backgroundColor: '{{ theme.background_color }}',
+      };
+      const themeTranslations = {
+        cart: {
+          shareThisCartLinkCopySuccess: "{{ t['cart.share_this_cart_link_copy_success'] | replace: '"', '\"' | replace: "'", "\\'" }}"
+        }
       };
     </script>
     {% if theme.announcement_message_text %}

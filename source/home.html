@@ -45,11 +45,13 @@
             {% assign product_status = '' %}
             {% case product.status %}
               {% when 'active' %}
-                {% if product.on_sale %}{% assign product_status = 'On sale' %}{% endif %}
+                {% if product.on_sale %}
+                  {% assign product_status = t['products.on_sale'] %}
+                {% endif %}
               {% when 'sold-out' %}
-                {% assign product_status = 'Sold out' %}
+                {% assign product_status = t['products.sold_out'] %}
               {% when 'coming-soon' %}
-                {% assign product_status = 'Coming soon' %}
+                {% assign product_status = t['products.coming_soon'] %}
             {% endcase %}
             {% capture status_class %}{% if product.status == 'active' and product.on_sale %}status-primary{% else %}status-secondary{% endif %}{% endcapture %}
             {% capture image_class %}
@@ -62,7 +64,7 @@
               {% endif %}
             {% endcapture %}
             <div class="product-list-thumb {{ product.css_class }}">
-              <a class="product-list-link" href="{{ product.url }}" title="View {{ product.name | escape }}">
+              <a class="product-list-link" href="{{ product.url }}" title="{{ product.name | escape }}">
                 <div class="product-list-image-container product-list-image-container-{{ theme.grid_image_style }}">
                   <img
                     alt=""
@@ -106,12 +108,10 @@
         </div>
       </div>
       {% if paginate.pages > 1 %}
-        {% if theme.all_products_button_text != blank %}
-          <a class="button button--centered button--secondary all-products-button" href="/products">{{ theme.all_products_button_text }}</a>
-        {% endif %}
+        <a class="button button--centered button--secondary all-products-button" href="/products">{{ t['home.all_products'] }}</a>
       {% endif %}
     {% else %}
-      <p class="no_products">No products found.</p>
+      <p class="no_products">{{ t['products.no_products'] }}</p>
     {% endif %}
   {% endpaginate %}
 {% endif %}
