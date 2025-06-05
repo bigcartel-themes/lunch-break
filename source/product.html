@@ -20,12 +20,12 @@
 		{% case product.status %}
 			{% when 'active' %}
 				{% if product.on_sale %}
-          <span class="small_status {{ product.css_class }}">{{ t['product.on_sale'] }}</span>
+          <span class="small_status {{ product.css_class }}">{{ t['products.on_sale'] }}</span>
         {% endif %}
 			{% when 'sold-out' %}
-				<span class="small_status {{ product.css_class }}">{{ t['product.sold_out'] }}</span>
+				<span class="small_status {{ product.css_class }}">{{ t['products.sold_out'] }}</span>
 			{% when 'coming-soon' %}
-				<span class="small_status {{ product.css_class }}">{{ t['product.coming_soon'] }}</span>
+				<span class="small_status {{ product.css_class }}">{{ t['products.coming_soon'] }}</span>
 		{% endcase %}
 	</div>
   {% if product.status == "active" and theme.show_bnpl_messaging %}
