@@ -108,7 +108,10 @@
         </div>
       </div>
       {% if paginate.pages > 1 %}
-        <a class="button button--centered button--secondary all-products-button" href="/products">{{ t['home.all_products'] }}</a>
+        {% assign all_products_button_text = t['home.all_products'] %}
+        {% if all_products_button_text != blank %}
+          <a class="button button--centered button--secondary all-products-button" href="/products">{{ all_products_button_text }}</a>
+        {% endif %}
       {% endif %}
     {% else %}
       <p class="no_products">{{ t['products.no_products'] }}</p>
