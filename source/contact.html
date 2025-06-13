@@ -1,5 +1,13 @@
+{% comment %}
+  Use page name from Custo if it's been customized, otherwise use the localized default.
+{% endcomment %}
+{% assign page_title = t['navigation.contact'] %}
+{% if page.name != 'Contact' %}
+  {% assign page_title = page.name %}
+{% endif %}
+
 <div class="custom_content">
-  <h1>{{ page.name }}</h1>
+  <h1>{{ page_title }}</h1>
   {% if errors != blank %}
     <ul class="errors">
       {% for error in errors %}
@@ -8,30 +16,30 @@
     </ul>
   {% endif %}
   {% if contact.sent %}
-    <p>Your message has been sent and we'll get back to you soon.</p>
+    <p>{{ t['contact.form_success'] }}</p>
   {% else %}
-    {% if theme.contact_text %}
+    {% if theme.contact_text != blank %}
       <div class="message-banner message-banner--contact">{{ theme.contact_text }}</div>
     {% endif %}
     <form method="post" action="/contact" class="contact_form">
       <div class="contact_name">
-        <label for="name">Name</label>
+        <label for="name">{{ t['contact.name'] }}</label>
         {{ contact | contact_input: 'name' }}
       </div>
       <div class="contact_email">
-        <label for="email">Email</label>
+        <label for="email">{{ t['contact.email'] }}</label>
         {{ contact | contact_input: 'email' }}
       </div>
       <div class="contact_subject">
-        <label for="subject">Subject</label>
+        <label for="subject">{{ t['contact.subject'] }}</label>
         {{ contact | contact_input: 'subject' }}
       </div>
       <div class="contact_message">
-        <label for="message">Message</label>
+        <label for="message">{{ t['contact.message'] }}</label>
         {{ contact | contact_input: 'message' }}
       </div>
       <div class="contact_send">
-        <button type="submit" name="submit" class="button">Send message</button>
+        <button type="submit" name="submit" class="button">{{ t['contact.send_button'] }}</button>
       </div>
       <div class="contact_recaptcha">
         <div class="recaptcha_note">{{ contact.recaptcha }}</div>
