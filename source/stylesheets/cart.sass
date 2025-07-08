@@ -177,10 +177,19 @@ a.shop-now
 .message-banner
   &--cart
     border-radius: var(--border-radius)
-    background-color: var(--announcement-background-color)
-    color: var(--announcement-text-color)
+    border: 1px solid var(--text-color)
+    background: none
+    color: var(--text-color)
     padding: 16px
     margin: 0 auto 32px
     text-align: center
     width: 100%
     max-width: 760px
+
+    a, a:visited
+      color: var(--text-color)
+      text-decoration: underline
+      text-underline-offset: 3px
+
+      &:hover, &:focus
+        color: var(--hover-color)

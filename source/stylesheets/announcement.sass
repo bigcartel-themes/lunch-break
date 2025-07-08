@@ -9,6 +9,14 @@
   width: 100%
   z-index: 1
 
+  a, a:visited
+    color: var(--announcement-text-color)
+    text-decoration: underline
+    text-underline-offset: 3px
+
+    &:hover, &:focus
+      color: var(--announcement-text-color)
+
   @media screen and (max-width: $break-medium)
     padding: 16px 88px
 
