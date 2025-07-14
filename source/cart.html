@@ -98,8 +98,8 @@
     </form>
   {% else %}
     <div class="alert-message">
-      <div class="alert-message__text">Your cart is empty!</div>
-      <a class="button shop-now" href="/">Shop now</a>
+      <div class="alert-message__text">{{ t['cart.empty_cart'] }}</div>
+      <a class="button shop-now" href="/">{{ t['cart.continue_shopping'] }}</a>
     </div>
   {% endunless %}
 </div>
