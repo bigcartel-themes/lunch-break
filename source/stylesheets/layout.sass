@@ -190,6 +190,11 @@ h1
   display: grid
   grid-gap: 60px
 
+  // Grid inherits flexbit `min-width: auto` which can introduce issues.
+  // Reference: https://daverupert.com/2017/09/breaking-the-grid/
+  > *
+    min-width: 0
+
   &.left-sidebar
     @media screen and (min-width: $break-large + 1)
       grid-template-columns: 220px 1fr
