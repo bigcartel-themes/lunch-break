@@ -188,7 +188,8 @@ h1
   padding: 0 16px 80px
   width: 100%
   display: grid
-  grid-gap: 60px
+  grid-column-gap: 60px
+  grid-row-gap: 30px
 
   // Grid inherits flexbit `min-width: auto` which can introduce issues.
   // Reference: https://daverupert.com/2017/09/breaking-the-grid/
@@ -198,17 +199,12 @@ h1
   &.left-sidebar
     @media screen and (min-width: $break-large + 1)
       grid-template-columns: 220px 1fr
-      grid-template-areas: "sidebar main" ". related"
+      grid-template-areas: "sidebar main" "sidebar related"
 
   &.right-sidebar
     @media screen and (min-width: $break-large + 1)
       grid-template-columns: 1fr 220px
-      grid-template-areas: "main sidebar" "related ."
-
-  @media screen and (max-width: $break-large)
-    padding-bottom: 40px
-    grid-template-columns: 1fr
-    grid-template-areas: "main" "related"
+      grid-template-areas: "main sidebar" "related sidebar"
 
   @media screen and (max-width: $break-large)
     padding-bottom: 40px
