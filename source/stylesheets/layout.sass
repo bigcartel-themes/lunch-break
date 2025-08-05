@@ -104,6 +104,9 @@ h1
   padding: 0 16px
   width: 100%
 
+  *
+    text-transform: #{"{{ theme.nav_text_transform_header }}"}
+
   @media only screen and (max-width: $break-large)
     +flexbox
     z-index: 11
@@ -350,6 +353,9 @@ header
   padding-bottom: 40px
   grid-area: sidebar
 
+  *
+    text-transform: #{"{{ theme.nav_text_transform_header }}"}
+
   @media only screen and (max-width: $break-large)
     left: 0
     padding: 20px
@@ -473,6 +479,9 @@ footer
   border-top: 1px solid var(--border-color)
   text-align: center
   width: 100%
+
+  *
+    text-transform: #{"{{ theme.nav_text_transform_footer }}"}
 
   .inner-wrapper
     +flex-direction(column)
