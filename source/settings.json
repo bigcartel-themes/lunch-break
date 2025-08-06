@@ -560,8 +560,8 @@
       "description": "Displays a list of your top selling products in your navigation"
     },
     {
-      "variable": "nav_pages_types",
-      "label": "Navigation page types",
+      "variable": "nav_page_display",
+      "label": "Pages to show in your main navigation",
       "section": "global_navigation",
       "type": "select",
       "options": [
@@ -571,6 +571,20 @@
         ["None", "none"]
       ],
       "default": "all",
+      "description": "Controls which types of pages appear in your main navigation"
+    },
+    {
+      "variable": "nav_items_footer",
+      "label": "Navigation items",
+      "section": "global_navigation",
+      "type": "select",
+      "options": "0..100",
+      "default": 100,
+      "description": "The number of custom page links to display in your main navigation",
+      "requires": [
+        "nav_page_display neq contact_only",
+        "nav_page_display neq none"
+      ]
     },
     {
       "variable": "nav_text_transform_header",
@@ -583,7 +597,7 @@
         ["Lowercase", "lowercase"]
       ],
       "default": "initial",
-      "description": "Controls the text case styling in your header"
+      "description": "Controls the text case styling in your main navigation"
     },
     {
       "variable": "nav_text_transform_footer",
