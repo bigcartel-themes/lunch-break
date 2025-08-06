@@ -967,7 +967,15 @@
       "section": "messaging",
       "type": "textarea",
       "max_length": 1024,
-      "description": "Displays a message on your contact page. Supports HTML for advanced customization."
+      "description": "Message displayed at the top of your contact page. Supports HTML for advanced customization."
+    },
+    {
+      "variable": "show_contact_form",
+      "label": "Show contact form",
+      "section": "messaging",
+      "type": "boolean",
+      "default": true,
+      "description": "Display contact form on contact page. If disabled, only contact text is shown."
     },
     {
       "variable": "cart_text",
