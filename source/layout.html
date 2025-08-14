@@ -261,6 +261,10 @@
                       <div class="product-list-thumb-price">
                         {% unless related_product.status == 'sold-out' and theme.show_sold_out_product_prices == false %}
                             {{ related_product.default_price | money: theme.money_format }}
+
+                            {% if product.price_suffix != blank %}
+                              <span class="price-suffix">{{ product.price_suffix }}</span>
+                            {% endif %}
                         {% endunless %}
                         {% if related_product_status != blank %}
                           <div class="product-list-thumb-status {{ related_product_status_class }}">{{ related_product_status }}</div>

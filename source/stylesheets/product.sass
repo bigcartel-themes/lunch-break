@@ -37,10 +37,11 @@
 
   .product_price_status
     +flexbox
-    +align-items(center)
+    +align-items(flex-start)
     color: var(--secondary-text-color)
     font-family: var(--secondary-font)
     font-size: 22px
+    flex-direction: column
 
     @media screen and (max-width: $break-medium)
       +justify-content(flex-start)
