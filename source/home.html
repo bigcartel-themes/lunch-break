@@ -11,7 +11,7 @@
     <div class="splide__track">
       <div class="splide__list">
         {% for image in theme.image_sets.slideshow_images %}
-          <div class="splide__slide">
+          <div class="splide__slide"{% if theme.homepage_slideshow_link != blank %} title="{{ theme.homepage_slideshow_link }}"{% endif %}>
             <img
               alt="Slideshow image {{ forloop.index }}"
               class="slideshow-image lazyload "
@@ -120,6 +120,10 @@
 
                     {% unless hide_price %}
                       {{ product.default_price | money: theme.money_format }}
+
+                      {% if product.price_suffix != blank %}
+                        <span class="price-suffix">{{ product.price_suffix }}</span>
+                      {% endif %}
                     {% endunless %}
                     {% if product_status != blank %}
                       <div class="product-list-thumb-status {{ status_class }}">{{ product_status }}</div>
