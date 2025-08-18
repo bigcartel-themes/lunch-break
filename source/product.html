@@ -11,11 +11,7 @@
     <div class="product_price_status">
       <span class="product_price {% unless hide_price %}with-spacing{% endunless %}">
         {% unless hide_price %}
-          {% if product.variable_pricing %}
-            {{ product.min_price | money: theme.money_format }} - {{ product.max_price | money: theme.money_format }}
-          {% else %}
-            {{ product.default_price | money: theme.money_format }}
-          {% endif %}
+          {{ product | product_price: theme.money_format }}
 
           {% if product.price_suffix != blank %}
             {% if product.variable_pricing %}

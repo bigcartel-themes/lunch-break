@@ -259,11 +259,24 @@
                     <div class="product-list-thumb-info">
                       <div class="product-list-thumb-name">{{ related_product.name }}</div>
                       <div class="product-list-thumb-price">
-                        {% unless related_product.status == 'sold-out' and theme.show_sold_out_product_prices == false %}
-                            {{ related_product.default_price | money: theme.money_format }}
+                        {% assign hide_price = false %}
+                        {% if related_product.status == 'sold-out' and theme.show_sold_out_product_prices == false %}
+                          {% assign hide_price = true %}
+                        {% endif %}
+                        {% if related_product.status == 'coming-soon' and theme.show_coming_soon_product_prices == false %}
+                          {% assign hide_price = true %}
+                        {% endif %}
+
+                        {% unless hide_price %}
+                            {{ related_product | product_price: theme.money_format, theme.product_variable_pricing_display_format }}
 
                             {% if product.price_suffix != blank %}
-                              <span class="price-suffix">{{ product.price_suffix }}</span>
+                              {% if product.variable_pricing %}
+                                {% assign formatted_suffix = '(' | append: product.price_suffix | append: ')' %}
+                              {% else %}
+                                {% assign formatted_suffix = product.price_suffix %}
+                              {% endif %}
+                              <span class="price-suffix">{{ formatted_suffix }}</span>
                             {% endif %}
                         {% endunless %}
                         {% if related_product_status != blank %}
