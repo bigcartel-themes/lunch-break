@@ -592,7 +592,7 @@
       "section": "global_navigation",
       "type": "select",
       "options": [
-        ["Default", "initial"],
+        ["Default (Sentence case)", "initial"],
         ["Uppercase", "uppercase"],
         ["Lowercase", "lowercase"]
       ],
@@ -605,7 +605,7 @@
       "section": "global_navigation",
       "type": "select",
       "options": [
-        ["Default", "initial"],
+        ["Default (Sentence case)", "initial"],
         ["Uppercase", "uppercase"],
         ["Lowercase", "lowercase"]
       ],
