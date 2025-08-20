@@ -567,7 +567,7 @@
       "options": [
         ["Pages and Contact", "all"],
         ["Pages only", "pages_only"],
-        ["Contacts only", "contact_only"],
+        ["Contact only", "contact_only"],
         ["None", "none"]
       ],
       "default": "all",
