@@ -104,6 +104,9 @@ h1
   padding: 0 16px
   width: 100%
 
+  *
+    text-transform: #{"{{ theme.nav_text_transform_header }}"}
+
   @media only screen and (max-width: $break-large)
     +flexbox
     z-index: 11
@@ -328,6 +331,7 @@ header
   a
     color: var(--secondary-text-color)
     text-decoration: underline
+    text-underline-offset: 4px
 
     &:hover
       color: var(--hover-color)
@@ -348,6 +352,9 @@ header
   background-color: var(--background-color)
   padding-bottom: 40px
   grid-area: sidebar
+
+  *
+    text-transform: #{"{{ theme.nav_text_transform_header }}"}
 
   @media only screen and (max-width: $break-large)
     left: 0
@@ -457,6 +464,32 @@ header
     &:first-child
       margin-top: 0
 
+  ul.sidebar-social-links
+    display: grid
+    grid-template-columns: repeat(auto-fill, minmax(40px, 1fr))
+    gap: 24px 4px
+    padding: 20px 0
+    list-style: none
+    margin: 0
+    
+    li
+      display: contents
+      
+    a
+      display: flex
+      align-items: center
+      justify-content: center
+      width: 24px
+      height: 24px
+      transition: opacity 0.2s ease
+      
+      &:hover
+        opacity: 0.7
+        
+    svg
+      width: 24px
+      height: 24px
+
 .inner-wrapper
   +flexbox
   +flex-direction(row)
@@ -473,11 +506,28 @@ footer
   text-align: center
   width: 100%
 
+  *:not(.footer-custom-content)
+    text-transform: #{"{{ theme.nav_text_transform_footer }}"}
+
   .inner-wrapper
     +flex-direction(column)
     +justify-content(center)
     padding: 60px 36px
     gap: 32px
+
+.footer-custom-content
+  color: var(--text-color)
+  display: block
+  text-align: center
+  padding: 20px 0
+
+  img
+    display: block
+    margin: 20px auto
+
+  a
+    text-decoration: underline
+    text-underline-offset: 3px
 
 .social_icons
   +flexbox
@@ -498,11 +548,16 @@ footer
 
     svg
       fill: currentColor
-      height: 20px
-      width: 20px
+      height: 24px
+      width: 24px
 
       &.tumblr-icon
-        width: 14px
+        width: 15px
+      
+      &.reddit-icon,
+      &.discord-icon
+        width: 26px
+        height: 26px
 
 .bigcartel-credit
   font-size: 15px
@@ -651,3 +706,4 @@ button.button, a.button
 
   a
     text-decoration: underline
+    text-underline-offset: 4px
