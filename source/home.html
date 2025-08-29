@@ -42,20 +42,41 @@
   </div>
 {% endif %}
 
+{%- comment -%} Determine which sections will be shown {%- endcomment -%}
+{% assign show_featured_products = false %}
+{% assign show_featured_categories = false %}
+
+{% if theme.featured_products > 0 %}
+  {% assign show_featured_products = true %}
+{% endif %}
+
+{% if theme.featured_categories > 0 and categories.active.size > 0 %}
+  {% for category in categories.active %}
+    {% if category.products.size > 0 %}
+      {% assign show_featured_categories = true %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+{%- comment -%} Show featured message "above" if either section will be displayed {%- endcomment -%}
+{% assign featured_text = theme.homepage_featured_text %}
+{% assign featured_text_position = theme.homepage_featured_text_position %}
+
+{% if featured_text != blank and featured_text_position == "above" and (show_featured_products or show_featured_categories) %}
+  <div class="featured-container">
+    <div class="featured-message">{{ featured_text }}</div>
+  </div>
+{% endif %}
+
 {% if theme.featured_products > 0 %}
   {% paginate products from products.current by theme.featured_products order:theme.featured_order %}
     {% if products != blank %}
       <div class="featured-container">
         {% assign featured_header = t['home.featured'] %}
-        {% assign featured_text = theme.homepage_featured_text %}
-        {% assign featured_text_position = theme.homepage_featured_text_position %}
-        
-        {% if featured_text != blank and featured_text_position == "above" %}
-          <div class="featured-message">{{ featured_text }}</div>
-        {% endif %}
-        
         <h1 class="featured-title">{{ featured_header }}</h1>
         
+        {%- comment -%} Show featured message "within" featured products section {%- endcomment -%}
         {% if featured_text != blank and featured_text_position != "above" %}
           <div class="featured-message">{{ featured_text }}</div>
         {% endif %}
@@ -178,6 +199,11 @@
       {% assign featured_categories_header = t['home.featured_categories'] %}
       {% if featured_categories_header != blank %}
         <h1 class="featured-title">{{ featured_categories_header }}</h1>
+      {% endif %}
+      
+      {%- comment -%} Show featured message "within" categories section if products section is not shown {%- endcomment -%}
+      {% if featured_text != blank and featured_text_position != "above" and show_featured_products == false %}
+        <div class="featured-message">{{ featured_text }}</div>
       {% endif %}
     </div>
     <div class="product-list-container" data-category-collages-enabled="{{ category_collages_enabled }}">
