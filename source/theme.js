@@ -9,3 +9,4 @@
 //= require javascripts/home
 //= require javascripts/home-carousel
 //= require javascripts/search
+//= require javascripts/image-collage
