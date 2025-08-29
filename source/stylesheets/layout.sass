@@ -202,17 +202,17 @@ h1
   &.left-sidebar
     @media screen and (min-width: $break-large + 1)
       grid-template-columns: 220px 1fr
-      grid-template-areas: "sidebar main" "sidebar related"
+      grid-template-areas: "sidebar content"
 
   &.right-sidebar
     @media screen and (min-width: $break-large + 1)
       grid-template-columns: 1fr 220px
-      grid-template-areas: "main sidebar" "related sidebar"
+      grid-template-areas: "content sidebar"
 
   @media screen and (max-width: $break-large)
     padding-bottom: 40px
     grid-template-columns: 1fr
-    grid-template-areas: "main" "related" "sidebar"
+    grid-template-areas: "content" "sidebar"
 
 a.skip-link
   +transition(all .3s)
@@ -295,7 +295,7 @@ header
 .content
   +pie-clearfix
   position: relative
-  grid-area: main
+  grid-area: content
   min-height: 600px
 
 .custom_content
