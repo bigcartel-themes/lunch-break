@@ -68,6 +68,16 @@
   &.grid-contain
     object-fit: contain
 
+// Featured Categories: when grid_image_style is default, keep category thumbs square and contained
+// Scope to the categories list container which carries the collage data attribute
+.product-list-container[data-category-collages-enabled]
+  .product-list-image-container-default:before
+    display: block
+
+  .product-list-image.grid-default
+    position: absolute
+    object-fit: contain
+
 .product-list-thumb-info
   line-height: 1.25em
   padding: 8px 0
