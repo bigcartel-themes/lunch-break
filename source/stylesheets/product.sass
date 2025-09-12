@@ -144,6 +144,14 @@ button.reset-selection-button
 .related-products-container
   padding: 0
 
+// Ensure related products sit in the main content column
+// regardless of whether the sidebar is on the left or right.
+@media screen and (min-width: $break-large + 1)
+  .wrap.left-sidebar .related-products-container
+    grid-column: 2
+  .wrap.right-sidebar .related-products-container
+    grid-column: 1
+
 .related-products-title
   font-size: 1.5em
 
