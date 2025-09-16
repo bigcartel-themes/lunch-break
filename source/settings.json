@@ -6,7 +6,7 @@
       "variable": "header_logo",
       "section": "global_navigation",
       "label": "Header image",
-      "description": "Rectangular image with transparent background, at least 250px tall"
+      "description": "Rectangular image with transparent background, at least 600px tall"
     }
   ],
   "image_sets": [
@@ -483,20 +483,21 @@
   ],
   "options": [
     {
-      "variable": "header_logo_image_height",
+      "variable": "header_logo_image_size",
       "label": "Header logo image size",
       "section": "global_navigation",
       "type": "select",
       "options": [
-        ["Extra Small", "75"],
-        ["Small", "125"],
-        ["Medium", "200"],
-        ["Large", "300"],
-        ["Extra Large", "400"],
-        ["XX Large", "500"]
+        ["Extra Small", "70"],
+        ["Small", "100"],
+        ["Medium", "130"],
+        ["Large", "160"],
+        ["Extra Large", "200"],
+        ["XX Large", "250"],
+        ["Huge", "300"]
       ],
-      "default": "125",
-      "description": "Controls the maximum size of your header logo"
+      "default": "100",
+      "description": "Controls the size of your header logo"
     },
     {
       "variable": "header_position",

@@ -52,15 +52,17 @@
   		<div class="inner-wrapper">
         <a href="/" title="{{ store.name | escape }}" class="store_header {% if theme.header_logo != blank %}logo{% else %}text{% endif %}">
           {% if theme.header_logo != blank %}
-            {% comment %} Assign 1x height directly from theme setting {% endcomment %}
-            {% assign header_logo_image_height_1x = theme.header_logo_image_height %}
-            {% comment %} Assign 2x height as double the 1x height {% endcomment %}
-            {% assign header_logo_image_height_2x = header_logo_image_height_1x | times: 2 %}
+            {% comment %} Calculate optimal image size with width and height constraints for DPI optimization {% endcomment %}
+            {% assign display_height = theme.header_logo_image_size %}
+            {% assign optimal_width = display_height | times: 6 %}
+            {% assign retina_width = optimal_width | times: 2 %}
+            {% assign retina_height = display_height | times: 2 %}
             <img
               alt="{{ store.name }} Home"
               class="store-image"
-              src="{{ theme.images.header_logo.url | constrain: '', header_logo_image_height_1x }}"
-              srcset="{{ theme.images.header_logo.url | constrain: '', header_logo_image_height_1x }} 1x, {{ theme.images.header_logo.url | constrain: '', header_logo_image_height_2x }} 2x"
+              data-logo-height="{{ display_height }}"
+              srcset="{{ theme.images.header_logo.url | constrain: optimal_width, display_height }} 1x, {{ theme.images.header_logo.url | constrain: retina_width, retina_height }} 2x"
+              src="{{ theme.images.header_logo.url | constrain: optimal_width, display_height }}"
             >
           {% else %}
             {{ store.name }}

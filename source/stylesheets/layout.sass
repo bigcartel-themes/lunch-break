@@ -6,7 +6,7 @@
   --border-color: #{'rgba(var(--text-color-rgb), .5)'}
   --mobile-nav-border-color: #{'rgba(var(--text-color-rgb), .2)'}
   --background-color: #{'{{ theme.background_color }}'}
-  --header-logo-max-height-numeric: #{"{{ theme.header_logo_image_height }}"}
+  --header-logo-image-size-numeric: #{"{{ theme.header_logo_image_size }}"}
   --header-background: #{'{{ theme.header_background_color }}'}
   --header-text-color: #{'{{ theme.header_text_color }}'}
   --text-color: #{'{{ theme.text_color }}'}
@@ -274,20 +274,21 @@ header
   display: block
   object-fit: contain
   width: auto
-  // Base styles for largest screens - should be the largest size
-  max-height: clamp(75px, calc(var(--header-logo-max-height-numeric) * 1px), 400px)
-  max-width: clamp(200px, calc(var(--header-logo-max-height-numeric) * 2.5 * 1px), 750px)
+  // Desktop: force height to theme setting, width scales proportionally
+  height: calc(var(--header-logo-image-size-numeric) * 1px)
 
-
-  // Medium screens - should be smaller than desktop
+  // Tablet: responsive scaling maintains proportional sizing
   @media screen and (max-width: $break-medium)
-    max-height: clamp(75px, calc(var(--header-logo-max-height-numeric) * 0.8 * 1px), 250px)
-    max-width: clamp(200px, calc(var(--header-logo-max-height-numeric) * 2 * 1px), 500px)
+    height: calc(var(--header-logo-image-size-numeric) * 0.8 * 1px)
 
-  // Small screens - should be smallest
+  // Mobile: smaller size for comfortable mobile header
   @media screen and (max-width: $break-small)
-    max-height: clamp(75px, calc(var(--header-logo-max-height-numeric) * 0.6 * 1px), 150px)
-    max-width: clamp(200px, calc(var(--header-logo-max-height-numeric) * 1.75 * 1px), 350px)
+    height: calc(var(--header-logo-image-size-numeric) * 0.65 * 1px)
+
+  // Extra small: reasonable bounds with minimum/maximum constraints
+  @media screen and (max-width: $break-extra-small)
+    height: clamp(60px, calc(var(--header-logo-image-size-numeric) * 0.5 * 1px), 150px)
+
 
 .hidden
   display: none
