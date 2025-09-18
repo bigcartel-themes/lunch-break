@@ -6,7 +6,7 @@
       "variable": "header_logo",
       "section": "global_navigation",
       "label": "Header image",
-      "description": "Rectangular image with transparent background, at least 600px tall"
+      "description": "Use a PNG file with a transparent background. Your logo should be at least 600 pixels tall. Wide logos look better than square ones."
     }
   ],
   "image_sets": [
