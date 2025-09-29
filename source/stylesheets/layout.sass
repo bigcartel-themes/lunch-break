@@ -24,6 +24,13 @@
   --error-text-color: #FFFFFF
 
   --border-radius: #{'{{ theme.border_radius }}'}
+  --font-scale: #{'{{ theme.global_text_scale | default: 1 }}'}
+  --shop-name-scale: #{'{{ theme.shop_name_text_scale | default: 1 }}'}
+  --product-grid-scale: #{'{{ theme.product_grid_scale | default: 1 }}'}
+  --product-title-scale: #{'{{ theme.product_page_heading_scale | default: 1 }}'}
+  --product-description-scale: #{'{{ theme.product_page_description_scale | default: 1 }}'}
+  --header-text-scale: #{'{{ theme.header_text_scale | default: 1 }}'}
+  --footer-text-scale: #{'{{ theme.footer_text_scale | default: 1 }}'}
 
   // Video player customization
   --video-rounded-radius: var(--border-radius)
@@ -36,12 +43,16 @@
   --video-mobile-breakpoint: #{$break-large}
   --video-mobile-padding: 16px
 
-body, html
+html
   height: 100%
   min-height: 100%
   position: relative
+  font-size: calc(16px * var(--font-scale, 1))
 
 body
+  height: 100%
+  min-height: 100%
+  position: relative
   +flexbox
   +flex-direction(column)
   -moz-osx-font-smoothing: grayscale
@@ -49,7 +60,7 @@ body
   background-color: var(--background-color)
   color: var(--text-color)
   font-family: var(--secondary-font)
-  font-size: 16px
+  font-size: calc(1rem * var(--font-scale, 1))
   width: 100%
 
   @media screen and (max-width: $break-medium)
@@ -68,6 +79,7 @@ body
         z-index: 1
         left: 0
         top: 0
+
 
 a
   color: var(--text-color)
@@ -103,6 +115,7 @@ h1
   height: 60px
   padding: 0 16px
   width: 100%
+  font-size: calc(1rem * var(--header-text-scale, 1))
 
   *
     text-transform: #{"{{ theme.nav_text_transform_header }}"}
@@ -232,7 +245,7 @@ a.skip-link
 header
   background: var(--header-background)
   font-family: var(--primary-font)
-  font-size: 28px
+  +global-font-size(28px)
   padding: 48px 0
   margin-bottom: 32px
   text-align: center
@@ -253,9 +266,11 @@ header
   color: var(--header-text-color)
   display: inline-block
   font-size: 44px
+  font-size: calc(44px * var(--shop-name-scale, 1) * var(--header-text-scale, 1))
 
   @media screen and (max-width: $break-medium)
     font-size: 32px
+    font-size: calc(32px * var(--shop-name-scale, 1) * var(--header-text-scale, 1))
 
   &.text
     display: inline-block
@@ -353,6 +368,7 @@ header
   background-color: var(--background-color)
   padding-bottom: 40px
   grid-area: sidebar
+  font-size: calc(1rem * var(--header-text-scale, 1))
 
   *
     text-transform: #{"{{ theme.nav_text_transform_header }}"}
@@ -384,7 +400,8 @@ header
   .nav_title
     border-bottom: 1px solid var(--border-color)
     font-family: var(--primary-font)
-    font-size: 22px
+    +global-font-size(22px)
+    font-size: calc(22px * var(--font-scale, 1) * var(--header-text-scale, 1))
     line-height: 1.3em
     margin-bottom: 4px
     padding: 0 0 6px
@@ -406,7 +423,8 @@ header
     text-decoration: none !important
 
     @media only screen and (max-width: $break-extra-large)
-      font-size: 15px
+      +global-font-size(15px)
+      font-size: calc(15px * var(--font-scale, 1) * var(--header-text-scale, 1))
 
     @media only screen and (max-width: $break-large)
       display: none
@@ -457,7 +475,8 @@ header
         outline-offset: 2px
 
       @media screen and (max-width: $break-large)
-        font-size: 18px
+        +global-font-size(18px)
+        font-size: calc(18px * var(--font-scale, 1) * var(--header-text-scale, 1))
 
   nav > div
     margin-bottom: 24px
@@ -488,8 +507,8 @@ header
         opacity: 0.7
         
     svg
-      width: 24px
-      height: 24px
+      width: 22px
+      height: 22px
 
 .inner-wrapper
   +flexbox
@@ -506,6 +525,7 @@ footer
   border-top: 1px solid var(--border-color)
   text-align: center
   width: 100%
+  font-size: calc(1rem * var(--footer-text-scale, 1))
 
   *:not(.footer-custom-content)
     text-transform: #{"{{ theme.nav_text_transform_footer }}"}
@@ -521,6 +541,7 @@ footer
   display: block
   text-align: center
   padding: 20px 0
+  font-size: calc(1rem * var(--footer-text-scale, 1))
 
   img
     display: block
@@ -532,7 +553,7 @@ footer
 
 .social_icons
   +flexbox
-  gap: 8px
+  gap: 10px
   list-style: none
   margin: 0
   padding: 0
@@ -544,24 +565,24 @@ footer
     align-items: center
     justify-content: center
     flex-shrink: 0
-    width: 40px
-    height: 40px
+    width: 30px
+    height: 30px
 
     svg
       fill: currentColor
-      height: 24px
-      width: 24px
+      height: 22px
+      width: 22px
 
       &.tumblr-icon
-        width: 15px
+        width: 14px
       
       &.reddit-icon,
       &.discord-icon
-        width: 26px
-        height: 26px
+        width: 24px
+        height: 24px
 
 .bigcartel-credit
-  font-size: 15px
+  +global-font-size(15px)
   display: flex
   align-items: center
   gap: 8px
