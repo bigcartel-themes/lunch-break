@@ -27,11 +27,23 @@
   </head>
   <body id="{{ page.permalink }}" class="{{ page.permalink }} {{ page.category }} preload transition-preload" data-bc-page-type="{% if page.category == 'custom' %}custom{% else %}{{ page.permalink }}{% endif %}">
     {% if theme.announcement_message_text != blank %}
-      <div aria-label="Announcement message" class="announcement-message">
-        <div class="announcement-message__text">{{ theme.announcement_message_text }}</div>
-        <button title="Close announcement message" class="announcement-message__close-button">
-          <svg aria-hidden="true" fill="currentColor" class="announcement-message__close-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14.1 14.1" enable-background="new 0 0 14.1 14.1"><path d="M14.1 1.1l-1.1-1.1-6 6-5.9-6-1.1 1.1 6 5.9-6 6 1.1 1.1 5.9-6 6 6 1.1-1.1-6-6z"/></svg>
-        </button>
+      <div aria-label="Announcement message" class="announcement-message{% if theme.announcement_message_scroll %} announcement-message--scrolling{% endif %}">
+        {% if theme.announcement_message_scroll %}
+          <div class="announcement-message__scroll-wrapper">
+            <div class="announcement-message__scroll-content">
+              <div class="announcement-message__text">{{ theme.announcement_message_text }}</div>
+              <div class="announcement-message__text" aria-hidden="true">{{ theme.announcement_message_text }}</div>
+              <div class="announcement-message__text" aria-hidden="true">{{ theme.announcement_message_text }}</div>
+              <div class="announcement-message__text" aria-hidden="true">{{ theme.announcement_message_text }}</div>
+              <div class="announcement-message__text" aria-hidden="true">{{ theme.announcement_message_text }}</div>
+            </div>
+          </div>
+        {% else %}
+          <div class="announcement-message__text">{{ theme.announcement_message_text }}</div>
+          <button title="Close announcement message" class="announcement-message__close-button">
+            <svg aria-hidden="true" fill="currentColor" class="announcement-message__close-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14.1 14.1" enable-background="new 0 0 14.1 14.1"><path d="M14.1 1.1l-1.1-1.1-6 6-5.9-6-1.1 1.1 6 5.9-6 6 1.1 1.1 5.9-6 6 6 1.1-1.1-6-6z"/></svg>
+          </button>
+        {% endif %}
       </div>
     {% endif %}
     <div class="mobile_nav">
@@ -591,15 +603,17 @@
         function closeAnnouncement() {
           let announcementElement = document.querySelector(".announcement-message");
           announcementElement?.remove();
-          document.cookie = `announcementClosed=${hashedAnnouncement};path=/`;
+          document.cookie = `announcementClosed=${hashedAnnouncement};path=/;max-age=28800`;
         }
 
-        if (announcementElement?.classList && closeAnnouncementBtn && hashedAnnouncement) {
+        if (announcementElement && hashedAnnouncement) {
           let hasClosedAnnouncement = document.cookie.includes(`announcementClosed=${hashedAnnouncement}`);
           if (!hasClosedAnnouncement) {
             announcementElement.classList.add('visible');
           }
-          closeAnnouncementBtn.addEventListener("click", closeAnnouncement);
+          if (closeAnnouncementBtn) {
+            closeAnnouncementBtn.addEventListener("click", closeAnnouncement);
+          }
         }
       </script>
     {% endif %}
