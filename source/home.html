@@ -65,7 +65,14 @@
 
 {% comment %} Show featured text above when position is "above" OR when no featured content exists (automatic fallback) {% endcomment %}
 {% if featured_text != blank %}
-  {% if featured_text_position == "above" or (show_featured_products == false and show_featured_categories == false) %}
+  {% assign show_above = false %}
+  {% if featured_text_position == "above" %}
+    {% assign show_above = true %}
+  {% endif %}
+  {% if show_featured_products == false and show_featured_categories == false %}
+    {% assign show_above = true %}
+  {% endif %}
+  {% if show_above %}
     <div class="featured-container">
       <div class="featured-message">{{ featured_text }}</div>
     </div>
