@@ -21,15 +21,14 @@
     padding: 16px 88px
 
   &.visible
-    display: block
+    display: flex
+    align-items: center
+    justify-content: center
 
   &--scrolling
     padding: 0
     overflow: hidden
-    min-height: 46px
-
-    @media screen and (max-width: $break-small)
-      min-height: 50px
+    min-height: fit-content
 
     .announcement-message__close-button
       display: none
@@ -37,7 +36,10 @@
   &__scroll-wrapper
     width: 100%
     overflow: hidden
-    padding: 12px 0
+    padding: 12px 144px
+
+    @media screen and (max-width: $break-medium)
+      padding: 16px 88px
 
   &__scroll-content
     display: inline-flex
