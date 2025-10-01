@@ -338,7 +338,7 @@
     {% endif %}
   {% endif %}
   
-  {% if show_all_products_button %}
+  {% if theme.homepage_show_all_items_link and show_all_products_button %}
     {% assign all_products_button_text = t['home.all_products'] %}
     {% if all_products_button_text != blank %}
       <a class="button button--centered button--secondary all-products-button" href="/products">{{ all_products_button_text }}</a>
