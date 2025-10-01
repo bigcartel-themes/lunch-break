@@ -332,9 +332,6 @@
       {% if categories_with_products != blank and products.all.size > 0 %}
         {% assign show_all_products_button = true %}
       {% endif %}
-    {% else %}
-      {%- comment -%} Case 3: Neither featured products nor categories - show button if products exist {%- endcomment -%}
-      {% assign show_all_products_button = true %}
     {% endif %}
   {% endif %}
   
