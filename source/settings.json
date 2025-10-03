@@ -3,7 +3,7 @@
   "version": "1.23.0",
   "images": [
     {
-      "variable": "header_logo",
+      "variable": "logo_image",
       "section": "global_navigation",
       "label": "Header image",
       "description": "Use a PNG file with a transparent background. Your logo should be at least 600 pixels tall. Wide logos look better than square ones."
@@ -503,7 +503,7 @@
         ["Huge", "300"]
       ],
       "default": "100",
-      "description": "Controls the size of your header logo"
+      "description": "Controls the size of your logo"
     },
     {
       "variable": "header_position",
@@ -2070,7 +2070,7 @@
     "optimize_legibility": "optimizeLegibility",
     "header_image_max_height": "140px",
     "antialias_text": "antialiased",
-    "header_image": "{{ header_logo }}",
+    "header_image": "{{ logo_image }}",
     "background_color": "{{ header_background_color }}",
     "gutter_width": "28px",
     "body_font": "{{ secondary_font }}",
