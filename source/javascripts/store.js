@@ -88,3 +88,23 @@ function toggleSidebarNavigation() {
 }
 
 toggleMenuButton.addEventListener('click', toggleSidebarNavigation);
+
+// Hybrid announcement pause: hover on desktop, tap-to-toggle on mobile, focus for keyboard
+document.addEventListener('DOMContentLoaded', () => {
+  const announcement = document.querySelector('.announcement-message--scrolling');
+
+  if (!announcement) return;
+
+  // Add tap-to-toggle for all devices (primarily for touch devices)
+  // Desktop users can still use hover (handled by CSS), but click also works as backup
+  let isPaused = false;
+
+  announcement.addEventListener('click', (e) => {
+    // Don't toggle if user clicked a link - let the link work normally
+    if (e.target.closest('a')) return;
+
+    // Toggle pause state
+    isPaused = !isPaused;
+    announcement.classList.toggle('is-paused', isPaused);
+  });
+});
