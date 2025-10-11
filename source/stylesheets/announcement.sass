@@ -38,6 +38,8 @@
     width: 100%
     overflow: hidden
     padding: 12px 144px
+    // Isolate this container to prevent layout thrashing
+    isolation: isolate
 
     @media screen and (max-width: $break-medium)
       padding: 16px 88px
@@ -46,6 +48,8 @@
     display: inline-flex
     white-space: nowrap
     animation: scroll-announcement var(--scroll-duration) linear infinite
+    // Contain the rendering to this element only
+    contain: layout style
 
   // Pause scrolling on hover (desktop) and focus (keyboard) for accessibility
   &--scrolling
@@ -85,8 +89,10 @@
     height: 14px
     width: 14px
 
+// Keyframe animation for smooth scrolling
+// Uses exact pixel distance calculated by JavaScript for seamless looping
 @keyframes scroll-announcement
   0%
-    transform: translateX(0)
+    transform: translate3d(0, 0, 0)
   100%
-    transform: translateX(-20%)
+    transform: translate3d(var(--scroll-distance, -20%), 0, 0)
