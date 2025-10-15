@@ -27,11 +27,23 @@
   </head>
   <body id="{{ page.permalink }}" class="{{ page.permalink }} {{ page.category }} preload transition-preload" data-bc-page-type="{% if page.category == 'custom' %}custom{% else %}{{ page.permalink }}{% endif %}">
     {% if theme.announcement_message_text != blank %}
-      <div aria-label="Announcement message" class="announcement-message">
-        <div class="announcement-message__text">{{ theme.announcement_message_text }}</div>
-        <button title="Close announcement message" class="announcement-message__close-button">
-          <svg aria-hidden="true" fill="currentColor" class="announcement-message__close-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14.1 14.1" enable-background="new 0 0 14.1 14.1"><path d="M14.1 1.1l-1.1-1.1-6 6-5.9-6-1.1 1.1 6 5.9-6 6 1.1 1.1 5.9-6 6 6 1.1-1.1-6-6z"/></svg>
-        </button>
+      <div role="{% if theme.announcement_message_scroll %}region{% else %}complementary{% endif %}" aria-label="{% if theme.announcement_message_scroll %}Scrolling announcement. Focus or hover to pause.{% else %}Announcement message{% endif %}" class="announcement-message{% if theme.announcement_message_scroll %} announcement-message--scrolling{% endif %}"{% if theme.announcement_message_scroll %} tabindex="0"{% endif %}>
+        {% if theme.announcement_message_scroll %}
+          <div class="announcement-message__scroll-wrapper">
+            <div class="announcement-message__scroll-content">
+              <div class="announcement-message__text">{{ theme.announcement_message_text }}</div>
+              <div class="announcement-message__text" aria-hidden="true">{{ theme.announcement_message_text }}</div>
+              <div class="announcement-message__text" aria-hidden="true">{{ theme.announcement_message_text }}</div>
+              <div class="announcement-message__text" aria-hidden="true">{{ theme.announcement_message_text }}</div>
+              <div class="announcement-message__text" aria-hidden="true">{{ theme.announcement_message_text }}</div>
+            </div>
+          </div>
+        {% else %}
+          <div class="announcement-message__text">{{ theme.announcement_message_text }}</div>
+          <button title="Close announcement message" class="announcement-message__close-button">
+            <svg aria-hidden="true" fill="currentColor" class="announcement-message__close-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14.1 14.1" enable-background="new 0 0 14.1 14.1"><path d="M14.1 1.1l-1.1-1.1-6 6-5.9-6-1.1 1.1 6 5.9-6 6 1.1 1.1 5.9-6 6 6 1.1-1.1-6-6z"/></svg>
+          </button>
+        {% endif %}
       </div>
     {% endif %}
     <div class="mobile_nav">
@@ -48,19 +60,21 @@
         <span class="sr-only">{{ t['cart.view_cart'] }} - </span><span class="cart_title">{{ cart.item_count | pluralize: t['navigation.item'], t['navigation.items'] }}</span>/<span class="cart_numbers">{{ cart.total | money: theme.money_format }}</span>
       </a>
   	</div>
-    <header class="{% if theme.header_logo != blank %}logo{% else %}text{% endif %}" data-bc-hook="header">
+    <header class="{% if theme.logo_image != blank %}logo{% else %}text{% endif %}" data-bc-hook="header">
   		<div class="inner-wrapper">
-        <a href="/" title="{{ store.name | escape }}" class="store_header {% if theme.header_logo != blank %}logo{% else %}text{% endif %}">
-          {% if theme.header_logo != blank %}
-            {% comment %} Assign 1x height directly from theme setting {% endcomment %}
-            {% assign header_logo_image_height_1x = theme.header_logo_image_height %}
-            {% comment %} Assign 2x height as double the 1x height {% endcomment %}
-            {% assign header_logo_image_height_2x = header_logo_image_height_1x | times: 2 %}
+        <a href="/" title="{{ store.name | escape }}" class="store_header {% if theme.logo_image != blank %}logo{% else %}text{% endif %}">
+          {% if theme.logo_image != blank %}
+            {% comment %} Calculate optimal image size with width and height constraints for DPI optimization {% endcomment %}
+            {% assign display_height = theme.header_logo_image_size %}
+            {% assign optimal_width = display_height | times: 6 %}
+            {% assign retina_width = optimal_width | times: 2 %}
+            {% assign retina_height = display_height | times: 2 %}
             <img
               alt="{{ store.name }} Home"
               class="store-image"
-              src="{{ theme.images.header_logo.url | constrain: '', header_logo_image_height_1x }}"
-              srcset="{{ theme.images.header_logo.url | constrain: '', header_logo_image_height_1x }} 1x, {{ theme.images.header_logo.url | constrain: '', header_logo_image_height_2x }} 2x"
+              data-logo-height="{{ display_height }}"
+              srcset="{{ theme.images.logo_image.url | constrain: optimal_width, display_height }} 1x, {{ theme.images.logo_image.url | constrain: retina_width, retina_height }} 2x"
+              src="{{ theme.images.logo_image.url | constrain: optimal_width, display_height }}"
             >
           {% else %}
             {{ store.name }}
@@ -363,6 +377,9 @@
                         {% if related_product.status == 'coming-soon' and theme.show_coming_soon_product_prices == false %}
                           {% assign hide_price = true %}
                         {% endif %}
+                        {% if related_product.has_password_protection and theme.show_password_protected_product_prices == false %}
+                          {% assign hide_price = true %}
+                        {% endif %}
 
                         {% unless hide_price %}
                             {{ related_product | product_price: theme.money_format, theme.product_variable_pricing_display_format }}
@@ -586,15 +603,17 @@
         function closeAnnouncement() {
           let announcementElement = document.querySelector(".announcement-message");
           announcementElement?.remove();
-          document.cookie = `announcementClosed=${hashedAnnouncement};path=/`;
+          document.cookie = `announcementClosed=${hashedAnnouncement};path=/;max-age=28800`;
         }
 
-        if (announcementElement?.classList && closeAnnouncementBtn && hashedAnnouncement) {
+        if (announcementElement && hashedAnnouncement) {
           let hasClosedAnnouncement = document.cookie.includes(`announcementClosed=${hashedAnnouncement}`);
           if (!hasClosedAnnouncement) {
             announcementElement.classList.add('visible');
           }
-          closeAnnouncementBtn.addEventListener("click", closeAnnouncement);
+          if (closeAnnouncementBtn) {
+            closeAnnouncementBtn.addEventListener("click", closeAnnouncement);
+          }
         }
       </script>
     {% endif %}

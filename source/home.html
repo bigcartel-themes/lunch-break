@@ -6,11 +6,11 @@
   </ul>
 {% endif %}
 
-{% if theme.image_sets.slideshow_images.size > 0 %}
+{% if theme.image_sets.slideshow.size > 0 %}
   <div class="splide home-slideshow">
     <div class="splide__track">
       <div class="splide__list">
-        {% for image in theme.image_sets.slideshow_images %}
+        {% for image in theme.image_sets.slideshow %}
           <div class="splide__slide"{% if theme.homepage_slideshow_link != blank %} title="{{ theme.homepage_slideshow_link }}"{% endif %}>
             <img
               alt="Slideshow image {{ forloop.index }}"
@@ -59,14 +59,24 @@
   {% endfor %}
 {% endif %}
 
-{%- comment -%} Show featured message "above" if either section will be displayed {%- endcomment -%}
+{%- comment -%} Assign featured text variables {%- endcomment -%}
 {% assign featured_text = theme.homepage_featured_text %}
 {% assign featured_text_position = theme.homepage_featured_text_position %}
 
-{% if featured_text != blank and featured_text_position == "above" and (show_featured_products or show_featured_categories) %}
-  <div class="featured-container">
-    <div class="featured-message">{{ featured_text }}</div>
-  </div>
+{% comment %} Show featured text above when position is "above" OR when no featured content exists (automatic fallback) {% endcomment %}
+{% if featured_text != blank %}
+  {% assign show_above = false %}
+  {% if featured_text_position == "above" %}
+    {% assign show_above = true %}
+  {% endif %}
+  {% if show_featured_products == false and show_featured_categories == false %}
+    {% assign show_above = true %}
+  {% endif %}
+  {% if show_above %}
+    <div class="featured-container">
+      <div class="featured-message">{{ featured_text }}</div>
+    </div>
+  {% endif %}
 {% endif %}
 
 {% if theme.featured_products > 0 %}
@@ -76,8 +86,8 @@
         {% assign featured_header = t['home.featured'] %}
         <h1 class="featured-title">{{ featured_header }}</h1>
         
-        {%- comment -%} Show featured message "within" featured products section {%- endcomment -%}
-        {% if featured_text != blank and featured_text_position != "above" %}
+        {%- comment -%} Only show within if we have products AND position is within {%- endcomment -%}
+        {% if featured_text != blank and featured_text_position == "within" and theme.featured_products > 0 %}
           <div class="featured-message">{{ featured_text }}</div>
         {% endif %}
       </div>
@@ -136,6 +146,9 @@
                       {% assign hide_price = true %}
                     {% endif -%}
                     {% if product.status == 'coming-soon' and theme.show_coming_soon_product_prices == false %}
+                      {% assign hide_price = true %}
+                    {% endif %}
+                    {% if product.has_password_protection and theme.show_password_protected_product_prices == false %}
                       {% assign hide_price = true %}
                     {% endif %}
 
@@ -201,8 +214,8 @@
         <h1 class="featured-title">{{ featured_categories_header }}</h1>
       {% endif %}
       
-      {%- comment -%} Show featured message "within" categories section if products section is not shown {%- endcomment -%}
-      {% if featured_text != blank and featured_text_position != "above" and show_featured_products == false %}
+      {%- comment -%} Only show within categories if no featured products AND position is within {%- endcomment -%}
+      {% if featured_text != blank and featured_text_position == "within" and theme.featured_products == 0 %}
         <div class="featured-message">{{ featured_text }}</div>
       {% endif %}
     </div>
@@ -258,7 +271,8 @@
                       {% capture image_urls %}
                         [{% for product in category.products limit:4 %}"{{ product.image | product_image_url | constrain: 400 }}"{% unless forloop.last %},{% endunless %}{% endfor %}]
                       {% endcapture %}
-                    {% elsif theme.home_page_categories_image_style == "single" %}
+                    {% else %}
+                      {% comment %} Fallback to single image (first product) {% endcomment %}
                       {% capture image_urls %}
                         ["{{ first_product.image | product_image_url | constrain: 800 }}"]
                       {% endcapture %}
@@ -318,18 +332,14 @@
       {% if categories_with_products != blank and products.all.size > 0 %}
         {% assign show_all_products_button = true %}
       {% endif %}
-    {% else %}
-      {%- comment -%} Case 3: Neither featured products nor categories - show button if products exist {%- endcomment -%}
-      {% assign show_all_products_button = true %}
     {% endif %}
   {% endif %}
   
-  {% if show_all_products_button %}
+  {% if theme.homepage_show_all_items_link and show_all_products_button %}
     {% assign all_products_button_text = t['home.all_products'] %}
     {% if all_products_button_text != blank %}
       <a class="button button--centered button--secondary all-products-button" href="/products">{{ all_products_button_text }}</a>
     {% endif %}
   {% endif %}
 {% endif %}
-
 

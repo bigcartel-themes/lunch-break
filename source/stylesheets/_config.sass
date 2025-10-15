@@ -26,6 +26,10 @@ $break-extra-small: 500px
 @mixin animation($str...)
   animation: $str
 
+@mixin global-font-size($value)
+  font-size: $value
+  font-size: calc(#{$value} * var(--font-scale, 1))
+
 @mixin pie-clearfix
   &:after
     content: ""

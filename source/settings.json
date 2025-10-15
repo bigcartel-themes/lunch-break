@@ -1,17 +1,23 @@
 {
   "name": "Lunch Break",
-  "version": "1.22.2",
+  "version": "1.23.0",
   "images": [
     {
-      "variable": "header_logo",
+      "variable": "logo_image",
       "section": "global_navigation",
       "label": "Header image",
-      "description": "Rectangular image with transparent background, at least 250px tall"
+      "description": "Use a PNG file with a transparent background. Your logo should be at least 600 pixels tall. Wide logos look better than square ones."
+    },
+    {
+      "variable": "maintenance_image",
+      "section": "messaging",
+      "label": "Maintenance image",
+      "description": "Adds an image to your Maintenance page. For best results, use an image that's at least 800 pixels wide."
     }
   ],
   "image_sets": [
     {
-      "variable": "slideshow_images",
+      "variable": "slideshow",
       "label": "Homepage slideshow",
       "section": "homepage",
       "description": "Use same size images, 1000 x 400px images recommended"
@@ -483,20 +489,21 @@
   ],
   "options": [
     {
-      "variable": "header_logo_image_height",
+      "variable": "header_logo_image_size",
       "label": "Header logo image size",
       "section": "global_navigation",
       "type": "select",
       "options": [
-        ["Extra Small", "75"],
-        ["Small", "125"],
-        ["Medium", "200"],
-        ["Large", "300"],
-        ["Extra Large", "400"],
-        ["XX Large", "500"]
+        ["Extra Small", "70"],
+        ["Small", "100"],
+        ["Medium", "130"],
+        ["Large", "160"],
+        ["Extra Large", "200"],
+        ["XX Large", "250"],
+        ["Huge", "300"]
       ],
-      "default": "125",
-      "description": "Controls the maximum size of your header logo"
+      "default": "100",
+      "description": "Controls the size of your logo"
     },
     {
       "variable": "header_position",
@@ -724,7 +731,7 @@
       "default": "slide",
       "description": "Controls how homepage slideshow transitions between images.",
       "requires": [
-        "slideshow_images present"
+        "slideshow present"
       ]
     },
     {
@@ -735,7 +742,7 @@
       "default": true,
       "description": "Automatically advances slides in the homepage slideshow",
       "requires": [
-        "slideshow_images present"
+        "slideshow present"
       ]
     },
     {
@@ -753,7 +760,7 @@
       "default": 4000,
       "description": "Controls how quickly slides advance in the auto-playing slideshow",
       "requires": [
-        "slideshow_images present",
+        "slideshow present",
         "homepage_slideshow_autoplay eq true"
       ]
     },
@@ -765,7 +772,7 @@
       "default": "",
       "description": "Link destination when slideshow is clicked. Leave blank to keep slides unclickable. Accepts relative paths (e.g. /products) or full URLs.",
       "requires": [
-        "slideshow_images present"
+        "slideshow present"
       ]
     },
     {
@@ -828,6 +835,14 @@
       ]
     },
     {
+      "variable": "homepage_show_all_items_link",
+      "label": "Show all products button",
+      "section": "homepage",
+      "type": "boolean",
+      "default": true,
+      "description": "Allow the 'All products' button to show on the Home page when eligible"
+    },
+    {
       "variable": "homepage_featured_text",
       "label": "Featured message",
       "section": "homepage",
@@ -841,8 +856,7 @@
       "section": "homepage",
       "type": "select",
       "options": "0..48",
-      "default": 6,
-      "upgrade_default": 0,
+      "default": 0,
       "description": "The number of categories featured on the Home page"
     },
     {
@@ -886,7 +900,8 @@
       "default": "within",
       "description": "Sets position of the featured message",
       "requires": [
-        "homepage_featured_text present"
+        "homepage_featured_text present",
+        "featured_products gt 0"
       ]
     },
     {
@@ -920,6 +935,18 @@
       "type": "boolean",
       "default": true,
       "description": "Show the price of coming soon products on product grids and product pages"
+    },
+    {
+      "variable": "show_password_protected_product_prices",
+      "label": "Show prices for password protected products",
+      "section": "product_page",
+      "type": "boolean",
+      "default": true,
+      "description": "Show the price of password protected products on product grids. <a href='https://www.bigcartel.com/resources/help/article/password-protected-products' target='_blank'>Learn more</a>",
+      "requires_upgrade": {
+        "unless": "feature:product_passwords",
+        "analytics_label": "Password Protected Products"
+      }
     },
     {
       "variable": "product_variable_pricing_display_format",
@@ -1061,18 +1088,21 @@
       }
     },
     {
-      "variable": "border_radius",
-      "label": "Rounded corners",
-      "section": "general",
-      "type": "select",
-      "options": [
-        ["Off", "0"],
-        ["Small", "2px"],
-        ["Medium", "4px"],
-        ["Large", "8px"]
-      ],
-      "default": "4px",
-      "description": "Controls the rounded corner style on images and other site elements"
+      "variable": "maintenance_message",
+      "label": "Maintenance mode message",
+      "section": "messaging",
+      "type": "textarea",
+      "max_length": 2048,
+      "description": "A message visitors see when your shop is in Maintenance Mode. Supports HTML for advanced customization.",
+      "default": "We’re getting things ready. Check back soon!"
+    },
+    {
+      "variable": "show_shop_name_on_maintenance_page",
+      "label": "Show shop name on Maintenance Mode page",
+      "section": "messaging",
+      "type": "boolean",
+      "default": true,
+      "description": "Display your shop name on the Maintenance Mode page. Turn this off if your maintenance image already includes your shop name to avoid duplication."
     },
     {
       "variable": "announcement_message_text",
@@ -1081,6 +1111,33 @@
       "type": "textarea",
       "max_length": 500,
       "description": "Displays an announcement message on the top of every page. Supports HTML for advanced customization."
+    },
+    {
+      "variable": "announcement_message_scroll",
+      "label": "Scroll announcement banner",
+      "section": "messaging",
+      "type": "boolean",
+      "default": false,
+      "description": "Enable smooth scrolling animation. Works best with messages of 40+ characters for a continuous, eye-catching effect."
+    },
+    {
+      "variable": "announcement_scroll_speed",
+      "label": "Announcement scroll speed",
+      "section": "messaging",
+      "type": "select",
+      "options": [
+        ["Slowest", "50s"],
+        ["Slow", "30s"],
+        ["Medium", "15s"],
+        ["Fast", "7s"],
+        ["Fastest", "3s"]
+      ],
+      "default": "15s",
+      "description": "Controls how quickly the announcement scrolls across the screen",
+      "requires": [
+        "announcement_message_text present",
+        "announcement_message_scroll eq true"
+      ]
     },
     {
       "variable": "contact_text",
@@ -1107,13 +1164,211 @@
       "description": "Displays a message at the top your cart page when there are items in the cart. Supports HTML for advanced customization."
     },
     {
-      "variable": "maintenance_message",
-      "label": "Maintenance mode message",
-      "section": "messaging",
-      "type": "textarea",
-      "max_length": 2048,
-      "description": "A message visitors see when your shop is in Maintenance Mode. Supports HTML for advanced customization.",
-      "default": "We're working on our shop right now.<br /><br />Please check back soon."
+      "variable": "global_text_scale",
+      "label": "Global text size",
+      "section": "text_sizing",
+      "type": "select",
+      "options": [
+        ["50%", "0.5"],
+        ["60%", "0.6"],
+        ["70%", "0.7"],
+        ["80%", "0.8"],
+        ["90%", "0.9"],
+        ["Default", "1"],
+        ["110%", "1.1"],
+        ["120%", "1.2"],
+        ["130%", "1.3"],
+        ["140%", "1.4"],
+        ["150%", "1.5"]
+      ],
+      "default": "1",
+      "description": "Set the base text size for your entire shop. All text will scale from this setting"
+    },
+    {
+      "variable": "header_text_scale",
+      "label": "Header and sidebar text size",
+      "section": "text_sizing",
+      "type": "select",
+      "options": [
+        ["50%", "0.5"],
+        ["60%", "0.6"],
+        ["70%", "0.7"],
+        ["80%", "0.8"],
+        ["90%", "0.9"],
+        ["Default", "1"],
+        ["110%", "1.1"],
+        ["120%", "1.2"],
+        ["130%", "1.3"],
+        ["140%", "1.4"],
+        ["150%", "1.5"]
+      ],
+      "default": "1",
+      "description": "Fine-tune header and sidebar navigation text size (applies on top of global setting)"
+    },
+    {
+      "variable": "footer_text_scale",
+      "label": "Footer text size",
+      "section": "text_sizing",
+      "type": "select",
+      "options": [
+        ["50%", "0.5"],
+        ["60%", "0.6"],
+        ["70%", "0.7"],
+        ["80%", "0.8"],
+        ["90%", "0.9"],
+        ["Default", "1"],
+        ["110%", "1.1"],
+        ["120%", "1.2"],
+        ["130%", "1.3"],
+        ["140%", "1.4"],
+        ["150%", "1.5"]
+      ],
+      "default": "1",
+      "description": "Fine-tune footer text size (applies on top of global setting)"
+    },
+    {
+      "variable": "shop_name_text_scale",
+      "label": "Shop name text size",
+      "section": "text_sizing",
+      "type": "select",
+      "options": [
+        ["50%", "0.5"],
+        ["60%", "0.6"],
+        ["70%", "0.7"],
+        ["80%", "0.8"],
+        ["90%", "0.9"],
+        ["Default", "1"],
+        ["110%", "1.1"],
+        ["120%", "1.2"],
+        ["130%", "1.3"],
+        ["140%", "1.4"],
+        ["150%", "1.5"]
+      ],
+      "default": "1",
+      "description": "Fine-tune your shop name size (applies on top of global and header settings)"
+    },
+    {
+      "variable": "product_grid_scale",
+      "label": "Product grid text size",
+      "section": "text_sizing",
+      "type": "select",
+      "options": [
+        ["50%", "0.5"],
+        ["60%", "0.6"],
+        ["70%", "0.7"],
+        ["80%", "0.8"],
+        ["90%", "0.9"],
+        ["Default", "1"],
+        ["110%", "1.1"],
+        ["120%", "1.2"],
+        ["130%", "1.3"],
+        ["140%", "1.4"],
+        ["150%", "1.5"]
+      ],
+      "default": "1",
+      "description": "Fine-tune product grid text size (applies on top of global setting)"
+    },
+    {
+      "variable": "product_page_heading_scale",
+      "label": "Product page heading area size",
+      "section": "text_sizing",
+      "type": "select",
+      "options": [
+        ["50%", "0.5"],
+        ["60%", "0.6"],
+        ["70%", "0.7"],
+        ["80%", "0.8"],
+        ["90%", "0.9"],
+        ["Default", "1"],
+        ["110%", "1.1"],
+        ["120%", "1.2"],
+        ["130%", "1.3"],
+        ["140%", "1.4"],
+        ["150%", "1.5"]
+      ],
+      "default": "1",
+      "description": "Fine-tune product title, price, and status text size (applies on top of global setting)"
+    },
+    {
+      "variable": "product_page_description_scale",
+      "label": "Product page description size",
+      "section": "text_sizing",
+      "type": "select",
+      "options": [
+        ["50%", "0.5"],
+        ["60%", "0.6"],
+        ["70%", "0.7"],
+        ["80%", "0.8"],
+        ["90%", "0.9"],
+        ["Default", "1"],
+        ["110%", "1.1"],
+        ["120%", "1.2"],
+        ["130%", "1.3"],
+        ["140%", "1.4"],
+        ["150%", "1.5"]
+      ],
+      "default": "1",
+      "description": "Fine-tune product description text size (applies on top of global setting)"
+    },
+    {
+      "variable": "shop_sprinkles_animation",
+      "label": "Shop sprinkles animation",
+      "section": "general",
+      "type": "select",
+      "options": [
+        ["Drift", "shake"],
+        ["Orbit", "orbit"],
+        ["Tumble", "tumble"]
+      ],
+      "default": "shake",
+      "description": "Adjust the falling animation style of the shop sprinkles. You must select an emoji to turn on sprinkles."
+    },
+    {
+      "variable": "shop_sprinkles_size",
+      "label": "Shop sprinkles size",
+      "section": "general",
+      "type": "select",
+      "options": [
+        ["Smallest", "0.75em"],
+        ["Small", "1.25em"],
+        ["Smaller", "1.5em"],
+        ["Default", "2em"],
+        ["Bigger", "2.75em"],
+        ["Big", "3.5em"],
+        ["Biggest", "4.25em"],
+        ["Jumbo", "5em"]
+      ],
+      "default": "2em",
+      "description": "Adjust the size of the shop sprinkles"
+    },
+    {
+      "variable": "shop_sprinkles_density",
+      "label": "Shop sprinkles density",
+      "section": "general",
+      "type": "select",
+      "options": [
+        ["Very subtle", "4"],
+        ["Subtle", "8"],
+        ["Balanced", "14"],
+        ["Festive", "20"],
+        ["Party", "28"]
+      ],
+      "default": "14",
+      "description": "Adjust the density of shop sprinkles"
+    },
+    {
+      "variable": "border_radius",
+      "label": "Rounded corners",
+      "section": "general",
+      "type": "select",
+      "options": [
+        ["Off", "0"],
+        ["Small", "2px"],
+        ["Medium", "4px"],
+        ["Large", "8px"]
+      ],
+      "default": "4px",
+      "description": "Controls the rounded corner style on images and other site elements"
     },
     {
       "variable": "translation_locale",
@@ -1861,7 +2116,7 @@
     "optimize_legibility": "optimizeLegibility",
     "header_image_max_height": "140px",
     "antialias_text": "antialiased",
-    "header_image": "{{ header_logo }}",
+    "header_image": "{{ logo_image }}",
     "background_color": "{{ header_background_color }}",
     "gutter_width": "28px",
     "body_font": "{{ secondary_font }}",
