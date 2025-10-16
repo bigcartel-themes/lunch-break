@@ -28,8 +28,11 @@
   &--scrolling
     cursor: pointer
     padding: 0
-    overflow: hidden
-    min-height: fit-content
+    overflow: visible
+    display: flex
+    align-items: center
+    justify-content: center
+    // Safari fix: overflow visible on parent, hidden on wrapper
 
     .announcement-message__close-button
       display: none
@@ -38,6 +41,8 @@
     width: 100%
     overflow: hidden
     padding: 12px 144px
+    display: flex
+    align-items: center
     // Isolate this container to prevent layout thrashing
     isolation: isolate
 
