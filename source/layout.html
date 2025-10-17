@@ -60,10 +60,10 @@
         <span class="sr-only">{{ t['cart.view_cart'] }} - </span><span class="cart_title">{{ cart.item_count | pluralize: t['navigation.item'], t['navigation.items'] }}</span>/<span class="cart_numbers">{{ cart.total | money: theme.money_format }}</span>
       </a>
   	</div>
-    <header class="{% if theme.logo_image != blank %}logo{% else %}text{% endif %}" data-bc-hook="header">
+    <header class="{% if theme.images.logo_image != blank %}logo{% else %}text{% endif %}" data-bc-hook="header">
   		<div class="inner-wrapper">
-        <a href="/" title="{{ store.name | escape }}" class="store_header {% if theme.logo_image != blank %}logo{% else %}text{% endif %}">
-          {% if theme.logo_image != blank %}
+        <a href="/" title="{{ store.name | escape }}" class="store_header {% if theme.images.logo_image != blank %}logo{% else %}text{% endif %}">
+          {% if theme.images.logo_image != blank %}
             {% comment %} Calculate optimal image size with width and height constraints for DPI optimization {% endcomment %}
             {% assign display_height = theme.header_logo_image_size %}
             {% assign optimal_width = display_height | times: 6 %}
