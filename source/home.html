@@ -321,18 +321,8 @@
       {% assign show_all_products_button = true %}
     {% endif %}
   {% else %}
-    {%- comment -%} Case 2: No featured products - show button if categories are displayed AND products exist {%- endcomment -%}
-    {% if theme.featured_categories > 0 and categories.active.size > 0 %}
-      {% assign categories_with_products = blank %}
-      {% for category in categories.active %}
-        {% if category.products.size > 0 %}
-          {% assign categories_with_products = categories_with_products | append: category.id | append: ',' %}
-        {% endif %}
-      {% endfor %}
-      {% if categories_with_products != blank and products.all.size > 0 %}
-        {% assign show_all_products_button = true %}
-      {% endif %}
-    {% endif %}
+    {%- comment -%} Case 2: No featured products shown - eligible because products aren't displayed yet {%- endcomment -%}
+    {% assign show_all_products_button = true %}
   {% endif %}
   
   {% if theme.homepage_show_all_items_link and show_all_products_button %}
