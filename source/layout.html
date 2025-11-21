@@ -168,8 +168,14 @@
             {% assign show_more_section = true %}
           {% elsif pages.subscribe_page %}
             {% assign show_more_section = true %}
-          {% elsif theme.nav_page_display != "none" %}
+          {% elsif store.website != blank %}
             {% assign show_more_section = true %}
+          {% elsif theme.nav_page_display == "all" or theme.nav_page_display == "contact_only" %}
+            {% assign show_more_section = true %}
+          {% elsif theme.nav_page_display == "pages_only" %}
+            {% if pages.custom_pages.size > 0 and theme.nav_items_footer > 0 %}
+              {% assign show_more_section = true %}
+            {% endif %}
           {% endif %}
 
           {% if show_more_section %}
