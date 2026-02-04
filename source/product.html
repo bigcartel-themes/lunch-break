@@ -198,10 +198,6 @@
         {% endif %}
       </form>
     {% endif %}
-    <div class="product_description">
-      {% if product.description != blank %}
-        {{ product.description | paragraphs }}
-      {% endif %}
-    </div>
+    <div class="product_description" data-bc-hook="product-description">{%- if product.description != blank %}{{ product.description | paragraphs }}{% endif -%}</div>
   </section>
 </div>
