@@ -29,8 +29,10 @@ if (themeOptions.productImageZoom === true) {
   lightbox.init();
 }
 $('.product_option_select').on('change',function() {
-  var option_price = $(this).find("option:selected").attr("data-price");
-  enableAddButton(option_price);
+  var selectedOption = $(this).find("option:selected");
+  var option_price = selectedOption.attr("data-price");
+  var original_price = selectedOption.attr("data-original-price");
+  enableAddButton(option_price, original_price);
 });
 
 function updateInventoryMessage(optionId = null) {
@@ -92,33 +94,84 @@ function updateInventoryMessage(optionId = null) {
   }
 }
 
-function enableAddButton(updated_price) {
+function updateButtonPrice(priceElement, updated_price, original_price) {
+  var updatedNum = parseFloat(updated_price) || 0;
+  var originalNum = parseFloat(original_price) || 0;
+  var showStrikethrough = originalNum > updatedNum && themeOptions.showStrikethroughPricing;
+
+  var priceHtml;
+  if (showStrikethrough) {
+    var originalFormatted = formatMoney(original_price, true, true);
+    var saleFormatted = formatMoney(updated_price, true, true);
+    priceHtml = '<s class="price-compare">' + originalFormatted + '</s> <span class="price-sale">' + saleFormatted + '</span>';
+  } else {
+    priceHtml = formatMoney(updated_price, true, true);
+  }
+  priceElement.html(priceHtml);
+}
+
+function enableAddButton(updated_price, original_price) {
   var addButton = $('.add-to-cart-button');
   var addButtonTitle = addButton.attr('data-add-title');
-  addButton.attr("disabled",false);
+  var addButtonTextElement = addButton.find('.button-add-text');
+  var addButtonPriceElement = addButton.find('.button-add-price');
+
+  addButton.attr("disabled", false);
+  addButtonTextElement.html(addButtonTitle);
+  addButton.attr('aria-label', addButtonTitle);
+
+  // On mobile, the price display is far from the button due to the product image between them.
+  // Show the price in the button so users see price changes when selecting options.
   if (updated_price) {
-    priceTitle = ' - ' + formatMoney(updated_price, true, true);
+    updateButtonPrice(addButtonPriceElement, updated_price, original_price);
+    addButtonPriceElement.addClass('visible');
+  } else {
+    addButtonPriceElement.removeClass('visible');
   }
-  else {
-    priceTitle = '';
-  }
-  addButton.html(addButtonTitle + priceTitle);
-  addButton.attr('aria-label',addButton.text());
+
   updateInventoryMessage($('#option').val());
+  updateProductPrice(updated_price, original_price);
   showBnplMessaging(updated_price, { alignment: 'left', displayMode: 'grid', pageType: 'product' });
+}
+
+function updateProductPrice(updated_price, original_price) {
+  var priceContainer = $('.product_price-value');
+  if (!priceContainer.length) return;
+
+  // Convert to numbers for proper comparison (data attributes are strings)
+  var updatedNum = parseFloat(updated_price) || 0;
+  var originalNum = parseFloat(original_price) || 0;
+
+  var showStrikethrough = originalNum > updatedNum &&
+                          themeOptions.showStrikethroughPricing;
+
+  var priceHtml;
+  if (showStrikethrough) {
+    var regularFormatted = formatMoney(original_price, true, true);
+    var saleFormatted = formatMoney(updated_price, true, true);
+    priceHtml = '<s class="price-compare">' + regularFormatted + '</s> <span class="price-sale">' + saleFormatted + '</span>';
+  } else {
+    priceHtml = formatMoney(updated_price, true, true);
+  }
+
+  priceContainer.html(priceHtml);
 }
 
 function disableAddButton(type) {
   var addButton = $('.add-to-cart-button');
   var addButtonTitle = addButton.attr('data-add-title');
+  var addButtonTextElement = addButton.find('.button-add-text');
+  var addButtonPriceElement = addButton.find('.button-add-price');
+
   if (type == "sold-out") {
-    var addButtonTitle = addButton.attr('data-sold-title');
+    addButtonTitle = addButton.attr('data-sold-title');
   }
   if (!addButton.is(":disabled")) {
-    addButton.attr("disabled","disabled");
+    addButton.attr("disabled", "disabled");
   }
-  addButton.html(addButtonTitle);
-  addButton.attr('aria-label','');
+  addButtonTextElement.html(addButtonTitle);
+  addButtonPriceElement.removeClass('visible');
+  addButton.attr('aria-label', '');
 }
 
 function enableSelectOption(select_option) {
