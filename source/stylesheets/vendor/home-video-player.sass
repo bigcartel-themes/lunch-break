@@ -53,6 +53,10 @@ $video-container-padding: var(--video-container-padding, 0)
   margin: 0 auto
   margin-bottom: $featured-video-margin-size-large
   padding: $video-container-padding
+  // Contain the controls' z-index so they can't escape above page chrome
+  // (e.g. the mobile nav menu). Without this, .mejs__controls' z-index:10
+  // competes in the root stacking context and can paint over the navigation.
+  isolation: isolate
 
   // Base MediaElement.js styling
   .mejs__container
