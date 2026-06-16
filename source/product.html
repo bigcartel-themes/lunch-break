@@ -11,7 +11,35 @@
     <div class="product_price_status">
       <span class="product_price {% unless hide_price %}with-spacing{% endunless %}">
         {% unless hide_price %}
-          {{ product | product_price: theme.money_format }}
+          {% capture product_pricing %}
+            {% assign show_strikethrough = false %}
+            {% assign strikethrough_regular = nil %}
+            {% assign strikethrough_sale = nil %}
+
+            {% if theme.show_strikethrough_pricing %}
+              {% if product.variable_pricing == false and product.original_price > product.default_price %}
+                {% assign show_strikethrough = true %}
+                {% assign strikethrough_regular = product.original_price %}
+                {% assign strikethrough_sale = product.default_price %}
+              {% elsif product.variable_pricing and theme.product_variable_pricing_display_format == "min_only" and product.min_original_price > product.min_price %}
+                {% assign show_strikethrough = true %}
+                {% assign strikethrough_regular = product.min_original_price %}
+                {% assign strikethrough_sale = product.min_price %}
+              {% elsif product.variable_pricing and theme.product_variable_pricing_display_format == "max_only" and product.max_original_price > product.max_price %}
+                {% assign show_strikethrough = true %}
+                {% assign strikethrough_regular = product.max_original_price %}
+                {% assign strikethrough_sale = product.max_price %}
+              {% endif %}
+            {% endif %}
+
+            {% if show_strikethrough %}
+              <s class="price-compare">{{ strikethrough_regular | money: theme.money_format }}</s>
+              <span class="price-sale">{{ strikethrough_sale | money: theme.money_format }}</span>
+            {% else %}
+              {{ product | product_price: theme.money_format, theme.product_variable_pricing_display_format }}
+            {% endif %}
+          {% endcapture %}
+          <span class="product_price-value">{{ product_pricing }}</span>
 
           {% if product.price_suffix != blank %}
             {% assign variable_price_shown = true %}
@@ -181,7 +209,26 @@
                   <select data-unavailable-text="(Unavailable)" data-sold-text="({{ t['products.sold_out'] }})" data-group-id="{{ option_group.id }}" data-group-name="{{ option_group.name | escape }}" class="product_option_group" name="option_group[{{ option_group.id }}]" aria-label="Select {{ option_group.name | escape }}" required>
                     <option value="" disabled="disabled" selected>{{ option_group.name }}</option>
                     {% for value in option_group.values %}
-                      <option value="{{ value.id }}" data-name="{{ value.name | escape }}">{{ value.name }}</option>
+                      {% comment %}
+                        For single option groups, we can show status labels since each value maps to one product option.
+                        For multiple option groups, we can't know status until all selections are made.
+                      {% endcomment %}
+                      {% assign option_status_label = '' %}
+                      {% if product.option_groups.size == 1 %}
+                        {% for option in product.options %}
+                          {% for ogv in option.option_group_values %}
+                            {% if ogv.id == value.id %}
+                              {% if option.sold_out %}
+                                {% assign option_status_label = t['products.sold_out'] | downcase %}
+                              {% elsif option.original_price > option.price and theme.show_sale_label_in_product_options %}
+                                {% assign option_status_label = t['products.on_sale'] | downcase %}
+                              {% endif %}
+                              {% break %}
+                            {% endif %}
+                          {% endfor %}
+                        {% endfor %}
+                      {% endif %}
+                      <option value="{{ value.id }}" data-name="{{ value.name | escape }}">{{ value.name }}{% if option_status_label != blank %} ({{ option_status_label }}){% endif %}</option>
                     {% endfor %}
                   </select>
                   <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 7.6" enable-background="new 0 0 15 7.6"><path d="M15 1.1l-7.5 6.5-7.5-6.3 1-1.2 6.5 5.5 6.5-5.6z"/></svg>
@@ -193,14 +240,17 @@
               <select class="product_option_select" id="option" name="cart[add][id]" aria-label="{{ t['products.select_variant'] }}" required>
                 <option value="" disabled="disabled" selected>{{ t['products.select_variant'] }}</option>
                 {% for option in product.options %}
-                  <option value="{{ option.id }}" data-price="{{ option.price }}"{% if option.sold_out %} disabled="disabled" disabled-type="sold-out"{% endif %}>{{ option.name }} {% if option.sold_out %} ({{ t['products.sold_out'] }}){% endif %}</option>
+                  <option value="{{ option.id }}" data-price="{{ option.price }}" data-original-price="{{ option.original_price }}"{% if option.sold_out %} disabled="disabled" disabled-type="sold-out"{% endif %}>{{ option.name }}{% if option.sold_out %} ({{ t['products.sold_out'] }}){% elsif option.original_price > option.price and theme.show_sale_label_in_product_options %} ({{ t['products.on_sale'] | downcase }}){% endif %}</option>
                 {% endfor %}
               </select>
               <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 7.6" enable-background="new 0 0 15 7.6"><path d="M15 1.1l-7.5 6.5-7.5-6.3 1-1.2 6.5 5.5 6.5-5.6z"/></svg>
             </div>
           {% endif %}
         {% endif %}
-        <button id="add-to-cart-button" class="button add-to-cart-button" type="submit" data-add-title="{{ t['products.add_to_cart'] }}" data-sold-title="{{ t['products.sold_out'] }}">{{ t['products.add_to_cart'] }}</button>
+        <button id="add-to-cart-button" class="button add-to-cart-button" type="submit" data-add-title="{{ t['products.add_to_cart'] }}" data-sold-title="{{ t['products.sold_out'] }}"{% if product.has_default_option %} data-selected-price="{{ product.default_price }}" data-selected-original-price="{{ product.original_price }}"{% endif %}>
+          <span class="button-add-price{% if product.has_default_option %} visible{% endif %}">{{ product.default_price | money: theme.money_format }}</span>
+          <span class="button-add-text">{{ t['products.add_to_cart'] }}</span>
+        </button>
         {{ store | instant_checkout_button: 'dark', '44px' }}
         <div class="inventory-status-message" data-inventory-message></div>
         {% if product.has_option_groups %}
