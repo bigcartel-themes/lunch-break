@@ -1,6 +1,6 @@
 {
   "name": "Lunch Break",
-  "version": "1.23.8",
+  "version": "1.23.9",
   "images": [
     {
       "variable": "logo_image",
@@ -1560,8 +1560,8 @@
       "section": "translations",
       "sub_section": "navigation",
       "type": "text",
-      "default": "Subscribe",
-      "description": "Text for links to your Subscribe page if you are using the <a href='/account/payment-options'>Subscriptions Beta</a> feature",
+      "default": "Memberships",
+      "description": "Text for links to your Memberships page if you are using the <a href='/memberships'>Memberships</a> feature",
       "requires": [ "translation_mode eq manual" ]
     },
     {
